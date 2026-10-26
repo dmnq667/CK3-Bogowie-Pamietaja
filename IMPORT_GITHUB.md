@@ -1,3 +1,11 @@
+# Dokument archiwalny: import 0.1.9 zakończony
+
+**Import wykonano pomyślnie 26.10.2026** (commit `d31a6809a21d0322d9bdd3ca4ce5250913305033`, tag `v0.1.9-alpha`). Te instrukcje opisują historyczny import i **nie powinny być ponownie wykonywane dla wersji 0.1.9**.
+
+Dla kolejnych wydań stosuj aktualną [procedurę publikacji](docs/PROCEDURA_PUBLIKACJI_GITHUB.md). Nazwy fragmentów, manifest i SHA-256 należy wygenerować na nowo. Nie uruchamiać starego importera na nowych plikach.
+
+---
+
 # Jednorazowy import wersji 0.1.9 ALPHA
 
 **Stan:** automatyczny importer został zainstalowany. Do jego uruchomienia trzeba przesłać do katalogu głównego repozytorium dokładnie dwa pliki:

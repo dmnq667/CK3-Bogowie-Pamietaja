@@ -1,0 +1,112 @@
+name: Import Bogowie Pamietaja v0.1.9
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - BP019.part01
+      - BP019.part02
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: import-bogowie-019
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify and extract two-part archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s BP019.part01
+          test -s BP019.part02
+          cat BP019.part01 BP019.part02 > "$RUNNER_TEMP/bogowie-019.zip"
+          printf '%s  %s\n' \
+            '8b7d33b7d40b47c81041273abc9705fb13272cfbd066af427e366d7f0b9be7e6' \
+            "$RUNNER_TEMP/bogowie-019.zip" | sha256sum --check
+          mkdir -p "$RUNNER_TEMP/bogowie-019"
+          unzip -q "$RUNNER_TEMP/bogowie-019.zip" -d "$RUNNER_TEMP/bogowie-019"
+          python3 - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          base = Path(os.environ["RUNNER_TEMP"]) / "bogowie-019"
+          manifest = json.loads((base / "IMPORT_MANIFEST_SHA256.json").read_text(encoding="utf-8"))
+          assert len(manifest["files"]) == 110, "Unexpected source file count"
+          for relative, expected in manifest["files"].items():
+              path = base / relative
+              assert path.is_file(), f"Missing {relative}"
+              assert hashlib.sha256(path.read_bytes()).hexdigest() == expected, f"Checksum mismatch: {relative}"
+          assert len(list((base / "Bogowie_Pamietaja" / "events").glob("*.txt"))) == 16
+          assert len(list((base / "Bogowie_Pamietaja" / "gfx").rglob("*.dds"))) == 32
+          assert len(list((base / "source_artwork").glob("*.jpg"))) == 32
+          assert (base / "Bogowie_Pamietaja" / "localization" / "polish" / "bp_l_polish.yml").is_file()
+          assert (base / "Bogowie_Pamietaja" / "localization" / "english" / "bp_l_english.yml").is_file()
+          print("Import package integrity verified: 110 files, 16 event sources, 32 DDS, 32 JPG.")
+          PY
+
+      - name: Restore original source tree and update status
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$RUNNER_TEMP/bogowie-019"
+          mkdir -p Bogowie_Pamietaja docs source_artwork
+          cp -a "$root/Bogowie_Pamietaja/." Bogowie_Pamietaja/
+          cp -a "$root/docs/." docs/
+          cp -a "$root/source_artwork/." source_artwork/
+          cp "$root/.gitignore" .gitignore
+          cp "$root/IMPORT_MANIFEST_SHA256.json" IMPORT_MANIFEST_SHA256.json
+          find Bogowie_Pamietaja -type f -name .gitkeep -delete
+          cat > SYNC_STATUS.md <<'EOF'
+          # GitHub synchronization: Bogowie Pamietaja v0.1.9 ALPHA
+
+          - Full source tree uploaded and validated from two archive fragments.
+          - 64 files in Bogowie_Pamietaja, including 16 event scripts and 32 DDS textures.
+          - 32 original JPG illustrations in source_artwork.
+          - 13 release/validation documents in docs.
+          - Source manifest: IMPORT_MANIFEST_SHA256.json.
+          - Verified archive SHA-256: 8b7d33b7d40b47c81041273abc9705fb13272cfbd066af427e366d7f0b9be7e6.
+          - Validation means archive and file checksum integrity only. Tests inside CK3 are still pending.
+          EOF
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path("PROJECT_STATUS.md")
+          s = p.read_text(encoding="utf-8")
+          s = s.replace("**Status GitHub:** CZĘŚCIOWA SYNCHRONIZACJA, NIE JEST KOPIĄ ZAPASOWĄ.",
+                        "**Status GitHub:** KOMPLET ŹRÓDEŁ 0.1.9 ALPHA. Testy w CK3 nadal oczekują.")
+          start = s.find("## Repozytorium faktycznie zawiera")
+          end = s.find("## Zachowana paczka źródłowa")
+          if start >= 0 and end > start:
+              s = s[:start] + "## Stan synchronizacji\nPełne źródła, tekstury DDS, grafiki JPG i dokumenty wydania są na GitHubie. Szczegóły oraz sumy kontrolne w [SYNC_STATUS.md](SYNC_STATUS.md).\n\n" + s[end:]
+          p.write_text(s, encoding="utf-8")
+          r = Path("README.md")
+          t = r.read_text(encoding="utf-8")
+          t = t.replace("**Repozytorium nie jest jeszcze kompletną kopią kodu moda**, dopóki jego zasoby binarne i źródła nie zostaną przesłane i zweryfikowane.",
+                        "**Źródła v0.1.9 ALPHA i zasoby zostały zaimportowane i zweryfikowane sumami SHA-256**. Wyniki testów w grze nie są jeszcze potwierdzone. Zobacz [stan synchronizacji](SYNC_STATUS.md).")
+          r.write_text(t, encoding="utf-8")
+          PY
+          git rm -f --ignore-unmatch BP019.part01 BP019.part02
+
+      - name: Commit verified source and create alpha tag
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "import: restore complete Bogowie Pamietaja 0.1.9 ALPHA source"
+            git push origin HEAD:main
+          fi
+          if ! git rev-parse --verify "refs/tags/v0.1.9-alpha" >/dev/null 2>&1; then
+            git tag -a v0.1.9-alpha -m "Source snapshot 0.1.9 ALPHA; game tests pending"
+            git push origin v0.1.9-alpha
+          fi

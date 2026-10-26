@@ -80,8 +80,84 @@ bp_gromnica.1002 = {
         }
     }
     left_portrait = root
+    # v0.2.0: the player may complete BOTH Gromnica duties in the second scene.
+    # First fire, then village relief. This must be a real second sacrifice.
+    option = {
+        name = bp_gromnica.1002.b
+        trigger = {
+            has_character_flag = bp_gromnica_fire
+            NOT = { has_character_flag = bp_gromnica_village }
+        }
+        add_prestige = -50
+        add_character_flag = { flag = bp_gromnica_village days = 90 }
+        add_character_flag = { flag = bp_gromnica_both_done_v020 days = 335 }
+        add_character_flag = { flag = bp_gromnica_second_village_v020 days = 90 }
+        bp_mokosh_plus_10_effect = yes
+        trigger_event = bp_gromnica.1003
+        ai_chance = { base = 35 }
+    }
+    # First village relief, then keep the gate fires and guards alive.
+    option = {
+        name = bp_gromnica.1002.c
+        trigger = {
+            has_character_flag = bp_gromnica_village
+            NOT = { has_character_flag = bp_gromnica_fire }
+            gold >= 35
+        }
+        show_as_unavailable = {
+            has_character_flag = bp_gromnica_village
+            NOT = { has_character_flag = bp_gromnica_fire }
+            gold < 35
+        }
+        remove_short_term_gold = 35
+        add_character_flag = { flag = bp_gromnica_fire days = 90 }
+        add_character_flag = { flag = bp_gromnica_both_done_v020 days = 335 }
+        add_character_flag = { flag = bp_gromnica_second_fire_v020 days = 90 }
+        add_character_modifier = { modifier = bp_gromnica_guard_modifier days = 45 }
+        bp_weles_plus_10_effect = yes
+        trigger_event = bp_gromnica.1003
+        ai_chance = { base = 35 }
+    }
+    # Preserve the original option for players who do not take a second action.
     option = {
         name = bp_gromnica.1002.a
+        add_character_flag = { flag = bp_heard_ice_voice days = 90 }
+        ai_chance = { base = 100 }
+    }
+}
+
+# v0.2.0: a real follow-up scene after BOTH duties have been performed.
+# The temporary path flags distinguish the order of actions, without new art.
+bp_gromnica.1003 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        trigger = { has_character_flag = bp_gromnica_second_village_v020 }
+        reference = bp_scene_gromnica_01
+    }
+    override_background = { reference = bp_scene_gromnica_02 }
+    title = bp_gromnica.1003.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { has_character_flag = bp_gromnica_second_village_v020 }
+                desc = bp_gromnica.1003.desc_village
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_gromnica_second_fire_v020 }
+                desc = bp_gromnica.1003.desc_fire
+            }
+            desc = bp_gromnica.1003.desc
+        }
+    }
+    left_portrait = root
+    trigger = {
+        has_character_flag = bp_gromnica_both_done_v020
+        has_character_flag = bp_gromnica_fire
+        has_character_flag = bp_gromnica_village
+    }
+    option = {
+        name = bp_gromnica.1003.a
         add_character_flag = { flag = bp_heard_ice_voice days = 90 }
         ai_chance = { base = 100 }
     }

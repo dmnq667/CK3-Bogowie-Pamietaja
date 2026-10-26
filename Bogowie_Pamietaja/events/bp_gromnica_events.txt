@@ -48,6 +48,7 @@ bp_gromnica.1001 = {
     option = {
         name = bp_gromnica.1001.c
         add_gold = 20
+        add_character_flag = { flag = bp_gromnica_ignored_v020 days = 335 }
         bp_weles_minus_15_effect = yes
         trigger_event = { id = bp_gromnica.1002 days = 1 }
         ai_chance = { base = 10 }

@@ -1,21 +1,35 @@
 # Stan produkcji: Bogowie Pamiętają
 
-**Data:** 26.10.2026  
-**Wersja:** 0.1.9 ALPHA / 12 świąt  
-**Status GitHub:** KOMPLET ŹRÓDEŁ 0.1.9 ALPHA. Testy w CK3 nadal oczekują.
+**Aktualizacja:** 26.10.2026  
+**Wersja:** 0.1.9 ALPHA, 12 świąt  
+**Stan GitHub:** PEŁNA SYNCHRONIZACJA ŹRÓDEŁ, TESTY W CK3 OCZEKUJĄ.
 
-## Stan synchronizacji
-Pełne źródła, tekstury DDS, grafiki JPG i dokumenty wydania są na GitHubie. Szczegóły oraz sumy kontrolne w [SYNC_STATUS.md](SYNC_STATUS.md).
+## Potwierdzony import GitHub
 
-## Zachowana paczka źródłowa
-`Bogowie_Pamietaja_v0.1.9_ALPHA_12_SWIAT(1).zip`  
-SHA256: `98ac06b79946907fe36fb01d3a3d10c5a6ab5da24b9bd103fdce26ab4e66a9f4`
+- Import automatyczny ukończono commitem `d31a6809a21d0322d9bdd3ca4ce5250913305033`.
+- Utworzono tag odtwarzalnej wersji źródeł: `v0.1.9-alpha`.
+- Archiwum importowe przeszło kontrolę SHA-256; importer zweryfikował indywidualnie 110 plików na podstawie `IMPORT_MANIFEST_SHA256.json`.
+- Dodatkowa kontrola listy plików w repozytorium: **110/110 ścieżek manifestu obecnych**, bez braków.
+- Repozytorium zawiera 64 pliki w `Bogowie_Pamietaja/`, w tym 16 plików wydarzeń i 32 tekstury DDS; ponadto 32 oryginalne JPG w `source_artwork/` oraz 13 dokumentów wydania w `docs/`. Są również dokumenty służące do prowadzenia repozytorium.
+- Wcześniejsze instrukcje o brakujących plikach lub oczekującym imporcie w archiwalnych komunikatach nie są już aktualne.
 
-## Dalej
-1. Przesłać pełne pliki przez obsługujący binarne katalogi kanał GitHub, bez nadpisywania historii.
-2. Porównać z lokalną paczką listę plików, rozmiary oraz sumy kontrolne.
-3. Oznaczyć w statusie dopiero zweryfikowany komplet.
-4. Przeprowadzić testy wewnątrz CK3: cykl świąt, Perun, Weles, lokalizacja, grafiki i error.log.
+**Uwaga:** sprawdzenie integralności archiwum i obecności plików nie zastępuje uruchomienia moda w Crusader Kings III.
+
+## Materiał źródłowy
+
+- Archiwum wyjściowe: `Bogowie_Pamietaja_v0.1.9_ALPHA_12_SWIAT(1).zip`
+- SHA-256 archiwum wyjściowego: `98ac06b79946907fe36fb01d3a3d10c5a6ab5da24b9bd103fdce26ab4e66a9f4`
+- SHA-256 archiwum importowego: `8b7d33b7d40b47c81041273abc9705fb13272cfbd066af427e366d7f0b9be7e6`
+- Szczegóły: [SYNC_STATUS.md](SYNC_STATUS.md), [IMPORT_MANIFEST_SHA256.json](IMPORT_MANIFEST_SHA256.json)
+
+## Kolejny etap produkcji
+
+1. Sprawdzić działanie w bieżącej wersji CK3 oraz `error.log`, uwzględniając zgodność z innymi modami.
+2. Przetestować cykl roczny wszystkich 12 świąt i warunki wywoływania wydarzeń.
+3. Zweryfikować wybory i skutki: Perun (wojna/pokój), dług Welesa, Mokosz, Dziady jesienne i Szczodre Gody.
+4. Sprawdzić lokalizacje PL/EN, 32 tekstury DDS i dopasowanie ilustracji.
+5. Zapisać potwierdzone wyniki testów i błędy w repozytorium przed wydaniem następnej wersji.
 
 ## Zasady
-Każde wydanie musi mieć stan, changelog, artefakt źródłowy oraz wyniki testów. Nie mieszamy kodu z projektem The Weight of Words.
+
+GitHub jest źródłem stanu produkcji. Każde wydanie wymaga historii zmian, stanu testów i oznaczenia wersji. Nie mieszać z `CK3-The-Weight-of-Words`.

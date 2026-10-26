@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="512" height="512" role="img" aria-labelledby="t d">
+  <title id="t">Znak Pierwszego Ognia</title>
+  <desc id="d">Złoty płomień wyrastający ponad splotem korzeni, oprawiony w ciemny, metaliczny medalion. Koncepcja źródłowa ikony cechy Sądu Popiołu i Przysięgi.</desc>
+  <defs>
+    <radialGradient id="bg"><stop offset="0" stop-color="#3a3030"/><stop offset=".72" stop-color="#1e2630"/><stop offset="1" stop-color="#0f151d"/></radialGradient>
+    <linearGradient id="bronze" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f1d193"/><stop offset=".45" stop-color="#b57a37"/><stop offset="1" stop-color="#5f3b26"/></linearGradient>
+    <linearGradient id="fire" x1="0" y1="1" x2="0" y2="0"><stop stop-color="#d67b2f"/><stop offset=".55" stop-color="#f2b95c"/><stop offset="1" stop-color="#fff1a8"/></linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="#251b18"/>
+  <circle cx="32" cy="32" r="28.2" fill="none" stroke="url(#bronze)" stroke-width="3"/>
+  <circle cx="32" cy="32" r="25.7" fill="url(#bg)" stroke="#65462d" stroke-width=".5"/>
+  <path d="M31 10 C39 21 40 24 36 28 C41 27 43 22 43 22 C49 32 49 40 42 49 L22 49 C16 44 15 36 22 28 C23 25 23 19 24 18 C26 22 28 25 29 28 C30 21 29 16 31 10Z" fill="url(#fire)"/>
+  <path d="M32 25 C38 33 41 40 35 47 H28 C23 43 25 36 28 32 C28 37 29 38 30 38Z" fill="#ffe2a0"/>
+  <g fill="none" stroke="#b78f4a" stroke-width="2" stroke-linecap="round">
+    <path d="M22 51 Q31 54 42 51 M31 52 Q26 55 19 56 M35 52 Q40 56 44 56"/>
+  </g>
+</svg>

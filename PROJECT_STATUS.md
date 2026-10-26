@@ -34,7 +34,8 @@
 
 - [Standard importu przez GitHub Actions](docs/PROCEDURA_PUBLIKACJI_GITHUB.md): stosować przy większych paczkach, żeby nie wymagać ręcznego przesyłania katalogów.
 - [Wieczorna sesja testowa 0.1.9](docs/SESJA_TESTOWA_019.md): przygotowana, nie została jeszcze przeprowadzona.
-- Nowe pomysły funkcjonalne: oczekują na decyzję autora; stabilnej bazy 0.1.9 nie zmieniać bez uzgodnienia.
+- Nowy pomysł funkcjonalny: [Cztery Sądy Bogów, propozycja 0.2.0](docs/PROJEKT_CZTERY_SADY_BOGOW_020.md). Cztery zdarzenia po 3., 6., 9. i 12. święcie, ocena rzeczywistych decyzji, widoczna cecha stopniowa i nagrody do +1500 złota za etap. **Projekt koncepcyjny, bez zmian w skryptach.**
+- Stabilnej bazy 0.1.9 nie zmieniać przed wieczornymi testami i uzgodnieniem mechaniki.
 
 ## Zasady
 

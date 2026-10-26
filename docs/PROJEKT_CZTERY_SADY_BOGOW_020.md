@@ -22,6 +22,10 @@ Daty otwarcia sądów to **propozycje implementacyjne wynikające z obecnych oki
 
 Wydarzenia są niezależne od decyzji o rozpoczęciu obrzędu: odmowa, pominięcie lub zaniedbanie również powinny zostać odnotowane. Każdy sąd wywoływać automatycznie po domknięciu ostatniego święta przypisanego do danego sądu, poprzez **istniejący strażnik kalendarza**, bez drugiego codziennego on_action. Ochrona przed ponownym wywołaniem w tym samym okresie i po sukcesji.
 
+## Szczegółowe projekty poszczególnych sądów
+
+- [Sąd I, Popiół i Przysięga: szkic scenariusza i konsekwencji](SAD_I_POPIOLU_I_PRZYSIEGI_020_KONCEPCJA.md) (roboczy, oczekuje na akceptację autora).
+
 ## Wyjątkowa rola drugiego sądu: bilans minionego roku
 
 Według przyjętej koncepcji świata moda przejście ze starego roku ku nowemu dokonuje się wraz z obrzędami wiosennymi. **Wiosenny Nowy Rok i Jare Gody rozpoczynają odnowę, ale dopiero Gaik / Turzyca i Dziady wiosenne pozwalają domknąć pamięć o minionym cyklu.** Sąd II jest więc wielkim *rytualnym zamknięciem i osądem minionego roku*, nawet jeśli w kalendarzu CK3 wypada po wcześniejszej wiosennej celebracji nowego roku.

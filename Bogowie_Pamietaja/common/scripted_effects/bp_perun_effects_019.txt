@@ -1,0 +1,21 @@
+# v0.1.9: Perun favor, same -100..+100 convention as Mokosz/Weles.
+bp_perun_plus_10_effect = {
+    bp_initialize_effect = yes
+    change_variable = { name = bp_perun_favor add = 10 }
+    clamp_variable = { name = bp_perun_favor min = -100 max = 100 }
+}
+bp_perun_plus_20_effect = {
+    bp_initialize_effect = yes
+    change_variable = { name = bp_perun_favor add = 20 }
+    clamp_variable = { name = bp_perun_favor min = -100 max = 100 }
+}
+bp_perun_plus_40_effect = {
+    bp_initialize_effect = yes
+    change_variable = { name = bp_perun_favor add = 40 }
+    clamp_variable = { name = bp_perun_favor min = -100 max = 100 }
+}
+bp_perun_minus_20_effect = {
+    bp_initialize_effect = yes
+    change_variable = { name = bp_perun_favor add = -20 }
+    clamp_variable = { name = bp_perun_favor min = -100 max = 100 }
+}

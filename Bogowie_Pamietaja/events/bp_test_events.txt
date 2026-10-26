@@ -121,5 +121,6 @@ bp_test.9006 = {
     option = { name = bp_test.9006.harvest trigger_event = bp_announcement.9910 ai_chance = { base = 0 } }
     option = { name = bp_test.9006.autumn trigger_event = bp_announcement.9911 ai_chance = { base = 0 } }
     option = { name = bp_test.9006.szczodre trigger_event = bp_announcement.9912 ai_chance = { base = 0 } }
+    option = { name = bp_test.9006.court_one trigger_event = bp_judgement.1001 ai_chance = { base = 0 } }
     option = { name = bp_test.9006.back trigger_event = bp_test.9005 ai_chance = { base = 100 } }
 }

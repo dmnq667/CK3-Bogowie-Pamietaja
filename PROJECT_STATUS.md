@@ -30,6 +30,12 @@
 4. Sprawdzić lokalizacje PL/EN, 32 tekstury DDS i dopasowanie ilustracji.
 5. Zapisać potwierdzone wyniki testów i błędy w repozytorium przed wydaniem następnej wersji.
 
+## Procedury i bieżące testy
+
+- [Standard importu przez GitHub Actions](docs/PROCEDURA_PUBLIKACJI_GITHUB.md): stosować przy większych paczkach, żeby nie wymagać ręcznego przesyłania katalogów.
+- [Wieczorna sesja testowa 0.1.9](docs/SESJA_TESTOWA_019.md): przygotowana, nie została jeszcze przeprowadzona.
+- Nowe pomysły funkcjonalne: oczekują na decyzję autora; stabilnej bazy 0.1.9 nie zmieniać bez uzgodnienia.
+
 ## Zasady
 
 GitHub jest źródłem stanu produkcji. Każde wydanie wymaga historii zmian, stanu testów i oznaczenia wersji. Nie mieszać z `CK3-The-Weight-of-Words`.

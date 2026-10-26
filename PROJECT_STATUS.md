@@ -1,25 +1,29 @@
 # Stan produkcji: Bogowie Pamiętają
 
-**Aktualizacja:** 26.10.2026  
-**Baza:** `Bogowie_Pamietaja_v0.1.9_ALPHA_12_SWIAT(1).zip`  
-**Wersja:** 0.1.9 ALPHA, 12 świąt
+**Data:** 26.10.2026  
+**Wersja:** 0.1.9 ALPHA / 12 świąt  
+**Status GitHub:** CZĘŚCIOWA SYNCHRONIZACJA, NIE JEST KOPIĄ ZAPASOWĄ.
 
-## Zrealizowane (według dokumentacji paczki)
-- 12 świąt, w tym Perun, Plony, Dziady jesienne i Szczodre Gody.
-- Teksty i efekty wydarzeń oraz lokalizacje PL/EN.
-- Tekstury DDS i ostatnie zaakceptowane grafiki Peruna.
-- Mechanika dynastycznego długu Welesa.
-- Raportowana walidacja statyczna PASS.
+## Repozytorium faktycznie zawiera
+- Dokumentację: `README.md`, `PROJECT_STATUS.md`, `CHANGELOG.md`, `RESTORE.md`.
+- Pierwszych sześć plików źródłowych: `descriptor.mod`, `common/on_action/bp_annual_holidays_on_actions.txt`, `common/scripted_effects/bp_annual_schedule_effects.txt`, `common/scripted_effects/bp_calendar_watch_effects.txt`, `common/scripted_effects/bp_perun_effects_019.txt`, `common/opinion_modifiers/bp_opinions.txt`.
 
-## Testy oczekujące
-1. Uruchomienie w CK3, kontrola `error.log`.
-2. Cykl roczny i dostępność każdego z 12 świąt.
-3. Warianty Peruna w czasie wojny i pokoju.
-4. Plony i interakcje z premiami Mokoszy.
-5. Dziady jesienne a dług Welesa.
-6. Szczodre Gody: 31 grudnia / 1 stycznia.
-7. Poprawność lokalizacji, ikon i grafik.
-8. Dokumentacja wersji gry, wyniku testu i następnego wydania.
+## BRAKUJE na GitHubie
+- Pozostałych plików źródłowych CK3, w tym wielu wydarzeń i lokalizacji.
+- 32 plików DDS używanych przez mod.
+- 32 oryginalnych grafik JPG i reszty dokumentacji wydania.
 
-## Stan synchronizacji
-**Repozytorium jest dopiero częściowo opublikowane.** Kod oraz zasoby z paczki lokalnej wymagają wysłania i porównania listy plików. Nie traktować tego repozytorium jako kompletnego backupu, dopóki ten punkt nie zostanie potwierdzony.
+Nie wolno pobierać aktualnego drzewa z GitHub jako działającego moda. Odtworzenie możliwe wyłącznie z pełnej lokalnej paczki do czasu zakończenia importu.
+
+## Zachowana paczka źródłowa
+`Bogowie_Pamietaja_v0.1.9_ALPHA_12_SWIAT(1).zip`  
+SHA256: `98ac06b79946907fe36fb01d3a3d10c5a6ab5da24b9bd103fdce26ab4e66a9f4`
+
+## Dalej
+1. Przesłać pełne pliki przez obsługujący binarne katalogi kanał GitHub, bez nadpisywania historii.
+2. Porównać z lokalną paczką listę plików, rozmiary oraz sumy kontrolne.
+3. Oznaczyć w statusie dopiero zweryfikowany komplet.
+4. Przeprowadzić testy wewnątrz CK3: cykl świąt, Perun, Weles, lokalizacja, grafiki i error.log.
+
+## Zasady
+Każde wydanie musi mieć stan, changelog, artefakt źródłowy oraz wyniki testów. Nie mieszamy kodu z projektem The Weight of Words.

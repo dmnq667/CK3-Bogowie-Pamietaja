@@ -1,0 +1,230 @@
+namespace = bp_judgement
+
+# COURT I: Popiół i Przysięga, once every winter after Weles Week.
+# One existing watcher schedules the event, do not add another on_action.
+# The dynasty lock blocks repeats via reload, succession and debug.
+bp_judgement.1001 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_gromnica_02 }
+    title = bp_judgement.1001.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { has_character_flag = bp_gromnica_both_done_v020 }
+                desc = bp_judgement.1001.desc_both
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_gromnica_ignored_v020 }
+                desc = bp_judgement.1001.desc_ignored
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_gromnica_fire }
+                desc = bp_judgement.1001.desc_fire
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_gromnica_village }
+                desc = bp_judgement.1001.desc_village
+            }
+            desc = bp_judgement.1001.desc_none
+        }
+    }
+    left_portrait = root
+    trigger = {
+        is_alive = yes
+        is_ruler = yes
+        is_ai = no
+        faith = { religion_tag = slavic_religion }
+        dynasty = { NOT = { has_variable = bp_first_court_lock_v020 } }
+    }
+    immediate = {
+        add_character_flag = { flag = bp_first_court_started_v020 days = 345 }
+        dynasty = { set_variable = { name = bp_first_court_lock_v020 value = yes days = 345 } }
+    }
+    option = {
+        name = bp_judgement.1001.a
+        trigger_event = bp_judgement.1002
+        ai_chance = { base = 100 }
+    }
+}
+
+# The second scene inspects Weles's actual decisions from THIS winter,
+# not obsolete flags or an arbitrary sum of favor points.
+bp_judgement.1002 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_weles_03 }
+    title = bp_judgement.1002.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { has_character_flag = bp_weles_lied_now_v020 }
+                desc = bp_judgement.1002.desc_lie
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_weles_fled_now_v020 }
+                desc = bp_judgement.1002.desc_fled
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_weles_waiting_for_prisoner }
+                desc = bp_judgement.1002.desc_waiting
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_weles_asked_time_v020 }
+                desc = bp_judgement.1002.desc_time
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_weles_blood_now_v020 }
+                desc = bp_judgement.1002.desc_blood
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_weles_mercy_now_v020 }
+                desc = bp_judgement.1002.desc_mercy
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_weles_truth_now_v020 }
+                desc = bp_judgement.1002.desc_truth
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_weles_refused_offering_v020 }
+                desc = bp_judgement.1002.desc_refusal
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_weles_oath_now_v020 }
+                desc = bp_judgement.1002.desc_oath
+            }
+            desc = bp_judgement.1002.desc_none
+        }
+    }
+    left_portrait = root
+    immediate = { bp_first_court_classify_020_effect = yes }
+    option = {
+        name = bp_judgement.1002.light
+        trigger = { has_character_flag = bp_first_court_path_light_v020 }
+        trigger_event = bp_judgement.1011
+        ai_chance = { base = 100 }
+    }
+    option = {
+        name = bp_judgement.1002.oath
+        trigger = { has_character_flag = bp_first_court_path_oath_v020 }
+        trigger_event = bp_judgement.1012
+        ai_chance = { base = 100 }
+    }
+    option = {
+        name = bp_judgement.1002.boundary
+        trigger = { has_character_flag = bp_first_court_path_boundary_v020 }
+        trigger_event = bp_judgement.1013
+        ai_chance = { base = 100 }
+    }
+    option = {
+        name = bp_judgement.1002.silence
+        trigger = { has_character_flag = bp_first_court_path_silence_v020 }
+        trigger_event = bp_judgement.1014
+        ai_chance = { base = 100 }
+    }
+    option = {
+        name = bp_judgement.1002.pending
+        trigger = { has_character_flag = bp_first_court_path_pending_v020 }
+        trigger_event = bp_judgement.1015
+        ai_chance = { base = 100 }
+    }
+}
+
+# Światło dla żywych: the player actually guarded both fire and villagers,
+# and honestly confronted Weles. No gold is paid here.
+bp_judgement.1011 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_gromnica_01 }
+    title = bp_judgement.1011.t
+    desc = bp_judgement.1011.desc
+    left_portrait = root
+    option = {
+        name = bp_judgement.1011.a
+        bp_first_court_accept_light_020_effect = yes
+        ai_chance = { base = 95 }
+    }
+    option = {
+        name = bp_judgement.1011.b
+        bp_first_court_decline_mark_020_effect = yes
+        ai_chance = { base = 5 }
+    }
+}
+
+# Słowo dane ziemi: a bargain kept, including a costly or blood offering.
+bp_judgement.1012 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_weles_02 }
+    title = bp_judgement.1012.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_weles_debt_unpaid_v018 } }
+                desc = bp_judgement.1012.desc_debt
+            }
+            desc = bp_judgement.1012.desc
+        }
+    }
+    left_portrait = root
+    option = {
+        name = bp_judgement.1012.a
+        bp_first_court_accept_oath_020_effect = yes
+        ai_chance = { base = 95 }
+    }
+    option = {
+        name = bp_judgement.1012.b
+        bp_first_court_decline_mark_020_effect = yes
+        ai_chance = { base = 5 }
+    }
+}
+
+# Granica ofiary: a difficult principled refusal after care for the living.
+bp_judgement.1013 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_weles_04 }
+    title = bp_judgement.1013.t
+    desc = bp_judgement.1013.desc
+    left_portrait = root
+    option = {
+        name = bp_judgement.1013.a
+        bp_first_court_accept_boundary_020_effect = yes
+        ai_chance = { base = 95 }
+    }
+    option = {
+        name = bp_judgement.1013.b
+        bp_first_court_decline_mark_020_effect = yes
+        ai_chance = { base = 5 }
+    }
+}
+
+# Gdy bogowie milczą: no trait, no gold, record the warning for Court II.
+bp_judgement.1014 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_weles_03 }
+    title = bp_judgement.1014.t
+    desc = bp_judgement.1014.desc
+    left_portrait = root
+    option = {
+        name = bp_judgement.1014.a
+        bp_first_court_silence_020_effect = yes
+        ai_chance = { base = 100 }
+    }
+}
+
+# Niedopełniona cena: pending prisoner or unresolved oath is not a lie.
+bp_judgement.1015 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_weles_04 }
+    title = bp_judgement.1015.t
+    desc = bp_judgement.1015.desc
+    left_portrait = root
+    option = {
+        name = bp_judgement.1015.a
+        bp_first_court_pending_020_effect = yes
+        ai_chance = { base = 100 }
+    }
+}

@@ -4,6 +4,12 @@
 **Status:** ZATWIERDZONO PODZIAŁ SĄDÓW 2 / 4 / 3 / 3 ORAZ JEDYNĄ NAGRODĘ FINANSOWĄ +1500 ZŁOTA RAZ NA ROK OBRZĘDOWY, WYŁĄCZNIE PODCZAS SĄDU II PO DZIADACH WIOSENNYCH. Szczegółowa ocena decyzji i stopnie cechy pozostają do opracowania. Bez zmian w modzie 0.1.9.  
 **Baza:** `v0.1.9-alpha` (kompletne źródła na GitHubie; próby w CK3 zaplanowane na wieczór).
 
+## Bieżąca realizacja: Sąd I
+
+**Stan na 26.10.2026:** ukończono kod pierwszego sądu w gałęzi [`feature/0.2.0-gromnica-dual-duty`](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/tree/feature/0.2.0-gromnica-dual-duty). Zaimplementowano historię, wszystkie pięć wyników, wspólną pierwszą cechę z ikoną DDS, bonusy roczne, zapis do Księgi Bogów, ścieżki Gromnicy i Welesa oraz lokalizacje PL/EN. Nazwy zatwierdzone. Kontrole statyczne przeprowadzono, **testy CK3 nadal oczekują**. Pozostałe trzy sądy są nadal projektowane.
+
+Dokument szczegółowy: [wydanie DEV Sądu I](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/blob/feature/0.2.0-gromnica-dual-duty/docs/RELEASE_020_DEV_SAD_I.md).
+
 ## Główna idea
 
 Cztery sądy pojawiają się **po 2., 6., 9. i 12. święcie**. Podział odzwierciedla znaczenie obrzędów, nie równe kwartały ani równe grupy po trzy. Każdy sąd jest narracyjnym następstwem rzeczywistych decyzji postaci, również odmowy lub zaniedbania obrzędów. **Sąd II ma rangę rozliczenia minionego roku i rytualnego zamknięcia starego cyklu.**

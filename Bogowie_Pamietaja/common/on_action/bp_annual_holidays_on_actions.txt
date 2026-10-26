@@ -1,0 +1,32 @@
+# 0.1.6: always-open calendar. Holidays themselves are not decisions.
+# Safe additive hooks: only on_actions are appended; do not override vanilla effect.
+# Once bootstrapped, a single hidden player event checks the calendar each game day.
+# Jan-1 hook starts the watcher for a normal campaign. Lobby and quarterly pulse
+# are fallbacks for late-installation, loaded games, and succession.
+yearly_global_pulse = {
+    on_actions = { bp_calendar_bootstrap_global_016 }
+}
+on_game_start_after_lobby = {
+    on_actions = { bp_calendar_bootstrap_global_016 }
+}
+quarterly_playable_pulse = {
+    on_actions = { bp_calendar_bootstrap_character_016 }
+}
+
+bp_calendar_bootstrap_global_016 = {
+    effect = {
+        every_player = {
+            limit = { is_alive = yes is_ruler = yes }
+            bp_start_calendar_watch_016_effect = yes
+        }
+    }
+}
+
+bp_calendar_bootstrap_character_016 = {
+    effect = {
+        if = {
+            limit = { is_alive = yes is_ruler = yes is_ai = no }
+            bp_start_calendar_watch_016_effect = yes
+        }
+    }
+}

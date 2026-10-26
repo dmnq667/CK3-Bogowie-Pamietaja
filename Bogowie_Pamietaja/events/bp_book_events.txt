@@ -914,6 +914,30 @@ bp_book.0012 = {
                 trigger = { has_character_flag = bp_first_court_started_v020 }
                 desc = bp_book.0012.desc_started
             }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_first_court_last_light_v020 } }
+                desc = bp_book.0012.desc_last_light
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_first_court_last_oath_v020 } }
+                desc = bp_book.0012.desc_last_oath
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_first_court_last_boundary_v020 } }
+                desc = bp_book.0012.desc_last_boundary
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_first_court_last_declined_v020 } }
+                desc = bp_book.0012.desc_last_declined
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_first_court_last_silence_v020 } }
+                desc = bp_book.0012.desc_last_silence
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_first_court_last_pending_v020 } }
+                desc = bp_book.0012.desc_last_pending
+            }
             desc = bp_book.0012.desc_none
         }
     }

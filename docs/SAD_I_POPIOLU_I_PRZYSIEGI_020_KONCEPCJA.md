@@ -27,11 +27,28 @@ Dalsze opisy mają przywoływać autentyczne znaki ze źródłowych wydarzeń: c
 
 | Wariant | Wybory w poprzednich świętach | Proponowany skutek |
 | --- | --- | --- |
-| **Żar Ocalonych** | Ochrona ognia lub pomoc osadom, a następnie odpowiedzialność wobec Welesa, naprawienie krzywdy albo okazanie łaski więźniowi | Możliwość otrzymania pierwszej cechy i czasowego bonusu +2 dyplomacji na rok |
-| **Słowo dane ziemi** | Świadomie przyjęta cena obrzędu, ślub milczenia, krwawa ofiara lub wielka łaska Welesa, bez kłamstwa | Możliwość otrzymania pierwszej cechy i alternatywnego bonusu +2 intrygi oraz +10 postrachu na rok; dług Welesa nadal obowiązuje |
-| **Prawo odmowy** | Istotny, odpowiedzialny wybór w Gromnicy oraz świadoma odmowa ofiary Welesowi bez ucieczki i kłamstwa | Uznanie odrębnej drogi i możliwość zdobycia tej samej pierwszej cechy; roboczy bonus +2 wiedzy na rok |
-| **Popiół na progu** | Zlekceważenie Gromnicy, ucieczka przed Welesem albo kłamstwo wobec krzywdy przodków | Brak cechy, zapis ostrzeżenia i możliwe konsekwencje w Sądzie II; nie powielać nadmiernie już istniejącej klątwy Welesa |
+| **Światło dla żywych** (nowa nazwa, do zatwierdzenia) | Władca **strzegł ognia i uratował ludzi**, a następnie uczciwie zmierzył się z żądaniami Welesa | Możliwość otrzymania pierwszego stopnia cechy i **+5 dyplomacji na rok** |
+| **Słowo dane ziemi** (nazwa zaakceptowana) | Władca przyjął trudną, nawet krwawą ofiarę, ale nie wyparł się odpowiedzialności | Możliwość otrzymania pierwszego stopnia cechy, **+5 intrygi i +10 postrachu na rok**; dług Welesa nadal obowiązuje |
+| **Granica ofiary** (nowa nazwa, do zatwierdzenia) | Władca ochronił swoich ludzi, lecz świadomie odmówił ofiary, którą uznał za niedopuszczalną | Możliwość otrzymania pierwszego stopnia cechy i **+5 wiedzy na rok** |
+| **Noc niełaski** (nowa nazwa, do zatwierdzenia) | Władca lekceważył ostrzeżenia, uciekł przed zobowiązaniami albo okłamał Welesa | **Brak cechy**, niepokojące zakończenie i **zapis przewinienia do Sądu II**; nie powielać nadmiernie już istniejącej klątwy Welesa |
 | **Niedopełniona cena** | Niezakończony wybór więźnia lub inne rzeczywiście nierozstrzygnięte zobowiązanie | Osobna scena o zawieszonej przysiędze. Bez przyznawania sukcesu ani automatycznego orzekania winy |
+
+### Nazwy rozstrzygnięć, propozycje do zatwierdzenia
+
+Autor zaakceptował skutki i ich siłę, ale poprosił o zmianę trzech nazw. Ostatecznego wyboru nazw jeszcze nie potwierdził.
+
+| Funkcja rozstrzygnięcia | Nazwa rekomendowana | Dodatkowe propozycje |
+| --- | --- | --- |
+| Ochrona ognia i ratunek ludzi | **Światło dla żywych** | Ogień dochowany; Straż ostatniego płomienia |
+| Świadoma odpowiedzialność za trudną ofiarę | **Słowo dane ziemi** (bez zmian) | Nie dotyczy |
+| Świadoma odmowa niedopuszczalnej ofiary | **Granica ofiary** | Dar, którego nie oddano; Nie wszystko wolno poświęcić |
+| Zaniedbanie, ucieczka albo kłamstwo wobec Welesa | **Noc niełaski** | Znak niełaski; Gdy bogowie milczą |
+
+### Niezbędne rozstrzygnięcie projektowe: „strzegł ognia **i** uratował ludzi”
+
+Sformułowanie autora celowo zawiera oba działania, ale **w 0.1.9 opcje Gromnicy wykluczają się**: w `bp_gromnica.1001.a` władca opłaca ochronę ognia (flaga `bp_gromnica_fire`), a w `bp_gromnica.1001.b` wysyła pomoc do osad (flaga `bp_gromnica_village`). Nie może w tym samym przebiegu wybrać obu.
+
+Nie wolno deklarować, że warunek łączny już działa. Przed kodowaniem 0.2.0 ustalić z autorem, czy dodać **osobną możliwość późniejszego ratowania ludzi przy zachowaniu świętego ognia**, czy świadomie dopuszczać w „Świetle dla żywych” jeden z tych czynów wraz z uczciwym rozliczeniem Welesa. Na razie zachować pełne brzmienie autora i oznaczyć zależność jako wymagającą decyzji.
 
 Warunki są **propozycją scenariuszową**, niezatwierdzonym balansem. Zakończenia powinny wymagać świadomej decyzji w sądzie i opierać się na prawdziwych wyborach z poprzednich świąt.
 

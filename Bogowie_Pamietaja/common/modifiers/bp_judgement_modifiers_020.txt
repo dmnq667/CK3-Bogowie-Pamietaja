@@ -1,0 +1,15 @@
+# Court I annual boons. The ONLY 1500 gold reward is reserved for Court II.
+bp_first_court_light_modifier_v020 = {
+    icon = diplomacy_positive
+    diplomacy = 5
+}
+bp_first_court_oath_modifier_v020 = {
+    icon = intrigue_positive
+    intrigue = 5
+    # +10 natural dread for one year, not a permanent instant dread grant.
+    dread_baseline_add = 10
+}
+bp_first_court_boundary_modifier_v020 = {
+    icon = learning_positive
+    learning = 5
+}

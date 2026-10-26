@@ -26,6 +26,19 @@ bp_first_court_classify_020_effect = {
     }
 }
 
+# Only the most recent dynasty result is kept after character flags expire.
+# It is archival data, never a substitute for the current ruler's deeds.
+bp_first_court_clear_dynasty_last_020_effect = {
+    dynasty = {
+        if = { limit = { has_variable = bp_first_court_last_light_v020 } remove_variable = bp_first_court_last_light_v020 }
+        if = { limit = { has_variable = bp_first_court_last_oath_v020 } remove_variable = bp_first_court_last_oath_v020 }
+        if = { limit = { has_variable = bp_first_court_last_boundary_v020 } remove_variable = bp_first_court_last_boundary_v020 }
+        if = { limit = { has_variable = bp_first_court_last_declined_v020 } remove_variable = bp_first_court_last_declined_v020 }
+        if = { limit = { has_variable = bp_first_court_last_silence_v020 } remove_variable = bp_first_court_last_silence_v020 }
+        if = { limit = { has_variable = bp_first_court_last_pending_v020 } remove_variable = bp_first_court_last_pending_v020 }
+    }
+}
+
 # First visible trait of ONE character trait line. Other courts later
 # replace its tier; never stack visible marks from the four courts.
 bp_first_court_give_trait_020_effect = {
@@ -40,6 +53,8 @@ bp_first_court_accept_light_020_effect = {
         limit = { NOT = { has_character_flag = bp_first_court_finalized_v020 } }
         add_character_flag = { flag = bp_first_court_finalized_v020 days = 345 }
         add_character_flag = { flag = bp_first_court_result_light_v020 days = 345 }
+        bp_first_court_clear_dynasty_last_020_effect = yes
+        dynasty = { set_variable = { name = bp_first_court_last_light_v020 value = yes } }
         bp_first_court_give_trait_020_effect = yes
         add_character_modifier = { modifier = bp_first_court_light_modifier_v020 years = 1 }
     }
@@ -49,6 +64,8 @@ bp_first_court_accept_oath_020_effect = {
         limit = { NOT = { has_character_flag = bp_first_court_finalized_v020 } }
         add_character_flag = { flag = bp_first_court_finalized_v020 days = 345 }
         add_character_flag = { flag = bp_first_court_result_oath_v020 days = 345 }
+        bp_first_court_clear_dynasty_last_020_effect = yes
+        dynasty = { set_variable = { name = bp_first_court_last_oath_v020 value = yes } }
         bp_first_court_give_trait_020_effect = yes
         add_character_modifier = { modifier = bp_first_court_oath_modifier_v020 years = 1 }
     }
@@ -58,6 +75,8 @@ bp_first_court_accept_boundary_020_effect = {
         limit = { NOT = { has_character_flag = bp_first_court_finalized_v020 } }
         add_character_flag = { flag = bp_first_court_finalized_v020 days = 345 }
         add_character_flag = { flag = bp_first_court_result_boundary_v020 days = 345 }
+        bp_first_court_clear_dynasty_last_020_effect = yes
+        dynasty = { set_variable = { name = bp_first_court_last_boundary_v020 value = yes } }
         bp_first_court_give_trait_020_effect = yes
         add_character_modifier = { modifier = bp_first_court_boundary_modifier_v020 years = 1 }
     }
@@ -67,6 +86,8 @@ bp_first_court_decline_mark_020_effect = {
         limit = { NOT = { has_character_flag = bp_first_court_finalized_v020 } }
         add_character_flag = { flag = bp_first_court_finalized_v020 days = 345 }
         add_character_flag = { flag = bp_first_court_result_declined_v020 days = 345 }
+        bp_first_court_clear_dynasty_last_020_effect = yes
+        dynasty = { set_variable = { name = bp_first_court_last_declined_v020 value = yes } }
     }
 }
 bp_first_court_silence_020_effect = {
@@ -74,6 +95,8 @@ bp_first_court_silence_020_effect = {
         limit = { NOT = { has_character_flag = bp_first_court_finalized_v020 } }
         add_character_flag = { flag = bp_first_court_finalized_v020 days = 345 }
         add_character_flag = { flag = bp_first_court_result_silence_v020 days = 345 }
+        bp_first_court_clear_dynasty_last_020_effect = yes
+        dynasty = { set_variable = { name = bp_first_court_last_silence_v020 value = yes } }
     }
 }
 bp_first_court_pending_020_effect = {
@@ -81,5 +104,7 @@ bp_first_court_pending_020_effect = {
         limit = { NOT = { has_character_flag = bp_first_court_finalized_v020 } }
         add_character_flag = { flag = bp_first_court_finalized_v020 days = 345 }
         add_character_flag = { flag = bp_first_court_result_pending_v020 days = 345 }
+        bp_first_court_clear_dynasty_last_020_effect = yes
+        dynasty = { set_variable = { name = bp_first_court_last_pending_v020 value = yes } }
     }
 }

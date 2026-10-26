@@ -1,0 +1,66 @@
+# Court I only, 0.2.0. The full four-court calendar is not yet implemented.
+# Feasts have ended by 15 February; use only the existing yearly watcher.
+bp_first_court_due_v020_trigger = {
+    time_of_year = { min = 2.16 max = 2.18 }
+    is_alive = yes
+    is_ruler = yes
+    is_ai = no
+    faith = { religion_tag = slavic_religion }
+    NOT = { has_character_flag = bp_first_court_started_v020 }
+    dynasty = { NOT = { has_variable = bp_first_court_lock_v020 } }
+}
+
+# The current cycle matters. An older Weles lie (730-day flag)
+# or the debt itself are NOT proof that the current oath was broken.
+bp_first_court_broken_v020_trigger = {
+    OR = {
+        has_character_flag = bp_gromnica_ignored_v020
+        has_character_flag = bp_weles_fled_now_v020
+        has_character_flag = bp_weles_lied_now_v020
+        dynasty = { has_variable = bp_gromnica_declined_v014 }
+        dynasty = { has_variable = bp_weles_declined_v014 }
+    }
+}
+
+# The first outcome requires BOTH Gromnica acts and an honest Weles answer.
+bp_first_court_light_v020_trigger = {
+    has_character_flag = bp_gromnica_both_done_v020
+    OR = {
+        has_character_flag = bp_weles_truth_now_v020
+        has_character_flag = bp_weles_mercy_now_v020
+    }
+}
+
+# Refusal is principled only when the ruler actually helped the living.
+bp_first_court_boundary_v020_trigger = {
+    has_character_flag = bp_gromnica_village
+    OR = {
+        has_character_flag = bp_weles_refused_offering_v020
+        has_character_flag = bp_weles_mercy_now_v020
+    }
+}
+
+# A hard bargain, a costly oath or a sacrifice accompanied by
+# responsibility. This does not settle a Weles dynasty debt.
+bp_first_court_oath_v020_trigger = {
+    has_character_flag = bp_gromnica_trial
+    OR = {
+        has_character_flag = bp_weles_truth_now_v020
+        has_character_flag = bp_weles_oath_now_v020
+        has_character_flag = bp_weles_blood_now_v020
+        has_character_flag = bp_weles_great_now_v020
+        has_character_flag = bp_weles_coins_given_v020
+    }
+}
+
+# Unfinished prisoner selection and a genuine request for time
+# cannot be treated automatically as deceit.
+bp_first_court_pending_v020_trigger = {
+    OR = {
+        has_character_flag = bp_weles_waiting_for_prisoner
+        has_character_flag = bp_weles_asked_time_v020
+        has_character_flag = bp_weles_prisoner_pledged_v020
+        has_character_flag = bp_weles_entered_grove_v020
+        has_character_flag = bp_gromnica_trial
+    }
+}

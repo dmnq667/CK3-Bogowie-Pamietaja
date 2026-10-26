@@ -6,6 +6,10 @@ bp_first_court_classify_020_effect = {
         add_character_flag = { flag = bp_first_court_path_silence_v020 days = 345 }
     }
     else_if = {
+        limit = { bp_first_court_blood_v020_trigger = yes }
+        add_character_flag = { flag = bp_first_court_path_oath_v020 days = 345 }
+    }
+    else_if = {
         limit = { bp_first_court_light_v020_trigger = yes }
         add_character_flag = { flag = bp_first_court_path_light_v020 days = 345 }
     }

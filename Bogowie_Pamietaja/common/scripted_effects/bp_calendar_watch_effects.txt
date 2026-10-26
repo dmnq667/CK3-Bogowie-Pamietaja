@@ -1,0 +1,16 @@
+# Start once per player character; 1 hidden event is queued at any one time.
+# The first tick is next game day. The watcher then continues for the rest
+# of that ruler's life, and a quarterly/yearly pulse can restart on succession.
+bp_start_calendar_watch_016_effect = {
+    if = {
+        limit = {
+            is_alive = yes
+            is_ruler = yes
+            is_ai = no
+            faith = { religion_tag = slavic_religion }
+            NOT = { has_character_flag = bp_calendar_watch_active_016 }
+        }
+        add_character_flag = bp_calendar_watch_active_016
+        trigger_event = { id = bp_announcement.1299 days = 1 }
+    }
+}

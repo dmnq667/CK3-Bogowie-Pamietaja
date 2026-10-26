@@ -1,0 +1,6 @@
+# Actual surviving close relatives of a ritual victim remember who ordered it.
+bp_weles_relative_sacrifice_opinion = { opinion = -40 years = 12 decaying = yes }
+
+# Meeting a real adult courtier during a festival.
+bp_stado_warm_meeting_opinion = { opinion = 15 years = 2 decaying = yes }
+bp_kupala_night_encounter_opinion = { opinion = 25 years = 3 decaying = yes }

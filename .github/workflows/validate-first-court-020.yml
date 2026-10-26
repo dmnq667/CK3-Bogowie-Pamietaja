@@ -1,0 +1,52 @@
+name: CK3 First Court 0.2.0 QA
+
+on:
+  push:
+    branches:
+      - feature/0.2.0-gromnica-dual-duty
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Validate Court I sources, traits and localization
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/validate_first_court_020.py
+
+      - name: Package isolated 0.2.0 development snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile, ZIP_DEFLATED
+          root = Path('Bogowie_Pamietaja')
+          assert root.is_dir()
+          files = sorted(p for p in root.rglob('*') if p.is_file() and p.name != '.gitkeep')
+          assert len(files) >= 70, f'Unexpectedly small mod: {len(files)} files'
+          output = Path('Bogowie_Pamietaja_0.2.0_DEV_SAD_I.zip')
+          with ZipFile(output, 'w', compression=ZIP_DEFLATED, compresslevel=6) as z:
+              for p in files:
+                  z.write(p, p.as_posix())
+          print(f'Packaged {len(files)} mod files to {output}')
+          PY
+
+      - name: Upload development build and QA result
+        uses: actions/upload-artifact@v4
+        with:
+          name: Bogowie-Pamietaja-v0.2.0-DEV-Sad-I
+          path: |
+            Bogowie_Pamietaja_0.2.0_DEV_SAD_I.zip
+            validation_first_court_020.json
+          if-no-files-found: error
+          retention-days: 30

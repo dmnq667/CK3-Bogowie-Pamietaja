@@ -1,0 +1,171 @@
+﻿# Use base-game modifier icons in alpha; avoids unresolved custom DDS names.
+bp_gromnica_guard_modifier = {
+    icon = magic_positive
+    learning = 2
+    dread_gain_mult = 0.1
+}
+
+bp_weles_lesser_boon_modifier = {
+    icon = economy_positive
+    monthly_income_mult = 0.2
+}
+
+bp_weles_great_boon_modifier = {
+    icon = economy_positive
+    monthly_income_mult = 0.75
+    stewardship = 5
+}
+
+bp_weles_winter_curse_modifier = {
+    icon = economy_negative
+    monthly_income_mult = -0.25
+    stewardship = -2
+}
+
+bp_mokosh_sowing_modifier = {
+    icon = county_modifier_development_positive
+    development_growth_factor = 0.25
+    tax_mult = 0.1
+}
+
+bp_mokosh_great_boon_modifier = {
+    icon = county_modifier_development_positive
+    development_growth_factor = 1.0
+    tax_mult = 0.5
+}
+
+# Four new spring and summer festivals, version 0.1.5.
+bp_gaik_sacred_grove_modifier = {
+    icon = county_modifier_development_positive
+    development_growth_factor = 0.35
+    tax_mult = 0.2
+}
+bp_gaik_wounded_land_modifier = {
+    icon = county_modifier_development_negative
+    development_growth_factor = -0.3
+    tax_mult = -0.15
+}
+bp_ancestral_war_wisdom_modifier = {
+    icon = martial_positive
+    martial = 4
+    knight_effectiveness_mult = 0.4
+}
+bp_ancestral_state_wisdom_modifier = {
+    icon = stewardship_positive
+    stewardship = 4
+    monthly_income_mult = 0.25
+}
+bp_stado_harmony_modifier = {
+    icon = family_positive
+    spouse_opinion = 15
+    fertility = 0.2
+}
+bp_stado_new_bonds_modifier = {
+    icon = diplomacy_positive
+    diplomacy = 3
+    attraction_opinion = 10
+}
+bp_kupala_great_boon_modifier = {
+    icon = love_positive
+    fertility = 0.6
+    attraction_opinion = 30
+    diplomacy = 3
+}
+bp_kupala_lesser_boon_modifier = {
+    icon = fertility_positive
+    fertility = 0.15
+    attraction_opinion = 10
+}
+
+# Weles debt: tangible prosperity or multi-year damage after the great favor.
+bp_weles_restored_graves_modifier = {
+    icon = county_modifier_development_positive
+    development_growth_factor = 0.4
+    tax_mult = 0.2
+}
+bp_weles_barren_fields_modifier = {
+    icon = county_modifier_development_negative
+    development_growth_factor = -0.5
+    tax_mult = -0.3
+}
+bp_weles_debt_shadow_modifier = {
+    icon = economy_negative
+    monthly_income_mult = -0.4
+    stewardship = -3
+}
+bp_weles_public_confession_modifier = {
+    icon = learning_positive
+    learning = 4
+    diplomacy = -2
+}
+
+# v0.1.9: strong but limited boons, no permanent province-wide empire buffs.
+bp_perun_great_war_modifier = {
+    icon = martial_positive
+    led_by_owner_extra_advantage_add = 20
+    army_damage_mult = 0.5
+    knight_effectiveness_mult = 1.0
+}
+bp_perun_lesser_boon_modifier = {
+    icon = martial_positive
+    martial = 2
+    knight_effectiveness_mult = 0.2
+}
+bp_perun_disfavor_modifier = {
+    icon = martial_negative
+    martial = -3
+    knight_effectiveness_mult = -0.2
+}
+bp_harvest_great_boon_modifier = {
+    icon = county_modifier_development_positive
+    development_growth_factor = 1.0
+    tax_mult = 0.5
+}
+bp_harvest_lesser_boon_modifier = {
+    icon = county_modifier_development_positive
+    development_growth_factor = 0.25
+    tax_mult = 0.1
+}
+bp_harvest_blight_modifier = {
+    icon = county_modifier_development_negative
+    development_growth_factor = -0.35
+    tax_mult = -0.2
+}
+bp_autumn_war_wisdom_modifier = {
+    icon = martial_positive
+    martial = 6
+    knight_effectiveness_mult = 0.6
+}
+bp_autumn_state_wisdom_modifier = {
+    icon = stewardship_positive
+    stewardship = 6
+    monthly_income_mult = 0.4
+}
+bp_autumn_lesser_wisdom_modifier = {
+    icon = learning_positive
+    learning = 2
+}
+bp_autumn_haunted_modifier = {
+    icon = economy_negative
+    learning = -2
+    stewardship = -2
+}
+bp_szczodre_great_boon_modifier = {
+    icon = stewardship_positive
+    stewardship = 6
+    monthly_income_mult = 0.35
+}
+bp_szczodre_rebuilding_modifier = {
+    icon = county_modifier_development_positive
+    development_growth_factor = 0.7
+    tax_mult = 0.25
+}
+bp_szczodre_lesser_boon_modifier = {
+    icon = diplomacy_positive
+    diplomacy = 2
+}
+bp_szczodre_cold_hall_modifier = {
+    icon = economy_negative
+    diplomacy = -2
+    monthly_income_mult = -0.15
+}

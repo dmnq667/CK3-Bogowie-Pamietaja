@@ -1,0 +1,345 @@
+﻿# v0.1.2: persistent decisions with conditional in-window ceremony / future reservation.
+# The book is always reusable with no cost.
+bp_book_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds" }
+    desc = bp_book_decision_desc
+    selection_tooltip = bp_book_decision_tooltip
+    is_shown = {
+        is_ai = no
+        is_ruler = yes
+        OR = {
+            faith = { religion_tag = slavic_religion }
+            has_variable = bp_weles_favor
+            has_variable = bp_mokosh_favor
+            has_character_flag = bp_weles_debt_years
+            dynasty = { has_variable = bp_weles_debt_unpaid_v018 }
+            dynasty = { has_variable = bp_weles_debt_paid_v018 }
+        }
+    }
+    is_valid = { always = yes }
+    should_create_alert = { always = no }
+    effect = {
+        bp_initialize_effect = yes
+        bp_weles_migrate_legacy_debt_018_effect = yes
+        bp_start_calendar_watch_016_effect = yes
+        trigger_event = bp_book.0001
+    }
+    ai_check_interval = 0
+}
+
+# v0.1.4: holy days happen automatically; player can start the rite only during its window.
+# No registration, opt-out status or post-holiday reservation options.
+
+bp_gromnica_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds" }
+    desc = bp_gromnica_decision_desc
+    selection_tooltip = bp_gromnica_decision_tooltip
+    decision_group_type = major
+    is_shown = {
+        is_ai = no
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_gromnica_calendar_window_trigger = yes
+        bp_gromnica_not_celebrated_this_season_trigger = yes
+    }
+    is_valid = { always = yes }
+    should_create_alert = { always = yes }
+    effect = { trigger_event = bp_gromnica.1001 }
+    ai_check_interval = 0
+}
+
+
+bp_weles_week_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds" }
+    desc = bp_weles_week_decision_desc
+    selection_tooltip = bp_weles_week_decision_tooltip
+    decision_group_type = major
+    is_shown = {
+        is_ai = no
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_weles_calendar_window_trigger = yes
+        bp_weles_not_celebrated_this_season_trigger = yes
+    }
+    is_valid = { always = yes }
+    should_create_alert = { always = yes }
+    effect = { trigger_event = bp_weles.2001 }
+    ai_check_interval = 0
+}
+
+
+bp_spring_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds" }
+    desc = bp_spring_decision_desc
+    selection_tooltip = bp_spring_decision_tooltip
+    decision_group_type = major
+    is_shown = {
+        is_ai = no
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_spring_calendar_window_trigger = yes
+        bp_spring_not_celebrated_this_season_trigger = yes
+    }
+    is_valid = { always = yes }
+    should_create_alert = { always = yes }
+    effect = { trigger_event = bp_spring.3001 }
+    ai_check_interval = 0
+}
+
+
+bp_jare_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds" }
+    desc = bp_jare_decision_desc
+    selection_tooltip = bp_jare_decision_tooltip
+    decision_group_type = major
+    is_shown = {
+        is_ai = no
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_jare_calendar_window_trigger = yes
+        bp_jare_not_celebrated_this_season_trigger = yes
+    }
+    is_valid = { always = yes }
+    should_create_alert = { always = yes }
+    effect = { trigger_event = bp_jare.4001 }
+    ai_check_interval = 0
+}
+
+# Present only in the game's debug mode. Does not advance the game date.
+bp_test_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds" }
+    desc = bp_test_decision_desc
+    selection_tooltip = bp_test_decision_tooltip
+    is_shown = {
+        debug_only = yes
+        is_ai = no
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+    }
+    is_valid = { always = yes }
+    should_create_alert = { always = no }
+    effect = { trigger_event = bp_test.9001 }
+    ai_check_interval = 0
+}
+
+# Let the player resume the Weles ritual if no suitable prisoner exists.
+bp_weles_change_offering_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds" }
+    desc = bp_weles_change_offering_decision_desc
+    selection_tooltip = bp_weles_change_offering_decision_tooltip
+    is_shown = {
+        is_ai = no
+        has_character_flag = bp_weles_waiting_for_prisoner
+    }
+    is_valid = { always = yes }
+    should_create_alert = { always = no }
+    effect = {
+        remove_character_flag = bp_weles_waiting_for_prisoner
+        if = {
+            limit = { has_variable = bp_weles_proposed_prisoner }
+            remove_variable = bp_weles_proposed_prisoner
+        }
+        trigger_event = bp_weles.2002
+    }
+    ai_check_interval = 0
+}
+
+# Gaik / Turzyca: 0.1.5, holiday exists independently of this decision.
+bp_gaik_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds" }
+    desc = bp_gaik_decision_desc
+    selection_tooltip = bp_gaik_decision_tooltip
+    confirm_text = bp_gaik_decision_confirm
+    decision_group_type = major
+    is_shown = {
+        is_ai = no
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_gaik_calendar_window_trigger = yes
+        bp_gaik_not_celebrated_this_season_trigger = yes
+    }
+    is_valid = { always = yes }
+    should_create_alert = { always = yes }
+    effect = { trigger_event = bp_gaik.5001 }
+    ai_check_interval = 0
+}
+
+# Dziady wiosenne: 0.1.5, holiday exists independently of this decision.
+bp_dziady_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds" }
+    desc = bp_dziady_decision_desc
+    selection_tooltip = bp_dziady_decision_tooltip
+    confirm_text = bp_dziady_decision_confirm
+    decision_group_type = major
+    is_shown = {
+        is_ai = no
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_dziady_calendar_window_trigger = yes
+        bp_dziady_not_celebrated_this_season_trigger = yes
+    }
+    is_valid = { always = yes }
+    should_create_alert = { always = yes }
+    effect = { trigger_event = bp_dziady.6001 }
+    ai_check_interval = 0
+}
+
+# Stado: 0.1.5, holiday exists independently of this decision.
+bp_stado_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds" }
+    desc = bp_stado_decision_desc
+    selection_tooltip = bp_stado_decision_tooltip
+    confirm_text = bp_stado_decision_confirm
+    decision_group_type = major
+    is_shown = {
+        is_ai = no
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_stado_calendar_window_trigger = yes
+        bp_stado_not_celebrated_this_season_trigger = yes
+    }
+    is_valid = { always = yes }
+    should_create_alert = { always = yes }
+    effect = { trigger_event = bp_stado.7001 }
+    ai_check_interval = 0
+}
+
+# Noc Kupaly: 0.1.5, holiday exists independently of this decision.
+bp_kupala_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds" }
+    desc = bp_kupala_decision_desc
+    selection_tooltip = bp_kupala_decision_tooltip
+    confirm_text = bp_kupala_decision_confirm
+    decision_group_type = major
+    is_shown = {
+        is_ai = no
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_kupala_calendar_window_trigger = yes
+        bp_kupala_not_celebrated_this_season_trigger = yes
+    }
+    is_valid = { always = yes }
+    should_create_alert = { always = yes }
+    effect = { trigger_event = bp_kupala.8001 }
+    ai_check_interval = 0
+}
+
+# An unpaid dynastic debt can be settled without waiting a full year.
+# This is not a holiday and does not consume an annual rite.
+bp_weles_reckon_debt_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds" }
+    desc = bp_weles_reckon_debt_decision_desc
+    selection_tooltip = bp_weles_reckon_debt_decision_tooltip
+    is_shown = {
+        is_ai = no
+        is_ruler = yes
+        dynasty = { has_variable = bp_weles_debt_unpaid_v018 }
+        NOT = { has_character_flag = bp_weles_reckoning_recent_v018 }
+    }
+    is_valid = { always = yes }
+    should_create_alert = { always = no }
+    effect = {
+        add_character_flag = { flag = bp_weles_reckoning_recent_v018 days = 90 }
+        trigger_event = bp_weles.2013
+    }
+    ai_check_interval = 0
+}
+
+# v0.1.9 four new feast decisions; actual holy days are announced automatically.
+bp_perun_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds" }
+    desc = bp_perun_decision_desc
+    selection_tooltip = bp_perun_decision_tooltip
+    confirm_text = bp_perun_decision_confirm
+    decision_group_type = major
+    is_shown = {
+        is_ai = no
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_perun_calendar_window_trigger = yes
+        bp_perun_not_celebrated_this_season_trigger = yes
+    }
+    is_valid = { always = yes }
+    should_create_alert = { always = yes }
+    effect = { trigger_event = bp_perun.9101 }
+    ai_check_interval = 0
+}
+
+bp_harvest_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds" }
+    desc = bp_harvest_decision_desc
+    selection_tooltip = bp_harvest_decision_tooltip
+    confirm_text = bp_harvest_decision_confirm
+    decision_group_type = major
+    is_shown = {
+        is_ai = no
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_harvest_calendar_window_trigger = yes
+        bp_harvest_not_celebrated_this_season_trigger = yes
+    }
+    is_valid = { always = yes }
+    should_create_alert = { always = yes }
+    effect = { trigger_event = bp_harvest.9201 }
+    ai_check_interval = 0
+}
+
+bp_autumn_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds" }
+    desc = bp_autumn_decision_desc
+    selection_tooltip = bp_autumn_decision_tooltip
+    confirm_text = bp_autumn_decision_confirm
+    decision_group_type = major
+    is_shown = {
+        is_ai = no
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_autumn_calendar_window_trigger = yes
+        bp_autumn_not_celebrated_this_season_trigger = yes
+    }
+    is_valid = { always = yes }
+    should_create_alert = { always = yes }
+    effect = { trigger_event = bp_autumn.9301 }
+    ai_check_interval = 0
+}
+
+bp_szczodre_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds" }
+    desc = bp_szczodre_decision_desc
+    selection_tooltip = bp_szczodre_decision_tooltip
+    confirm_text = bp_szczodre_decision_confirm
+    decision_group_type = major
+    is_shown = {
+        is_ai = no
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_szczodre_calendar_window_trigger = yes
+        bp_szczodre_not_celebrated_this_season_trigger = yes
+    }
+    is_valid = { always = yes }
+    should_create_alert = { always = yes }
+    effect = { trigger_event = bp_szczodre.9401 }
+    ai_check_interval = 0
+}
+
+# Perun's earned boon can be invoked in a later war; not a new holiday.
+bp_perun_call_storm_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds" }
+    desc = bp_perun_call_storm_decision_desc
+    selection_tooltip = bp_perun_call_storm_decision_tooltip
+    confirm_text = bp_perun_call_storm_decision_confirm
+    decision_group_type = major
+    is_shown = {
+        is_ai = no
+        is_ruler = yes
+        has_character_flag = bp_perun_boon_reserved_v019
+    }
+    is_valid = { is_at_war = yes }
+    should_create_alert = { always = yes }
+    effect = {
+        remove_character_flag = bp_perun_boon_reserved_v019
+        add_character_modifier = { modifier = bp_perun_great_war_modifier years = 1 }
+        add_character_flag = { flag = bp_perun_boon_active_v019 years = 1 }
+    }
+    ai_check_interval = 0
+}

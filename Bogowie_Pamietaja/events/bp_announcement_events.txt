@@ -1,0 +1,834 @@
+﻿namespace = bp_announcement
+
+# For Jan 1 +67 (or +79) days: ordinary years are March 9 / 21;
+# leap years are March 8 / 20 and need one more day.
+bp_announcement.1093 = {
+    type = character_event
+    hidden = yes
+    immediate = {
+        if = {
+            limit = { time_of_year = { min = 3.9 max = 3.9 } }
+            trigger_event = bp_announcement.1003
+        }
+        else_if = {
+            limit = { time_of_year = { min = 3.8 max = 3.8 } }
+            trigger_event = { id = bp_announcement.1093 days = 1 }
+        }
+    }
+}
+
+bp_announcement.1094 = {
+    type = character_event
+    hidden = yes
+    immediate = {
+        if = {
+            limit = { time_of_year = { min = 3.21 max = 3.21 } }
+            trigger_event = bp_announcement.1004
+        }
+        else_if = {
+            limit = { time_of_year = { min = 3.20 max = 3.20 } }
+            trigger_event = { id = bp_announcement.1094 days = 1 }
+        }
+    }
+}
+
+# Mandatory holy-day announcement: not a forced ceremony.
+bp_announcement.1001 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_gromnica_02
+    }
+    title = bp_announcement.1001.t
+    desc = bp_announcement.1001.desc
+    left_portrait = root
+    trigger = {
+        is_alive = yes
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_gromnica_calendar_window_trigger = yes
+        dynasty = {
+            NOT = { has_variable = bp_gromnica_announced_v014 }
+            NOT = { has_variable = bp_gromnica_rite_lock_v013 }
+        }
+    }
+    immediate = {
+        dynasty = {
+            set_variable = { name = bp_gromnica_announced_v014 value = yes days = 335 }
+        }
+    }
+    option = {
+        name = bp_announcement.start
+        # The ritual is still started by a conscious player choice.
+        trigger_event = bp_gromnica.1001
+        ai_chance = { base = 45 }
+    }
+    option = {
+        name = bp_announcement.later
+        ai_chance = { base = 45 }
+    }
+    option = {
+        name = bp_announcement.decline
+        dynasty = {
+            set_variable = { name = bp_gromnica_rite_lock_v013 value = yes days = 335 }
+            set_variable = { name = bp_gromnica_declined_v014 value = yes days = 335 }
+            set_variable = { name = bp_gromnica_ever_declined_v014 value = yes }
+        }
+        bp_weles_minus_15_effect = yes
+        ai_chance = { base = 10 }
+    }
+}
+
+# Mandatory holy-day announcement: not a forced ceremony.
+bp_announcement.1002 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_weles_03
+    }
+    title = bp_announcement.1002.t
+    desc = bp_announcement.1002.desc
+    left_portrait = root
+    trigger = {
+        is_alive = yes
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_weles_calendar_window_trigger = yes
+        dynasty = {
+            NOT = { has_variable = bp_weles_announced_v014 }
+            NOT = { has_variable = bp_weles_rite_lock_v013 }
+        }
+    }
+    immediate = {
+        dynasty = {
+            set_variable = { name = bp_weles_announced_v014 value = yes days = 335 }
+        }
+    }
+    option = {
+        name = bp_announcement.start
+        # The ritual is still started by a conscious player choice.
+        trigger_event = bp_weles.2001
+        ai_chance = { base = 45 }
+    }
+    option = {
+        name = bp_announcement.later
+        ai_chance = { base = 45 }
+    }
+    option = {
+        name = bp_announcement.decline
+        dynasty = {
+            set_variable = { name = bp_weles_rite_lock_v013 value = yes days = 335 }
+            set_variable = { name = bp_weles_declined_v014 value = yes days = 335 }
+            set_variable = { name = bp_weles_ever_declined_v014 value = yes }
+        }
+        bp_weles_minus_15_effect = yes
+        ai_chance = { base = 10 }
+    }
+}
+
+# Mandatory holy-day announcement: not a forced ceremony.
+bp_announcement.1003 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_spring_01
+    }
+    title = bp_announcement.1003.t
+    desc = bp_announcement.1003.desc
+    left_portrait = root
+    trigger = {
+        is_alive = yes
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_spring_calendar_window_trigger = yes
+        dynasty = {
+            NOT = { has_variable = bp_spring_announced_v014 }
+            NOT = { has_variable = bp_spring_rite_lock_v013 }
+        }
+    }
+    immediate = {
+        dynasty = {
+            set_variable = { name = bp_spring_announced_v014 value = yes days = 335 }
+        }
+    }
+    option = {
+        name = bp_announcement.start
+        # The ritual is still started by a conscious player choice.
+        trigger_event = bp_spring.3001
+        ai_chance = { base = 45 }
+    }
+    option = {
+        name = bp_announcement.later
+        ai_chance = { base = 45 }
+    }
+    option = {
+        name = bp_announcement.decline
+        dynasty = {
+            set_variable = { name = bp_spring_rite_lock_v013 value = yes days = 335 }
+            set_variable = { name = bp_spring_declined_v014 value = yes days = 335 }
+            set_variable = { name = bp_spring_ever_declined_v014 value = yes }
+        }
+        bp_mokosh_minus_15_effect = yes
+        ai_chance = { base = 10 }
+    }
+}
+
+# Mandatory holy-day announcement: not a forced ceremony.
+bp_announcement.1004 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_jare_01
+    }
+    title = bp_announcement.1004.t
+    desc = bp_announcement.1004.desc
+    left_portrait = root
+    trigger = {
+        is_alive = yes
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_jare_calendar_window_trigger = yes
+        dynasty = {
+            NOT = { has_variable = bp_jare_announced_v014 }
+            NOT = { has_variable = bp_jare_rite_lock_v013 }
+        }
+    }
+    immediate = {
+        dynasty = {
+            set_variable = { name = bp_jare_announced_v014 value = yes days = 335 }
+        }
+    }
+    option = {
+        name = bp_announcement.start
+        # The ritual is still started by a conscious player choice.
+        trigger_event = bp_jare.4001
+        ai_chance = { base = 45 }
+    }
+    option = {
+        name = bp_announcement.later
+        ai_chance = { base = 45 }
+    }
+    option = {
+        name = bp_announcement.decline
+        dynasty = {
+            set_variable = { name = bp_jare_rite_lock_v013 value = yes days = 335 }
+            set_variable = { name = bp_jare_declined_v014 value = yes days = 335 }
+            set_variable = { name = bp_jare_ever_declined_v014 value = yes }
+        }
+        bp_mokosh_minus_15_effect = yes
+        ai_chance = { base = 10 }
+    }
+}
+
+# Debug-only illustration of the opening alert, no calendar trigger.
+bp_announcement.9901 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_gromnica_02
+    }
+    title = bp_announcement.1001.t
+    desc = bp_announcement.1001.desc
+    left_portrait = root
+    option = { name = bp_announcement.start trigger_event = bp_gromnica.1001 ai_chance = { base = 0 } }
+    option = { name = bp_announcement.later ai_chance = { base = 100 } }
+}
+
+# Gaik / Turzyca: Jan 1 + 119 days; leap years reschedule once to correct date.
+bp_announcement.1195 = {
+    type = character_event
+    hidden = yes
+    immediate = {
+        if = {
+            limit = { time_of_year = { min = 4.30 max = 4.30 } }
+            trigger_event = bp_announcement.1005
+        }
+        else_if = {
+            limit = { time_of_year = { min = 4.29 max = 4.29 } }
+            trigger_event = { id = bp_announcement.1195 days = 1 }
+        }
+    }
+}
+
+bp_announcement.1005 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_gaik_01
+    }
+    title = bp_announcement.1005.t
+    desc = bp_announcement.1005.desc
+    left_portrait = root
+    trigger = {
+        is_alive = yes
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_gaik_calendar_window_trigger = yes
+        dynasty = {
+            NOT = { has_variable = bp_gaik_announced_v015 }
+            NOT = { has_variable = bp_gaik_rite_lock_v015 }
+        }
+    }
+    immediate = {
+        dynasty = { set_variable = { name = bp_gaik_announced_v015 value = yes days = 335 } }
+    }
+    option = {
+        name = bp_announcement.start
+        trigger_event = bp_gaik.5001
+        ai_chance = { base = 45 }
+    }
+    option = { name = bp_announcement.later ai_chance = { base = 45 } }
+    option = {
+        name = bp_announcement.decline
+        dynasty = {
+            set_variable = { name = bp_gaik_rite_lock_v015 value = yes days = 335 }
+            set_variable = { name = bp_gaik_declined_v015 value = yes days = 335 }
+            set_variable = { name = bp_gaik_ever_declined_v015 value = yes }
+        }
+        bp_mokosh_minus_15_effect = yes
+        ai_chance = { base = 10 }
+    }
+}
+
+# Dziady wiosenne: Jan 1 + 121 days; leap years reschedule once to correct date.
+bp_announcement.1196 = {
+    type = character_event
+    hidden = yes
+    immediate = {
+        if = {
+            limit = { time_of_year = { min = 5.2 max = 5.2 } }
+            trigger_event = bp_announcement.1006
+        }
+        else_if = {
+            limit = { time_of_year = { min = 5.1 max = 5.1 } }
+            trigger_event = { id = bp_announcement.1196 days = 1 }
+        }
+    }
+}
+
+bp_announcement.1006 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_dziady_01
+    }
+    title = bp_announcement.1006.t
+    desc = bp_announcement.1006.desc
+    left_portrait = root
+    trigger = {
+        is_alive = yes
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_dziady_calendar_window_trigger = yes
+        dynasty = {
+            NOT = { has_variable = bp_dziady_announced_v015 }
+            NOT = { has_variable = bp_dziady_rite_lock_v015 }
+        }
+    }
+    immediate = {
+        dynasty = { set_variable = { name = bp_dziady_announced_v015 value = yes days = 335 } }
+    }
+    option = {
+        name = bp_announcement.start
+        trigger_event = bp_dziady.6001
+        ai_chance = { base = 45 }
+    }
+    option = { name = bp_announcement.later ai_chance = { base = 45 } }
+    option = {
+        name = bp_announcement.decline
+        dynasty = {
+            set_variable = { name = bp_dziady_rite_lock_v015 value = yes days = 335 }
+            set_variable = { name = bp_dziady_declined_v015 value = yes days = 335 }
+            set_variable = { name = bp_dziady_ever_declined_v015 value = yes }
+        }
+        bp_weles_minus_15_effect = yes
+        ai_chance = { base = 10 }
+    }
+}
+
+# Stado: Jan 1 + 148 days; leap years reschedule once to correct date.
+bp_announcement.1197 = {
+    type = character_event
+    hidden = yes
+    immediate = {
+        if = {
+            limit = { time_of_year = { min = 5.29 max = 5.29 } }
+            trigger_event = bp_announcement.1007
+        }
+        else_if = {
+            limit = { time_of_year = { min = 5.28 max = 5.28 } }
+            trigger_event = { id = bp_announcement.1197 days = 1 }
+        }
+    }
+}
+
+bp_announcement.1007 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_stado_03
+    }
+    title = bp_announcement.1007.t
+    desc = bp_announcement.1007.desc
+    left_portrait = root
+    trigger = {
+        is_alive = yes
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_stado_calendar_window_trigger = yes
+        dynasty = {
+            NOT = { has_variable = bp_stado_announced_v015 }
+            NOT = { has_variable = bp_stado_rite_lock_v015 }
+        }
+    }
+    immediate = {
+        dynasty = { set_variable = { name = bp_stado_announced_v015 value = yes days = 335 } }
+    }
+    option = {
+        name = bp_announcement.start
+        trigger_event = bp_stado.7001
+        ai_chance = { base = 45 }
+    }
+    option = { name = bp_announcement.later ai_chance = { base = 45 } }
+    option = {
+        name = bp_announcement.decline
+        dynasty = {
+            set_variable = { name = bp_stado_rite_lock_v015 value = yes days = 335 }
+            set_variable = { name = bp_stado_declined_v015 value = yes days = 335 }
+            set_variable = { name = bp_stado_ever_declined_v015 value = yes }
+        }
+        bp_mokosh_minus_15_effect = yes
+        ai_chance = { base = 10 }
+    }
+}
+
+# Noc Kupaly: Jan 1 + 170 days; leap years reschedule once to correct date.
+bp_announcement.1198 = {
+    type = character_event
+    hidden = yes
+    immediate = {
+        if = {
+            limit = { time_of_year = { min = 6.20 max = 6.20 } }
+            trigger_event = bp_announcement.1008
+        }
+        else_if = {
+            limit = { time_of_year = { min = 6.19 max = 6.19 } }
+            trigger_event = { id = bp_announcement.1198 days = 1 }
+        }
+    }
+}
+
+bp_announcement.1008 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_kupala_01
+    }
+    title = bp_announcement.1008.t
+    desc = bp_announcement.1008.desc
+    left_portrait = root
+    trigger = {
+        is_alive = yes
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_kupala_calendar_window_trigger = yes
+        dynasty = {
+            NOT = { has_variable = bp_kupala_announced_v015 }
+            NOT = { has_variable = bp_kupala_rite_lock_v015 }
+        }
+    }
+    immediate = {
+        dynasty = { set_variable = { name = bp_kupala_announced_v015 value = yes days = 335 } }
+    }
+    option = {
+        name = bp_announcement.start
+        trigger_event = bp_kupala.8001
+        ai_chance = { base = 45 }
+    }
+    option = { name = bp_announcement.later ai_chance = { base = 45 } }
+    option = {
+        name = bp_announcement.decline
+        dynasty = {
+            set_variable = { name = bp_kupala_rite_lock_v015 value = yes days = 335 }
+            set_variable = { name = bp_kupala_declined_v015 value = yes days = 335 }
+            set_variable = { name = bp_kupala_ever_declined_v015 value = yes }
+        }
+        bp_mokosh_minus_15_effect = yes
+        ai_chance = { base = 10 }
+    }
+}
+
+# Debug preview outside the actual holiday window, with no dynastic flags.
+bp_announcement.9905 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_gaik_01
+    }
+    title = bp_announcement.1005.t
+    desc = bp_announcement.1005.desc
+    left_portrait = root
+    option = { name = bp_announcement.start trigger_event = bp_gaik.5001 ai_chance = { base = 0 } }
+    option = { name = bp_announcement.later ai_chance = { base = 100 } }
+}
+
+# Debug preview outside the actual holiday window, with no dynastic flags.
+bp_announcement.9906 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_dziady_01
+    }
+    title = bp_announcement.1006.t
+    desc = bp_announcement.1006.desc
+    left_portrait = root
+    option = { name = bp_announcement.start trigger_event = bp_dziady.6001 ai_chance = { base = 0 } }
+    option = { name = bp_announcement.later ai_chance = { base = 100 } }
+}
+
+# Debug preview outside the actual holiday window, with no dynastic flags.
+bp_announcement.9907 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_stado_03
+    }
+    title = bp_announcement.1007.t
+    desc = bp_announcement.1007.desc
+    left_portrait = root
+    option = { name = bp_announcement.start trigger_event = bp_stado.7001 ai_chance = { base = 0 } }
+    option = { name = bp_announcement.later ai_chance = { base = 100 } }
+}
+
+# Debug preview outside the actual holiday window, with no dynastic flags.
+bp_announcement.9908 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_kupala_01
+    }
+    title = bp_announcement.1008.t
+    desc = bp_announcement.1008.desc
+    left_portrait = root
+    option = { name = bp_announcement.start trigger_event = bp_kupala.8001 ai_chance = { base = 0 } }
+    option = { name = bp_announcement.later ai_chance = { base = 100 } }
+}
+
+
+# 0.1.6: lightweight player-only heartbeat, at most one hidden pending event.
+# Real character event opens on the first valid day of each holy window.
+# This also catches an already open holy window after a mid-year update.
+bp_announcement.1299 = {
+    type = character_event
+    hidden = yes
+    trigger = { is_alive = yes is_ruler = yes is_ai = no }
+    immediate = {
+        if = {
+            limit = { faith = { religion_tag = slavic_religion } }
+            if = {
+                limit = {
+                    bp_gromnica_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_gromnica_announced_v014 }
+                        NOT = { has_variable = bp_gromnica_rite_lock_v013 }
+                    }
+                }
+                trigger_event = bp_announcement.1001
+            }
+            if = {
+                limit = {
+                    bp_weles_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_weles_announced_v014 }
+                        NOT = { has_variable = bp_weles_rite_lock_v013 }
+                    }
+                }
+                trigger_event = bp_announcement.1002
+            }
+            if = {
+                limit = {
+                    bp_spring_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_spring_announced_v014 }
+                        NOT = { has_variable = bp_spring_rite_lock_v013 }
+                    }
+                }
+                trigger_event = bp_announcement.1003
+            }
+            if = {
+                limit = {
+                    bp_jare_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_jare_announced_v014 }
+                        NOT = { has_variable = bp_jare_rite_lock_v013 }
+                    }
+                }
+                trigger_event = bp_announcement.1004
+            }
+            if = {
+                limit = {
+                    bp_gaik_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_gaik_announced_v015 }
+                        NOT = { has_variable = bp_gaik_rite_lock_v015 }
+                    }
+                }
+                trigger_event = bp_announcement.1005
+            }
+            if = {
+                limit = {
+                    bp_dziady_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_dziady_announced_v015 }
+                        NOT = { has_variable = bp_dziady_rite_lock_v015 }
+                    }
+                }
+                trigger_event = bp_announcement.1006
+            }
+            if = {
+                limit = {
+                    bp_stado_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_stado_announced_v015 }
+                        NOT = { has_variable = bp_stado_rite_lock_v015 }
+                    }
+                }
+                trigger_event = bp_announcement.1007
+            }
+            if = {
+                limit = {
+                    bp_kupala_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_kupala_announced_v015 }
+                        NOT = { has_variable = bp_kupala_rite_lock_v015 }
+                    }
+                }
+                trigger_event = bp_announcement.1008
+            }
+            if = {
+                limit = {
+                    bp_perun_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_perun_announced_v019 }
+                        NOT = { has_variable = bp_perun_rite_lock_v019 }
+                    }
+                }
+                trigger_event = bp_announcement.1009
+            }
+            if = {
+                limit = {
+                    bp_harvest_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_harvest_announced_v019 }
+                        NOT = { has_variable = bp_harvest_rite_lock_v019 }
+                    }
+                }
+                trigger_event = bp_announcement.1010
+            }
+            if = {
+                limit = {
+                    bp_autumn_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_autumn_announced_v019 }
+                        NOT = { has_variable = bp_autumn_rite_lock_v019 }
+                    }
+                }
+                trigger_event = bp_announcement.1011
+            }
+            if = {
+                limit = {
+                    bp_szczodre_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_szczodre_announced_v019 }
+                        NOT = { has_variable = bp_szczodre_rite_lock_v019 }
+                    }
+                }
+                trigger_event = bp_announcement.1012
+            }
+        }
+        # Next day only, no looping in a single game tick.
+        trigger_event = { id = bp_announcement.1299 days = 1 }
+    }
+}
+
+# v0.1.9: new mandatory seasonal announcements, one modal per season.
+bp_announcement.1009 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_perun_01 }
+    title = bp_announcement.1009.t
+    desc = bp_announcement.1009.desc
+    left_portrait = root
+    trigger = {
+        is_alive = yes
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_perun_calendar_window_trigger = yes
+        dynasty = {
+            NOT = { has_variable = bp_perun_announced_v019 }
+            NOT = { has_variable = bp_perun_rite_lock_v019 }
+        }
+    }
+    immediate = {
+        dynasty = { set_variable = { name = bp_perun_announced_v019 value = yes days = 335 } }
+    }
+    option = { name = bp_announcement.start trigger_event = bp_perun.9101 ai_chance = { base = 45 } }
+    option = { name = bp_announcement.later ai_chance = { base = 45 } }
+    option = {
+        name = bp_announcement.decline
+        dynasty = {
+            set_variable = { name = bp_perun_rite_lock_v019 value = yes days = 335 }
+            set_variable = { name = bp_perun_declined_v019 value = yes days = 335 }
+            set_variable = { name = bp_perun_ever_declined_v019 value = yes }
+        }
+        bp_perun_minus_20_effect = yes
+        ai_chance = { base = 10 }
+    }
+}
+
+bp_announcement.9909 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_perun_01 }
+    title = bp_announcement.1009.t
+    desc = bp_announcement.1009.desc
+    left_portrait = root
+    option = { name = bp_announcement.start trigger_event = bp_perun.9101 ai_chance = { base = 0 } }
+    option = { name = bp_announcement.later ai_chance = { base = 100 } }
+}
+
+bp_announcement.1010 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_harvest_01 }
+    title = bp_announcement.1010.t
+    desc = bp_announcement.1010.desc
+    left_portrait = root
+    trigger = {
+        is_alive = yes
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_harvest_calendar_window_trigger = yes
+        dynasty = {
+            NOT = { has_variable = bp_harvest_announced_v019 }
+            NOT = { has_variable = bp_harvest_rite_lock_v019 }
+        }
+    }
+    immediate = {
+        dynasty = { set_variable = { name = bp_harvest_announced_v019 value = yes days = 335 } }
+    }
+    option = { name = bp_announcement.start trigger_event = bp_harvest.9201 ai_chance = { base = 45 } }
+    option = { name = bp_announcement.later ai_chance = { base = 45 } }
+    option = {
+        name = bp_announcement.decline
+        dynasty = {
+            set_variable = { name = bp_harvest_rite_lock_v019 value = yes days = 335 }
+            set_variable = { name = bp_harvest_declined_v019 value = yes days = 335 }
+            set_variable = { name = bp_harvest_ever_declined_v019 value = yes }
+        }
+        bp_mokosh_minus_15_effect = yes
+        ai_chance = { base = 10 }
+    }
+}
+
+bp_announcement.9910 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_harvest_01 }
+    title = bp_announcement.1010.t
+    desc = bp_announcement.1010.desc
+    left_portrait = root
+    option = { name = bp_announcement.start trigger_event = bp_harvest.9201 ai_chance = { base = 0 } }
+    option = { name = bp_announcement.later ai_chance = { base = 100 } }
+}
+
+bp_announcement.1011 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_autumn_01 }
+    title = bp_announcement.1011.t
+    desc = bp_announcement.1011.desc
+    left_portrait = root
+    trigger = {
+        is_alive = yes
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_autumn_calendar_window_trigger = yes
+        dynasty = {
+            NOT = { has_variable = bp_autumn_announced_v019 }
+            NOT = { has_variable = bp_autumn_rite_lock_v019 }
+        }
+    }
+    immediate = {
+        dynasty = { set_variable = { name = bp_autumn_announced_v019 value = yes days = 335 } }
+    }
+    option = { name = bp_announcement.start trigger_event = bp_autumn.9301 ai_chance = { base = 45 } }
+    option = { name = bp_announcement.later ai_chance = { base = 45 } }
+    option = {
+        name = bp_announcement.decline
+        dynasty = {
+            set_variable = { name = bp_autumn_rite_lock_v019 value = yes days = 335 }
+            set_variable = { name = bp_autumn_declined_v019 value = yes days = 335 }
+            set_variable = { name = bp_autumn_ever_declined_v019 value = yes }
+        }
+        bp_weles_minus_15_effect = yes
+        ai_chance = { base = 10 }
+    }
+}
+
+bp_announcement.9911 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_autumn_01 }
+    title = bp_announcement.1011.t
+    desc = bp_announcement.1011.desc
+    left_portrait = root
+    option = { name = bp_announcement.start trigger_event = bp_autumn.9301 ai_chance = { base = 0 } }
+    option = { name = bp_announcement.later ai_chance = { base = 100 } }
+}
+
+bp_announcement.1012 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_szczodre_01 }
+    title = bp_announcement.1012.t
+    desc = bp_announcement.1012.desc
+    left_portrait = root
+    trigger = {
+        is_alive = yes
+        is_ruler = yes
+        faith = { religion_tag = slavic_religion }
+        bp_szczodre_calendar_window_trigger = yes
+        dynasty = {
+            NOT = { has_variable = bp_szczodre_announced_v019 }
+            NOT = { has_variable = bp_szczodre_rite_lock_v019 }
+        }
+    }
+    immediate = {
+        dynasty = { set_variable = { name = bp_szczodre_announced_v019 value = yes days = 335 } }
+    }
+    option = { name = bp_announcement.start trigger_event = bp_szczodre.9401 ai_chance = { base = 45 } }
+    option = { name = bp_announcement.later ai_chance = { base = 45 } }
+    option = {
+        name = bp_announcement.decline
+        dynasty = {
+            set_variable = { name = bp_szczodre_rite_lock_v019 value = yes days = 335 }
+            set_variable = { name = bp_szczodre_declined_v019 value = yes days = 335 }
+            set_variable = { name = bp_szczodre_ever_declined_v019 value = yes }
+        }
+        bp_mokosh_minus_15_effect = yes
+        ai_chance = { base = 10 }
+    }
+}
+
+bp_announcement.9912 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_szczodre_01 }
+    title = bp_announcement.1012.t
+    desc = bp_announcement.1012.desc
+    left_portrait = root
+    option = { name = bp_announcement.start trigger_event = bp_szczodre.9401 ai_chance = { base = 0 } }
+    option = { name = bp_announcement.later ai_chance = { base = 100 } }
+}
+

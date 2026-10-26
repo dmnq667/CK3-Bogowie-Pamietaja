@@ -1,0 +1,72 @@
+﻿# The Gods Remember 0.1.8: dynastic Weles debt.
+# A debt is carried by the dynasty; individual character effects are not enough.
+
+bp_weles_open_debt_018_effect = {
+    dynasty = {
+        if = {
+            limit = { has_variable = bp_weles_debt_paid_v018 }
+            remove_variable = bp_weles_debt_paid_v018
+        }
+        set_variable = { name = bp_weles_debt_unpaid_v018 value = yes }
+        if = {
+            limit = { has_variable = bp_weles_confessed_v018 }
+            remove_variable = bp_weles_confessed_v018
+        }
+        if = {
+            limit = { has_variable = bp_weles_refused_v018 }
+            remove_variable = bp_weles_refused_v018
+        }
+    }
+}
+
+# One-time migration for saves which started their pact in v0.1.7.
+# The original debtor must still have the old 12-year flag.
+bp_weles_migrate_legacy_debt_018_effect = {
+    if = {
+        limit = {
+            OR = {
+                has_character_flag = bp_weles_debt_years
+                has_character_flag = bp_weles_debt_acknowledged
+            }
+            dynasty = {
+                NOT = { has_variable = bp_weles_debt_unpaid_v018 }
+                NOT = { has_variable = bp_weles_debt_paid_v018 }
+            }
+        }
+        dynasty = {
+            set_variable = { name = bp_weles_debt_unpaid_v018 value = yes }
+        }
+    }
+    if = {
+        limit = {
+            has_character_flag = bp_weles_dynasty_blood
+            dynasty = { NOT = { has_variable = bp_weles_dynastic_blood_v018 } }
+        }
+        dynasty = {
+            set_variable = { name = bp_weles_dynastic_blood_v018 value = yes }
+        }
+    }
+}
+
+bp_weles_settle_debt_018_effect = {
+    dynasty = {
+        if = {
+            limit = { has_variable = bp_weles_debt_unpaid_v018 }
+            remove_variable = bp_weles_debt_unpaid_v018
+        }
+        set_variable = { name = bp_weles_debt_paid_v018 value = yes }
+        set_variable = { name = bp_weles_debt_ever_paid_v018 value = yes }
+    }
+    if = {
+        limit = { has_character_flag = bp_weles_debt_years }
+        remove_character_flag = bp_weles_debt_years
+    }
+    if = {
+        limit = { has_character_flag = bp_weles_debt_acknowledged }
+        remove_character_flag = bp_weles_debt_acknowledged
+    }
+    if = {
+        limit = { has_character_modifier = bp_weles_debt_shadow_modifier }
+        remove_character_modifier = bp_weles_debt_shadow_modifier
+    }
+}

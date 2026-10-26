@@ -1,0 +1,213 @@
+﻿namespace = bp_kupala
+
+# 20 - 23 June: fire, river, consensual adult desire and a demanding god.
+bp_kupala.8001 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_kupala_01
+    }
+    title = bp_kupala.8001.t
+    desc = bp_kupala.8001.desc
+    left_portrait = root
+    immediate = {
+        bp_initialize_effect = yes
+        dynasty = {
+            set_variable = { name = bp_kupala_ever_celebrated_v015 value = yes }
+            set_variable = { name = bp_kupala_rite_lock_v015 value = yes days = 335 }
+        }
+    }
+    option = {
+        name = bp_kupala.8001.a
+        trigger = { gold >= 45 }
+        show_as_unavailable = { gold < 45 }
+        remove_short_term_gold = 45
+        add_character_flag = { flag = bp_kupala_fire_trial days = 90 }
+        bp_mokosh_plus_20_effect = yes
+        trigger_event = bp_kupala.8002
+        ai_chance = { base = 55 }
+    }
+    option = {
+        name = bp_kupala.8001.b
+        add_prestige = -60
+        add_character_flag = { flag = bp_kupala_fire_trial days = 90 }
+        bp_mokosh_plus_10_effect = yes
+        trigger_event = bp_kupala.8002
+        ai_chance = { base = 35 }
+    }
+    option = {
+        name = bp_kupala.8001.c
+        bp_mokosh_minus_15_effect = yes
+        ai_chance = { base = 10 }
+    }
+}
+
+bp_kupala.8002 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_kupala_02
+    }
+    title = bp_kupala.8002.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { exists = scope:bp_kupala_companion }
+                desc = bp_kupala.8002.desc_person
+            }
+            desc = bp_kupala.8002.desc_default
+        }
+    }
+    left_portrait = root
+    immediate = {
+        if = {
+            limit = { is_adult = yes }
+            random_courtier = {
+                limit = {
+                    is_adult = yes
+                    is_alive = yes
+                    can_set_relation_potential_lover_trigger = { CHARACTER = root }
+                }
+                save_scope_as = bp_kupala_companion
+            }
+        }
+    }
+    option = {
+        name = bp_kupala.8002.a
+        trigger = { is_adult = yes exists = scope:bp_kupala_companion }
+        if = {
+            limit = { can_set_relation_potential_lover_trigger = { CHARACTER = scope:bp_kupala_companion } }
+            set_relation_potential_lover = scope:bp_kupala_companion
+        }
+        scope:bp_kupala_companion = {
+            add_opinion = { target = root modifier = bp_kupala_night_encounter_opinion }
+        }
+        add_character_flag = { flag = bp_kupala_desire_trial days = 90 }
+        add_character_flag = { flag = bp_kupala_secret_night years = 2 }
+        trigger_event = bp_kupala.8003
+        ai_chance = { base = 35 }
+    }
+    option = {
+        name = bp_kupala.8002.b
+        add_character_flag = { flag = bp_kupala_desire_trial days = 90 }
+        add_character_flag = { flag = bp_kupala_faithful_night years = 2 }
+        bp_mokosh_plus_10_effect = yes
+        trigger_event = bp_kupala.8003
+        ai_chance = { base = 50 }
+    }
+    option = {
+        name = bp_kupala.8002.c
+        add_prestige = -20
+        trigger_event = bp_kupala.8003
+        ai_chance = { base = 15 }
+    }
+}
+
+bp_kupala.8003 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_kupala_03
+    }
+    title = bp_kupala.8003.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { has_character_flag = bp_weles_debt_years }
+                desc = bp_kupala.8003.desc_debt
+            }
+            desc = bp_kupala.8003.desc
+        }
+    }
+    left_portrait = root
+    option = {
+        name = bp_kupala.8003.a
+        trigger = { gold >= 40 }
+        show_as_unavailable = { gold < 40 }
+        remove_short_term_gold = 40
+        add_character_flag = { flag = bp_kupala_truth_trial days = 90 }
+        bp_mokosh_plus_20_effect = yes
+        if = {
+            limit = {
+                has_character_flag = bp_kupala_fire_trial
+                has_character_flag = bp_kupala_desire_trial
+                is_adult = yes
+                NOT = { has_character_flag = bp_kupala_great_received }
+            }
+            trigger_event = bp_kupala.8004
+        }
+        else = { trigger_event = bp_kupala.8005 }
+        ai_chance = { base = 50 }
+    }
+    option = {
+        name = bp_kupala.8003.b
+        add_prestige = 40
+        add_character_flag = { flag = bp_kupala_river_secret years = 2 }
+        trigger_event = bp_kupala.8005
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = bp_kupala.8003.c
+        bp_mokosh_minus_15_effect = yes
+        trigger_event = bp_kupala.8005
+        ai_chance = { base = 10 }
+    }
+}
+
+# Three independent trials, real high-impact reward and later emotional echo.
+bp_kupala.8004 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_kupala_01
+    }
+    title = bp_kupala.8004.t
+    desc = bp_kupala.8004.desc
+    left_portrait = root
+    option = {
+        name = bp_kupala.8004.a
+        trigger = { is_adult = yes }
+        add_character_modifier = { modifier = bp_kupala_great_boon_modifier years = 2 }
+        add_character_flag = { flag = bp_kupala_great_received years = 6 }
+        bp_mokosh_plus_40_effect = yes
+        trigger_event = { id = bp_kupala.8006 days = { 60 120 } }
+        ai_chance = { base = 100 }
+    }
+}
+
+bp_kupala.8005 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_kupala_03
+    }
+    title = bp_kupala.8005.t
+    desc = bp_kupala.8005.desc
+    left_portrait = root
+    option = {
+        name = bp_kupala.8005.a
+        add_character_modifier = { modifier = bp_kupala_lesser_boon_modifier days = 120 }
+        ai_chance = { base = 100 }
+    }
+}
+
+bp_kupala.8006 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_kupala_02
+    }
+    title = bp_kupala.8006.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { has_character_flag = bp_kupala_secret_night }
+                desc = bp_kupala.8006.desc_secret
+            }
+            desc = bp_kupala.8006.desc_default
+        }
+    }
+    left_portrait = root
+    trigger = { is_alive = yes }
+    option = { name = bp_kupala.8006.a ai_chance = { base = 100 } }
+}

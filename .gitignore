@@ -1,0 +1,8 @@
+# Lokalne logi i niepotrzebne artefakty
+*.log
+*.tmp
+*.bak
+*.ck3
+__pycache__/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,31 @@
+﻿# Chosen human offering must be an existing adult prisoner of the player.
+# Prisoners of the player's dynasty are permitted, but never automatically picked.
+bp_weles_designate_offering_interaction = {
+    category = interaction_category_hostile
+    common_interaction = yes
+    desc = bp_weles_designate_offering_interaction_desc
+    is_shown = {
+        scope:actor = {
+            is_ai = no
+            has_character_flag = bp_weles_waiting_for_prisoner
+            faith = { religion_tag = slavic_religion }
+        }
+        scope:recipient = {
+            is_alive = yes
+            is_adult = yes
+            is_imprisoned_by = scope:actor
+        }
+    }
+    is_valid_showing_failures_only = {
+        scope:actor = { has_character_flag = bp_weles_waiting_for_prisoner }
+        scope:recipient = { is_alive = yes is_imprisoned_by = scope:actor }
+    }
+    on_accept = {
+        scope:actor = {
+            set_variable = { name = bp_weles_proposed_prisoner value = scope:recipient }
+            trigger_event = bp_weles.2004
+        }
+    }
+    auto_accept = yes
+    ai_will_do = { base = 0 }
+}

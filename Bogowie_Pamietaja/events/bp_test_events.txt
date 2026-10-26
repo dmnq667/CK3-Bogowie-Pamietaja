@@ -1,0 +1,125 @@
+﻿namespace = bp_test
+
+# Accessible through the decision only in CK3 debug mode.
+bp_test.9001 = {
+    type = character_event
+    theme = diplomacy
+    title = bp_test.9001.t
+    desc = bp_test.9001.desc
+    left_portrait = root
+    option = {
+        name = bp_test.9001.a
+        trigger_event = bp_gromnica.1001
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = bp_test.9001.b
+        trigger_event = bp_weles.2001
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = bp_test.9001.c
+        trigger_event = bp_spring.3001
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = bp_test.9001.d
+        trigger_event = bp_jare.4001
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = bp_test.9001.f
+        trigger_event = bp_announcement.9901
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = bp_test.9001.more
+        trigger_event = bp_test.9002
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = bp_test.9001.e
+        ai_chance = { base = 100 }
+    }
+}
+
+# The second page avoids overfilling the standard CK3 event panel.
+bp_test.9002 = {
+    type = character_event
+    theme = diplomacy
+    title = bp_test.9002.t
+    desc = bp_test.9002.desc
+    left_portrait = root
+    option = { name = bp_test.9001.gaik trigger_event = bp_gaik.5001 ai_chance = { base = 0 } }
+    option = { name = bp_test.9001.dziady trigger_event = bp_dziady.6001 ai_chance = { base = 0 } }
+    option = { name = bp_test.9001.stado trigger_event = bp_stado.7001 ai_chance = { base = 0 } }
+    option = { name = bp_test.9001.kupala trigger_event = bp_kupala.8001 ai_chance = { base = 0 } }
+    option = { name = bp_test.9002.previews trigger_event = bp_test.9003 ai_chance = { base = 0 } }
+    option = { name = bp_test.9002.weles_debt trigger_event = bp_test.9004 ai_chance = { base = 0 } }
+    option = { name = bp_test.9002.new_four trigger_event = bp_test.9005 ai_chance = { base = 0 } }
+    option = { name = bp_test.9002.back trigger_event = bp_test.9001 ai_chance = { base = 100 } }
+}
+
+bp_test.9003 = {
+    type = character_event
+    theme = diplomacy
+    title = bp_test.9003.t
+    desc = bp_test.9003.desc
+    left_portrait = root
+    option = { name = bp_test.9001.announce_gaik trigger_event = bp_announcement.9905 ai_chance = { base = 0 } }
+    option = { name = bp_test.9001.announce_dziady trigger_event = bp_announcement.9906 ai_chance = { base = 0 } }
+    option = { name = bp_test.9001.announce_stado trigger_event = bp_announcement.9907 ai_chance = { base = 0 } }
+    option = { name = bp_test.9001.announce_kupala trigger_event = bp_announcement.9908 ai_chance = { base = 0 } }
+    option = { name = bp_test.9003.back trigger_event = bp_test.9002 ai_chance = { base = 100 } }
+}
+
+# Manual checks for the second act of Weles (run on disposable save only).
+bp_test.9004 = {
+    type = character_event
+    theme = diplomacy
+    title = bp_test.9004.t
+    desc = bp_test.9004.desc
+    left_portrait = root
+    option = {
+        name = bp_test.9004.new_debt
+        bp_weles_open_debt_018_effect = yes
+        trigger_event = bp_weles.2011
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = bp_test.9004.inherited
+        bp_weles_open_debt_018_effect = yes
+        trigger_event = bp_weles.2013
+        ai_chance = { base = 0 }
+    }
+    option = { name = bp_test.9004.book trigger_event = bp_book.0010 ai_chance = { base = 0 } }
+    option = { name = bp_test.9004.back trigger_event = bp_test.9002 ai_chance = { base = 100 } }
+}
+
+# New four feasts, stage 3; debug is deliberately explicit and requires a test save.
+bp_test.9005 = {
+    type = character_event
+    theme = diplomacy
+    title = bp_test.9005.t
+    desc = bp_test.9005.desc
+    left_portrait = root
+    option = { name = bp_test.9005.perun trigger_event = bp_perun.9101 ai_chance = { base = 0 } }
+    option = { name = bp_test.9005.harvest trigger_event = bp_harvest.9201 ai_chance = { base = 0 } }
+    option = { name = bp_test.9005.autumn trigger_event = bp_autumn.9301 ai_chance = { base = 0 } }
+    option = { name = bp_test.9005.szczodre trigger_event = bp_szczodre.9401 ai_chance = { base = 0 } }
+    option = { name = bp_test.9005.previews trigger_event = bp_test.9006 ai_chance = { base = 0 } }
+    option = { name = bp_test.9005.back trigger_event = bp_test.9002 ai_chance = { base = 100 } }
+}
+
+bp_test.9006 = {
+    type = character_event
+    theme = diplomacy
+    title = bp_test.9006.t
+    desc = bp_test.9006.desc
+    left_portrait = root
+    option = { name = bp_test.9006.perun trigger_event = bp_announcement.9909 ai_chance = { base = 0 } }
+    option = { name = bp_test.9006.harvest trigger_event = bp_announcement.9910 ai_chance = { base = 0 } }
+    option = { name = bp_test.9006.autumn trigger_event = bp_announcement.9911 ai_chance = { base = 0 } }
+    option = { name = bp_test.9006.szczodre trigger_event = bp_announcement.9912 ai_chance = { base = 0 } }
+    option = { name = bp_test.9006.back trigger_event = bp_test.9005 ai_chance = { base = 100 } }
+}

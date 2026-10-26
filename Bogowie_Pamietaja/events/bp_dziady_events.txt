@@ -1,0 +1,119 @@
+﻿namespace = bp_dziady
+
+# 2 - 8 May: ancestral counsel, not a second bloody Weles Week.
+bp_dziady.6001 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_dziady_01
+    }
+    title = bp_dziady.6001.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { OR = { has_character_flag = bp_weles_dynasty_blood dynasty = { has_variable = bp_weles_dynastic_blood_v018 } } }
+                desc = bp_dziady.6001.desc_blood
+            }
+            desc = bp_dziady.6001.desc
+        }
+    }
+    left_portrait = root
+    immediate = {
+        bp_initialize_effect = yes
+        bp_weles_migrate_legacy_debt_018_effect = yes
+        dynasty = {
+            set_variable = { name = bp_dziady_ever_celebrated_v015 value = yes }
+            set_variable = { name = bp_dziady_rite_lock_v015 value = yes days = 335 }
+        }
+    }
+    option = {
+        name = bp_dziady.6001.a
+        trigger = { gold >= 40 }
+        show_as_unavailable = { gold < 40 }
+        remove_short_term_gold = 40
+        bp_weles_plus_20_effect = yes
+        trigger_event = bp_dziady.6002
+        ai_chance = { base = 60 }
+    }
+    option = {
+        name = bp_dziady.6001.b
+        add_prestige = -60
+        bp_weles_plus_10_effect = yes
+        trigger_event = bp_dziady.6002
+        ai_chance = { base = 30 }
+    }
+    option = {
+        name = bp_dziady.6001.c
+        bp_weles_minus_15_effect = yes
+        ai_chance = { base = 10 }
+    }
+}
+
+bp_dziady.6002 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_dziady_02
+    }
+    title = bp_dziady.6002.t
+    desc = bp_dziady.6002.desc
+    left_portrait = root
+    option = {
+        name = bp_dziady.6002.a
+        add_character_modifier = { modifier = bp_ancestral_war_wisdom_modifier years = 2 }
+        add_character_flag = { flag = bp_ancestral_war_memory years = 2 }
+        trigger_event = { id = bp_dziady.6003 days = { 18 35 } }
+        if = {
+            limit = { dynasty = { has_variable = bp_weles_debt_unpaid_v018 } }
+            trigger_event = bp_weles.2013
+        }
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = bp_dziady.6002.b
+        add_character_modifier = { modifier = bp_ancestral_state_wisdom_modifier years = 2 }
+        add_character_flag = { flag = bp_ancestral_state_memory years = 2 }
+        trigger_event = { id = bp_dziady.6003 days = { 18 35 } }
+        if = {
+            limit = { dynasty = { has_variable = bp_weles_debt_unpaid_v018 } }
+            trigger_event = bp_weles.2013
+        }
+        ai_chance = { base = 45 }
+    }
+    option = {
+        name = bp_dziady.6002.c
+        bp_weles_plus_10_effect = yes
+        add_character_flag = { flag = bp_ancestral_names_remembered years = 2 }
+        trigger_event = { id = bp_dziady.6003 days = { 18 35 } }
+        if = {
+            limit = { dynasty = { has_variable = bp_weles_debt_unpaid_v018 } }
+            trigger_event = bp_weles.2013
+        }
+        ai_chance = { base = 15 }
+    }
+}
+
+bp_dziady.6003 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_dziady_03
+    }
+    title = bp_dziady.6003.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { has_character_flag = bp_ancestral_war_memory }
+                desc = bp_dziady.6003.desc_war
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_ancestral_state_memory }
+                desc = bp_dziady.6003.desc_state
+            }
+            desc = bp_dziady.6003.desc_names
+        }
+    }
+    left_portrait = root
+    trigger = { is_alive = yes }
+    option = { name = bp_dziady.6003.a ai_chance = { base = 100 } }
+}

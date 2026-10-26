@@ -1,4 +1,4 @@
-# Schedule once per player on Jan 1; new years reset after 350 days.
+﻿# Schedule once per player on Jan 1; new years reset after 350 days.
 # The first two festivals precede leap day. March uses a one-day reschedule
 # to land on the EXACT festival date in both ordinary and leap years.
 bp_schedule_annual_notices_014_effect = {

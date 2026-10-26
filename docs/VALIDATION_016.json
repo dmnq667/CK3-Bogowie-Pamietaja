@@ -1,0 +1,15 @@
+{
+  "version": "0.1.6-alpha",
+  "event_count": 78,
+  "trigger_event_references_checked": 144,
+  "localization_pl_en": 404,
+  "holidays": 8,
+  "calendar_assertions": 3072,
+  "txt_bom_verified": 21,
+  "zip_files": 28,
+  "zip_size": 61476,
+  "static_result": "PASS",
+  "game_tested": false,
+  "pause_in_game_verified": false,
+  "powershell_installer_windows_tested": false
+}

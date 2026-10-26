@@ -1,0 +1,236 @@
+﻿namespace = bp_calendar
+
+# All four festivals share a year-round decision surface.
+# These events never award boons and never mark a ritual as completed.
+
+# gromnica: player registers/cancels an upcoming holiday, with no ritual effect.
+bp_calendar.8101 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_gromnica_02
+    }
+    title = bp_calendar.8101.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { bp_gromnica_upcoming_accepted_trigger = yes }
+                desc = bp_calendar.8101.desc_registered
+            }
+            desc = bp_calendar.8101.desc
+        }
+    }
+    left_portrait = root
+    option = {
+        name = bp_calendar.accept_next
+        trigger = { NOT = { bp_gromnica_upcoming_accepted_trigger = yes } }
+        dynasty = {
+            set_variable = {
+                name = bp_gromnica_accepted_v013
+                value = yes
+                days = 365
+            }
+        }
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = bp_calendar.cancel_next
+        trigger = { bp_gromnica_upcoming_accepted_trigger = yes }
+        dynasty = { remove_variable = bp_gromnica_accepted_v013 }
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = bp_calendar.close
+        ai_chance = { base = 100 }
+    }
+}
+
+# gromnica: in-window repeat clicks are read-only, no gameplay effects.
+bp_calendar.8111 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_gromnica_01
+    }
+    title = bp_calendar.8111.t
+    desc = bp_calendar.8111.desc
+    left_portrait = root
+    option = {
+        name = bp_calendar.close
+        ai_chance = { base = 100 }
+    }
+}
+
+# weles: player registers/cancels an upcoming holiday, with no ritual effect.
+bp_calendar.8102 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_weles_03
+    }
+    title = bp_calendar.8102.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { bp_weles_upcoming_accepted_trigger = yes }
+                desc = bp_calendar.8102.desc_registered
+            }
+            desc = bp_calendar.8102.desc
+        }
+    }
+    left_portrait = root
+    option = {
+        name = bp_calendar.accept_next
+        trigger = { NOT = { bp_weles_upcoming_accepted_trigger = yes } }
+        dynasty = {
+            set_variable = {
+                name = bp_weles_accepted_v013
+                value = yes
+                days = 365
+            }
+        }
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = bp_calendar.cancel_next
+        trigger = { bp_weles_upcoming_accepted_trigger = yes }
+        dynasty = { remove_variable = bp_weles_accepted_v013 }
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = bp_calendar.close
+        ai_chance = { base = 100 }
+    }
+}
+
+# weles: in-window repeat clicks are read-only, no gameplay effects.
+bp_calendar.8112 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_weles_03
+    }
+    title = bp_calendar.8112.t
+    desc = bp_calendar.8112.desc
+    left_portrait = root
+    option = {
+        name = bp_calendar.close
+        ai_chance = { base = 100 }
+    }
+}
+
+# spring: player registers/cancels an upcoming holiday, with no ritual effect.
+bp_calendar.8103 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_spring_01
+    }
+    title = bp_calendar.8103.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { bp_spring_upcoming_accepted_trigger = yes }
+                desc = bp_calendar.8103.desc_registered
+            }
+            desc = bp_calendar.8103.desc
+        }
+    }
+    left_portrait = root
+    option = {
+        name = bp_calendar.accept_next
+        trigger = { NOT = { bp_spring_upcoming_accepted_trigger = yes } }
+        dynasty = {
+            set_variable = {
+                name = bp_spring_accepted_v013
+                value = yes
+                days = 365
+            }
+        }
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = bp_calendar.cancel_next
+        trigger = { bp_spring_upcoming_accepted_trigger = yes }
+        dynasty = { remove_variable = bp_spring_accepted_v013 }
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = bp_calendar.close
+        ai_chance = { base = 100 }
+    }
+}
+
+# spring: in-window repeat clicks are read-only, no gameplay effects.
+bp_calendar.8113 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_spring_02
+    }
+    title = bp_calendar.8113.t
+    desc = bp_calendar.8113.desc
+    left_portrait = root
+    option = {
+        name = bp_calendar.close
+        ai_chance = { base = 100 }
+    }
+}
+
+# jare: player registers/cancels an upcoming holiday, with no ritual effect.
+bp_calendar.8104 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_jare_01
+    }
+    title = bp_calendar.8104.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { bp_jare_upcoming_accepted_trigger = yes }
+                desc = bp_calendar.8104.desc_registered
+            }
+            desc = bp_calendar.8104.desc
+        }
+    }
+    left_portrait = root
+    option = {
+        name = bp_calendar.accept_next
+        trigger = { NOT = { bp_jare_upcoming_accepted_trigger = yes } }
+        dynasty = {
+            set_variable = {
+                name = bp_jare_accepted_v013
+                value = yes
+                days = 365
+            }
+        }
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = bp_calendar.cancel_next
+        trigger = { bp_jare_upcoming_accepted_trigger = yes }
+        dynasty = { remove_variable = bp_jare_accepted_v013 }
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = bp_calendar.close
+        ai_chance = { base = 100 }
+    }
+}
+
+# jare: in-window repeat clicks are read-only, no gameplay effects.
+bp_calendar.8114 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_jare_01
+    }
+    title = bp_calendar.8114.t
+    desc = bp_calendar.8114.desc
+    left_portrait = root
+    option = {
+        name = bp_calendar.close
+        ai_chance = { base = 100 }
+    }
+}

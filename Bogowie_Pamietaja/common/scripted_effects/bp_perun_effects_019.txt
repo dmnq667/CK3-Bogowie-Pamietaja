@@ -1,4 +1,4 @@
-# v0.1.9: Perun favor, same -100..+100 convention as Mokosz/Weles.
+﻿# v0.1.9: Perun favor, same -100..+100 convention as Mokosz/Weles.
 bp_perun_plus_10_effect = {
     bp_initialize_effect = yes
     change_variable = { name = bp_perun_favor add = 10 }

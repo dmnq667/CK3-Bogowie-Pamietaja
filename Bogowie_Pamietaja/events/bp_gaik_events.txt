@@ -1,0 +1,95 @@
+﻿namespace = bp_gaik
+
+# 30 April - 1 May: the sacred grove is not only scenery.
+bp_gaik.5001 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_gaik_01
+    }
+    title = bp_gaik.5001.t
+    desc = bp_gaik.5001.desc
+    left_portrait = root
+    immediate = {
+        bp_initialize_effect = yes
+        dynasty = {
+            set_variable = { name = bp_gaik_ever_celebrated_v015 value = yes }
+            set_variable = { name = bp_gaik_rite_lock_v015 value = yes days = 335 }
+        }
+    }
+    option = {
+        name = bp_gaik.5001.a
+        trigger = { gold >= 45 }
+        show_as_unavailable = { gold < 45 }
+        remove_short_term_gold = 45
+        bp_mokosh_plus_20_effect = yes
+        add_character_flag = { flag = bp_gaik_saved_grove days = 730 }
+        capital_county = { add_county_modifier = { modifier = bp_gaik_sacred_grove_modifier years = 2 } }
+        trigger_event = bp_gaik.5002
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = bp_gaik.5001.b
+        add_gold = 35
+        bp_mokosh_minus_15_effect = yes
+        capital_county = { add_county_modifier = { modifier = bp_gaik_wounded_land_modifier years = 2 } }
+        trigger_event = bp_gaik.5003
+        ai_chance = { base = 20 }
+    }
+    option = {
+        name = bp_gaik.5001.c
+        add_prestige = -50
+        bp_mokosh_plus_10_effect = yes
+        add_character_flag = { flag = bp_gaik_villagers days = 730 }
+        trigger_event = bp_gaik.5002
+        ai_chance = { base = 40 }
+    }
+}
+
+bp_gaik.5002 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_gaik_02
+    }
+    title = bp_gaik.5002.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { has_character_flag = bp_weles_debt_years }
+                desc = bp_gaik.5002.desc_debt
+            }
+            desc = bp_gaik.5002.desc
+        }
+    }
+    left_portrait = root
+    option = {
+        name = bp_gaik.5002.a
+        add_prestige = -30
+        bp_weles_plus_10_effect = yes
+        add_character_flag = { flag = bp_gaik_bones_respected days = 730 }
+        ai_chance = { base = 55 }
+    }
+    option = {
+        name = bp_gaik.5002.b
+        add_prestige = 30
+        bp_mokosh_minus_15_effect = yes
+        ai_chance = { base = 45 }
+    }
+}
+
+bp_gaik.5003 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_gaik_03
+    }
+    title = bp_gaik.5003.t
+    desc = bp_gaik.5003.desc
+    left_portrait = root
+    option = {
+        name = bp_gaik.5003.a
+        add_character_flag = { flag = bp_gaik_roots_warning days = 730 }
+        ai_chance = { base = 100 }
+    }
+}

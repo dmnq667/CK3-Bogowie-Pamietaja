@@ -1,4 +1,4 @@
-# Start once per player character; 1 hidden event is queued at any one time.
+﻿# Start once per player character; 1 hidden event is queued at any one time.
 # The first tick is next game day. The watcher then continues for the rest
 # of that ruler's life, and a quarterly/yearly pulse can restart on succession.
 bp_start_calendar_watch_016_effect = {

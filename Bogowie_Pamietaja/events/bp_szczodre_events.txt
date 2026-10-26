@@ -1,0 +1,244 @@
+﻿namespace = bp_szczodre
+
+# One sacred season spans December 21 through January 6. A 335-day dynasty
+# lock placed when the rite starts (or is declined) prevents a second rite on
+# January 1 and expires before the next December 21.
+bp_szczodre.9401 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_szczodre_01 }
+    title = bp_szczodre.9401.t
+    desc = bp_szczodre.9401.desc
+    left_portrait = root
+    immediate = {
+        bp_initialize_effect = yes
+        dynasty = {
+            set_variable = { name = bp_szczodre_ever_celebrated_v019 value = yes }
+            set_variable = { name = bp_szczodre_rite_lock_v019 value = yes days = 335 }
+        }
+    }
+    option = {
+        name = bp_szczodre.9401.a
+        trigger = { gold >= 60 }
+        show_as_unavailable = { gold < 60 }
+        remove_short_term_gold = 60
+        add_character_flag = { flag = bp_szczodre_fire_v019 days = 90 }
+        bp_mokosh_plus_20_effect = yes
+        trigger_event = bp_szczodre.9402
+        ai_chance = { base = 50 }
+    }
+    option = {
+        name = bp_szczodre.9401.b
+        add_prestige = -100
+        add_character_flag = { flag = bp_szczodre_fire_v019 days = 90 }
+        bp_mokosh_plus_10_effect = yes
+        trigger_event = bp_szczodre.9402
+        ai_chance = { base = 35 }
+    }
+    option = {
+        name = bp_szczodre.9401.c
+        bp_mokosh_minus_15_effect = yes
+        trigger_event = bp_szczodre.9407
+        ai_chance = { base = 15 }
+    }
+}
+
+bp_szczodre.9402 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_szczodre_02 }
+    title = bp_szczodre.9402.t
+    desc = bp_szczodre.9402.desc
+    left_portrait = root
+    option = {
+        name = bp_szczodre.9402.a
+        trigger = { gold >= 75 }
+        show_as_unavailable = { gold < 75 }
+        remove_short_term_gold = 75
+        add_character_flag = { flag = bp_szczodre_hospitality_v019 days = 90 }
+        bp_mokosh_plus_20_effect = yes
+        trigger_event = bp_szczodre.9403
+        ai_chance = { base = 50 }
+    }
+    option = {
+        name = bp_szczodre.9402.b
+        add_prestige = -100
+        add_character_flag = { flag = bp_szczodre_hospitality_v019 days = 90 }
+        bp_mokosh_plus_10_effect = yes
+        trigger_event = bp_szczodre.9403
+        ai_chance = { base = 35 }
+    }
+    option = {
+        name = bp_szczodre.9402.c
+        add_gold = 35
+        bp_mokosh_minus_15_effect = yes
+        trigger_event = bp_szczodre.9406
+        ai_chance = { base = 15 }
+    }
+}
+
+bp_szczodre.9403 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_szczodre_03 }
+    title = bp_szczodre.9403.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_weles_debt_unpaid_v018 } }
+                desc = bp_szczodre.9403.desc_debt
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_weles_debt_paid_v018 } }
+                desc = bp_szczodre.9403.desc_paid
+            }
+            desc = bp_szczodre.9403.desc
+        }
+    }
+    left_portrait = root
+    option = {
+        name = bp_szczodre.9403.a
+        add_prestige = -75
+        trigger_event = bp_szczodre.9404
+        ai_chance = { base = 65 }
+    }
+    option = {
+        name = bp_szczodre.9403.b
+        trigger = { dynasty = { has_variable = bp_weles_debt_unpaid_v018 } }
+        show_as_unavailable = { dynasty = { NOT = { has_variable = bp_weles_debt_unpaid_v018 } } }
+        trigger_event = bp_weles.2013
+        ai_chance = { base = 25 }
+    }
+    option = {
+        name = bp_szczodre.9403.c
+        bp_weles_minus_15_effect = yes
+        trigger_event = bp_szczodre.9407
+        ai_chance = { base = 10 }
+    }
+}
+
+bp_szczodre.9404 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_szczodre_02 }
+    title = bp_szczodre.9404.t
+    desc = bp_szczodre.9404.desc
+    left_portrait = root
+    option = {
+        name = bp_szczodre.9404.a
+        trigger = { gold >= 45 }
+        show_as_unavailable = { gold < 45 }
+        remove_short_term_gold = 45
+        add_character_flag = { flag = bp_szczodre_promise_v019 days = 90 }
+        bp_mokosh_plus_10_effect = yes
+        if = {
+            limit = {
+                has_character_flag = bp_szczodre_fire_v019
+                has_character_flag = bp_szczodre_hospitality_v019
+                NOT = { dynasty = { has_variable = bp_weles_debt_unpaid_v018 } }
+                NOT = { has_character_flag = bp_szczodre_great_received_v019 }
+            }
+            trigger_event = bp_szczodre.9405
+        }
+        else = { trigger_event = bp_szczodre.9406 }
+        ai_chance = { base = 55 }
+    }
+    option = {
+        name = bp_szczodre.9404.b
+        add_prestige = -100
+        add_character_flag = { flag = bp_szczodre_promise_v019 days = 90 }
+        bp_mokosh_plus_10_effect = yes
+        if = {
+            limit = {
+                has_character_flag = bp_szczodre_fire_v019
+                has_character_flag = bp_szczodre_hospitality_v019
+                NOT = { dynasty = { has_variable = bp_weles_debt_unpaid_v018 } }
+                NOT = { has_character_flag = bp_szczodre_great_received_v019 }
+            }
+            trigger_event = bp_szczodre.9405
+        }
+        else = { trigger_event = bp_szczodre.9406 }
+        ai_chance = { base = 35 }
+    }
+    option = {
+        name = bp_szczodre.9404.c
+        trigger_event = bp_szczodre.9406
+        ai_chance = { base = 10 }
+    }
+}
+
+bp_szczodre.9405 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_szczodre_01 }
+    title = bp_szczodre.9405.t
+    desc = bp_szczodre.9405.desc
+    left_portrait = root
+    option = {
+        name = bp_szczodre.9405.a
+        add_character_modifier = { modifier = bp_szczodre_great_boon_modifier years = 1 }
+        add_character_flag = { flag = bp_szczodre_great_received_v019 years = 2 }
+        dynasty = { set_variable = { name = bp_szczodre_ever_blessed_v019 value = yes } }
+        bp_mokosh_plus_40_effect = yes
+        trigger_event = { id = bp_szczodre.9408 days = { 15 28 } }
+        ai_chance = { base = 55 }
+    }
+    option = {
+        name = bp_szczodre.9405.b
+        capital_county = { add_county_modifier = { modifier = bp_szczodre_rebuilding_modifier years = 2 } }
+        add_character_flag = { flag = bp_szczodre_great_received_v019 years = 2 }
+        dynasty = { set_variable = { name = bp_szczodre_ever_blessed_v019 value = yes } }
+        bp_mokosh_plus_40_effect = yes
+        trigger_event = { id = bp_szczodre.9408 days = { 15 28 } }
+        ai_chance = { base = 45 }
+    }
+}
+
+bp_szczodre.9406 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_szczodre_02 }
+    title = bp_szczodre.9406.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_weles_debt_unpaid_v018 } }
+                desc = bp_szczodre.9406.desc_debt
+            }
+            desc = bp_szczodre.9406.desc
+        }
+    }
+    left_portrait = root
+    option = {
+        name = bp_szczodre.9406.a
+        add_character_modifier = { modifier = bp_szczodre_lesser_boon_modifier years = 1 }
+        bp_mokosh_plus_10_effect = yes
+        ai_chance = { base = 100 }
+    }
+}
+
+bp_szczodre.9407 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_szczodre_03 }
+    title = bp_szczodre.9407.t
+    desc = bp_szczodre.9407.desc
+    left_portrait = root
+    option = {
+        name = bp_szczodre.9407.a
+        add_character_modifier = { modifier = bp_szczodre_cold_hall_modifier years = 1 }
+        add_prestige = -60
+        ai_chance = { base = 100 }
+    }
+}
+
+bp_szczodre.9408 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_szczodre_01 }
+    title = bp_szczodre.9408.t
+    desc = bp_szczodre.9408.desc
+    left_portrait = root
+    trigger = { is_alive = yes }
+    option = { name = bp_szczodre.9408.a ai_chance = { base = 100 } }
+}

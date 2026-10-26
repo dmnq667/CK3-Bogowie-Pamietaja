@@ -1,0 +1,97 @@
+﻿namespace = bp_spring
+
+# 9 March. Mokosh enters as a distinct, powerful god with her own values.
+bp_spring.3001 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_spring_01
+    }
+    title = bp_spring.3001.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { OR = { has_character_flag = bp_weles_blood dynasty = { has_variable = bp_weles_dynastic_blood_v018 } } }
+                desc = bp_spring.3001.desc_blood
+            }
+            triggered_desc = {
+                trigger = { OR = { has_character_flag = bp_weles_debt_years dynasty = { has_variable = bp_weles_debt_unpaid_v018 } } }
+                desc = bp_spring.3001.desc_debt
+            }
+            desc = bp_spring.3001.desc
+        }
+    }
+    left_portrait = root
+    immediate = {
+        bp_initialize_effect = yes
+        dynasty = { set_variable = { name = bp_spring_ever_celebrated_v014 value = yes } }
+        add_character_flag = { flag = bp_spring_used days = 335 }
+        dynasty = {
+            set_variable = { name = bp_spring_rite_lock_v013 value = yes days = 335 }
+            if = {
+                limit = { has_variable = bp_spring_accepted_v013 }
+                remove_variable = bp_spring_accepted_v013
+            }
+        }
+    }
+    option = {
+        name = bp_spring.3001.a
+        trigger = { gold >= 40 }
+        show_as_unavailable = { gold < 40 }
+        remove_short_term_gold = 40
+        add_character_flag = { flag = bp_mokosh_rite days = 90 }
+        bp_mokosh_plus_20_effect = yes
+        capital_county = {
+            add_county_modifier = { modifier = bp_mokosh_sowing_modifier years = 2 }
+        }
+        trigger_event = bp_spring.3002
+        ai_chance = { base = 50 }
+    }
+    option = {
+        name = bp_spring.3001.b
+        add_prestige = -50
+        add_character_flag = { flag = bp_mokosh_rite days = 90 }
+        bp_mokosh_plus_20_effect = yes
+        trigger_event = bp_spring.3002
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = bp_spring.3001.c
+        add_gold = 25
+        bp_mokosh_minus_15_effect = yes
+        ai_chance = { base = 10 }
+    }
+}
+
+# A second independent test: feeding the people while keeping grain for sowing.
+bp_spring.3002 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_spring_02
+    }
+    title = bp_spring.3002.t
+    desc = bp_spring.3002.desc
+    left_portrait = root
+    option = {
+        name = bp_spring.3002.a
+        trigger = { gold >= 35 }
+        show_as_unavailable = { gold < 35 }
+        remove_short_term_gold = 35
+        add_character_flag = { flag = bp_mokosh_provision days = 90 }
+        bp_mokosh_plus_20_effect = yes
+        ai_chance = { base = 50 }
+    }
+    option = {
+        name = bp_spring.3002.b
+        add_prestige = -60
+        add_character_flag = { flag = bp_mokosh_provision days = 90 }
+        bp_mokosh_plus_10_effect = yes
+        ai_chance = { base = 35 }
+    }
+    option = {
+        name = bp_spring.3002.c
+        bp_mokosh_minus_15_effect = yes
+        ai_chance = { base = 15 }
+    }
+}

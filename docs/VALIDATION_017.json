@@ -1,0 +1,33 @@
+{
+  "version": "0.1.7-alpha-artwork",
+  "static_checks": "PASS",
+  "old_events": 78,
+  "new_events": 78,
+  "localized_keys_per_language": 403,
+  "jpg_originals_preserved": 20,
+  "dds_textures": 20,
+  "dds_format": "DXT1 BC1, 1592x848, 1 mip level",
+  "events_with_artwork": 67,
+  "override_background_entries": 69,
+  "events_scripts_changed_only_by_override_background": [
+    "bp_announcement_events.txt",
+    "bp_book_events.txt",
+    "bp_calendar_events.txt",
+    "bp_dziady_events.txt",
+    "bp_gaik_events.txt",
+    "bp_gromnica_events.txt",
+    "bp_jare_events.txt",
+    "bp_kupala_events.txt",
+    "bp_spring_events.txt",
+    "bp_stado_events.txt",
+    "bp_weles_events.txt"
+  ],
+  "other_gameplay_scripts_unchanged": true,
+  "ck3_game_tested": false,
+  "new_required_in_game_test": [
+    "custom background lookup",
+    "character portrait compositing",
+    "cropping/positioning",
+    "potential event renderer changes with other mods"
+  ]
+}

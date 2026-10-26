@@ -1,0 +1,63 @@
+﻿# The Gods Remember, alpha 0.1. Values live on each ruler separately.
+bp_initialize_effect = {
+    if = {
+        limit = { NOT = { has_variable = bp_weles_favor } }
+        set_variable = { name = bp_weles_favor value = 0 }
+    }
+    if = {
+        limit = { NOT = { has_variable = bp_mokosh_favor } }
+        set_variable = { name = bp_mokosh_favor value = 0 }
+    }
+    if = {
+        limit = { NOT = { has_variable = bp_perun_favor } }
+        set_variable = { name = bp_perun_favor value = 0 }
+    }
+}
+
+# -100 through +100. Unlike a prestige bar, negative favor is meaningful.
+bp_weles_plus_10_effect = {
+    bp_initialize_effect = yes
+    change_variable = { name = bp_weles_favor add = 10 }
+    clamp_variable = { name = bp_weles_favor min = -100 max = 100 }
+}
+bp_weles_plus_20_effect = {
+    bp_initialize_effect = yes
+    change_variable = { name = bp_weles_favor add = 20 }
+    clamp_variable = { name = bp_weles_favor min = -100 max = 100 }
+}
+bp_weles_plus_40_effect = {
+    bp_initialize_effect = yes
+    change_variable = { name = bp_weles_favor add = 40 }
+    clamp_variable = { name = bp_weles_favor min = -100 max = 100 }
+}
+bp_weles_minus_15_effect = {
+    bp_initialize_effect = yes
+    change_variable = { name = bp_weles_favor add = -15 }
+    clamp_variable = { name = bp_weles_favor min = -100 max = 100 }
+}
+bp_weles_minus_25_effect = {
+    bp_initialize_effect = yes
+    change_variable = { name = bp_weles_favor add = -25 }
+    clamp_variable = { name = bp_weles_favor min = -100 max = 100 }
+}
+
+bp_mokosh_plus_10_effect = {
+    bp_initialize_effect = yes
+    change_variable = { name = bp_mokosh_favor add = 10 }
+    clamp_variable = { name = bp_mokosh_favor min = -100 max = 100 }
+}
+bp_mokosh_plus_20_effect = {
+    bp_initialize_effect = yes
+    change_variable = { name = bp_mokosh_favor add = 20 }
+    clamp_variable = { name = bp_mokosh_favor min = -100 max = 100 }
+}
+bp_mokosh_plus_40_effect = {
+    bp_initialize_effect = yes
+    change_variable = { name = bp_mokosh_favor add = 40 }
+    clamp_variable = { name = bp_mokosh_favor min = -100 max = 100 }
+}
+bp_mokosh_minus_15_effect = {
+    bp_initialize_effect = yes
+    change_variable = { name = bp_mokosh_favor add = -15 }
+    clamp_variable = { name = bp_mokosh_favor min = -100 max = 100 }
+}

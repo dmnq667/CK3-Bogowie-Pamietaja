@@ -1,4 +1,4 @@
-# Actual surviving close relatives of a ritual victim remember who ordered it.
+﻿# Actual surviving close relatives of a ritual victim remember who ordered it.
 bp_weles_relative_sacrifice_opinion = { opinion = -40 years = 12 decaying = yes }
 
 # Meeting a real adult courtier during a festival.

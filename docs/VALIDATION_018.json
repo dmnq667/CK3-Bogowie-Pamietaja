@@ -1,0 +1,37 @@
+{
+  "release": "0.1.8-alpha",
+  "status": "STATIC_PASS_GAME_UNTESTED",
+  "event_count": 84,
+  "additional_events": 6,
+  "localization_keys_per_language": 452,
+  "registered_backgrounds": 20,
+  "dds_count": 20,
+  "event_background_references": 74,
+  "source_art_files_preserved": 20,
+  "modified_files": [
+    "Bogowie_Pamietaja/common/decisions/bp_decisions.txt",
+    "Bogowie_Pamietaja/common/modifiers/bp_modifiers.txt",
+    "Bogowie_Pamietaja/descriptor.mod",
+    "Bogowie_Pamietaja/events/bp_book_events.txt",
+    "Bogowie_Pamietaja/events/bp_dziady_events.txt",
+    "Bogowie_Pamietaja/events/bp_jare_events.txt",
+    "Bogowie_Pamietaja/events/bp_spring_events.txt",
+    "Bogowie_Pamietaja/events/bp_test_events.txt",
+    "Bogowie_Pamietaja/events/bp_weles_events.txt",
+    "Bogowie_Pamietaja/localization/english/bp_l_english.yml",
+    "Bogowie_Pamietaja/localization/polish/bp_l_polish.yml"
+  ],
+  "new_files": [
+    "Bogowie_Pamietaja/common/scripted_effects/bp_weles_debt_effects_018.txt"
+  ],
+  "untouched_previous_mod_files": 35,
+  "backgrounds_checksum_preserved": true,
+  "calendar_checksum_preserved": true,
+  "notes": [
+    "CK3 1.20.1.2 cannot be executed in this container. No runtime/auto-pause test claimed.",
+    "Dynastic debt transfers to same-dynasty rulers via dynasty variable after a new great favor.",
+    "Migration from 0.1.7 uses surviving original ruler flags. Debts lost before upgrade cannot be recovered.",
+    "Existing eight holy days, all user images, scheduling and on_actions are byte-identical to the player-tested 0.1.7.",
+    "New narrative uses previously proven effect/trigger syntax but needs in-game QA."
+  ]
+}

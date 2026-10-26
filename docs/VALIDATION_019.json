@@ -1,0 +1,41 @@
+{
+  "status": "STATIC_PASS",
+  "date": "2026-10-26",
+  "version": "0.1.9-alpha",
+  "game_tested": false,
+  "errors": [],
+  "warnings": [],
+  "event_count": 131,
+  "new_019_event_namespaces": {
+    "bp_perun": 8,
+    "bp_harvest": 8,
+    "bp_autumn": 8,
+    "bp_szczodre": 8
+  },
+  "total_dds": 32,
+  "new_jpg": 12,
+  "all_originals_intact": true,
+  "pl_keys": 669,
+  "en_keys": 669,
+  "event_references_checked": 254,
+  "scene_references_checked": 119,
+  "modifier_references_checked": 47,
+  "localization_references_checked": 532,
+  "cross_year_checks": 2520,
+  "calendar_days_checked": 32872,
+  "base_files_identical_count": 56,
+  "base_files_changed_expected_count": 11,
+  "baseline_changed_files": [
+    "Bogowie_Pamietaja/common/decisions/bp_decisions.txt",
+    "Bogowie_Pamietaja/common/event_backgrounds/bp_slavic_holiday_backgrounds.txt",
+    "Bogowie_Pamietaja/common/modifiers/bp_modifiers.txt",
+    "Bogowie_Pamietaja/common/scripted_triggers/bp_calendar_triggers.txt",
+    "Bogowie_Pamietaja/descriptor.mod",
+    "Bogowie_Pamietaja/events/bp_announcement_events.txt",
+    "Bogowie_Pamietaja/events/bp_book_events.txt",
+    "Bogowie_Pamietaja/events/bp_test_events.txt",
+    "Bogowie_Pamietaja/gfx/ARTWORK_MANIFEST.json",
+    "Bogowie_Pamietaja/localization/english/bp_l_english.yml",
+    "Bogowie_Pamietaja/localization/polish/bp_l_polish.yml"
+  ]
+}

@@ -1,0 +1,250 @@
+﻿namespace = bp_autumn
+
+# 25-31 October. Ancestral judgment and Weles' existing dynastic debt.
+bp_autumn.9301 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_autumn_01 }
+    title = bp_autumn.9301.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_weles_debt_unpaid_v018 } }
+                desc = bp_autumn.9301.desc_debt
+            }
+            desc = bp_autumn.9301.desc
+        }
+    }
+    left_portrait = root
+    immediate = {
+        bp_initialize_effect = yes
+        bp_weles_migrate_legacy_debt_018_effect = yes
+        dynasty = {
+            set_variable = { name = bp_autumn_ever_celebrated_v019 value = yes }
+            set_variable = { name = bp_autumn_rite_lock_v019 value = yes days = 335 }
+        }
+    }
+    option = {
+        name = bp_autumn.9301.a
+        trigger = { gold >= 45 }
+        show_as_unavailable = { gold < 45 }
+        remove_short_term_gold = 45
+        add_character_flag = { flag = bp_autumn_rite_v019 days = 120 }
+        bp_weles_plus_20_effect = yes
+        trigger_event = bp_autumn.9302
+        ai_chance = { base = 55 }
+    }
+    option = {
+        name = bp_autumn.9301.b
+        add_prestige = -80
+        add_character_flag = { flag = bp_autumn_rite_v019 days = 120 }
+        bp_weles_plus_10_effect = yes
+        trigger_event = bp_autumn.9302
+        ai_chance = { base = 35 }
+    }
+    option = {
+        name = bp_autumn.9301.c
+        bp_weles_minus_25_effect = yes
+        trigger_event = bp_autumn.9307
+        ai_chance = { base = 10 }
+    }
+}
+
+bp_autumn.9302 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_autumn_02 }
+    title = bp_autumn.9302.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_weles_debt_unpaid_v018 } }
+                desc = bp_autumn.9302.desc_debt
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_weles_debt_paid_v018 } }
+                desc = bp_autumn.9302.desc_paid
+            }
+            desc = bp_autumn.9302.desc
+        }
+    }
+    left_portrait = root
+    option = {
+        name = bp_autumn.9302.a
+        add_prestige = -90
+        add_character_flag = { flag = bp_autumn_truth_v019 days = 120 }
+        bp_weles_plus_10_effect = yes
+        trigger_event = bp_autumn.9303
+        ai_chance = { base = 65 }
+    }
+    option = {
+        name = bp_autumn.9302.b
+        trigger = { dynasty = { has_variable = bp_weles_debt_unpaid_v018 } }
+        show_as_unavailable = { dynasty = { NOT = { has_variable = bp_weles_debt_unpaid_v018 } } }
+        trigger_event = bp_autumn.9308
+        ai_chance = { base = 20 }
+    }
+    option = {
+        name = bp_autumn.9302.c
+        add_dread = 10
+        bp_weles_minus_15_effect = yes
+        trigger_event = bp_autumn.9307
+        ai_chance = { base = 15 }
+    }
+}
+
+bp_autumn.9303 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_autumn_02 }
+    title = bp_autumn.9303.t
+    desc = bp_autumn.9303.desc
+    left_portrait = root
+    option = {
+        name = bp_autumn.9303.a
+        trigger = { gold >= 55 }
+        show_as_unavailable = { gold < 55 }
+        remove_short_term_gold = 55
+        add_character_flag = { flag = bp_autumn_repaired_v019 days = 120 }
+        bp_weles_plus_20_effect = yes
+        trigger_event = bp_autumn.9304
+        ai_chance = { base = 55 }
+    }
+    option = {
+        name = bp_autumn.9303.b
+        add_prestige = -110
+        add_character_flag = { flag = bp_autumn_repaired_v019 days = 120 }
+        bp_weles_plus_10_effect = yes
+        trigger_event = bp_autumn.9304
+        ai_chance = { base = 35 }
+    }
+    option = {
+        name = bp_autumn.9303.c
+        bp_weles_minus_15_effect = yes
+        trigger_event = bp_autumn.9306
+        ai_chance = { base = 10 }
+    }
+}
+
+bp_autumn.9304 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_autumn_03 }
+    title = bp_autumn.9304.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_weles_debt_unpaid_v018 } }
+                desc = bp_autumn.9304.desc_debt
+            }
+            desc = bp_autumn.9304.desc
+        }
+    }
+    left_portrait = root
+    option = {
+        name = bp_autumn.9304.a
+        if = {
+            limit = {
+                has_character_flag = bp_autumn_rite_v019
+                has_character_flag = bp_autumn_truth_v019
+                has_character_flag = bp_autumn_repaired_v019
+                NOT = { has_character_flag = bp_autumn_great_received_v019 }
+                dynasty = { NOT = { has_variable = bp_weles_debt_unpaid_v018 } }
+            }
+            trigger_event = bp_autumn.9305
+        }
+        else = { trigger_event = bp_autumn.9306 }
+        ai_chance = { base = 100 }
+    }
+}
+
+bp_autumn.9305 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_autumn_03 }
+    title = bp_autumn.9305.t
+    desc = bp_autumn.9305.desc
+    left_portrait = root
+    option = {
+        name = bp_autumn.9305.a
+        remove_character_modifier = bp_ancestral_war_wisdom_modifier
+        remove_character_modifier = bp_ancestral_state_wisdom_modifier
+        remove_character_modifier = bp_autumn_state_wisdom_modifier
+        add_character_modifier = { modifier = bp_autumn_war_wisdom_modifier years = 2 }
+        add_character_flag = { flag = bp_autumn_great_received_v019 years = 3 }
+        dynasty = { set_variable = { name = bp_autumn_ever_blessed_v019 value = yes } }
+        bp_weles_plus_40_effect = yes
+        ai_chance = { base = 50 }
+    }
+    option = {
+        name = bp_autumn.9305.b
+        remove_character_modifier = bp_ancestral_war_wisdom_modifier
+        remove_character_modifier = bp_ancestral_state_wisdom_modifier
+        remove_character_modifier = bp_autumn_war_wisdom_modifier
+        add_character_modifier = { modifier = bp_autumn_state_wisdom_modifier years = 2 }
+        add_character_flag = { flag = bp_autumn_great_received_v019 years = 3 }
+        dynasty = { set_variable = { name = bp_autumn_ever_blessed_v019 value = yes } }
+        bp_weles_plus_40_effect = yes
+        ai_chance = { base = 50 }
+    }
+}
+
+bp_autumn.9306 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_autumn_02 }
+    title = bp_autumn.9306.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_weles_debt_unpaid_v018 } }
+                desc = bp_autumn.9306.desc_debt
+            }
+            desc = bp_autumn.9306.desc
+        }
+    }
+    left_portrait = root
+    option = {
+        name = bp_autumn.9306.a
+        add_character_modifier = { modifier = bp_autumn_lesser_wisdom_modifier years = 1 }
+        bp_weles_plus_10_effect = yes
+        ai_chance = { base = 100 }
+    }
+    option = {
+        name = bp_autumn.9306.b
+        trigger = { dynasty = { has_variable = bp_weles_debt_unpaid_v018 } }
+        show_as_unavailable = { dynasty = { NOT = { has_variable = bp_weles_debt_unpaid_v018 } } }
+        trigger_event = bp_autumn.9308
+        ai_chance = { base = 0 }
+    }
+}
+
+bp_autumn.9307 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_autumn_03 }
+    title = bp_autumn.9307.t
+    desc = bp_autumn.9307.desc
+    left_portrait = root
+    option = {
+        name = bp_autumn.9307.a
+        add_character_modifier = { modifier = bp_autumn_haunted_modifier years = 1 }
+        add_stress = 45
+        ai_chance = { base = 100 }
+    }
+}
+
+# Use the pre-existing Weles debt story instead of creating a parallel debt.
+bp_autumn.9308 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_autumn_03 }
+    title = bp_autumn.9308.t
+    desc = bp_autumn.9308.desc
+    left_portrait = root
+    option = {
+        name = bp_autumn.9308.a
+        trigger_event = bp_weles.2013
+        ai_chance = { base = 100 }
+    }
+}

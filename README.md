@@ -12,7 +12,7 @@ Mod do **Crusader Kings III** poświęcony słowiańskim bogom, obrzędom i cykl
 - [Historia wydań](CHANGELOG.md)
 - [Odtwarzanie i instalacja](RESTORE.md)
 
-Źródłowa paczka 0.1.9 i grafiki są zachowane w archiwum produkcyjnym. **Repozytorium nie jest jeszcze kompletną kopią kodu moda**, dopóki jego zasoby binarne i źródła nie zostaną przesłane i zweryfikowane.
+Źródłowa paczka 0.1.9 i grafiki są zachowane w archiwum produkcyjnym. **Źródła v0.1.9 ALPHA i zasoby zostały zaimportowane i zweryfikowane sumami SHA-256**. Wyniki testów w grze nie są jeszcze potwierdzone. Zobacz [stan synchronizacji](SYNC_STATUS.md).
 
 ## Zasady
 Po każdej zmianie aktualizujemy status, historię i wyniki testów. Nie mieszamy projektu z `CK3-The-Weight-of-Words`. Grafiki pozostają materiałami autora, bez automatycznego udzielenia licencji innym osobom.

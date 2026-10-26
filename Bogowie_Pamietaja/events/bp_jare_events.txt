@@ -1,0 +1,106 @@
+﻿namespace = bp_jare
+
+# 21 March. The Marzanna ritual is HERE, not on 9 March.
+bp_jare.4001 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_jare_01
+    }
+    title = bp_jare.4001.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { OR = { has_character_flag = bp_weles_dynasty_blood dynasty = { has_variable = bp_weles_dynastic_blood_v018 } } }
+                desc = bp_jare.4001.desc_kin
+            }
+            desc = bp_jare.4001.desc
+        }
+    }
+    left_portrait = root
+    immediate = {
+        bp_initialize_effect = yes
+        dynasty = { set_variable = { name = bp_jare_ever_celebrated_v014 value = yes } }
+        add_character_flag = { flag = bp_jare_used days = 335 }
+        dynasty = {
+            set_variable = { name = bp_jare_rite_lock_v013 value = yes days = 335 }
+            if = {
+                limit = { has_variable = bp_jare_accepted_v013 }
+                remove_variable = bp_jare_accepted_v013
+            }
+        }
+    }
+    option = {
+        name = bp_jare.4001.a
+        trigger = { gold >= 35 }
+        show_as_unavailable = { gold < 35 }
+        remove_short_term_gold = 35
+        add_character_flag = { flag = bp_mokosh_renewal days = 90 }
+        bp_mokosh_plus_20_effect = yes
+        if = {
+            limit = {
+                has_character_flag = bp_mokosh_rite
+                has_character_flag = bp_mokosh_provision
+                NOT = { has_character_flag = bp_mokosh_great_received }
+            }
+            trigger_event = bp_jare.4002
+        }
+        else = { trigger_event = bp_jare.4003 }
+        ai_chance = { base = 60 }
+    }
+    option = {
+        name = bp_jare.4001.b
+        add_prestige = 40
+        bp_mokosh_plus_10_effect = yes
+        trigger_event = bp_jare.4003
+        ai_chance = { base = 35 }
+    }
+    option = {
+        name = bp_jare.4001.c
+        bp_mokosh_minus_15_effect = yes
+        add_gold = 15
+        trigger_event = bp_jare.4003
+        ai_chance = { base = 5 }
+    }
+}
+
+# Complete three trials: tremendous real county effect; one county, four years.
+bp_jare.4002 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_jare_01
+    }
+    title = bp_jare.4002.t
+    desc = bp_jare.4002.desc
+    left_portrait = root
+    option = {
+        name = bp_jare.4002.a
+        capital_county = {
+            add_county_modifier = { modifier = bp_mokosh_great_boon_modifier years = 4 }
+        }
+        bp_mokosh_plus_40_effect = yes
+        add_character_flag = { flag = bp_mokosh_great_received years = 6 }
+        ai_chance = { base = 100 }
+    }
+}
+
+bp_jare.4003 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_jare_01
+    }
+    title = bp_jare.4003.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { OR = { has_character_flag = bp_weles_debt_years dynasty = { has_variable = bp_weles_debt_unpaid_v018 } } }
+                desc = bp_jare.4003.desc_debt
+            }
+            desc = bp_jare.4003.desc
+        }
+    }
+    left_portrait = root
+    option = { name = bp_jare.4003.a ai_chance = { base = 100 } }
+}

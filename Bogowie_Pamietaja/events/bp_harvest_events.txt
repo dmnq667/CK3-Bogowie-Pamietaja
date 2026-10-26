@@ -1,0 +1,207 @@
+﻿namespace = bp_harvest
+
+# 28 August - 5 September. The goddess asks what the ruler did with the harvest.
+bp_harvest.9201 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_harvest_01 }
+    title = bp_harvest.9201.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { capital_county = { has_county_modifier = bp_gaik_wounded_land_modifier } }
+                desc = bp_harvest.9201.desc_hard
+            }
+            desc = bp_harvest.9201.desc
+        }
+    }
+    left_portrait = root
+    immediate = {
+        bp_initialize_effect = yes
+        dynasty = {
+            set_variable = { name = bp_harvest_ever_celebrated_v019 value = yes }
+            set_variable = { name = bp_harvest_rite_lock_v019 value = yes days = 335 }
+        }
+    }
+    option = {
+        name = bp_harvest.9201.a
+        trigger = { gold >= 60 }
+        show_as_unavailable = { gold < 60 }
+        remove_short_term_gold = 60
+        add_character_flag = { flag = bp_harvest_rite_v019 days = 120 }
+        bp_mokosh_plus_20_effect = yes
+        trigger_event = bp_harvest.9202
+        ai_chance = { base = 50 }
+    }
+    option = {
+        name = bp_harvest.9201.b
+        add_prestige = -100
+        add_character_flag = { flag = bp_harvest_rite_v019 days = 120 }
+        bp_mokosh_plus_10_effect = yes
+        trigger_event = bp_harvest.9202
+        ai_chance = { base = 35 }
+    }
+    option = {
+        name = bp_harvest.9201.c
+        bp_mokosh_minus_15_effect = yes
+        trigger_event = bp_harvest.9206
+        ai_chance = { base = 15 }
+    }
+}
+
+bp_harvest.9202 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_harvest_02 }
+    title = bp_harvest.9202.t
+    desc = bp_harvest.9202.desc
+    left_portrait = root
+    option = {
+        name = bp_harvest.9202.a
+        trigger = { gold >= 75 }
+        show_as_unavailable = { gold < 75 }
+        remove_short_term_gold = 75
+        add_character_flag = { flag = bp_harvest_shared_v019 days = 120 }
+        bp_mokosh_plus_20_effect = yes
+        trigger_event = bp_harvest.9203
+        ai_chance = { base = 50 }
+    }
+    option = {
+        name = bp_harvest.9202.b
+        add_prestige = -100
+        add_character_flag = { flag = bp_harvest_shared_v019 days = 120 }
+        bp_mokosh_plus_10_effect = yes
+        trigger_event = bp_harvest.9203
+        ai_chance = { base = 35 }
+    }
+    option = {
+        name = bp_harvest.9202.c
+        add_gold = 50
+        bp_mokosh_minus_15_effect = yes
+        trigger_event = bp_harvest.9206
+        ai_chance = { base = 15 }
+    }
+}
+
+bp_harvest.9203 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_harvest_03 }
+    title = bp_harvest.9203.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_gaik_ever_celebrated_v015 } }
+                desc = bp_harvest.9203.desc_gaik
+            }
+            desc = bp_harvest.9203.desc
+        }
+    }
+    left_portrait = root
+    option = {
+        name = bp_harvest.9203.a
+        trigger = { gold >= 45 }
+        show_as_unavailable = { gold < 45 }
+        remove_short_term_gold = 45
+        add_character_flag = { flag = bp_harvest_protected_v019 days = 120 }
+        bp_mokosh_plus_20_effect = yes
+        trigger_event = bp_harvest.9204
+        ai_chance = { base = 60 }
+    }
+    option = {
+        name = bp_harvest.9203.b
+        add_prestige = -60
+        add_character_flag = { flag = bp_harvest_protected_v019 days = 120 }
+        bp_mokosh_plus_10_effect = yes
+        trigger_event = bp_harvest.9204
+        ai_chance = { base = 30 }
+    }
+    option = {
+        name = bp_harvest.9203.c
+        add_gold = 40
+        bp_mokosh_minus_15_effect = yes
+        trigger_event = bp_harvest.9206
+        ai_chance = { base = 10 }
+    }
+}
+
+bp_harvest.9204 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_harvest_01 }
+    title = bp_harvest.9204.t
+    desc = bp_harvest.9204.desc
+    left_portrait = root
+    option = {
+        name = bp_harvest.9204.a
+        if = {
+            limit = {
+                has_character_flag = bp_harvest_rite_v019
+                has_character_flag = bp_harvest_shared_v019
+                has_character_flag = bp_harvest_protected_v019
+                NOT = { has_character_flag = bp_harvest_great_received_v019 }
+            }
+            trigger_event = bp_harvest.9205
+        }
+        else = { trigger_event = bp_harvest.9207 }
+        ai_chance = { base = 100 }
+    }
+}
+
+bp_harvest.9205 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_harvest_01 }
+    title = bp_harvest.9205.t
+    desc = bp_harvest.9205.desc
+    left_portrait = root
+    option = {
+        name = bp_harvest.9205.a
+        capital_county = { add_county_modifier = { modifier = bp_harvest_great_boon_modifier years = 3 } }
+        add_character_flag = { flag = bp_harvest_great_received_v019 years = 3 }
+        dynasty = { set_variable = { name = bp_harvest_ever_blessed_v019 value = yes } }
+        bp_mokosh_plus_40_effect = yes
+        trigger_event = { id = bp_harvest.9208 days = { 60 100 } }
+        ai_chance = { base = 100 }
+    }
+}
+
+bp_harvest.9206 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_harvest_03 }
+    title = bp_harvest.9206.t
+    desc = bp_harvest.9206.desc
+    left_portrait = root
+    option = {
+        name = bp_harvest.9206.a
+        capital_county = { add_county_modifier = { modifier = bp_harvest_blight_modifier years = 1 } }
+        ai_chance = { base = 100 }
+    }
+}
+
+bp_harvest.9207 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_harvest_02 }
+    title = bp_harvest.9207.t
+    desc = bp_harvest.9207.desc
+    left_portrait = root
+    option = {
+        name = bp_harvest.9207.a
+        capital_county = { add_county_modifier = { modifier = bp_harvest_lesser_boon_modifier years = 1 } }
+        bp_mokosh_plus_10_effect = yes
+        ai_chance = { base = 100 }
+    }
+}
+
+bp_harvest.9208 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_harvest_02 }
+    title = bp_harvest.9208.t
+    desc = bp_harvest.9208.desc
+    left_portrait = root
+    trigger = { is_alive = yes }
+    option = { name = bp_harvest.9208.a ai_chance = { base = 100 } }
+}

@@ -1,0 +1,196 @@
+﻿# Gods Remember 0.1.7, original user-supplied event backgrounds.
+# One unique database key per DDS, no overriding vanilla objects.
+# Portrait characters remain controlled by left_portrait/right_portrait.
+
+bp_scene_gromnica_01 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_gromnica_01.dds"
+    }
+}
+
+bp_scene_gromnica_02 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_gromnica_02.dds"
+    }
+}
+
+bp_scene_weles_02 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_weles_02.dds"
+    }
+}
+
+bp_scene_weles_03 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_weles_03.dds"
+    }
+}
+
+bp_scene_weles_04 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_weles_04.dds"
+    }
+}
+
+bp_scene_spring_01 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_spring_01.dds"
+    }
+}
+
+bp_scene_spring_02 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_spring_02.dds"
+    }
+}
+
+bp_scene_jare_01 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_jare_01.dds"
+    }
+}
+
+bp_scene_gaik_01 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_gaik_01.dds"
+    }
+}
+
+bp_scene_gaik_02 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_gaik_02.dds"
+    }
+}
+
+bp_scene_gaik_03 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_gaik_03.dds"
+    }
+}
+
+bp_scene_dziady_01 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_dziady_01.dds"
+    }
+}
+
+bp_scene_dziady_02 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_dziady_02.dds"
+    }
+}
+
+bp_scene_dziady_03 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_dziady_03.dds"
+    }
+}
+
+bp_scene_stado_01 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_stado_01.dds"
+    }
+}
+
+bp_scene_stado_02 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_stado_02.dds"
+    }
+}
+
+bp_scene_stado_03 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_stado_03.dds"
+    }
+}
+
+bp_scene_kupala_01 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_kupala_01.dds"
+    }
+}
+
+bp_scene_kupala_02 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_kupala_02.dds"
+    }
+}
+
+bp_scene_kupala_03 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_kupala_03.dds"
+    }
+}
+
+
+bp_scene_perun_01 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_perun_01.dds"
+    }
+}
+
+bp_scene_perun_02 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_perun_02.dds"
+    }
+}
+
+bp_scene_perun_03 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_perun_03.dds"
+    }
+}
+
+bp_scene_harvest_01 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_harvest_01.dds"
+    }
+}
+
+bp_scene_harvest_02 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_harvest_02.dds"
+    }
+}
+
+bp_scene_harvest_03 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_harvest_03.dds"
+    }
+}
+
+bp_scene_autumn_01 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_autumn_01.dds"
+    }
+}
+
+bp_scene_autumn_02 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_autumn_02.dds"
+    }
+}
+
+bp_scene_autumn_03 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_autumn_03.dds"
+    }
+}
+
+bp_scene_szczodre_01 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_szczodre_01.dds"
+    }
+}
+
+bp_scene_szczodre_02 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_szczodre_02.dds"
+    }
+}
+
+bp_scene_szczodre_03 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_szczodre_03.dds"
+    }
+}

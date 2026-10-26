@@ -1,0 +1,93 @@
+﻿namespace = bp_stado
+
+# 29 May - 4 June: communal life, promises and dynastic emotions.
+bp_stado.7001 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_stado_01
+    }
+    title = bp_stado.7001.t
+    desc = bp_stado.7001.desc
+    left_portrait = root
+    immediate = {
+        bp_initialize_effect = yes
+        dynasty = {
+            set_variable = { name = bp_stado_ever_celebrated_v015 value = yes }
+            set_variable = { name = bp_stado_rite_lock_v015 value = yes days = 335 }
+        }
+    }
+    option = {
+        name = bp_stado.7001.a
+        trigger = { gold >= 55 }
+        show_as_unavailable = { gold < 55 }
+        remove_short_term_gold = 55
+        bp_mokosh_plus_20_effect = yes
+        add_character_modifier = { modifier = bp_stado_harmony_modifier years = 2 }
+        trigger_event = bp_stado.7002
+        ai_chance = { base = 45 }
+    }
+    option = {
+        name = bp_stado.7001.b
+        add_prestige = -60
+        bp_mokosh_plus_10_effect = yes
+        trigger_event = bp_stado.7002
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = bp_stado.7001.c
+        add_prestige = 25
+        bp_mokosh_minus_15_effect = yes
+        ai_chance = { base = 15 }
+    }
+}
+
+bp_stado.7002 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_stado_02
+    }
+    title = bp_stado.7002.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { exists = scope:bp_stado_companion }
+                desc = bp_stado.7002.desc_person
+            }
+            desc = bp_stado.7002.desc_default
+        }
+    }
+    left_portrait = root
+    immediate = {
+        if = {
+            limit = { is_adult = yes }
+            random_courtier = {
+                limit = { is_adult = yes is_alive = yes }
+                save_scope_as = bp_stado_companion
+            }
+        }
+    }
+    option = {
+        name = bp_stado.7002.a
+        trigger = { is_adult = yes exists = scope:bp_stado_companion }
+        scope:bp_stado_companion = {
+            add_opinion = { target = root modifier = bp_stado_warm_meeting_opinion }
+        }
+        add_character_modifier = { modifier = bp_stado_new_bonds_modifier years = 1 }
+        add_character_flag = { flag = bp_stado_new_friendship years = 1 }
+        ai_chance = { base = 50 }
+    }
+    option = {
+        name = bp_stado.7002.b
+        add_prestige = 35
+        add_character_modifier = { modifier = bp_stado_harmony_modifier years = 1 }
+        ai_chance = { base = 35 }
+    }
+    option = {
+        name = bp_stado.7002.c
+        add_prestige = -20
+        bp_mokosh_plus_10_effect = yes
+        ai_chance = { base = 15 }
+    }
+}

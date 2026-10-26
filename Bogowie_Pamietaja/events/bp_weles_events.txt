@@ -1,0 +1,490 @@
+﻿namespace = bp_weles
+
+# The opening of Weles Week, 9-15 February.
+bp_weles.2001 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_weles_04
+    }
+    title = bp_weles.2001.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { has_character_flag = bp_gromnica_fire }
+                desc = bp_weles.2001.desc_fire
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_gromnica_village }
+                desc = bp_weles.2001.desc_village
+            }
+            desc = bp_weles.2001.desc_default
+        }
+    }
+    left_portrait = root
+    immediate = {
+        bp_initialize_effect = yes
+        dynasty = { set_variable = { name = bp_weles_ever_celebrated_v014 value = yes } }
+        add_character_flag = { flag = bp_weles_week_used days = 335 }
+        dynasty = {
+            set_variable = { name = bp_weles_rite_lock_v013 value = yes days = 335 }
+            if = {
+                limit = { has_variable = bp_weles_accepted_v013 }
+                remove_variable = bp_weles_accepted_v013
+            }
+        }
+    }
+    option = {
+        name = bp_weles.2001.a
+        trigger_event = bp_weles.2002
+        ai_chance = { base = 65 }
+    }
+    option = {
+        name = bp_weles.2001.b
+        add_character_flag = { flag = bp_weles_fled days = 335 }
+        bp_weles_minus_15_effect = yes
+        add_prestige = -40
+        ai_chance = { base = 35 }
+    }
+}
+
+# Three ways to pay the second price. The optional human route continues via
+# a targeted prisoner interaction, not by silently choosing a random victim.
+bp_weles.2002 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_weles_03
+    }
+    title = bp_weles.2002.t
+    desc = bp_weles.2002.desc
+    left_portrait = root
+    option = {
+        name = bp_weles.2002.a
+        trigger = { gold >= 60 }
+        show_as_unavailable = { gold < 60 }
+        remove_short_term_gold = 60
+        add_character_flag = { flag = bp_weles_offering days = 90 }
+        bp_weles_plus_20_effect = yes
+        trigger_event = bp_weles.2003
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = bp_weles.2002.b
+        add_character_flag = { flag = bp_weles_waiting_for_prisoner days = 20 }
+        trigger_event = bp_weles.2005
+        ai_chance = { base = 10 }
+    }
+    option = {
+        name = bp_weles.2002.c
+        add_prestige = -100
+        add_character_flag = { flag = bp_weles_offering days = 90 }
+        add_character_flag = { flag = bp_weles_oath_of_silence days = 335 }
+        bp_weles_plus_10_effect = yes
+        trigger_event = bp_weles.2003
+        ai_chance = { base = 35 }
+    }
+    option = {
+        name = bp_weles.2002.d
+        bp_weles_minus_15_effect = yes
+        ai_chance = { base = 15 }
+    }
+}
+
+# The third trial is not just another donation: wrongs of ancestors have to be faced.
+bp_weles.2003 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        trigger = { has_character_flag = bp_weles_dynasty_blood }
+        reference = bp_scene_weles_03
+    }
+    override_background = {
+        reference = bp_scene_weles_04
+    }
+    title = bp_weles.2003.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { has_character_flag = bp_weles_dynasty_blood }
+                desc = bp_weles.2003.desc_kin
+            }
+            desc = bp_weles.2003.desc
+        }
+    }
+    left_portrait = root
+    option = {
+        name = bp_weles.2003.a
+        trigger = { gold >= 50 }
+        show_as_unavailable = { gold < 50 }
+        remove_short_term_gold = 50
+        add_character_flag = { flag = bp_weles_truth days = 90 }
+        bp_weles_plus_20_effect = yes
+        if = {
+            limit = {
+                has_character_flag = bp_gromnica_trial
+                has_character_flag = bp_weles_offering
+                NOT = { has_character_flag = bp_weles_great_received }
+                NOT = { has_character_flag = bp_weles_debt_years }
+                dynasty = { NOT = { has_variable = bp_weles_debt_unpaid_v018 } }
+            }
+            trigger_event = bp_weles.2006
+        }
+        else = { trigger_event = bp_weles.2007 }
+        ai_chance = { base = 50 }
+    }
+    option = {
+        name = bp_weles.2003.b
+        add_character_flag = { flag = bp_weles_lied days = 730 }
+        bp_weles_minus_25_effect = yes
+        trigger_event = bp_weles.2008
+        ai_chance = { base = 20 }
+    }
+    option = {
+        name = bp_weles.2003.c
+        add_prestige = -70
+        trigger_event = bp_weles.2007
+        ai_chance = { base = 30 }
+    }
+}
+
+# A player explicitly picks which of THEIR living ADULT prisoners to offer.
+# The target survives until the choice in this confirmation event.
+bp_weles.2004 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_weles_03
+    }
+    title = bp_weles.2004.t
+    desc = bp_weles.2004.desc
+    left_portrait = root
+    right_portrait = scope:bp_offering_person
+    trigger = {
+        exists = var:bp_weles_proposed_prisoner
+        var:bp_weles_proposed_prisoner = {
+            is_alive = yes
+            is_adult = yes
+            is_imprisoned_by = root
+        }
+    }
+    on_trigger_fail = {
+        if = {
+            limit = { has_variable = bp_weles_proposed_prisoner }
+            remove_variable = bp_weles_proposed_prisoner
+        }
+    }
+    immediate = {
+        var:bp_weles_proposed_prisoner = { save_scope_as = bp_offering_person }
+    }
+    option = {
+        name = bp_weles.2004.a
+        if = {
+            limit = { scope:bp_offering_person = { dynasty = root.dynasty } }
+            add_character_flag = { flag = bp_weles_dynasty_blood years = 15 }
+            dynasty = { set_variable = { name = bp_weles_dynastic_blood_v018 value = yes } }
+            add_stress = 60
+            add_tyranny = 20
+        }
+        # Survivors react to a real, named death. This is independent of dynasty status.
+        scope:bp_offering_person = {
+            every_close_family_member = {
+                limit = {
+                    is_alive = yes
+                    NOT = { this = root }
+                }
+                add_opinion = { target = root modifier = bp_weles_relative_sacrifice_opinion }
+            }
+            death = { killer = root death_reason = death_execution }
+        }
+        remove_character_flag = bp_weles_waiting_for_prisoner
+        remove_variable = bp_weles_proposed_prisoner
+        add_character_flag = { flag = bp_weles_offering days = 90 }
+        add_character_flag = { flag = bp_weles_blood days = 730 }
+        bp_weles_plus_20_effect = yes
+        add_dread = 15
+        trigger_event = bp_weles.2003
+        ai_chance = { base = 35 }
+    }
+    option = {
+        name = bp_weles.2004.b
+        remove_character_flag = bp_weles_waiting_for_prisoner
+        remove_variable = bp_weles_proposed_prisoner
+        add_prestige = -80
+        add_character_flag = { flag = bp_weles_offering days = 90 }
+        add_character_flag = { flag = bp_weles_merciful days = 730 }
+        bp_weles_plus_10_effect = yes
+        trigger_event = bp_weles.2003
+        ai_chance = { base = 65 }
+    }
+}
+
+# Explains how to select a prisoner from the prison / character panel.
+bp_weles.2005 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_weles_03
+    }
+    title = bp_weles.2005.t
+    desc = bp_weles.2005.desc
+    left_portrait = root
+    option = { name = bp_weles.2005.a ai_chance = { base = 100 } }
+}
+
+# Weles' great favor: significant gameplay impact and a subsequent debt.
+bp_weles.2006 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_weles_02
+    }
+    title = bp_weles.2006.t
+    desc = bp_weles.2006.desc
+    left_portrait = root
+    option = {
+        name = bp_weles.2006.a
+        add_character_modifier = { modifier = bp_weles_great_boon_modifier years = 3 }
+        add_character_flag = { flag = bp_weles_great_received years = 6 }
+        add_character_flag = { flag = bp_weles_debt_years years = 12 }
+        bp_weles_open_debt_018_effect = yes
+        bp_weles_plus_40_effect = yes
+        trigger_event = { id = bp_weles.2010 days = { 90 160 } }
+        ai_chance = { base = 100 }
+    }
+}
+
+# A meaningful lesser favor; all three gates were not completed.
+bp_weles.2007 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_weles_04
+    }
+    title = bp_weles.2007.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = {
+                    OR = {
+                        has_character_flag = bp_weles_debt_years
+                        dynasty = { has_variable = bp_weles_debt_unpaid_v018 }
+                    }
+                }
+                desc = bp_weles.2007.desc_debt
+            }
+            desc = bp_weles.2007.desc
+        }
+    }
+    left_portrait = root
+    option = {
+        name = bp_weles.2007.a
+        add_character_modifier = { modifier = bp_weles_lesser_boon_modifier years = 1 }
+        bp_weles_plus_10_effect = yes
+        ai_chance = { base = 100 }
+    }
+}
+
+bp_weles.2008 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_weles_04
+    }
+    title = bp_weles.2008.t
+    desc = bp_weles.2008.desc
+    left_portrait = root
+    option = {
+        name = bp_weles.2008.a
+        add_character_modifier = { modifier = bp_weles_winter_curse_modifier years = 1 }
+        ai_chance = { base = 100 }
+    }
+}
+
+# An echo after the winter ritual, not a reward repeated every time the book opens.
+bp_weles.2010 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_weles_02
+    }
+    title = bp_weles.2010.t
+    desc = bp_weles.2010.desc
+    left_portrait = root
+    trigger = { is_alive = yes has_character_flag = bp_weles_debt_years }
+    immediate = { bp_weles_migrate_legacy_debt_018_effect = yes }
+    option = {
+        name = bp_weles.2010.a
+        add_character_flag = { flag = bp_weles_debt_acknowledged years = 12 }
+        trigger_event = { id = bp_weles.2011 days = { 18 36 } }
+        ai_chance = { base = 100 }
+    }
+}
+
+# A real invoice from Weles, around a month after his first reminder.
+# A gift was received, but the restitution is still unpaid.
+bp_weles.2011 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_weles_04 }
+    title = bp_weles.2011.t
+    desc = bp_weles.2011.desc
+    left_portrait = root
+    trigger = {
+        is_alive = yes
+        dynasty = { has_variable = bp_weles_debt_unpaid_v018 }
+    }
+    option = {
+        name = bp_weles.2011.a
+        trigger = { gold >= 180 }
+        show_as_unavailable = { gold < 180 }
+        remove_short_term_gold = 180
+        add_prestige = -100
+        bp_weles_plus_20_effect = yes
+        bp_weles_settle_debt_018_effect = yes
+        capital_county = { add_county_modifier = { modifier = bp_weles_restored_graves_modifier years = 4 } }
+        trigger_event = { id = bp_weles.2014 days = { 10 22 } }
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = bp_weles.2011.b
+        add_prestige = -240
+        add_stress = 35
+        bp_weles_plus_20_effect = yes
+        bp_weles_settle_debt_018_effect = yes
+        dynasty = { set_variable = { name = bp_weles_confessed_v018 value = yes } }
+        add_character_modifier = { modifier = bp_weles_public_confession_modifier years = 3 }
+        trigger_event = { id = bp_weles.2014 days = { 10 22 } }
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = bp_weles.2011.c
+        bp_weles_minus_25_effect = yes
+        add_character_modifier = { modifier = bp_weles_debt_shadow_modifier years = 2 }
+        trigger_event = { id = bp_weles.2012 days = { 300 430 } }
+        ai_chance = { base = 20 }
+    }
+}
+
+# The unpaid debt returns with real economic damage, not just a text flag.
+bp_weles.2012 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_weles_03 }
+    title = bp_weles.2012.t
+    desc = bp_weles.2012.desc
+    left_portrait = root
+    trigger = { is_alive = yes dynasty = { has_variable = bp_weles_debt_unpaid_v018 } }
+    option = {
+        name = bp_weles.2012.a
+        trigger = { gold >= 250 }
+        show_as_unavailable = { gold < 250 }
+        remove_short_term_gold = 250
+        add_prestige = -100
+        bp_weles_plus_10_effect = yes
+        bp_weles_settle_debt_018_effect = yes
+        capital_county = { add_county_modifier = { modifier = bp_weles_restored_graves_modifier years = 4 } }
+        trigger_event = { id = bp_weles.2014 days = { 10 22 } }
+        ai_chance = { base = 35 }
+    }
+    option = {
+        name = bp_weles.2012.b
+        add_prestige = -350
+        add_stress = 50
+        bp_weles_plus_20_effect = yes
+        bp_weles_settle_debt_018_effect = yes
+        dynasty = { set_variable = { name = bp_weles_confessed_v018 value = yes } }
+        add_character_modifier = { modifier = bp_weles_public_confession_modifier years = 3 }
+        trigger_event = { id = bp_weles.2014 days = { 10 22 } }
+        ai_chance = { base = 45 }
+    }
+    option = {
+        name = bp_weles.2012.c
+        add_character_modifier = { modifier = bp_weles_debt_shadow_modifier years = 3 }
+        capital_county = { add_county_modifier = { modifier = bp_weles_barren_fields_modifier years = 3 } }
+        dynasty = { set_variable = { name = bp_weles_refused_v018 value = yes } }
+        bp_weles_minus_15_effect = yes
+        ai_chance = { base = 20 }
+    }
+}
+
+# This is fired only from spring Dziady while the dynasty owes Weles a debt.
+# The original ruler may be dead; the current ruler answers for the dynasty.
+bp_weles.2013 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_dziady_02 }
+    title = bp_weles.2013.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = {
+                    NOT = { bp_dziady_calendar_window_trigger = yes }
+                    dynasty = { has_variable = bp_weles_dynastic_blood_v018 }
+                }
+                desc = bp_weles.2013.desc_outside_blood
+            }
+            triggered_desc = {
+                trigger = { NOT = { bp_dziady_calendar_window_trigger = yes } }
+                desc = bp_weles.2013.desc_outside
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_weles_dynastic_blood_v018 } }
+                desc = bp_weles.2013.desc_blood
+            }
+            desc = bp_weles.2013.desc
+        }
+    }
+    left_portrait = root
+    trigger = { is_alive = yes dynasty = { has_variable = bp_weles_debt_unpaid_v018 } }
+    option = {
+        name = bp_weles.2013.a
+        trigger = { gold >= 220 }
+        show_as_unavailable = { gold < 220 }
+        remove_short_term_gold = 220
+        bp_weles_plus_20_effect = yes
+        bp_weles_settle_debt_018_effect = yes
+        capital_county = { add_county_modifier = { modifier = bp_weles_restored_graves_modifier years = 4 } }
+        trigger_event = { id = bp_weles.2014 days = { 10 22 } }
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = bp_weles.2013.b
+        add_prestige = -280
+        add_stress = 45
+        bp_weles_plus_20_effect = yes
+        bp_weles_settle_debt_018_effect = yes
+        dynasty = { set_variable = { name = bp_weles_confessed_v018 value = yes } }
+        add_character_modifier = { modifier = bp_weles_public_confession_modifier years = 3 }
+        trigger_event = { id = bp_weles.2014 days = { 10 22 } }
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = bp_weles.2013.c
+        add_stress = 20
+        add_character_modifier = { modifier = bp_weles_debt_shadow_modifier years = 2 }
+        dynasty = { set_variable = { name = bp_weles_refused_v018 value = yes } }
+        bp_weles_minus_15_effect = yes
+        ai_chance = { base = 20 }
+    }
+}
+
+# Epilogue. A settled bargain leaves a tangible legacy in the living world.
+bp_weles.2014 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_weles_02 }
+    title = bp_weles.2014.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_weles_confessed_v018 } }
+                desc = bp_weles.2014.desc_truth
+            }
+            desc = bp_weles.2014.desc_restored
+        }
+    }
+    left_portrait = root
+    trigger = { is_alive = yes dynasty = { has_variable = bp_weles_debt_paid_v018 } }
+    option = { name = bp_weles.2014.a ai_chance = { base = 100 } }
+}

@@ -1,0 +1,877 @@
+﻿namespace = bp_book
+
+# Read-only dashboard: opened any number of times by a zero-cost decision.
+bp_book.0001 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_dziady_03
+    }
+    title = bp_book.0001.t
+    desc = bp_book.0001.desc
+    left_portrait = root
+    immediate = { bp_initialize_effect = yes }
+    option = {
+        name = bp_book.0001.a
+        trigger_event = bp_book.0002
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = bp_book.0001.b
+        trigger_event = bp_book.0003
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = bp_book.0001.c
+        trigger_event = bp_book.0004
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = bp_book.0001.d
+        ai_chance = { base = 100 }
+    }
+    option = {
+        name = bp_book.0001.f
+        trigger_event = bp_book.0006
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = bp_book.0001.g
+        trigger_event = bp_book.0007
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = bp_book.0001.e
+        trigger_event = bp_book.0005
+        ai_chance = { base = 0 }
+    }
+    option = {
+        name = bp_book.0001.h
+        trigger_event = bp_book.0008
+        ai_chance = { base = 0 }
+    }
+
+}
+
+bp_book.0002 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_weles_04
+    }
+    title = bp_book.0002.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { has_character_flag = bp_weles_great_received }
+                desc = bp_book.0002.desc_great
+            }
+            triggered_desc = {
+                trigger = {
+                    has_character_flag = bp_gromnica_trial
+                    has_character_flag = bp_weles_offering
+                    has_character_flag = bp_weles_truth
+                }
+                desc = bp_book.0002.status_7
+            }
+            triggered_desc = {
+                trigger = {
+                    NOT = { has_character_flag = bp_gromnica_trial }
+                    has_character_flag = bp_weles_offering
+                    has_character_flag = bp_weles_truth
+                }
+                desc = bp_book.0002.status_6
+            }
+            triggered_desc = {
+                trigger = {
+                    has_character_flag = bp_gromnica_trial
+                    NOT = { has_character_flag = bp_weles_offering }
+                    has_character_flag = bp_weles_truth
+                }
+                desc = bp_book.0002.status_5
+            }
+            triggered_desc = {
+                trigger = {
+                    NOT = { has_character_flag = bp_gromnica_trial }
+                    NOT = { has_character_flag = bp_weles_offering }
+                    has_character_flag = bp_weles_truth
+                }
+                desc = bp_book.0002.status_4
+            }
+            triggered_desc = {
+                trigger = {
+                    has_character_flag = bp_gromnica_trial
+                    has_character_flag = bp_weles_offering
+                    NOT = { has_character_flag = bp_weles_truth }
+                }
+                desc = bp_book.0002.status_3
+            }
+            triggered_desc = {
+                trigger = {
+                    NOT = { has_character_flag = bp_gromnica_trial }
+                    has_character_flag = bp_weles_offering
+                    NOT = { has_character_flag = bp_weles_truth }
+                }
+                desc = bp_book.0002.status_2
+            }
+            triggered_desc = {
+                trigger = {
+                    has_character_flag = bp_gromnica_trial
+                    NOT = { has_character_flag = bp_weles_offering }
+                    NOT = { has_character_flag = bp_weles_truth }
+                }
+                desc = bp_book.0002.status_1
+            }
+            triggered_desc = {
+                trigger = {
+                    NOT = { has_character_flag = bp_gromnica_trial }
+                    NOT = { has_character_flag = bp_weles_offering }
+                    NOT = { has_character_flag = bp_weles_truth }
+                }
+                desc = bp_book.0002.status_0
+            }
+        }
+    }
+    left_portrait = root
+    option = { name = bp_book.0002.debt trigger_event = bp_book.0010 ai_chance = { base = 0 } }
+    option = { name = bp_book.back trigger_event = bp_book.0001 ai_chance = { base = 100 } }
+}
+
+bp_book.0003 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_spring_01
+    }
+    title = bp_book.0003.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { has_character_flag = bp_mokosh_great_received }
+                desc = bp_book.0003.desc_great
+            }
+            triggered_desc = {
+                trigger = {
+                    has_character_flag = bp_mokosh_rite
+                    has_character_flag = bp_mokosh_provision
+                    has_character_flag = bp_mokosh_renewal
+                }
+                desc = bp_book.0003.status_7
+            }
+            triggered_desc = {
+                trigger = {
+                    NOT = { has_character_flag = bp_mokosh_rite }
+                    has_character_flag = bp_mokosh_provision
+                    has_character_flag = bp_mokosh_renewal
+                }
+                desc = bp_book.0003.status_6
+            }
+            triggered_desc = {
+                trigger = {
+                    has_character_flag = bp_mokosh_rite
+                    NOT = { has_character_flag = bp_mokosh_provision }
+                    has_character_flag = bp_mokosh_renewal
+                }
+                desc = bp_book.0003.status_5
+            }
+            triggered_desc = {
+                trigger = {
+                    NOT = { has_character_flag = bp_mokosh_rite }
+                    NOT = { has_character_flag = bp_mokosh_provision }
+                    has_character_flag = bp_mokosh_renewal
+                }
+                desc = bp_book.0003.status_4
+            }
+            triggered_desc = {
+                trigger = {
+                    has_character_flag = bp_mokosh_rite
+                    has_character_flag = bp_mokosh_provision
+                    NOT = { has_character_flag = bp_mokosh_renewal }
+                }
+                desc = bp_book.0003.status_3
+            }
+            triggered_desc = {
+                trigger = {
+                    NOT = { has_character_flag = bp_mokosh_rite }
+                    has_character_flag = bp_mokosh_provision
+                    NOT = { has_character_flag = bp_mokosh_renewal }
+                }
+                desc = bp_book.0003.status_2
+            }
+            triggered_desc = {
+                trigger = {
+                    has_character_flag = bp_mokosh_rite
+                    NOT = { has_character_flag = bp_mokosh_provision }
+                    NOT = { has_character_flag = bp_mokosh_renewal }
+                }
+                desc = bp_book.0003.status_1
+            }
+            triggered_desc = {
+                trigger = {
+                    NOT = { has_character_flag = bp_mokosh_rite }
+                    NOT = { has_character_flag = bp_mokosh_provision }
+                    NOT = { has_character_flag = bp_mokosh_renewal }
+                }
+                desc = bp_book.0003.status_0
+            }
+        }
+    }
+    left_portrait = root
+    option = { name = bp_book.back trigger_event = bp_book.0001 ai_chance = { base = 100 } }
+}
+
+bp_book.0004 = {
+    type = character_event
+    theme = diplomacy
+    title = bp_book.0004.t
+    desc = bp_book.0004.desc
+    left_portrait = root
+    option = { name = bp_book.back trigger_event = bp_book.0001 ai_chance = { base = 100 } }
+}
+
+# The dates are always visible in the book; the actual holiday action is in
+# Decisions, and only in the active calendar period.
+bp_book.0005 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_gaik_02
+    }
+    title = bp_book.0005.t
+    desc = bp_book.0005.desc
+    left_portrait = root
+    option = {
+        name = bp_book.back
+        trigger_event = bp_book.0001
+        ai_chance = { base = 100 }
+    }
+}
+
+# Player-accessible mod information.
+bp_book.0006 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_dziady_03
+    }
+    title = bp_book.0006.t
+    desc = bp_book.0006.desc
+    left_portrait = root
+    option = { name = bp_book.back trigger_event = bp_book.0001 ai_chance = { base = 100 } }
+}
+
+# Durable chronicle: per-dynasty history survives the annual ceremony lock.
+bp_book.0007 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_dziady_02
+    }
+    title = bp_book.0007.t
+    desc = bp_book.0007.desc
+    left_portrait = root
+    option = { name = bp_book.0007.a trigger_event = bp_book.0101 ai_chance = { base = 0 } }
+    option = { name = bp_book.0007.b trigger_event = bp_book.0102 ai_chance = { base = 0 } }
+    option = { name = bp_book.0007.c trigger_event = bp_book.0103 ai_chance = { base = 0 } }
+    option = { name = bp_book.0007.d trigger_event = bp_book.0104 ai_chance = { base = 0 } }
+    option = { name = bp_book.0007.e trigger_event = bp_book.0009 ai_chance = { base = 0 } }
+    option = { name = bp_book.0007.f trigger_event = bp_book.0011 ai_chance = { base = 0 } }
+    option = { name = bp_book.back trigger_event = bp_book.0001 ai_chance = { base = 100 } }
+}
+
+bp_book.0101 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_gromnica_02
+    }
+    title = bp_book.0101.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_gromnica_declined_v014 } }
+                desc = bp_book.0101.desc_declined
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_gromnica_rite_lock_v013 has_variable = bp_gromnica_ever_celebrated_v014 } }
+                desc = bp_book.0101.desc_active
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_gromnica_announced_v014 } bp_gromnica_calendar_window_trigger = yes }
+                desc = bp_book.0101.desc_announced
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_gromnica_announced_v014 } }
+                desc = bp_book.0101.desc_missed
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_gromnica_ever_celebrated_v014 has_variable = bp_gromnica_ever_declined_v014 } }
+                desc = bp_book.0101.desc_past_both
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_gromnica_ever_celebrated_v014 } }
+                desc = bp_book.0101.desc_past
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_gromnica_ever_declined_v014 } }
+                desc = bp_book.0101.desc_past_declined
+            }
+            desc = bp_book.0101.desc_empty
+        }
+    }
+    left_portrait = root
+    option = { name = bp_book.chronicle_back trigger_event = bp_book.0007 ai_chance = { base = 100 } }
+}
+
+bp_book.0102 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_weles_03
+    }
+    title = bp_book.0102.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_weles_declined_v014 } }
+                desc = bp_book.0102.desc_declined
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_weles_rite_lock_v013 has_variable = bp_weles_ever_celebrated_v014 } }
+                desc = bp_book.0102.desc_active
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_weles_announced_v014 } bp_weles_calendar_window_trigger = yes }
+                desc = bp_book.0102.desc_announced
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_weles_announced_v014 } }
+                desc = bp_book.0102.desc_missed
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_weles_ever_celebrated_v014 has_variable = bp_weles_ever_declined_v014 } }
+                desc = bp_book.0102.desc_past_both
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_weles_ever_celebrated_v014 } }
+                desc = bp_book.0102.desc_past
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_weles_ever_declined_v014 } }
+                desc = bp_book.0102.desc_past_declined
+            }
+            desc = bp_book.0102.desc_empty
+        }
+    }
+    left_portrait = root
+    option = { name = bp_book.chronicle_back trigger_event = bp_book.0007 ai_chance = { base = 100 } }
+}
+
+bp_book.0103 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_spring_01
+    }
+    title = bp_book.0103.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_spring_declined_v014 } }
+                desc = bp_book.0103.desc_declined
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_spring_rite_lock_v013 has_variable = bp_spring_ever_celebrated_v014 } }
+                desc = bp_book.0103.desc_active
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_spring_announced_v014 } bp_spring_calendar_window_trigger = yes }
+                desc = bp_book.0103.desc_announced
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_spring_announced_v014 } }
+                desc = bp_book.0103.desc_missed
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_spring_ever_celebrated_v014 has_variable = bp_spring_ever_declined_v014 } }
+                desc = bp_book.0103.desc_past_both
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_spring_ever_celebrated_v014 } }
+                desc = bp_book.0103.desc_past
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_spring_ever_declined_v014 } }
+                desc = bp_book.0103.desc_past_declined
+            }
+            desc = bp_book.0103.desc_empty
+        }
+    }
+    left_portrait = root
+    option = { name = bp_book.chronicle_back trigger_event = bp_book.0007 ai_chance = { base = 100 } }
+}
+
+bp_book.0104 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_jare_01
+    }
+    title = bp_book.0104.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_jare_declined_v014 } }
+                desc = bp_book.0104.desc_declined
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_jare_rite_lock_v013 has_variable = bp_jare_ever_celebrated_v014 } }
+                desc = bp_book.0104.desc_active
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_jare_announced_v014 } bp_jare_calendar_window_trigger = yes }
+                desc = bp_book.0104.desc_announced
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_jare_announced_v014 } }
+                desc = bp_book.0104.desc_missed
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_jare_ever_celebrated_v014 has_variable = bp_jare_ever_declined_v014 } }
+                desc = bp_book.0104.desc_past_both
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_jare_ever_celebrated_v014 } }
+                desc = bp_book.0104.desc_past
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_jare_ever_declined_v014 } }
+                desc = bp_book.0104.desc_past_declined
+            }
+            desc = bp_book.0104.desc_empty
+        }
+    }
+    left_portrait = root
+    option = { name = bp_book.chronicle_back trigger_event = bp_book.0007 ai_chance = { base = 100 } }
+}
+
+# Knowledge of ancestors can be reviewed anytime, without new rewards on opening.
+bp_book.0008 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_dziady_02
+    }
+    title = bp_book.0008.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { has_character_flag = bp_ancestral_war_memory }
+                desc = bp_book.0008.desc_war
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_ancestral_state_memory }
+                desc = bp_book.0008.desc_state
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_ancestral_names_remembered }
+                desc = bp_book.0008.desc_names
+            }
+            desc = bp_book.0008.desc_empty
+        }
+    }
+    left_portrait = root
+    option = { name = bp_book.back trigger_event = bp_book.0001 ai_chance = { base = 100 } }
+}
+
+# Second part of the chronicle, avoiding nine buttons in one event window.
+bp_book.0009 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_gaik_02
+    }
+    title = bp_book.0009.t
+    desc = bp_book.0009.desc
+    left_portrait = root
+    option = { name = bp_book.0009.gaik trigger_event = bp_book.0105 ai_chance = { base = 0 } }
+    option = { name = bp_book.0009.dziady trigger_event = bp_book.0106 ai_chance = { base = 0 } }
+    option = { name = bp_book.0009.stado trigger_event = bp_book.0107 ai_chance = { base = 0 } }
+    option = { name = bp_book.0009.kupala trigger_event = bp_book.0108 ai_chance = { base = 0 } }
+    option = { name = bp_book.chronicle_back trigger_event = bp_book.0007 ai_chance = { base = 100 } }
+}
+
+bp_book.0105 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_gaik_01
+    }
+    title = bp_book.0105.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_gaik_declined_v015 } }
+                desc = bp_book.0105.desc_declined
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_gaik_rite_lock_v015 has_variable = bp_gaik_ever_celebrated_v015 } }
+                desc = bp_book.0105.desc_active
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_gaik_announced_v015 } bp_gaik_calendar_window_trigger = yes }
+                desc = bp_book.0105.desc_announced
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_gaik_announced_v015 } }
+                desc = bp_book.0105.desc_missed
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_gaik_ever_celebrated_v015 } }
+                desc = bp_book.0105.desc_past
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_gaik_ever_declined_v015 } }
+                desc = bp_book.0105.desc_past_declined
+            }
+            desc = bp_book.0105.desc_empty
+        }
+    }
+    left_portrait = root
+    option = { name = bp_book.chronicle2_back trigger_event = bp_book.0009 ai_chance = { base = 100 } }
+}
+
+bp_book.0106 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_dziady_02
+    }
+    title = bp_book.0106.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_dziady_declined_v015 } }
+                desc = bp_book.0106.desc_declined
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_dziady_rite_lock_v015 has_variable = bp_dziady_ever_celebrated_v015 } }
+                desc = bp_book.0106.desc_active
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_dziady_announced_v015 } bp_dziady_calendar_window_trigger = yes }
+                desc = bp_book.0106.desc_announced
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_dziady_announced_v015 } }
+                desc = bp_book.0106.desc_missed
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_dziady_ever_celebrated_v015 } }
+                desc = bp_book.0106.desc_past
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_dziady_ever_declined_v015 } }
+                desc = bp_book.0106.desc_past_declined
+            }
+            desc = bp_book.0106.desc_empty
+        }
+    }
+    left_portrait = root
+    option = { name = bp_book.chronicle2_back trigger_event = bp_book.0009 ai_chance = { base = 100 } }
+}
+
+bp_book.0107 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_stado_01
+    }
+    title = bp_book.0107.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_stado_declined_v015 } }
+                desc = bp_book.0107.desc_declined
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_stado_rite_lock_v015 has_variable = bp_stado_ever_celebrated_v015 } }
+                desc = bp_book.0107.desc_active
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_stado_announced_v015 } bp_stado_calendar_window_trigger = yes }
+                desc = bp_book.0107.desc_announced
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_stado_announced_v015 } }
+                desc = bp_book.0107.desc_missed
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_stado_ever_celebrated_v015 } }
+                desc = bp_book.0107.desc_past
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_stado_ever_declined_v015 } }
+                desc = bp_book.0107.desc_past_declined
+            }
+            desc = bp_book.0107.desc_empty
+        }
+    }
+    left_portrait = root
+    option = { name = bp_book.chronicle2_back trigger_event = bp_book.0009 ai_chance = { base = 100 } }
+}
+
+bp_book.0108 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_kupala_01
+    }
+    title = bp_book.0108.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_kupala_declined_v015 } }
+                desc = bp_book.0108.desc_declined
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_kupala_rite_lock_v015 has_variable = bp_kupala_ever_celebrated_v015 } }
+                desc = bp_book.0108.desc_active
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_kupala_announced_v015 } bp_kupala_calendar_window_trigger = yes }
+                desc = bp_book.0108.desc_announced
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_kupala_announced_v015 } }
+                desc = bp_book.0108.desc_missed
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_kupala_ever_celebrated_v015 } }
+                desc = bp_book.0108.desc_past
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_kupala_ever_declined_v015 } }
+                desc = bp_book.0108.desc_past_declined
+            }
+            desc = bp_book.0108.desc_empty
+        }
+    }
+    left_portrait = root
+    option = { name = bp_book.chronicle2_back trigger_event = bp_book.0009 ai_chance = { base = 100 } }
+}
+
+# Dynastic debts survive succession. This page only reads the dynasty state.
+bp_book.0010 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_weles_03 }
+    title = bp_book.0010.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = {
+                    dynasty = {
+                        has_variable = bp_weles_debt_unpaid_v018
+                        has_variable = bp_weles_dynastic_blood_v018
+                    }
+                }
+                desc = bp_book.0010.desc_blood
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_weles_debt_unpaid_v018 } }
+                desc = bp_book.0010.desc_unpaid
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_weles_debt_paid_v018 } }
+                desc = bp_book.0010.desc_paid
+            }
+            desc = bp_book.0010.desc_none
+        }
+    }
+    left_portrait = root
+    option = { name = bp_book.0010.back trigger_event = bp_book.0002 ai_chance = { base = 100 } }
+}
+
+# Third chronicle leaf: never expires; dynasty history and last season are distinct.
+bp_book.0011 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_autumn_01 }
+    title = bp_book.0011.t
+    desc = bp_book.0011.desc
+    left_portrait = root
+    option = { name = bp_book.0011.a trigger_event = bp_book.0111 ai_chance = { base = 0 } }
+    option = { name = bp_book.0011.b trigger_event = bp_book.0112 ai_chance = { base = 0 } }
+    option = { name = bp_book.0011.c trigger_event = bp_book.0113 ai_chance = { base = 0 } }
+    option = { name = bp_book.0011.d trigger_event = bp_book.0114 ai_chance = { base = 0 } }
+    option = { name = bp_book.back trigger_event = bp_book.0001 ai_chance = { base = 100 } }
+}
+
+bp_book.0111 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_perun_01 }
+    title = bp_book.0111.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_perun_declined_v019 } }
+                desc = bp_book.status_declined_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_perun_rite_lock_v019 has_variable = bp_perun_ever_celebrated_v019 } }
+                desc = bp_book.status_active_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_perun_announced_v019 } bp_perun_calendar_window_trigger = yes }
+                desc = bp_book.status_announced_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_perun_announced_v019 } }
+                desc = bp_book.status_missed_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_perun_ever_blessed_v019 } }
+                desc = bp_book.status_blessed_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_perun_ever_celebrated_v019 } }
+                desc = bp_book.status_past_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_perun_ever_declined_v019 } }
+                desc = bp_book.status_past_declined_019
+            }
+            desc = bp_book.status_empty_019
+        }
+    }
+    left_portrait = root
+    option = { name = bp_book.0011.back trigger_event = bp_book.0011 ai_chance = { base = 100 } }
+}
+
+bp_book.0112 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_harvest_01 }
+    title = bp_book.0112.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_harvest_declined_v019 } }
+                desc = bp_book.status_declined_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_harvest_rite_lock_v019 has_variable = bp_harvest_ever_celebrated_v019 } }
+                desc = bp_book.status_active_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_harvest_announced_v019 } bp_harvest_calendar_window_trigger = yes }
+                desc = bp_book.status_announced_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_harvest_announced_v019 } }
+                desc = bp_book.status_missed_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_harvest_ever_blessed_v019 } }
+                desc = bp_book.status_blessed_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_harvest_ever_celebrated_v019 } }
+                desc = bp_book.status_past_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_harvest_ever_declined_v019 } }
+                desc = bp_book.status_past_declined_019
+            }
+            desc = bp_book.status_empty_019
+        }
+    }
+    left_portrait = root
+    option = { name = bp_book.0011.back trigger_event = bp_book.0011 ai_chance = { base = 100 } }
+}
+
+bp_book.0113 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_autumn_01 }
+    title = bp_book.0113.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_autumn_declined_v019 } }
+                desc = bp_book.status_declined_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_autumn_rite_lock_v019 has_variable = bp_autumn_ever_celebrated_v019 } }
+                desc = bp_book.status_active_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_autumn_announced_v019 } bp_autumn_calendar_window_trigger = yes }
+                desc = bp_book.status_announced_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_autumn_announced_v019 } }
+                desc = bp_book.status_missed_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_autumn_ever_blessed_v019 } }
+                desc = bp_book.status_blessed_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_autumn_ever_celebrated_v019 } }
+                desc = bp_book.status_past_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_autumn_ever_declined_v019 } }
+                desc = bp_book.status_past_declined_019
+            }
+            desc = bp_book.status_empty_019
+        }
+    }
+    left_portrait = root
+    option = { name = bp_book.0011.back trigger_event = bp_book.0011 ai_chance = { base = 100 } }
+}
+
+bp_book.0114 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_szczodre_01 }
+    title = bp_book.0114.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_szczodre_declined_v019 } }
+                desc = bp_book.status_declined_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_szczodre_rite_lock_v019 has_variable = bp_szczodre_ever_celebrated_v019 } }
+                desc = bp_book.status_active_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_szczodre_announced_v019 } bp_szczodre_calendar_window_trigger = yes }
+                desc = bp_book.status_announced_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_szczodre_announced_v019 } }
+                desc = bp_book.status_missed_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_szczodre_ever_blessed_v019 } }
+                desc = bp_book.status_blessed_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_szczodre_ever_celebrated_v019 } }
+                desc = bp_book.status_past_019
+            }
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_szczodre_ever_declined_v019 } }
+                desc = bp_book.status_past_declined_019
+            }
+            desc = bp_book.status_empty_019
+        }
+    }
+    left_portrait = root
+    option = { name = bp_book.0011.back trigger_event = bp_book.0011 ai_chance = { base = 100 } }
+}

@@ -1,0 +1,88 @@
+﻿namespace = bp_gromnica
+
+# 2 February; initiated through the decision during the correct date window.
+bp_gromnica.1001 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        reference = bp_scene_gromnica_02
+    }
+    title = bp_gromnica.1001.t
+    desc = bp_gromnica.1001.desc
+    left_portrait = root
+    immediate = {
+        bp_initialize_effect = yes
+        dynasty = { set_variable = { name = bp_gromnica_ever_celebrated_v014 value = yes } }
+        add_character_flag = { flag = bp_gromnica_used days = 335 }
+        dynasty = {
+            set_variable = { name = bp_gromnica_rite_lock_v013 value = yes days = 335 }
+            if = {
+                limit = { has_variable = bp_gromnica_accepted_v013 }
+                remove_variable = bp_gromnica_accepted_v013
+            }
+        }
+    }
+    option = {
+        name = bp_gromnica.1001.a
+        trigger = { gold >= 35 }
+        show_as_unavailable = { gold < 35 }
+        remove_short_term_gold = 35
+        add_character_flag = { flag = bp_gromnica_trial days = 90 }
+        add_character_flag = { flag = bp_gromnica_fire days = 90 }
+        add_character_modifier = { modifier = bp_gromnica_guard_modifier days = 45 }
+        bp_weles_plus_20_effect = yes
+        bp_mokosh_plus_10_effect = yes
+        trigger_event = { id = bp_gromnica.1002 days = 1 }
+        ai_chance = { base = 55 }
+    }
+    option = {
+        name = bp_gromnica.1001.b
+        add_prestige = -50
+        add_character_flag = { flag = bp_gromnica_trial days = 90 }
+        add_character_flag = { flag = bp_gromnica_village days = 90 }
+        bp_weles_plus_10_effect = yes
+        bp_mokosh_plus_20_effect = yes
+        trigger_event = { id = bp_gromnica.1002 days = 1 }
+        ai_chance = { base = 35 }
+    }
+    option = {
+        name = bp_gromnica.1001.c
+        add_gold = 20
+        bp_weles_minus_15_effect = yes
+        trigger_event = { id = bp_gromnica.1002 days = 1 }
+        ai_chance = { base = 10 }
+    }
+}
+
+# This is a genuine second scene, not a tooltip on the first event.
+bp_gromnica.1002 = {
+    type = character_event
+    theme = diplomacy
+    override_background = {
+        trigger = { has_character_flag = bp_gromnica_fire }
+        reference = bp_scene_gromnica_01
+    }
+    override_background = {
+        reference = bp_scene_gromnica_02
+    }
+    title = bp_gromnica.1002.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { has_character_flag = bp_gromnica_fire }
+                desc = bp_gromnica.1002.desc_fire
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_gromnica_village }
+                desc = bp_gromnica.1002.desc_village
+            }
+            desc = bp_gromnica.1002.desc_ignored
+        }
+    }
+    left_portrait = root
+    option = {
+        name = bp_gromnica.1002.a
+        add_character_flag = { flag = bp_heard_ice_voice days = 90 }
+        ai_chance = { base = 100 }
+    }
+}

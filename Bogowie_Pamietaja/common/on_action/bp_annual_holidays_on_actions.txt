@@ -1,4 +1,4 @@
-# 0.1.6: always-open calendar. Holidays themselves are not decisions.
+﻿# 0.1.6: always-open calendar. Holidays themselves are not decisions.
 # Safe additive hooks: only on_actions are appended; do not override vanilla effect.
 # Once bootstrapped, a single hidden player event checks the calendar each game day.
 # Jan-1 hook starts the watcher for a normal campaign. Lobby and quarterly pulse

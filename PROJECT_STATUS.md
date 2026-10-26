@@ -2,18 +2,10 @@
 
 **Data:** 26.10.2026  
 **Wersja:** 0.1.9 ALPHA / 12 świąt  
-**Status GitHub:** CZĘŚCIOWA SYNCHRONIZACJA, NIE JEST KOPIĄ ZAPASOWĄ.
+**Status GitHub:** KOMPLET ŹRÓDEŁ 0.1.9 ALPHA. Testy w CK3 nadal oczekują.
 
-## Repozytorium faktycznie zawiera
-- Dokumentację: `README.md`, `PROJECT_STATUS.md`, `CHANGELOG.md`, `RESTORE.md`.
-- Pierwszych sześć plików źródłowych: `descriptor.mod`, `common/on_action/bp_annual_holidays_on_actions.txt`, `common/scripted_effects/bp_annual_schedule_effects.txt`, `common/scripted_effects/bp_calendar_watch_effects.txt`, `common/scripted_effects/bp_perun_effects_019.txt`, `common/opinion_modifiers/bp_opinions.txt`.
-
-## BRAKUJE na GitHubie
-- Pozostałych plików źródłowych CK3, w tym wielu wydarzeń i lokalizacji.
-- 32 plików DDS używanych przez mod.
-- 32 oryginalnych grafik JPG i reszty dokumentacji wydania.
-
-Nie wolno pobierać aktualnego drzewa z GitHub jako działającego moda. Odtworzenie możliwe wyłącznie z pełnej lokalnej paczki do czasu zakończenia importu.
+## Stan synchronizacji
+Pełne źródła, tekstury DDS, grafiki JPG i dokumenty wydania są na GitHubie. Szczegóły oraz sumy kontrolne w [SYNC_STATUS.md](SYNC_STATUS.md).
 
 ## Zachowana paczka źródłowa
 `Bogowie_Pamietaja_v0.1.9_ALPHA_12_SWIAT(1).zip`  

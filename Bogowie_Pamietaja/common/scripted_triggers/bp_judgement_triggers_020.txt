@@ -22,6 +22,13 @@ bp_first_court_broken_v020_trigger = {
     }
 }
 
+# A human blood sacrifice takes precedence over the gentle "Light" verdict,
+# even if the ruler also guarded both hearth and villages.
+bp_first_court_blood_v020_trigger = {
+    has_character_flag = bp_gromnica_trial
+    has_character_flag = bp_weles_blood_now_v020
+}
+
 # The first outcome requires BOTH Gromnica acts and an honest Weles answer.
 bp_first_court_light_v020_trigger = {
     has_character_flag = bp_gromnica_both_done_v020

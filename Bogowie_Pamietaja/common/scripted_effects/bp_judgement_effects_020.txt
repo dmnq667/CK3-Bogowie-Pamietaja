@@ -1,0 +1,85 @@
+# Court I, 0.2.0. Classify facts, not a simple positive favor score.
+# The order is deliberate: broken oaths outrank positive accomplishments.
+bp_first_court_classify_020_effect = {
+    if = {
+        limit = { bp_first_court_broken_v020_trigger = yes }
+        add_character_flag = { flag = bp_first_court_path_silence_v020 days = 345 }
+    }
+    else_if = {
+        limit = { bp_first_court_light_v020_trigger = yes }
+        add_character_flag = { flag = bp_first_court_path_light_v020 days = 345 }
+    }
+    else_if = {
+        limit = { bp_first_court_boundary_v020_trigger = yes }
+        add_character_flag = { flag = bp_first_court_path_boundary_v020 days = 345 }
+    }
+    else_if = {
+        limit = { bp_first_court_oath_v020_trigger = yes }
+        add_character_flag = { flag = bp_first_court_path_oath_v020 days = 345 }
+    }
+    else_if = {
+        limit = { bp_first_court_pending_v020_trigger = yes }
+        add_character_flag = { flag = bp_first_court_path_pending_v020 days = 345 }
+    }
+    else = {
+        add_character_flag = { flag = bp_first_court_path_silence_v020 days = 345 }
+    }
+}
+
+# First visible trait of ONE character trait line. Other courts later
+# replace its tier; never stack visible marks from the four courts.
+bp_first_court_give_trait_020_effect = {
+    if = {
+        limit = { NOT = { has_trait = bp_gods_mark_1_v020 } }
+        add_trait = bp_gods_mark_1_v020
+    }
+}
+
+bp_first_court_accept_light_020_effect = {
+    if = {
+        limit = { NOT = { has_character_flag = bp_first_court_finalized_v020 } }
+        add_character_flag = { flag = bp_first_court_finalized_v020 days = 345 }
+        add_character_flag = { flag = bp_first_court_result_light_v020 days = 345 }
+        bp_first_court_give_trait_020_effect = yes
+        add_character_modifier = { modifier = bp_first_court_light_modifier_v020 years = 1 }
+    }
+}
+bp_first_court_accept_oath_020_effect = {
+    if = {
+        limit = { NOT = { has_character_flag = bp_first_court_finalized_v020 } }
+        add_character_flag = { flag = bp_first_court_finalized_v020 days = 345 }
+        add_character_flag = { flag = bp_first_court_result_oath_v020 days = 345 }
+        bp_first_court_give_trait_020_effect = yes
+        add_character_modifier = { modifier = bp_first_court_oath_modifier_v020 years = 1 }
+    }
+}
+bp_first_court_accept_boundary_020_effect = {
+    if = {
+        limit = { NOT = { has_character_flag = bp_first_court_finalized_v020 } }
+        add_character_flag = { flag = bp_first_court_finalized_v020 days = 345 }
+        add_character_flag = { flag = bp_first_court_result_boundary_v020 days = 345 }
+        bp_first_court_give_trait_020_effect = yes
+        add_character_modifier = { modifier = bp_first_court_boundary_modifier_v020 years = 1 }
+    }
+}
+bp_first_court_decline_mark_020_effect = {
+    if = {
+        limit = { NOT = { has_character_flag = bp_first_court_finalized_v020 } }
+        add_character_flag = { flag = bp_first_court_finalized_v020 days = 345 }
+        add_character_flag = { flag = bp_first_court_result_declined_v020 days = 345 }
+    }
+}
+bp_first_court_silence_020_effect = {
+    if = {
+        limit = { NOT = { has_character_flag = bp_first_court_finalized_v020 } }
+        add_character_flag = { flag = bp_first_court_finalized_v020 days = 345 }
+        add_character_flag = { flag = bp_first_court_result_silence_v020 days = 345 }
+    }
+}
+bp_first_court_pending_020_effect = {
+    if = {
+        limit = { NOT = { has_character_flag = bp_first_court_finalized_v020 } }
+        add_character_flag = { flag = bp_first_court_finalized_v020 days = 345 }
+        add_character_flag = { flag = bp_first_court_result_pending_v020 days = 345 }
+    }
+}

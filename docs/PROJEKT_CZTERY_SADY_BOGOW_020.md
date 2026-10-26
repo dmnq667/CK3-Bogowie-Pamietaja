@@ -1,7 +1,7 @@
 # Projekt mechaniki 0.2.0 ALPHA: Cztery Sądy Bogów
 
 **Data koncepcji:** 26.10.2026  
-**Status:** PODZIAŁ SĄDÓW USTALONY PRZEZ AUTORA (26.10.2026). Szczegóły nagród i cech pozostają propozycją. Bez zmian w działającym modzie 0.1.9.  
+**Status:** ZATWIERDZONO PODZIAŁ SĄDÓW 2 / 4 / 3 / 3 ORAZ JEDYNĄ NAGRODĘ FINANSOWĄ +1500 ZŁOTA RAZ NA ROK OBRZĘDOWY, WYŁĄCZNIE PODCZAS SĄDU II PO DZIADACH WIOSENNYCH. Szczegółowa ocena decyzji i stopnie cechy pozostają do opracowania. Bez zmian w modzie 0.1.9.  
 **Baza:** `v0.1.9-alpha` (kompletne źródła na GitHubie; próby w CK3 zaplanowane na wieczór).
 
 ## Główna idea
@@ -32,7 +32,7 @@ Mechanika sądu II:
 1. Rozpatruje wszystkie **cztery** święta rozdziału wiosennego oraz **wynik sądu I**, a nie tylko cztery osobne flagi obecności.
 2. Uwzględnia otwarte zobowiązania ze **starego cyklu**, w szczególności prawdziwy stan dynastycznego długu Welesa, dotrzymane lub złamane przysięgi i wybory gracza. Może wspomnieć decyzje z dawnych świąt tylko wtedy, gdy zostały rzetelnie zapisane w danych.
 3. Zamyka poprzedni rozdział symbolicznie, nie kasując długu Welesa ani nie resetując automatycznie nagród, traitów, strażnika kalendarza lub stanu innych świąt.
-4. Jego konsekwencja fabularna powinna być wyraźnie **ważniejsza od zwykłego sądu sezonowego**. Wciąż przyznaje najwyżej jedną przewidzianą nagrodę za swój etap, nie powiela wypłaty z sądu I.
+4. Jego konsekwencja fabularna jest wyraźnie **ważniejsza od zwykłego sądu sezonowego**. **To jedyny sąd z możliwością otrzymania +1500 złota, raz na rok obrzędowy, warunkowo po ocenie wcześniejszych wyborów.** Sąd I w ogóle nie wypłaca takiej nagrody.
 5. Aby nie pomylić wydarzeń stycznia z cyklem lutowo-majowym, zapis sądów musi mieć jednoznaczny identyfikator **cyklu obrzędowego**, niezależny od samego kalendarzowego przełomu roku. Przy późnej instalacji moda nie dopowiadać niezaobserwowanych decyzji.
 
 Pozostałe sądy rozliczają swoje grupy świąt, a IV **nie jest drugim konkurencyjnym „sądem całego roku”**. Może zamykać cykl dwunastu obrzędów i przygotowywać następny, lecz ostateczne rytualne rozliczenie minionego roku jest motywem II.
@@ -50,16 +50,23 @@ Nie opierać oceny na tym, czy gracz tylko zobaczył wydarzenie ani na jednym gl
 
 ## Nagrody i cechy postaci
 
-**Wola autora: nagroda finansowa ma być znacząca, najlepiej +1500 złota.**
+### Zatwierdzona zasada: 1500 złota tylko podczas Sądu II
 
-### Proponowany model
+**Jedyne możliwe przyznanie +1500 złota ma miejsce po Dziadach wiosennych, podczas Sądu Korzeni i Przodków, w rytualnym rozliczeniu minionego roku. Raz na jeden cykl obrzędowy.**
 
-- Każdy z czterech sądów może przyznać **+1500 złota** za uznany przez mechanikę, znaczący przebieg przypisanych do niego świąt (odpowiednio 2 / 4 / 3 / 3, a dla II także bilans minionego roku).
-- Cztery sądy dają zatem do **+6000 złota na jedną postać**, jeśli zostaną wszystkie cztery nagrody zdobyte. To mocny, celowo hojny bonus, nie zwykły bilans świąt.
-- **Nie wypłacać ponownie tej samej nagrody co rok tej samej postaci**. Może wracać fabularny sąd, ale jednorazową wypłatę danego etapu należy chronić stałym znacznikiem na postaci. Następny władca wypracowuje własne zasługi.
-- Słaby lub niepełny przebieg świąt ma inne zakończenie, bez automatycznego +1500. Konkretne progi i alternatywne nagrody do zatwierdzenia z autorem.
-- Obecny niespłacony dynastyczny dług Welesa **nie znika** po przyznaniu złota; wpływa zwłaszcza na najwyższy sąd.
-- Nie zamieniać nagrody na stały odnawialny dochód bez wyraźnej zgody autora.
+- Sądy I, III i IV **nie wypłacają +1500 złota ani innych automatycznych nagród pieniężnych**. Zachowują konsekwencje fabularne, ewentualne inne bonusy oraz możliwość postępu widocznej cechy.
+- Sąd II ocenia zapisane wybory gracza z wiosennych świąt i wynik Sądu I, a w miarę istnienia wiarygodnych danych również wcześniejsze zobowiązania i dokonania starego cyklu, przede wszystkim dług Welesa. Nagroda **nie należy się za sam udział ani za samo otwarcie wydarzenia**.
+- Jednorazowa wypłata **+1500 złota jest możliwa tylko po pozytywnym rozliczeniu**. Inne wyniki mają różne konsekwencje narracyjne i nie wypłacają tej kwoty. Warunki pozytywnego rozliczenia wymagają dalszego projektu i sprawdzenia w grze.
+- **Maksimum to +1500 złota na rok obrzędowy**, niezależnie od liczby otwarć okna, ponownego wywołania debug czy sukcesji. Zastosować blokadę powiązaną z identyfikatorem rozliczanego cyklu, odporną na wczytanie zapisu i próbę ponownego odbioru po zmianie władcy. Rozliczenie cyklu nie może zresetować licznika wypłaty w tym samym roku.
+- **Ten sam władca może ponownie zdobyć +1500 złota w następnym roku obrzędowym**, ale dopiero po kolejnych obrzędach i ponownej pozytywnej ocenie. Nie używać jednorazowej dożywotniej blokady nagrody.
+- Nie kasować długu Welesa wypłatą; może on wpływać na możliwość uzyskania pozytywnego wyniku sądu. Nie zastępować 1500 złota automatycznym miesięcznym dochodem.
+- Cechy rozwijane podczas czterech sądów są **niezależne od rocznej wypłaty**: warunkowe awanse mogą występować na wszystkich czterech etapach. Złoto przyznawać wyłącznie podczas Sądu II.
+
+### Szczegóły do dopracowania
+
+- Dokładne warunki pozytywnego rozliczenia wcześniejszych wyborów: ocena jakości decyzji, nie mechaniczna liczba kliknięć.
+- Ewentualne pozafinansowe premie / warianty nieudanego sądu i wpływ długu Welesa.
+- Zasady awansu rozwijanej cechy, aby nie przyznawać jej wyłącznie za upływ czasu.
 
 ### Widoczna cecha (trait), nie tymczasowy modyfikator
 
@@ -91,11 +98,11 @@ W implementacji: `common/traits/bp_covenant_traits.txt`, lokalizacje PL/EN i oso
 ## Krytyczne warunki testowe
 
 - Cztery punkty kalendarza wywołują się tylko raz w odpowiednim okresie, kolejno po 2., 6., 9. i 12. święcie; w szczególności sąd po Szczodrych Godach **po 6 stycznia**, nie podwaja święta na przełomie roku.
-- Sąd II po Dziadach wiosennych uwzględnia zapisany wynik Sądu I i stan poprzedniego roku, ale nie wypłaca nagrody I drugi raz, nie kasuje długu Welesa i nie resetuje całego kalendarza.
+- Sąd II po Dziadach wiosennych uwzględnia zapisany wynik Sądu I i stan poprzedniego roku. **Tylko on może wypłacić +1500 złota, warunkowo, maksymalnie raz na rok obrzędowy**; nie kasuje długu Welesa i nie resetuje całego kalendarza.
 - Sprawdzić przełomy roku, rozpoczęcie kampanii w styczniu/lutym/maju oraz sukcesję między sądami; nie odtwarzać brakującej historii z domysłów.
-- Postać, która odmówiła wszystkich świąt, nie dostaje automatycznej cechy i +1500 złota.
+- Postać, która odmówiła wszystkich świąt, nie dostaje automatycznie rozwijanej cechy ani +1500 złota. Pozostałe sądy nie przyznają 1500 złota nawet przy najlepszym wyniku.
 - Wydarzenie odzwierciedla konkretne ścieżki, nie jedynie obecność na świętach. Kontrola grup 2 / 4 / 3 / 3, bez pozostałości starego podziału po trzy.
-- Maksymalnie jedna nagroda +1500 za każdy etap na postać; powtarzanie debug, zapisu, sukcesja i kolejny rok nie mnożą wypłat wbrew regułom.
+- Maksymalnie **jedna nagroda +1500 na jeden rok obrzędowy**, wyłącznie w Sądzie II. Testować powtórzenia debug, zapis/odczyt, sukcesję w trakcie cyklu i ponowną kwalifikację tego samego władcy w kolejnym roku.
 - Cecha wyświetla się w panelu, ma poprawną ikonę, nazwę, opis, premii zgodne z projektem; przy awansie wcześniejsza cecha znika.
 - Dług Welesa oraz istniejące efekty świąt nadal działają.
 - Test kompatybilności na nowym i kontynuowanym zapisie; jeśli gracz włącza 0.2.0 w środku cyklu, brakujących wyborów **nie rekonstruować z domysłów**.
@@ -103,8 +110,8 @@ W implementacji: `common/traits/bp_covenant_traits.txt`, lokalizacje PL/EN i oso
 
 ## Ustalenia wymagające decyzji autora
 
-1. Czy każdy udany sąd ma dawać +1500 złota (łącznie do 6000 na władcę), czy +1500 tylko finał roczny? **Domyślnie projektuj po +1500 za każdy sąd.**
+1. **ROZSTRZYGNIĘTE:** +1500 złota może wystąpić tylko po Sądzie II, jako roczne rozliczenie po Dziadach wiosennych. Maksymalnie raz na rok obrzędowy, po pozytywnej ocenie. Pozostałe sądy bez tej wypłaty.
 2. Czy jedna rozwijająca się cecha jest właściwa, czy autor woli cztery niezależne cechy? **Domyślnie jedna czterostopniowa cecha.**
 3. Jak kwalifikować „udany” przebieg grup 2 / 4 / 3 / 3 i bilans minionego roku w sądzie II: progi ilościowe czy narracyjny bilans różnych ścieżek? **Domyślnie ocena decyzji, nie samo uczestnictwo, z więcej niż jednym możliwym wariantem powodzenia.**
 
-**Podział 2 / 4 / 3 / 3 oraz rola drugiego sądu są decyzją autora.** Szczegóły nagród, stopni cechy i kwalifikowania sukcesu pozostają robocze. Nie zmieniać tagu 0.1.9 ani deklarować testu w grze przed rzeczywistą sesją.
+**Decyzje autora:** podział 2 / 4 / 3 / 3, Sąd II jako rozliczenie minionego roku oraz warunkowe +1500 złota wyłącznie tam, maksymalnie raz na rok obrzędowy. Ocenianie wyborów, warianty pozafinansowe i stopnie cechy pozostają do opracowania. Nie zmieniać tagu 0.1.9 ani deklarować testu w grze przed rzeczywistą sesją.

@@ -731,3 +731,16 @@
  bp_first_court_oath_modifier_v020:0 "Słowo dane ziemi"
  bp_first_court_boundary_modifier_v020:0 "Granica ofiary"
  bp_test.9006.court_one:0 "[TEST] Sąd Popiołu i Przysięgi (na kopii zapisu)"
+
+ # Court I read-only chronicle
+ bp_book.0002.first_court:0 "Sąd Popiołu i Przysięgi: zapis zimy"
+ bp_book.0012.t:0 "Księga Bogów: Sąd Popiołu i Przysięgi"
+ bp_book.0012.desc_light:0 "Światło dla żywych. Ogień został ochroniony, ludzie ocaleni, a władca zmierzył się z żądaniami Welesa. Bogowie uznali jego czyny. Znak Pierwszego Ognia pozostanie przy postaci, a dyplomacja wzrosła na rok o 5.\n\nWiosenny sąd przypomni ten wybór. Samo zimowe wyróżnienie nie gwarantuje złota."
+ bp_book.0012.desc_oath:0 "Słowo dane ziemi. Władca przyjął trudną cenę, ofiarę lub przysięgę bez wyparcia się odpowiedzialności. Otrzymał Znak Pierwszego Ognia oraz roczną łaskę: +5 intrygi i +10 naturalnego postrachu.\n\nJeżeli dług Welesa pozostaje otwarty, nie został spłacony przez ten wyrok."
+ bp_book.0012.desc_boundary:0 "Granica ofiary. Władca ocalił ludzi, lecz odmówił złożenia daru, którego cena była nie do przyjęcia. Otrzymał Znak Pierwszego Ognia i +5 wiedzy na rok.\n\nBogowie zapamiętają również to, czego świadomie odmówił."
+ bp_book.0012.desc_declined:0 "Zimowy sąd zakończył się możliwością przyjęcia boskiego znamienia, lecz władca sam odmówił. Nie otrzymał cechy ani dodatkowej rocznej łaski. Ten wybór będzie zapamiętany w rozliczeniu wiosennym."
+ bp_book.0012.desc_silence:0 "Gdy bogowie milczą. Zimowy sąd nie przyniósł znamienia ani błogosławieństwa. Zaniedbanie, ucieczka lub nieprawda zostały zapisane i powrócą podczas Sądu Korzeni i Przodków."
+ bp_book.0012.desc_pending:0 "Niedopełniona cena. Los więźnia lub naprawienie dawnej krzywdy pozostają nierozstrzygnięte. Sąd nie potwierdził jeszcze zasługi ani winy. Księga zachowuje pamięć o zobowiązaniu."
+ bp_book.0012.desc_started:0 "Sąd został zwołany, lecz nie zapisano jeszcze jego ostatecznego rozstrzygnięcia. Nie ma przyznanej cechy ani rocznej łaski."
+ bp_book.0012.desc_none:0 "Nie zachowano rozstrzygnięcia tegorocznego Sądu Popiołu i Przysięgi. Sąd odbywa się po Siedmiu Nocach Welesa. Dawniejsze wybory, których mod nie odnotował, nie są rekonstruowane."
+ bp_book.0012.back:0 "Wróć do rozdziału Welesa"

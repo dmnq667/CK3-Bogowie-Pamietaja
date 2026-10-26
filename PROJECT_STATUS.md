@@ -34,7 +34,7 @@
 
 - [Standard importu przez GitHub Actions](docs/PROCEDURA_PUBLIKACJI_GITHUB.md): stosować przy większych paczkach, żeby nie wymagać ręcznego przesyłania katalogów.
 - [Wieczorna sesja testowa 0.1.9](docs/SESJA_TESTOWA_019.md): przygotowana, nie została jeszcze przeprowadzona.
-- Nowy pomysł funkcjonalny: [Cztery Sądy Bogów, propozycja 0.2.0](docs/PROJEKT_CZTERY_SADY_BOGOW_020.md). Cztery zdarzenia po 3., 6., 9. i 12. święcie, ocena rzeczywistych decyzji, widoczna cecha stopniowa i nagrody do +1500 złota za etap. **Projekt koncepcyjny, bez zmian w skryptach.**
+- Nowy mechanizm do wersji 0.2.0: [Cztery Sądy Bogów](docs/PROJEKT_CZTERY_SADY_BOGOW_020.md). **Ustalony przez autora podział 2 / 4 / 3 / 3**, czyli sądy po 2., 6., 9. i 12. święcie. **Drugi sąd** ma rangę obrzędowego rozliczenia minionego roku i pamięta również wynik pierwszego sądu. Nagrody do +1500 złota na udany etap i rozwijana cecha postaci są nadal propozycją. **Brak zmian w skryptach 0.1.9.**
 - Stabilnej bazy 0.1.9 nie zmieniać przed wieczornymi testami i uzgodnieniem mechaniki.
 
 ## Zasady

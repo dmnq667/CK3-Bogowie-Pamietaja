@@ -134,6 +134,7 @@ bp_book.0002 = {
     }
     left_portrait = root
     option = { name = bp_book.0002.debt trigger_event = bp_book.0010 ai_chance = { base = 0 } }
+    option = { name = bp_book.0002.first_court trigger_event = bp_book.0012 ai_chance = { base = 0 } }
     option = { name = bp_book.back trigger_event = bp_book.0001 ai_chance = { base = 100 } }
 }
 
@@ -874,4 +875,52 @@ bp_book.0114 = {
     }
     left_portrait = root
     option = { name = bp_book.0011.back trigger_event = bp_book.0011 ai_chance = { base = 100 } }
+}
+
+# Read-only summary of the FIRST court, accessible from the Weles page.
+# Future courts can reuse this surface without expanding the main book menu.
+bp_book.0012 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_weles_04 }
+    title = bp_book.0012.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { has_character_flag = bp_first_court_result_light_v020 }
+                desc = bp_book.0012.desc_light
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_first_court_result_oath_v020 }
+                desc = bp_book.0012.desc_oath
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_first_court_result_boundary_v020 }
+                desc = bp_book.0012.desc_boundary
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_first_court_result_declined_v020 }
+                desc = bp_book.0012.desc_declined
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_first_court_result_silence_v020 }
+                desc = bp_book.0012.desc_silence
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_first_court_result_pending_v020 }
+                desc = bp_book.0012.desc_pending
+            }
+            triggered_desc = {
+                trigger = { has_character_flag = bp_first_court_started_v020 }
+                desc = bp_book.0012.desc_started
+            }
+            desc = bp_book.0012.desc_none
+        }
+    }
+    left_portrait = root
+    option = {
+        name = bp_book.0012.back
+        trigger_event = bp_book.0002
+        ai_chance = { base = 100 }
+    }
 }

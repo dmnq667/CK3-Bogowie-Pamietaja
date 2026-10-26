@@ -30,25 +30,25 @@ Dalsze opisy mają przywoływać autentyczne znaki ze źródłowych wydarzeń: c
 | **Światło dla żywych** (nowa nazwa, do zatwierdzenia) | Władca **strzegł ognia i uratował ludzi**, a następnie uczciwie zmierzył się z żądaniami Welesa | Możliwość otrzymania pierwszego stopnia cechy i **+5 dyplomacji na rok** |
 | **Słowo dane ziemi** (nazwa zaakceptowana) | Władca przyjął trudną, nawet krwawą ofiarę, ale nie wyparł się odpowiedzialności | Możliwość otrzymania pierwszego stopnia cechy, **+5 intrygi i +10 postrachu na rok**; dług Welesa nadal obowiązuje |
 | **Granica ofiary** (nowa nazwa, do zatwierdzenia) | Władca ochronił swoich ludzi, lecz świadomie odmówił ofiary, którą uznał za niedopuszczalną | Możliwość otrzymania pierwszego stopnia cechy i **+5 wiedzy na rok** |
-| **Noc niełaski** (nowa nazwa, do zatwierdzenia) | Władca lekceważył ostrzeżenia, uciekł przed zobowiązaniami albo okłamał Welesa | **Brak cechy**, niepokojące zakończenie i **zapis przewinienia do Sądu II**; nie powielać nadmiernie już istniejącej klątwy Welesa |
+| **Gdy bogowie milczą** (nazwa zatwierdzona) | Władca lekceważył ostrzeżenia, uciekł przed zobowiązaniami albo okłamał Welesa | **Brak cechy**, niepokojące zakończenie i **zapis przewinienia do Sądu II**; nie powielać nadmiernie już istniejącej klątwy Welesa |
 | **Niedopełniona cena** | Niezakończony wybór więźnia lub inne rzeczywiście nierozstrzygnięte zobowiązanie | Osobna scena o zawieszonej przysiędze. Bez przyznawania sukcesu ani automatycznego orzekania winy |
 
 ### Nazwy rozstrzygnięć, propozycje do zatwierdzenia
 
-Autor zaakceptował skutki i ich siłę, ale poprosił o zmianę trzech nazw. Ostatecznego wyboru nazw jeszcze nie potwierdził.
+Autor zaakceptował skutki i ich siłę. **„Gdy bogowie milczą” to zatwierdzona nazwa czwartego rozstrzygnięcia**. Pozostałe proponowane zamienniki („Światło dla żywych”, „Granica ofiary”) nadal oczekują na wybór.
 
 | Funkcja rozstrzygnięcia | Nazwa rekomendowana | Dodatkowe propozycje |
 | --- | --- | --- |
 | Ochrona ognia i ratunek ludzi | **Światło dla żywych** | Ogień dochowany; Straż ostatniego płomienia |
 | Świadoma odpowiedzialność za trudną ofiarę | **Słowo dane ziemi** (bez zmian) | Nie dotyczy |
 | Świadoma odmowa niedopuszczalnej ofiary | **Granica ofiary** | Dar, którego nie oddano; Nie wszystko wolno poświęcić |
-| Zaniedbanie, ucieczka albo kłamstwo wobec Welesa | **Noc niełaski** | Znak niełaski; Gdy bogowie milczą |
+| Zaniedbanie, ucieczka albo kłamstwo wobec Welesa | **Gdy bogowie milczą** (zatwierdzona) | Znak niełaski |
 
-### Niezbędne rozstrzygnięcie projektowe: „strzegł ognia **i** uratował ludzi”
+### Zatwierdzone rozszerzenie Gromnicy 0.2.0: „strzegł ognia **i** uratował ludzi”
 
 Sformułowanie autora celowo zawiera oba działania, ale **w 0.1.9 opcje Gromnicy wykluczają się**: w `bp_gromnica.1001.a` władca opłaca ochronę ognia (flaga `bp_gromnica_fire`), a w `bp_gromnica.1001.b` wysyła pomoc do osad (flaga `bp_gromnica_village`). Nie może w tym samym przebiegu wybrać obu.
 
-Nie wolno deklarować, że warunek łączny już działa. Przed kodowaniem 0.2.0 ustalić z autorem, czy dodać **osobną możliwość późniejszego ratowania ludzi przy zachowaniu świętego ognia**, czy świadomie dopuszczać w „Świetle dla żywych” jeden z tych czynów wraz z uczciwym rozliczeniem Welesa. Na razie zachować pełne brzmienie autora i oznaczyć zależność jako wymagającą decyzji.
+Autor **zatwierdził dodanie drugiego działania w późniejszej scenie Gromnicy**. W wersji 0.2.0 gracz, który wybrał ochronę ognia, powinien móc dodatkowo wysłać pomoc do osad, a gracz, który najpierw pomagał osadom, powinien móc później zabezpieczyć ogień i straże. Oba czyny muszą faktycznie kosztować zasoby i ustawić zapis potwierdzający wykonanie obu działań. Rozszerzenie implementować w gałęzi 0.2.0, bez zmiany oznaczonej tagiem wersji 0.1.9. Warunek rozstrzygnięcia „Światło dla żywych” opierać na **obu zapisanych czynach**, a nie jednym wybranym wariancie.
 
 Warunki są **propozycją scenariuszową**, niezatwierdzonym balansem. Zakończenia powinny wymagać świadomej decyzji w sądzie i opierać się na prawdziwych wyborach z poprzednich świąt.
 

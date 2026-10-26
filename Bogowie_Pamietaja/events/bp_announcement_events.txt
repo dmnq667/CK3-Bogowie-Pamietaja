@@ -545,6 +545,11 @@ bp_announcement.1299 = {
                 }
                 trigger_event = bp_announcement.1002
             }
+            # Court I: after Weles Week; this piggybacks on the ONE existing watcher.
+            if = {
+                limit = { bp_first_court_due_v020_trigger = yes }
+                trigger_event = bp_judgement.1001
+            }
             if = {
                 limit = {
                     bp_spring_calendar_window_trigger = yes

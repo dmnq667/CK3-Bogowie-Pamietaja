@@ -1,0 +1,11 @@
+# 0.2.0: one evolving line of court-earned marks.
+# Stage I exists now. Later courts must upgrade/replace, never stack.
+# This mark is acquired by events and is not a congenital trait.
+bp_gods_mark_1_v020 = {
+    icon = "gfx/interface/icons/traits/bp_gods_mark_1_v020.dds"
+    random_creation = 0
+    birth = 0
+    can_lose = yes
+    stewardship = 1
+    learning = 1
+}

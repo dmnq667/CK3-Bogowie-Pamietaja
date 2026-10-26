@@ -37,11 +37,13 @@ bp_weles.2001 = {
     option = {
         name = bp_weles.2001.a
         trigger_event = bp_weles.2002
+        add_character_flag = { flag = bp_weles_entered_grove_v020 days = 120 }
         ai_chance = { base = 65 }
     }
     option = {
         name = bp_weles.2001.b
         add_character_flag = { flag = bp_weles_fled days = 335 }
+        add_character_flag = { flag = bp_weles_fled_now_v020 days = 120 }
         bp_weles_minus_15_effect = yes
         add_prestige = -40
         ai_chance = { base = 35 }
@@ -65,6 +67,7 @@ bp_weles.2002 = {
         show_as_unavailable = { gold < 60 }
         remove_short_term_gold = 60
         add_character_flag = { flag = bp_weles_offering days = 90 }
+        add_character_flag = { flag = bp_weles_coins_given_v020 days = 120 }
         bp_weles_plus_20_effect = yes
         trigger_event = bp_weles.2003
         ai_chance = { base = 40 }
@@ -72,6 +75,7 @@ bp_weles.2002 = {
     option = {
         name = bp_weles.2002.b
         add_character_flag = { flag = bp_weles_waiting_for_prisoner days = 20 }
+        add_character_flag = { flag = bp_weles_prisoner_pledged_v020 days = 120 }
         trigger_event = bp_weles.2005
         ai_chance = { base = 10 }
     }
@@ -80,6 +84,7 @@ bp_weles.2002 = {
         add_prestige = -100
         add_character_flag = { flag = bp_weles_offering days = 90 }
         add_character_flag = { flag = bp_weles_oath_of_silence days = 335 }
+        add_character_flag = { flag = bp_weles_oath_now_v020 days = 120 }
         bp_weles_plus_10_effect = yes
         trigger_event = bp_weles.2003
         ai_chance = { base = 35 }
@@ -87,6 +92,7 @@ bp_weles.2002 = {
     option = {
         name = bp_weles.2002.d
         bp_weles_minus_15_effect = yes
+        add_character_flag = { flag = bp_weles_refused_offering_v020 days = 120 }
         ai_chance = { base = 15 }
     }
 }
@@ -119,6 +125,7 @@ bp_weles.2003 = {
         show_as_unavailable = { gold < 50 }
         remove_short_term_gold = 50
         add_character_flag = { flag = bp_weles_truth days = 90 }
+        add_character_flag = { flag = bp_weles_truth_now_v020 days = 120 }
         bp_weles_plus_20_effect = yes
         if = {
             limit = {
@@ -136,6 +143,7 @@ bp_weles.2003 = {
     option = {
         name = bp_weles.2003.b
         add_character_flag = { flag = bp_weles_lied days = 730 }
+        add_character_flag = { flag = bp_weles_lied_now_v020 days = 120 }
         bp_weles_minus_25_effect = yes
         trigger_event = bp_weles.2008
         ai_chance = { base = 20 }
@@ -143,6 +151,7 @@ bp_weles.2003 = {
     option = {
         name = bp_weles.2003.c
         add_prestige = -70
+        add_character_flag = { flag = bp_weles_asked_time_v020 days = 120 }
         trigger_event = bp_weles.2007
         ai_chance = { base = 30 }
     }
@@ -201,6 +210,7 @@ bp_weles.2004 = {
         remove_variable = bp_weles_proposed_prisoner
         add_character_flag = { flag = bp_weles_offering days = 90 }
         add_character_flag = { flag = bp_weles_blood days = 730 }
+        add_character_flag = { flag = bp_weles_blood_now_v020 days = 120 }
         bp_weles_plus_20_effect = yes
         add_dread = 15
         trigger_event = bp_weles.2003
@@ -213,6 +223,7 @@ bp_weles.2004 = {
         add_prestige = -80
         add_character_flag = { flag = bp_weles_offering days = 90 }
         add_character_flag = { flag = bp_weles_merciful days = 730 }
+        add_character_flag = { flag = bp_weles_mercy_now_v020 days = 120 }
         bp_weles_plus_10_effect = yes
         trigger_event = bp_weles.2003
         ai_chance = { base = 65 }
@@ -246,6 +257,7 @@ bp_weles.2006 = {
         name = bp_weles.2006.a
         add_character_modifier = { modifier = bp_weles_great_boon_modifier years = 3 }
         add_character_flag = { flag = bp_weles_great_received years = 6 }
+        add_character_flag = { flag = bp_weles_great_now_v020 days = 120 }
         add_character_flag = { flag = bp_weles_debt_years years = 12 }
         bp_weles_open_debt_018_effect = yes
         bp_weles_plus_40_effect = yes
@@ -280,6 +292,7 @@ bp_weles.2007 = {
     option = {
         name = bp_weles.2007.a
         add_character_modifier = { modifier = bp_weles_lesser_boon_modifier years = 1 }
+        add_character_flag = { flag = bp_weles_lesser_now_v020 days = 120 }
         bp_weles_plus_10_effect = yes
         ai_chance = { base = 100 }
     }
@@ -297,6 +310,7 @@ bp_weles.2008 = {
     option = {
         name = bp_weles.2008.a
         add_character_modifier = { modifier = bp_weles_winter_curse_modifier years = 1 }
+        add_character_flag = { flag = bp_weles_curse_now_v020 days = 120 }
         ai_chance = { base = 100 }
     }
 }

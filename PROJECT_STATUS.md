@@ -34,7 +34,7 @@
 
 - [Standard importu przez GitHub Actions](docs/PROCEDURA_PUBLIKACJI_GITHUB.md): stosować przy większych paczkach, żeby nie wymagać ręcznego przesyłania katalogów.
 - [Wieczorna sesja testowa 0.1.9](docs/SESJA_TESTOWA_019.md): przygotowana, nie została jeszcze przeprowadzona.
-- Nowy mechanizm do wersji 0.2.0: [Cztery Sądy Bogów](docs/PROJEKT_CZTERY_SADY_BOGOW_020.md). **Ustalony przez autora podział 2 / 4 / 3 / 3**, czyli sądy po 2., 6., 9. i 12. święcie. **Drugi sąd** ma rangę obrzędowego rozliczenia minionego roku i pamięta również wynik pierwszego sądu. Nagrody do +1500 złota na udany etap i rozwijana cecha postaci są nadal propozycją. **Brak zmian w skryptach 0.1.9.**
+- Nowy mechanizm do wersji 0.2.0: [Cztery Sądy Bogów](docs/PROJEKT_CZTERY_SADY_BOGOW_020.md). **Zatwierdzony przez autora podział 2 / 4 / 3 / 3**, czyli sądy po 2., 6., 9. i 12. święcie. **Tylko drugi sąd, po Dziadach wiosennych, może warunkowo przyznać +1500 złota w ostatecznym rozliczeniu minionego roku, maksymalnie raz na rok obrzędowy.** Ten sam władca może otrzymać premię w następnych latach, po ponownym spełnieniu warunków. Pozostałe sądy bez nagrody pieniężnej, z konsekwencjami fabularnymi i możliwym rozwojem cechy. **To projekt, bez zmian w skryptach 0.1.9.**
 - Stabilnej bazy 0.1.9 nie zmieniać przed wieczornymi testami i uzgodnieniem mechaniki.
 
 ## Zasady

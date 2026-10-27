@@ -132,9 +132,20 @@ icon = BASE/"gfx/interface/icons/traits/bp_gods_mark_1_v020.dds"
 check(icon.is_file(), "custom trait DDS exists")
 if icon.is_file():
     b = icon.read_bytes()
-    good = (len(b)==4224 and b[:4]==b"DDS " and b[84:88]==b"DXT5"
-            and struct.unpack_from("<II", b, 12)==(64,64))
-    check(good, "trait DDS 64x64 BC3/DXT5 with valid header and byte length")
+    # The old 64x64 DXT5 trait icon rendered as a question mark in-game.
+    # v0.2.0 DEV uses uncompressed 120x120 ARGB DDS with seven mip levels.
+    # Accept the older texture in the validator for compatible test branches.
+    basic = len(b) >= 128 and b[:4] == b"DDS " and struct.unpack_from("<I", b, 4)[0] == 124
+    size = struct.unpack_from("<II", b, 12) if basic else (0, 0)
+    old_bc3 = basic and size == (64, 64) and len(b) == 4224 and b[84:88] == b"DXT5"
+    new_argb = (
+        basic and size == (120, 120) and len(b) == 76864
+        and struct.unpack_from("<I", b, 76)[0] == 32  # pixel format block
+        and (struct.unpack_from("<I", b, 80)[0] & 0x40) != 0  # RGB bit flag
+        and struct.unpack_from("<I", b, 88)[0] == 32  # bits per pixel
+        and struct.unpack_from("<I", b, 28)[0] == 7  # mipmaps
+    )
+    check(old_bc3 or new_argb, "trait DDS valid: old BC3 64x64 or current ARGB 120x120 with mipmaps")
 check("icon = \"gfx/interface/icons/traits/bp_gods_mark_1_v020.dds\"" in traits,
       "trait points to deployed custom DDS icon")
 check("bp_book.0012 = {" in book, "read-only court chronicle page exists")

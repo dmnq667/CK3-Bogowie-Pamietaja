@@ -1,17 +1,8 @@
-﻿# Schedule once per player on Jan 1; new years reset after 350 days.
-# The first two festivals precede leap day. March uses a one-day reschedule
-# to land on the EXACT festival date in both ordinary and leap years.
+﻿# 0.2.0 narrative pacing: legacy scheduled popups are disabled.
+# Retained callable effect for older code, now intentionally no-op.
 bp_schedule_annual_notices_014_effect = {
     if = {
         limit = { NOT = { has_character_flag = bp_annual_notices_scheduled_014 } }
         add_character_flag = { flag = bp_annual_notices_scheduled_014 days = 350 }
-    trigger_event = { id = bp_announcement.1001 days = 32 }
-    trigger_event = { id = bp_announcement.1002 days = 39 }
-    trigger_event = { id = bp_announcement.1093 days = 67 }
-    trigger_event = { id = bp_announcement.1094 days = 79 }
-    trigger_event = { id = bp_announcement.1195 days = 119 }
-    trigger_event = { id = bp_announcement.1196 days = 121 }
-    trigger_event = { id = bp_announcement.1197 days = 148 }
-    trigger_event = { id = bp_announcement.1198 days = 170 }
     }
 }

@@ -49,6 +49,20 @@
 
 Skrypt walidacyjny: `tools/validate_first_court_020.py`. Workflow budujący paczkę rozwojową: `.github/workflows/validate-first-court-020.yml`. Wynik GitHub Actions trzeba odczytać na stronie zakładki **Actions**; sam zapis workflow nie jest jeszcze dowodem ukończonego przebiegu CI.
 
+## Redakcja tempa rozgrywki, po pierwszym teście użytkownika
+
+W pierwszym rzeczywistym teście gry autor potwierdził wywoływanie się wydarzeń, ale zgłosił **zbyt wiele kolejnych okien, za dużo fabuły do czytania i znak zapytania zamiast ikony cechy**. W gałęzi 0.2.0 wprowadzono kolejną poprawkę:
+
+- **Gromnica:** dwa okna zamiast trzech. Trzecia scena `bp_gromnica.1003` pozostała jako ukryty, zgodny z dawnymi zapisami znacznik; oba czyny nadal wymagają osobnych kosztów i ustawiają flagę `bp_gromnica_both_done_v020`.
+- **Siedem Nocy Welesa:** otwarcie i wybór ofiary połączono w jednym wydarzeniu; pomniejsze błogosławieństwo i klątwa wykonywane bez kolejnych okien potwierdzeń; przypomnienie o długu jest ukryte, a sceny wyłącznie potwierdzające spłatę długu nie są automatycznie otwierane. Scena wyboru więźnia i prawdziwe wybory moralne pozostają.
+- **Sąd I:** jedna scena `bp_judgement.1001` oblicza wynik i daje rzeczywisty wybór przyjęcia lub odrzucenia znamienia, zachowując wszystkie dotychczasowe efekty. Zdarzenia `.1002` i `.1011`–`.1015` pozostają dla zgodności ze starym zapisem w środku łańcucha.
+- **Zapowiedzi:** 12 automatycznych popupów świąt zostało wyłączonych. Kalendarz i ręczne decyzje obrzędowe działają nadal; bezczynne wydarzenia zapowiedzi nie są uruchamiane na nowych kampaniach.
+- **Redakcja:** 19 najważniejszych opisów Gromnicy i Welesa skrócono o **54% po polsku** i **36% po angielsku**. Zachowano atmosferę obrzędową, długi Welesa, realne ceny i kluczowe wybory.
+- **Ikona:** plik cechy zastąpiono DDS `A8R8G8B8`, **120 × 120 px**, z mipmapami. Dawny `DXT5 64 × 64` wyświetlał znak zapytania. **Nowy plik jest strukturalnie prawidłowy, ale nadal wymaga ponownego sprawdzenia w grze.**
+- **Wydanie testowe:** GitHub Actions uruchamia walidator i przygotowuje ZIP do **nadpisania istniejącej instalacji na H:**, bez tworzenia drugiego moda.
+
+Wszystkie ustalenia dotyczące **+1500 złota dopiero podczas Sądu II** pozostają bez zmian.
+
 ## Plan testów w silniku CK3
 
 1. **Najpierw przetestować niezmienioną 0.1.9**, na oddzielnej kopii gry. Nie pomylić tego z gałęzią 0.2.0.

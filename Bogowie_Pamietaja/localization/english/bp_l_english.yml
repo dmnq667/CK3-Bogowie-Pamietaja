@@ -750,3 +750,18 @@
  bp_book.0012.desc_last_declined:0 "The dynasty's last recorded court ended with a refusal of the divine mark. It is not a record of the current ruler's deeds."
  bp_book.0012.desc_last_silence:0 "The dynasty's last recorded verdict: When the Gods Fall Silent. The earlier offense was not erased from the Book. A new year may yet bring different deeds."
  bp_book.0012.desc_last_pending:0 "The dynasty's last recorded verdict: The Price Yet Unpaid. An earlier oath received no final judgment. Check whether obligations to Weles remain outstanding."
+
+ # 0.2.0 concise one-window winter judgment
+ bp_judgement.1001.desc_silence_v021:0 "The priest finds a black coin in the dead hearth. \"Weles remembers your lies, your flight, and the neglected fire. The silence of gods is a verdict too.\" No one raises their voice. No mark comes to my hand. Spring will bring the reckoning."
+ bp_judgement.1001.desc_blood_v021:0 "A knife rests on the stone beneath the oak. Weles does not ask whether the sacrifice was just. \"You spilled blood and accepted its price. Do not look away.\" The weight of my oath settles upon me, and the earth takes my word."
+ bp_judgement.1001.desc_oath_debt_v021:0 "Weles speaks beneath the roots: \"You took my gift and its price. You may bear the mark, but the debt remains.\" A hot coin gleams in the earth. Favor is not forgiveness; the reckoning will return."
+ bp_judgement.1001.desc_oath_v021:0 "An imprint of a coin appears in the wet earth. \"I do not call you good,\" says Weles. \"I recognize one who paid the price of a sworn word.\" The priest points to a sign etched beneath the oak."
+ bp_judgement.1001.desc_light_v021:0 "A coin lies in the ashes, marked with a flame and a human hand. \"You guarded the fire and saved the people,\" says the priest. \"Weles remembers that you spoke truly beneath his oak.\" The coin grows warm in my hand, though the hearth is cold."
+ bp_judgement.1001.desc_boundary_v021:0 "The offering stone beneath the oak is empty. \"You refused a price another would have paid,\" says Weles. \"Yet you did not abandon the living.\" The earth falls quiet. Whether to accept the mark is now my choice."
+ bp_judgement.1001.desc_pending_v021:0 "A place remains empty upon the offering stone. \"I will not judge an oath still unfulfilled,\" says Weles. The priest records the open vow in the Book. Its judgment must wait."
+ bp_judgement.1001.accept_light_v021:0 "I accept the Mark of the First Flame (+5 Diplomacy for one year)."
+ bp_judgement.1001.accept_oath_v021:0 "I accept the mark and the oath's price (+5 Intrigue, +10 Dread for one year)."
+ bp_judgement.1001.accept_boundary_v021:0 "I accept the mark without crossing the boundary (+5 Learning for one year)."
+ bp_judgement.1001.refuse_mark_v021:0 "I refuse the mark. Let my deeds speak for themselves."
+ bp_judgement.1001.silence_v021:0 "I accept the gods' silence. I will remember their judgment."
+ bp_judgement.1001.pending_v021:0 "Let this matter remain open until the next reckoning."

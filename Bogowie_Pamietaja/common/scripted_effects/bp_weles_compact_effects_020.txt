@@ -1,0 +1,12 @@
+# 0.2.0 compact narration: award the SAME original effects without a
+# separate acknowledgement modal. Former visible bp_weles.2007/2008 are
+# retained as legacy events for older saves and manual debug.
+bp_weles_apply_lesser_020_effect = {
+    add_character_modifier = { modifier = bp_weles_lesser_boon_modifier years = 1 }
+    add_character_flag = { flag = bp_weles_lesser_now_v020 days = 120 }
+    bp_weles_plus_10_effect = yes
+}
+bp_weles_apply_curse_020_effect = {
+    add_character_modifier = { modifier = bp_weles_winter_curse_modifier years = 1 }
+    add_character_flag = { flag = bp_weles_curse_now_v020 days = 120 }
+}

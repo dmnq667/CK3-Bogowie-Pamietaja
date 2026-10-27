@@ -1,6 +1,6 @@
 ﻿namespace = bp_weles
 
-# The opening of Weles Week, 9-15 February.
+# Weles Week, 9-15 February: opening and offering choice in ONE window.
 bp_weles.2001 = {
     type = character_event
     theme = diplomacy
@@ -35,10 +35,42 @@ bp_weles.2001 = {
         }
     }
     option = {
-        name = bp_weles.2001.a
-        trigger_event = bp_weles.2002
+        name = bp_weles.2002.a
+        trigger = { gold >= 60 }
+        show_as_unavailable = { gold < 60 }
+        remove_short_term_gold = 60
+        add_character_flag = { flag = bp_weles_offering days = 90 }
+        add_character_flag = { flag = bp_weles_coins_given_v020 days = 120 }
+        bp_weles_plus_20_effect = yes
+        trigger_event = bp_weles.2003
         add_character_flag = { flag = bp_weles_entered_grove_v020 days = 120 }
-        ai_chance = { base = 65 }
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = bp_weles.2002.b
+        add_character_flag = { flag = bp_weles_waiting_for_prisoner days = 20 }
+        add_character_flag = { flag = bp_weles_prisoner_pledged_v020 days = 120 }
+        trigger_event = bp_weles.2005
+        add_character_flag = { flag = bp_weles_entered_grove_v020 days = 120 }
+        ai_chance = { base = 10 }
+    }
+    option = {
+        name = bp_weles.2002.c
+        add_prestige = -100
+        add_character_flag = { flag = bp_weles_offering days = 90 }
+        add_character_flag = { flag = bp_weles_oath_of_silence days = 335 }
+        add_character_flag = { flag = bp_weles_oath_now_v020 days = 120 }
+        bp_weles_plus_10_effect = yes
+        trigger_event = bp_weles.2003
+        add_character_flag = { flag = bp_weles_entered_grove_v020 days = 120 }
+        ai_chance = { base = 35 }
+    }
+    option = {
+        name = bp_weles.2002.d
+        bp_weles_minus_15_effect = yes
+        add_character_flag = { flag = bp_weles_refused_offering_v020 days = 120 }
+        add_character_flag = { flag = bp_weles_entered_grove_v020 days = 120 }
+        ai_chance = { base = 15 }
     }
     option = {
         name = bp_weles.2001.b
@@ -50,8 +82,8 @@ bp_weles.2001 = {
     }
 }
 
-# Three ways to pay the second price. The optional human route continues via
-# a targeted prisoner interaction, not by silently choosing a random victim.
+# Legacy price-choice screen, retained for events already queued by an older save.
+# Normal play now makes the same decision directly in bp_weles.2001.
 bp_weles.2002 = {
     type = character_event
     theme = diplomacy
@@ -137,7 +169,7 @@ bp_weles.2003 = {
             }
             trigger_event = bp_weles.2006
         }
-        else = { trigger_event = bp_weles.2007 }
+        else = { bp_weles_apply_lesser_020_effect = yes }
         ai_chance = { base = 50 }
     }
     option = {
@@ -145,14 +177,14 @@ bp_weles.2003 = {
         add_character_flag = { flag = bp_weles_lied days = 730 }
         add_character_flag = { flag = bp_weles_lied_now_v020 days = 120 }
         bp_weles_minus_25_effect = yes
-        trigger_event = bp_weles.2008
+        bp_weles_apply_curse_020_effect = yes
         ai_chance = { base = 20 }
     }
     option = {
         name = bp_weles.2003.c
         add_prestige = -70
         add_character_flag = { flag = bp_weles_asked_time_v020 days = 120 }
-        trigger_event = bp_weles.2007
+        bp_weles_apply_lesser_020_effect = yes
         ai_chance = { base = 30 }
     }
 }
@@ -318,20 +350,13 @@ bp_weles.2008 = {
 # An echo after the winter ritual, not a reward repeated every time the book opens.
 bp_weles.2010 = {
     type = character_event
-    theme = diplomacy
-    override_background = {
-        reference = bp_scene_weles_02
-    }
-    title = bp_weles.2010.t
-    desc = bp_weles.2010.desc
-    left_portrait = root
+    hidden = yes
+    # Scheduled debt reminder stays, but no longer opens a read-only modal.
     trigger = { is_alive = yes has_character_flag = bp_weles_debt_years }
-    immediate = { bp_weles_migrate_legacy_debt_018_effect = yes }
-    option = {
-        name = bp_weles.2010.a
+    immediate = {
+        bp_weles_migrate_legacy_debt_018_effect = yes
         add_character_flag = { flag = bp_weles_debt_acknowledged years = 12 }
         trigger_event = { id = bp_weles.2011 days = { 18 36 } }
-        ai_chance = { base = 100 }
     }
 }
 
@@ -357,7 +382,7 @@ bp_weles.2011 = {
         bp_weles_plus_20_effect = yes
         bp_weles_settle_debt_018_effect = yes
         capital_county = { add_county_modifier = { modifier = bp_weles_restored_graves_modifier years = 4 } }
-        trigger_event = { id = bp_weles.2014 days = { 10 22 } }
+        # Settlement is recorded in the Book of Gods; no redundant epilogue modal.
         ai_chance = { base = 40 }
     }
     option = {
@@ -368,7 +393,7 @@ bp_weles.2011 = {
         bp_weles_settle_debt_018_effect = yes
         dynasty = { set_variable = { name = bp_weles_confessed_v018 value = yes } }
         add_character_modifier = { modifier = bp_weles_public_confession_modifier years = 3 }
-        trigger_event = { id = bp_weles.2014 days = { 10 22 } }
+        # Settlement is recorded in the Book of Gods; no redundant epilogue modal.
         ai_chance = { base = 40 }
     }
     option = {
@@ -398,7 +423,7 @@ bp_weles.2012 = {
         bp_weles_plus_10_effect = yes
         bp_weles_settle_debt_018_effect = yes
         capital_county = { add_county_modifier = { modifier = bp_weles_restored_graves_modifier years = 4 } }
-        trigger_event = { id = bp_weles.2014 days = { 10 22 } }
+        # Settlement is recorded in the Book of Gods; no redundant epilogue modal.
         ai_chance = { base = 35 }
     }
     option = {
@@ -409,7 +434,7 @@ bp_weles.2012 = {
         bp_weles_settle_debt_018_effect = yes
         dynasty = { set_variable = { name = bp_weles_confessed_v018 value = yes } }
         add_character_modifier = { modifier = bp_weles_public_confession_modifier years = 3 }
-        trigger_event = { id = bp_weles.2014 days = { 10 22 } }
+        # Settlement is recorded in the Book of Gods; no redundant epilogue modal.
         ai_chance = { base = 45 }
     }
     option = {
@@ -459,7 +484,7 @@ bp_weles.2013 = {
         bp_weles_plus_20_effect = yes
         bp_weles_settle_debt_018_effect = yes
         capital_county = { add_county_modifier = { modifier = bp_weles_restored_graves_modifier years = 4 } }
-        trigger_event = { id = bp_weles.2014 days = { 10 22 } }
+        # Settlement is recorded in the Book of Gods; no redundant epilogue modal.
         ai_chance = { base = 40 }
     }
     option = {
@@ -470,7 +495,7 @@ bp_weles.2013 = {
         bp_weles_settle_debt_018_effect = yes
         dynasty = { set_variable = { name = bp_weles_confessed_v018 value = yes } }
         add_character_modifier = { modifier = bp_weles_public_confession_modifier years = 3 }
-        trigger_event = { id = bp_weles.2014 days = { 10 22 } }
+        # Settlement is recorded in the Book of Gods; no redundant epilogue modal.
         ai_chance = { base = 40 }
     }
     option = {

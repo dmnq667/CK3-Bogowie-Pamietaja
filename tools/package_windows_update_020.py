@@ -112,6 +112,13 @@ readme = """BOGOWIE PAMIETAJA 0.2.0 DEV (wersja testowa)
 Zrodla v0.1.9-alpha sa nadal na GitHubie.
 """
 
+# GitHub Actions also uploads these files as a direct, single-extract artifact.
+# The inner ZIP above remains useful as a standalone archive.
+(ROOT / "MANIFEST_SHA256.tsv").write_text(manifest, encoding="utf-8")
+(ROOT / "AKTUALIZUJ_020.ps1").write_bytes(powershell.lstrip().encode("utf-8-sig"))
+(ROOT / "AKTUALIZUJ_020.bat").write_bytes(batch.encode("ascii"))
+(ROOT / "CZYTAJ_TO.txt").write_bytes(readme.encode("utf-8-sig"))
+
 with ZipFile(OUT, "w", compression=ZIP_DEFLATED, compresslevel=6) as z:
     for file in files:
         z.write(file, (Path("Bogowie_Pamietaja") / file.relative_to(MOD)).as_posix())

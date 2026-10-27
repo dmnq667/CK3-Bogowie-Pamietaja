@@ -750,3 +750,18 @@
  bp_book.0012.desc_last_declined:0 "Ostatni zapamiętany sąd rodu zakończył się odmową przyjęcia boskiego znamienia. Nie jest to świadectwo czynów obecnego władcy."
  bp_book.0012.desc_last_silence:0 "Ostatnie zapamiętane rozstrzygnięcie rodu: Gdy bogowie milczą. Dawne przewinienie nie zniknęło z księgi. Obecny rok może jednak przynieść inne czyny."
  bp_book.0012.desc_last_pending:0 "Ostatnie zapamiętane rozstrzygnięcie rodu: Niedopełniona cena. Dawna przysięga nie otrzymała jednoznacznego wyroku. Sprawdź, czy zobowiązania wobec Welesa pozostają otwarte."
+
+ # 0.2.0 concise one-window winter judgment
+ bp_judgement.1001.desc_silence_v021:0 "Żerca odnajduje w zimnym palenisku czarną monetę. „Weles pamięta kłamstwo, ucieczkę i zlekceważony ogień. Milczenie bogów także jest wyrokiem”. Nikt nie podnosi głosu. Znak nie pojawi się na mojej dłoni. Rozliczenie powróci wraz z wiosną."
+ bp_judgement.1001.desc_blood_v021:0 "Na kamieniu pod dębem leży nóż. Weles nie pyta, czy ofiara była słuszna. „Przelałeś krew i wziąłeś na siebie jej cenę. Nie odwracaj wzroku”. Czuję ciężar wypowiedzianej przysięgi, a ziemia przyjmuje moje słowo."
+ bp_judgement.1001.desc_oath_debt_v021:0 "Spod korzeni dębu odzywa się Weles: „Przyjąłeś mój dar i jego cenę. Znak otrzymasz, lecz dług pozostaje”. Na ziemi błyska rozgrzana moneta. Rozumiem, że łaska nie jest przebaczeniem i że rachunek jeszcze powróci."
+ bp_judgement.1001.desc_oath_v021:0 "W mokrej ziemi pojawia się ślad monety. „Nie nazywam cię dobrym”, mówi Weles. „Uznaję człowieka, który poniósł cenę własnej przysięgi”. Żerca wskazuje mi znak wyrysowany u stóp dębu."
+ bp_judgement.1001.desc_light_v021:0 "W popiele znajdują monetę z dwoma znakami: płomieniem i ludzką dłonią. „Strzegłeś ognia i ocaliłeś ludzi”, mówi żerca. „Weles pamięta również, że nie skłamałeś przed jego dębem”. Moneta rozgrzewa się w mojej dłoni, choć palenisko wygasło."
+ bp_judgement.1001.desc_boundary_v021:0 "Pod dębem leży pusty kamień ofiarny. „Odmówiłeś ceny, którą miał zapłacić ktoś inny”, mówi Weles. „Ale nie odwróciłeś się od żywych”. Ziemia pozostaje cicha. To ja muszę zdecydować, czy przyjąć znak."
+ bp_judgement.1001.desc_pending_v021:0 "Na kamieniu pozostało miejsce po niedokończonej ofierze. „Nie osądzę dziś słowa, którego nie dopełniono”, mówi Weles. Żerca zapisuje w księdze otwartą przysięgę. Na rozstrzygnięcie trzeba jeszcze poczekać."
+ bp_judgement.1001.accept_light_v021:0 "Przyjmuję Znak Pierwszego Ognia (+5 dyplomacji na rok)."
+ bp_judgement.1001.accept_oath_v021:0 "Przyjmuję znak i cenę przysięgi (+5 intrygi, +10 postrachu na rok)."
+ bp_judgement.1001.accept_boundary_v021:0 "Przyjmuję znak, zachowując granicę ofiary (+5 wiedzy na rok)."
+ bp_judgement.1001.refuse_mark_v021:0 "Nie przyjmuję znamienia. Niech wystarczą moje czyny."
+ bp_judgement.1001.silence_v021:0 "Przyjmuję milczenie bogów. Zapamiętam ten wyrok."
+ bp_judgement.1001.pending_v021:0 "Niech sprawa pozostanie otwarta do kolejnego rozliczenia."

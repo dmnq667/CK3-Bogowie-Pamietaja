@@ -43,6 +43,7 @@ bp_announcement.1001 = {
     desc = bp_announcement.1001.desc
     left_portrait = root
     trigger = {
+        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
         faith = { religion_tag = slavic_religion }
@@ -90,6 +91,7 @@ bp_announcement.1002 = {
     desc = bp_announcement.1002.desc
     left_portrait = root
     trigger = {
+        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
         faith = { religion_tag = slavic_religion }
@@ -137,6 +139,7 @@ bp_announcement.1003 = {
     desc = bp_announcement.1003.desc
     left_portrait = root
     trigger = {
+        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
         faith = { religion_tag = slavic_religion }
@@ -184,6 +187,7 @@ bp_announcement.1004 = {
     desc = bp_announcement.1004.desc
     left_portrait = root
     trigger = {
+        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
         faith = { religion_tag = slavic_religion }
@@ -260,6 +264,7 @@ bp_announcement.1005 = {
     desc = bp_announcement.1005.desc
     left_portrait = root
     trigger = {
+        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
         faith = { religion_tag = slavic_religion }
@@ -316,6 +321,7 @@ bp_announcement.1006 = {
     desc = bp_announcement.1006.desc
     left_portrait = root
     trigger = {
+        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
         faith = { religion_tag = slavic_religion }
@@ -372,6 +378,7 @@ bp_announcement.1007 = {
     desc = bp_announcement.1007.desc
     left_portrait = root
     trigger = {
+        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
         faith = { religion_tag = slavic_religion }
@@ -428,6 +435,7 @@ bp_announcement.1008 = {
     desc = bp_announcement.1008.desc
     left_portrait = root
     trigger = {
+        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
         faith = { religion_tag = slavic_religion }
@@ -524,134 +532,14 @@ bp_announcement.1299 = {
     trigger = { is_alive = yes is_ruler = yes is_ai = no }
     immediate = {
         if = {
-            limit = { faith = { religion_tag = slavic_religion } }
-            if = {
-                limit = {
-                    bp_gromnica_calendar_window_trigger = yes
-                    dynasty = {
-                        NOT = { has_variable = bp_gromnica_announced_v014 }
-                        NOT = { has_variable = bp_gromnica_rite_lock_v013 }
-                    }
-                }
-                trigger_event = bp_announcement.1001
+            limit = {
+                faith = { religion_tag = slavic_religion }
+                bp_first_court_due_v020_trigger = yes
             }
-            if = {
-                limit = {
-                    bp_weles_calendar_window_trigger = yes
-                    dynasty = {
-                        NOT = { has_variable = bp_weles_announced_v014 }
-                        NOT = { has_variable = bp_weles_rite_lock_v013 }
-                    }
-                }
-                trigger_event = bp_announcement.1002
-            }
-            # Court I: after Weles Week; this piggybacks on the ONE existing watcher.
-            if = {
-                limit = { bp_first_court_due_v020_trigger = yes }
-                trigger_event = bp_judgement.1001
-            }
-            if = {
-                limit = {
-                    bp_spring_calendar_window_trigger = yes
-                    dynasty = {
-                        NOT = { has_variable = bp_spring_announced_v014 }
-                        NOT = { has_variable = bp_spring_rite_lock_v013 }
-                    }
-                }
-                trigger_event = bp_announcement.1003
-            }
-            if = {
-                limit = {
-                    bp_jare_calendar_window_trigger = yes
-                    dynasty = {
-                        NOT = { has_variable = bp_jare_announced_v014 }
-                        NOT = { has_variable = bp_jare_rite_lock_v013 }
-                    }
-                }
-                trigger_event = bp_announcement.1004
-            }
-            if = {
-                limit = {
-                    bp_gaik_calendar_window_trigger = yes
-                    dynasty = {
-                        NOT = { has_variable = bp_gaik_announced_v015 }
-                        NOT = { has_variable = bp_gaik_rite_lock_v015 }
-                    }
-                }
-                trigger_event = bp_announcement.1005
-            }
-            if = {
-                limit = {
-                    bp_dziady_calendar_window_trigger = yes
-                    dynasty = {
-                        NOT = { has_variable = bp_dziady_announced_v015 }
-                        NOT = { has_variable = bp_dziady_rite_lock_v015 }
-                    }
-                }
-                trigger_event = bp_announcement.1006
-            }
-            if = {
-                limit = {
-                    bp_stado_calendar_window_trigger = yes
-                    dynasty = {
-                        NOT = { has_variable = bp_stado_announced_v015 }
-                        NOT = { has_variable = bp_stado_rite_lock_v015 }
-                    }
-                }
-                trigger_event = bp_announcement.1007
-            }
-            if = {
-                limit = {
-                    bp_kupala_calendar_window_trigger = yes
-                    dynasty = {
-                        NOT = { has_variable = bp_kupala_announced_v015 }
-                        NOT = { has_variable = bp_kupala_rite_lock_v015 }
-                    }
-                }
-                trigger_event = bp_announcement.1008
-            }
-            if = {
-                limit = {
-                    bp_perun_calendar_window_trigger = yes
-                    dynasty = {
-                        NOT = { has_variable = bp_perun_announced_v019 }
-                        NOT = { has_variable = bp_perun_rite_lock_v019 }
-                    }
-                }
-                trigger_event = bp_announcement.1009
-            }
-            if = {
-                limit = {
-                    bp_harvest_calendar_window_trigger = yes
-                    dynasty = {
-                        NOT = { has_variable = bp_harvest_announced_v019 }
-                        NOT = { has_variable = bp_harvest_rite_lock_v019 }
-                    }
-                }
-                trigger_event = bp_announcement.1010
-            }
-            if = {
-                limit = {
-                    bp_autumn_calendar_window_trigger = yes
-                    dynasty = {
-                        NOT = { has_variable = bp_autumn_announced_v019 }
-                        NOT = { has_variable = bp_autumn_rite_lock_v019 }
-                    }
-                }
-                trigger_event = bp_announcement.1011
-            }
-            if = {
-                limit = {
-                    bp_szczodre_calendar_window_trigger = yes
-                    dynasty = {
-                        NOT = { has_variable = bp_szczodre_announced_v019 }
-                        NOT = { has_variable = bp_szczodre_rite_lock_v019 }
-                    }
-                }
-                trigger_event = bp_announcement.1012
-            }
+            trigger_event = bp_judgement.1001
         }
-        # Next day only, no looping in a single game tick.
+        # Remain a single daily watcher. Rituals can be started from the
+        # calendar; informational popups are intentionally not pushed.
         trigger_event = { id = bp_announcement.1299 days = 1 }
     }
 }
@@ -665,6 +553,7 @@ bp_announcement.1009 = {
     desc = bp_announcement.1009.desc
     left_portrait = root
     trigger = {
+        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
         faith = { religion_tag = slavic_religion }
@@ -710,6 +599,7 @@ bp_announcement.1010 = {
     desc = bp_announcement.1010.desc
     left_portrait = root
     trigger = {
+        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
         faith = { religion_tag = slavic_religion }
@@ -755,6 +645,7 @@ bp_announcement.1011 = {
     desc = bp_announcement.1011.desc
     left_portrait = root
     trigger = {
+        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
         faith = { religion_tag = slavic_religion }
@@ -800,6 +691,7 @@ bp_announcement.1012 = {
     desc = bp_announcement.1012.desc
     left_portrait = root
     trigger = {
+        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
         faith = { religion_tag = slavic_religion }

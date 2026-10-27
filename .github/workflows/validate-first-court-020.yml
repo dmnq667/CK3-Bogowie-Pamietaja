@@ -41,6 +41,15 @@ jobs:
           print(f'Packaged {len(files)} mod files to {output}')
           PY
 
+      - name: Prepare single-mod Windows updater
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp tools/AKTUALIZUJ_020.bat AKTUALIZUJ_020.bat
+          cp tools/INSTALL_020_NADPISZ.ps1 INSTALL_020_NADPISZ.ps1
+          test -s AKTUALIZUJ_020.bat
+          test -s INSTALL_020_NADPISZ.ps1
+
       - name: Upload development build and QA result
         uses: actions/upload-artifact@v4
         with:
@@ -48,5 +57,7 @@ jobs:
           path: |
             Bogowie_Pamietaja_0.2.0_DEV_SAD_I.zip
             validation_first_court_020.json
+            AKTUALIZUJ_020.bat
+            INSTALL_020_NADPISZ.ps1
           if-no-files-found: error
           retention-days: 30

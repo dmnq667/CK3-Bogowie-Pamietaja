@@ -50,12 +50,19 @@ jobs:
           test -s AKTUALIZUJ_020.bat
           test -s INSTALL_020_NADPISZ.ps1
 
+      - name: Build self-verifying in-place Windows update ZIP
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/package_windows_update_020.py
+
       - name: Upload development build and QA result
         uses: actions/upload-artifact@v4
         with:
           name: Bogowie-Pamietaja-v0.2.0-DEV-Sad-I
           path: |
             Bogowie_Pamietaja_0.2.0_DEV_SAD_I.zip
+            Bogowie_Pamietaja_0.2.0_DEV_AKTUALIZACJA.zip
             validation_first_court_020.json
             AKTUALIZUJ_020.bat
             INSTALL_020_NADPISZ.ps1

@@ -12,6 +12,10 @@ bp_gromnica.1001 = {
     left_portrait = root
     immediate = {
         bp_initialize_effect = yes
+        # v0.3: attendance itself grants a small, immediate ritual benefit.
+        # The existing choices still carry the real cost and moral consequence.
+        add_piety = 50
+        add_stress = -10
         dynasty = { set_variable = { name = bp_gromnica_ever_celebrated_v014 value = yes } }
         add_character_flag = { flag = bp_gromnica_used days = 335 }
         dynasty = {

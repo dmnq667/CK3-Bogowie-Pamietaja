@@ -443,6 +443,13 @@ bp_weles.2012 = {
         capital_county = { add_county_modifier = { modifier = bp_weles_barren_fields_modifier years = 3 } }
         dynasty = { set_variable = { name = bp_weles_refused_v018 value = yes } }
         bp_weles_minus_15_effect = yes
+        # A real divine confrontation follows the second deliberate refusal.
+        # Only one confrontation is queued for a given unresolved debt.
+        if = {
+            limit = { NOT = { has_character_flag = bp_weles_confrontation_queued_v030 } }
+            add_character_flag = { flag = bp_weles_confrontation_queued_v030 days = 365 }
+            trigger_event = { id = bp_weles.2020 days = { 7 14 } }
+        }
         ai_chance = { base = 20 }
     }
 }
@@ -526,4 +533,70 @@ bp_weles.2014 = {
     left_portrait = root
     trigger = { is_alive = yes dynasty = { has_variable = bp_weles_debt_paid_v018 } }
     option = { name = bp_weles.2014.a ai_chance = { base = 100 } }
+}
+
+# 0.3.0 DEV: Divine intervention, not a routine festival confirmation.
+# Triggered only after refusal at the escalating unpaid Weles debt event 2012.
+# The lethal possibility is explicitly chosen; there is always a non-lethal option.
+bp_weles.2020 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_weles_03 }
+    title = bp_weles.2020.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { has_trait = brave }
+                desc = bp_weles.2020.desc_brave
+            }
+            triggered_desc = {
+                trigger = { has_trait = craven }
+                desc = bp_weles.2020.desc_craven
+            }
+            desc = bp_weles.2020.desc_default
+        }
+    }
+    left_portrait = root
+    trigger = {
+        is_alive = yes
+        is_ruler = yes
+        dynasty = { has_variable = bp_weles_debt_unpaid_v018 }
+    }
+    option = {
+        name = bp_weles.2020.a
+        trigger = { gold >= 400 }
+        show_as_unavailable = { gold < 400 }
+        remove_short_term_gold = 400
+        add_prestige = -150
+        bp_weles_settle_debt_018_effect = yes
+        bp_weles_plus_20_effect = yes
+        add_character_modifier = { modifier = bp_weles_public_confession_modifier years = 3 }
+        ai_chance = { base = 50 }
+    }
+    option = {
+        name = bp_weles.2020.b
+        # The ruler survives but accepts a serious, prolonged divine punishment.
+        add_stress = 90
+        add_prestige = -350
+        add_character_modifier = { modifier = bp_weles_debt_shadow_modifier years = 5 }
+        bp_weles_minus_15_effect = yes
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = bp_weles.2020.c
+        # Deliberately deadly defiance. Chance numbers are prototype values.
+        random_list = {
+            35 = {
+                add_character_flag = { flag = bp_weles_divine_death_v030 }
+                death = { death_reason = death_execution }
+            }
+            65 = {
+                add_stress = 100
+                add_prestige = -500
+                add_character_modifier = { modifier = bp_weles_debt_shadow_modifier years = 5 }
+                bp_weles_minus_25_effect = yes
+            }
+        }
+        ai_chance = { base = 10 }
+    }
 }

@@ -584,6 +584,10 @@ bp_weles.2020 = {
     }
     option = {
         name = bp_weles.2020.c
+        # A fearful ruler suffers for choosing defiance, while the brave
+        # may earn renown even when their attempt ends in ruin.
+        if = { limit = { has_trait = craven } add_stress = 60 }
+        if = { limit = { has_trait = brave } add_prestige = 100 }
         # Deliberately deadly defiance. Chance numbers are prototype values.
         random_list = {
             35 = {

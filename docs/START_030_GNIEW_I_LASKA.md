@@ -46,3 +46,14 @@
 - Kontrola statyczna: 1 definicja wydarzenia 2020, 1 wywołanie przez dalszą odmowę długu, pełne klucze nowych opisów PL/EN, bilans nawiasów poprawny.
 - **Pozostała lokalizacja (setki kluczy) wymaga dalszej redakcji**. Nie uznawać całości za zakończoną.
 - **Nie testowano silnika CK3** i nie przygotowano jeszcze instalacyjnej paczki `0.3.0`. Ryzyko niespójności w grze pozostaje.
+
+## Trzecia partia: Perun, Mokosz i plan ilustracji
+
+- Święto Peruna `bp_perun.9101` i Wiosenny Nowy Rok `bp_spring.3001` dają uczestnikowi od razu małe premie (75/50 pobożności, -10 stresu).
+- Po świadomej odmowie obrzędu Peruna `bp_perun.9101.c` zaplanowane jest odrębne `bp_perun.9110` po 14–35 dniach, z reakcją na `brave` lub `craven`. Próba może zakończyć się dobrowolnym, świadomie wybranym ryzykiem śmierci (25% w prototypie); inne możliwości obejmują zadośćuczynienie albo długotrwałą karę.
+- Po świadomym zatrzymaniu zasobów podczas Wiosennego Nowego Roku `bp_spring.3001.c` zaplanowane jest `bp_spring.3010` po 45–75 dniach. Mokosz rozpoznaje `compassionate` / `callous` i rozstrzyga o pomocy przy siewie lub wieloletniej szkodzie dla plonów.
+- Oba wydarzenia korzystają z **istniejących, zatwierdzonych ilustracji** i mają komplet kluczy PL oraz EN.
+- Stałe zmienne zapisują pojednanie z Perunem, odmowę obrzędu Peruna, odmowę pomocy w wiosennym siewie oraz naprawienie tej szkody.
+- Szczegóły ewentualnych nowych grafik i wymagania produkcyjne zapisano w `docs/OPRAWA_BOGOW_030.md`.
+- Kontrola statyczna: po jednej definicji i po jednym wywołaniu nowych interwencji 9110 i 3010; klucze lokalizacji PL i EN pełne; nawiasy zrównoważone.
+- **Nie przeprowadzono testu CK3**, więc zgodność konkretnej wersji silnika i wygląd eventów wymagają sprawdzenia przed paczką instalacyjną.

@@ -53,6 +53,7 @@ bp_gromnica.1001 = {
         name = bp_gromnica.1001.c
         add_gold = 20
         add_character_flag = { flag = bp_gromnica_ignored_v020 days = 335 }
+        dynasty = { set_variable = { name = bp_gromnica_neglected_ever_v030 value = yes } }
         bp_weles_minus_15_effect = yes
         # Neglect ends here; no extra read-only warning window.
         ai_chance = { base = 10 }

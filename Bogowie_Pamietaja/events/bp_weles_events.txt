@@ -24,6 +24,10 @@ bp_weles.2001 = {
     left_portrait = root
     immediate = {
         bp_initialize_effect = yes
+        # v0.3: participating in the holy days is valuable independently of
+        # the following bargain with Veles.
+        add_piety = 75
+        add_stress = -10
         dynasty = { set_variable = { name = bp_weles_ever_celebrated_v014 value = yes } }
         add_character_flag = { flag = bp_weles_week_used days = 335 }
         dynasty = {

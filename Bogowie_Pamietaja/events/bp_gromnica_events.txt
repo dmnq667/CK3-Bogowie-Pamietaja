@@ -33,6 +33,7 @@ bp_gromnica.1001 = {
         remove_short_term_gold = 35
         add_character_flag = { flag = bp_gromnica_trial days = 90 }
         add_character_flag = { flag = bp_gromnica_fire days = 90 }
+        dynasty = { set_variable = { name = bp_gromnica_protected_fire_ever_v030 value = yes } }
         add_character_modifier = { modifier = bp_gromnica_guard_modifier days = 45 }
         bp_weles_plus_20_effect = yes
         bp_mokosh_plus_10_effect = yes
@@ -44,6 +45,7 @@ bp_gromnica.1001 = {
         add_prestige = -50
         add_character_flag = { flag = bp_gromnica_trial days = 90 }
         add_character_flag = { flag = bp_gromnica_village days = 90 }
+        dynasty = { set_variable = { name = bp_gromnica_aided_villagers_ever_v030 value = yes } }
         bp_weles_plus_10_effect = yes
         bp_mokosh_plus_20_effect = yes
         trigger_event = { id = bp_gromnica.1002 days = 1 }
@@ -97,6 +99,7 @@ bp_gromnica.1002 = {
         }
         add_prestige = -50
         add_character_flag = { flag = bp_gromnica_village days = 90 }
+        dynasty = { set_variable = { name = bp_gromnica_aided_villagers_ever_v030 value = yes } }
         add_character_flag = { flag = bp_gromnica_both_done_v020 days = 335 }
         add_character_flag = { flag = bp_gromnica_second_village_v020 days = 90 }
         bp_mokosh_plus_10_effect = yes
@@ -118,6 +121,7 @@ bp_gromnica.1002 = {
         }
         remove_short_term_gold = 35
         add_character_flag = { flag = bp_gromnica_fire days = 90 }
+        dynasty = { set_variable = { name = bp_gromnica_protected_fire_ever_v030 value = yes } }
         add_character_flag = { flag = bp_gromnica_both_done_v020 days = 335 }
         add_character_flag = { flag = bp_gromnica_second_fire_v020 days = 90 }
         add_character_modifier = { modifier = bp_gromnica_guard_modifier days = 45 }

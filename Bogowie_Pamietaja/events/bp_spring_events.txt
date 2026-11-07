@@ -24,6 +24,8 @@ bp_spring.3001 = {
     left_portrait = root
     immediate = {
         bp_initialize_effect = yes
+        add_piety = 50
+        add_stress = -10
         dynasty = { set_variable = { name = bp_spring_ever_celebrated_v014 value = yes } }
         add_character_flag = { flag = bp_spring_used days = 335 }
         dynasty = {
@@ -59,6 +61,9 @@ bp_spring.3001 = {
         name = bp_spring.3001.c
         add_gold = 25
         bp_mokosh_minus_15_effect = yes
+        dynasty = { set_variable = { name = bp_mokosh_sowing_neglected_ever_v030 value = yes } }
+        # The goddess does not interrupt every rite, but can return later.
+        trigger_event = { id = bp_spring.3010 days = { 45 75 } }
         ai_chance = { base = 10 }
     }
 }
@@ -93,5 +98,49 @@ bp_spring.3002 = {
         name = bp_spring.3002.c
         bp_mokosh_minus_15_effect = yes
         ai_chance = { base = 15 }
+    }
+}
+
+# v0.3.0 Mokosh's intervention, distinct from ordinary festival scenes.
+# A direct consequence of withholding grain during Spring New Year.
+bp_spring.3010 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_spring_02 }
+    title = bp_spring.3010.t
+    desc = {
+        first_valid = {
+            triggered_desc = { trigger = { has_trait = compassionate } desc = bp_spring.3010.desc_compassionate }
+            triggered_desc = { trigger = { has_trait = callous } desc = bp_spring.3010.desc_callous }
+            desc = bp_spring.3010.desc_default
+        }
+    }
+    left_portrait = root
+    trigger = { is_alive = yes is_ruler = yes }
+    option = {
+        name = bp_spring.3010.a
+        trigger = { gold >= 100 }
+        show_as_unavailable = { gold < 100 }
+        remove_short_term_gold = 100
+        capital_county = { add_county_modifier = { modifier = bp_mokosh_sowing_modifier years = 2 } }
+        bp_mokosh_plus_20_effect = yes
+        dynasty = { set_variable = { name = bp_mokosh_restitution_ever_v030 value = yes } }
+        ai_chance = { base = 55 }
+    }
+    option = {
+        name = bp_spring.3010.b
+        # Admit the wrong in public and give up the ruler's renown.
+        add_prestige = -250
+        add_stress = 40
+        bp_mokosh_plus_10_effect = yes
+        ai_chance = { base = 35 }
+    }
+    option = {
+        name = bp_spring.3010.c
+        # Defying the goddess makes the famine worse, not a random death.
+        capital_county = { add_county_modifier = { modifier = bp_harvest_blight_modifier years = 3 } }
+        add_stress = 60
+        bp_mokosh_minus_15_effect = yes
+        ai_chance = { base = 10 }
     }
 }

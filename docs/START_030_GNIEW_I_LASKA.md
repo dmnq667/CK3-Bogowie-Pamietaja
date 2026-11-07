@@ -32,3 +32,17 @@
 8. Przygotować paczkę aktualizacyjną dopiero po weryfikacji wymaganych plików.
 
 **Nie nazywać tej gałęzi gotową wersją do gry bez sprawdzenia jej w CK3.**
+
+## Druga partia zmian: rytuały, redakcja i pamięć dynastii
+
+- Gromnica i Siedem Nocy Welesa przy pierwszym otwarciu obrzędu przyznają od razu umiarkowaną nagrodę: odpowiednio **50 / 75 pobożności i -10 stresu**. Koszty i następne wybory pozostały niezależne.
+- Przeredagowano **21 kluczy polskiej lokalizacji**: wstępne sceny wszystkich 12 świąt, kluczowe sceny Gromnicy i Welesa oraz etykiety wyborów przy ofierze. Nacisk na jawne przyczyny, ceny i skutki.
+- Dodano trwałe zmienne dynastyczne (ich poprzednie 90-dniowe flagi pozostają do obsługi istniejących sądów):
+  - `bp_gromnica_protected_fire_ever_v030` — obrona świętego ognia;
+  - `bp_gromnica_aided_villagers_ever_v030` — pomoc mieszkańcom;
+  - `bp_gromnica_neglected_ever_v030` — odmowa pomocy;
+  - `bp_weles_prisoner_sacrificed_ever_v030` — wykonana ofiara z więźnia.
+- Nowe wydarzenie Welesa `2020` może odwołać się do przeszłej ofiary z więźnia. Scena ma odrębną lokalizację PL i EN.
+- Kontrola statyczna: 1 definicja wydarzenia 2020, 1 wywołanie przez dalszą odmowę długu, pełne klucze nowych opisów PL/EN, bilans nawiasów poprawny.
+- **Pozostała lokalizacja (setki kluczy) wymaga dalszej redakcji**. Nie uznawać całości za zakończoną.
+- **Nie testowano silnika CK3** i nie przygotowano jeszcze instalacyjnej paczki `0.3.0`. Ryzyko niespójności w grze pozostaje.

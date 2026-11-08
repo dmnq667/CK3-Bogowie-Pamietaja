@@ -1,5 +1,13 @@
 # Historia wydań
 
+## 0.3.0 DEV — w produkcji (08.11.2026)
+- Nazwa: **Gniew i Łaska Bogów**.
+- Wydarzenia Welesa 2020, Peruna 9110 i Mokoszy 3010: osobiste objawienia, pamięć czynów, rozgałęzienia charakteru i silne konsekwencje.
+- Nowe tła i opisy PL/EN, podstawowe premie za uczestnictwo w części świąt, redakcja pierwszych scen wszystkich 12 obrzędów.
+- 28 nowych scen świątecznych i 3 grafiki boskie przekonwertowane do DDS, import przez GitHub Actions **przygotowany, lecz jeszcze niewykonany**.
+- Test w CK3, zgodność z aktualną wersją gry i pełna redakcja lokalizacji: **oczekują**.
+
+
 Historia odtworzona z zachowanej dokumentacji, nie z oryginalnych commitów.
 
 ## 0.1.9 ALPHA

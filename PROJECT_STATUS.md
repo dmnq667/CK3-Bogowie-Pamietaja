@@ -2,7 +2,7 @@
 
 **Aktualizacja:** 08.11.2026  
 **Wersja produkcyjna:** 0.3.0 DEV na `feature/0.3.0-gniew-i-laska`.  
-**Ważne:** pliki tekstowe są zapisane na GitHubie; 31 grafik zostało przygotowanych lokalnie, ale ich import do GitHuba jeszcze nie nastąpił. **Nie instalować samej gałęzi bez grafik.**
+**Import grafik ZAKOŃCZONY:** 31 nowych DDS i 31 obrazów źródłowych są w repozytorium na tej gałęzi; zakończony [GitHub Actions run #42506140283](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42506140283) uzyskał status SUCCESS. Instalator 0.3.0 DEV jest dostępny jako artefakt tego uruchomienia. Test wewnątrz CK3 nadal niewykonany.
 
 ## Faktycznie wykonane w 0.3.0 DEV
 
@@ -12,9 +12,9 @@
 - Wybrane święta dają natychmiastową premię, a dziedziczone zmienne zapamiętują działania przy Gromnicy i ofiarę Welesa.
 - Przeredagowano otwarcia wszystkich 12 świąt. **Całościowa redakcja pozostałej lokalizacji trwa.**
 - Sprawdzono 28 świątecznych i 3 boskie ilustracje; przygotowano 31 DDS 1592×848 DXT1, bez czterech starych wariantów; w kodzie przekierowano brakujące tła do nowych odpowiedników.
-- Przygotowano importer trzech plików `BP030.part01`–`part03` z kontrolą SHA256 oraz generator aktualizatora Windows nadpisującego istniejący mod, z kopią zapasową.
+- Przeprowadzono automatyczny import bez udziału użytkownika: Magnific → GitHub Actions → 31 zweryfikowanych DDS oraz 31 obrazów źródłowych. Wygenerowano instalator Windows nadpisujący istniejący mod z kopią zapasową.
 
-**Czego NIE wykonano:** importu nowych plików binarnych do repozytorium, uruchomienia moda w grze, sprawdzenia `error.log`, pełnej redakcji tekstów, weryfikacji ikony cechy w CK3.
+**Czego NIE wykonano:** uruchomienia moda w grze, sprawdzenia `error.log`, pełnej redakcji tekstów, weryfikacji ikony cechy w CK3.
 
 ## Dotychczasowa historia 0.1.9 / 0.2.0
 

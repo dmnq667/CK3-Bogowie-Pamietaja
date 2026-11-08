@@ -1,0 +1,140 @@
+name: Import naturalistic art 0.3 from Magnific
+
+on:
+  push:
+    branches:
+      - feature/0.3.0-gniew-i-laska
+    paths:
+      - BP030_SOURCES.json
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: magn-art-bp030
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install DDS image encoder
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq imagemagick
+
+      - name: Fetch, verify and convert approved illustrations
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json,subprocess,urllib.request,re
+          from pathlib import Path
+          from urllib.parse import urlparse
+
+          data=json.loads(Path("BP030_SOURCES.json").read_text(encoding="utf-8"))
+          entries=data["files"]
+          assert len(entries)==31, f"Expected 31 sources, got {len(entries)}"
+          mapping={
+            "01-gromnica":"gromnica",
+            "02-siedem-nocy":"weles",
+            "03-Wiosenny-Nowy-Rok":"spring",
+            "04-Jare-Gody":"jare",
+            "05-gaik-turzyca":"gaik",
+            "06-dziady-wiosenne":"dziady",
+            "07-Stado":"stado",
+            "08-Noc-Kupaly":"kupala",
+            "09-Perun":"perun",
+            "10-Swięto-Plonow":"harvest",
+            "11-Dziady-Jesienne":"autumn",
+            "12-Szczodre-Gody":"szczodre",
+          }
+          special={
+            "Weles_A01.png":"bp_deity_weles_2020.dds",
+            "Perun_A02.jpg":"bp_deity_perun_9110.dds",
+            "Mokosz_A03_lustro.jpg":"bp_deity_mokosh_3010.dds",
+          }
+          dest=Path("Bogowie_Pamietaja/gfx/interface/illustrations/event_scene")
+          art=Path("source_artwork_030")
+          dest.mkdir(parents=True,exist_ok=True)
+          art.mkdir(parents=True,exist_ok=True)
+          seen=set()
+          for i,item in enumerate(entries,1):
+            name=item["name"]
+            assert "/" not in name and "\\" not in name and ".." not in name
+            assert name not in seen, name
+            seen.add(name)
+            if name in special:
+              ddsname=special[name]
+            else:
+              section,number=name.rsplit("-",1)
+              assert section in mapping and re.fullmatch(r"\d\d\.jpg",number), name
+              ddsname=f"bp_{mapping[section]}_{number[:2]}.dds"
+            url=item["url"]
+            assert urlparse(url).scheme=="https" and urlparse(url).hostname=="pikaso.cdnpk.net",name
+            request=urllib.request.Request(url,headers={"User-Agent":"CK3-Bogowie-Pamietaja-asset-import/0.3"})
+            with urllib.request.urlopen(request,timeout=60) as response:
+              raw=response.read()
+            assert 10_000<len(raw)<25_000_000,(name,len(raw))
+            assert raw.startswith(b"\xff\xd8\xff") or raw.startswith(b"\x89PNG\r\n\x1a\n"),name
+            actual=hashlib.sha256(raw).hexdigest()
+            assert actual==item["sha256"],f"SHA256 mismatch {name}: {actual}"
+            src=art/name
+            src.write_bytes(raw)
+            outfile=dest/ddsname
+            subprocess.run([
+              "convert",str(src),"-auto-orient","-resize","1592x848^","-gravity","center",
+              "-extent","1592x848","-define","dds:compression=dxt1",
+              "-define","dds:mipmaps=0",str(outfile)
+            ],check=True)
+            b=outfile.read_bytes()
+            assert len(b)==675136,(ddsname,len(b))
+            assert b[:4]==b"DDS " and b[84:88]==b"DXT1",ddsname
+            assert int.from_bytes(b[12:16],"little")==848
+            assert int.from_bytes(b[16:20],"little")==1592
+            print(f"{i}/31 {name} => {ddsname}",flush=True)
+          assert len(seen)==31
+          PY
+
+      - name: Retire old-style variants and validate script references
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f \
+            Bogowie_Pamietaja/gfx/interface/illustrations/event_scene/bp_gromnica_02.dds \
+            Bogowie_Pamietaja/gfx/interface/illustrations/event_scene/bp_stado_03.dds \
+            Bogowie_Pamietaja/gfx/interface/illustrations/event_scene/bp_kupala_03.dds \
+            Bogowie_Pamietaja/gfx/interface/illustrations/event_scene/bp_perun_03.dds
+          python3 tools/validate_gods_030.py
+
+      - name: Commit source images and generated DDS
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A source_artwork_030 Bogowie_Pamietaja/gfx
+          git rm -f --ignore-unmatch BP030_SOURCES.json
+          if ! git diff --cached --quiet; then
+            git commit -m "assets(0.3): import 31 approved naturalistic images from Magnific"
+            git push origin HEAD:feature/0.3.0-gniew-i-laska
+          fi
+
+      - name: Build self-verifying Windows test package
+        run: |
+          set -euo pipefail
+          python3 tools/package_windows_update_030.py
+
+      - name: Upload the test installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: Gniew-i-Laska-Bogow-0.3.0-DEV-NADPISZ
+          path: |
+            GNIEW_I_LASKA_BOGOW_0.3.0_DEV_NADPISZ.zip
+            validation_gods_030.json
+          if-no-files-found: error
+          retention-days: 30

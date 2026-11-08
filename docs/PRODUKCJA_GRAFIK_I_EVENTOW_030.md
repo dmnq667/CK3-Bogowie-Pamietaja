@@ -105,3 +105,12 @@ W Magnific za każdym razem podawać **rzeczywistą zatwierdzoną pracę referen
 - Przed podpięciem A01/A02/A03 **przepisać narrację** tak, by przemawiał widoczny bóg; dziś w tych scenach przemawia żerca.
 
 **To jest plan produkcyjny do wykonania grafik w Magnific, nie informacja o gotowych obrazach.**
+
+## Zatwierdzenie Welesa — 8 listopada 2026
+
+- **A01 / `bp_weles.2020`: GRAFIKA ZATWIERDZONA PRZEZ UŻYTKOWNIKA.** Jest to konkretny przesłany obraz ciemnej sali: potężny Weles po prawej, z długimi czarnymi włosami i brodą, w ciemnej futrzanej szacie, po lewej klęczący ukoronowany władca; chłodne niebiesko-czarne światło, świece, mgła i wilgotna posadzka. **Nie zastępować go kolejną generacją.**
+- Nazwa bieżącego pliku przesłanego w rozmowie: `image(20261108-155952).png` (nazwa robocza konwersacji). **Plik nie został jeszcze dodany do repozytorium** i nie jest podłączony do CK3. Należy go zachować, a przy etapie instalacyjnym przygotować DDS, zarejestrować tło i sprawdzić w grze.
+- Obraz A01 jest **wzorcem monumentalnego naturalizmu** dla pozostałych osobistych objawień; nie należy kopiować dosłownie sylwetki Welesa na innych bogów.
+- **Perun i Mokosz pozostają do wykonania** pod sceny A02/A03. Do Magnific przekazywać zatwierdzony Weles A01 jako **referencję stylu i skali**, a charakterystyczny dotychczasowy wizerunek konkretnego boga jako osobną referencję postaci, jeśli narzędzie umożliwia jej wskazanie.
+- Oprawa: fotorealistyczny, mroczny, naturalistyczny kadr filmowy; boska postać zdecydowanie przewyższa człowieka, ale zachowuje wiarygodną anatomię i powagę. Bez komiksowości i przesadnych efektów CGI.
+- Należy zsynchronizować tekst `2020` z osobistym objawieniem Welesa przed podłączeniem obrazu. Aktualny tekst nadal odwołuje się do żercy.

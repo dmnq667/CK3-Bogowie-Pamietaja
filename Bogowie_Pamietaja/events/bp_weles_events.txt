@@ -546,7 +546,8 @@ bp_weles.2014 = {
 bp_weles.2020 = {
     type = character_event
     theme = diplomacy
-    override_background = { reference = bp_scene_weles_03 }
+    # ART: Approved 0.3.0 visible-deity scene; never fall back to legacy art.
+    override_background = { reference = bp_scene_deity_weles_2020 }
     title = bp_weles.2020.t
     desc = {
         first_valid = {

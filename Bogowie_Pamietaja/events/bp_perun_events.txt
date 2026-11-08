@@ -225,7 +225,8 @@ bp_perun.9108 = {
 bp_perun.9110 = {
     type = character_event
     theme = diplomacy
-    override_background = { reference = bp_scene_perun_03 }
+    # ART: Approved 0.3.0 visible-deity scene; never fall back to legacy art.
+    override_background = { reference = bp_scene_deity_perun_9110 }
     title = bp_perun.9110.t
     desc = {
         first_valid = {

@@ -1,7 +1,7 @@
 # Gniew i Łaska Bogów — produkcyjna lista wydarzeń i grafik (0.3.0 DEV)
 
 **Podstawa:** faktyczne skrypty gałęzi `feature/0.3.0-gniew-i-laska` i rejestr teł `bp_slavic_holiday_backgrounds.txt`.
-**Status z 08.11.2026:** nowe grafiki A01–A03 zatwierdzone, nowe 28 świątecznych ilustracji dostarczone; 31 DDS przygotowanych lokalnie. Kod przypisania scen i narracja PL/EN zaktualizowane. Import binariów do repozytorium oraz test CK3 jeszcze oczekują. Historyczne opisy niżej dokumentują wcześniejszy etap projektu.
+**Status z 08.11.2026:** nowe grafiki A01–A03 zatwierdzone, 28 świątecznych ilustracji dostarczone; **31 DDS i 31 obrazów źródłowych zaimportowanych na GitHubie**, run #42506140283 SUCCESS. Kod przypisania scen i narracja PL/EN zaktualizowane. **Test CK3 nadal oczekuje.** Historyczne opisy niżej dokumentują wcześniejszy etap projektu.
 
 ## Zasada
 
@@ -130,4 +130,4 @@ Nowe archiwum `nowe.zip` ma **28 obrazów świątecznych**. Osobno zostały dost
 
 **Weryfikacja przed wydaniem:** przejrzeć wszystkie wystąpienia tych czterech `bp_scene_...` w skryptach (w tym księgę, kalendarz, ogłoszenia, sądy), przebudować mapowania, dokonać konwersji wyłącznie NOWYCH źródeł do DDS i skontrolować, czy każda używana tekstura ma źródło w nowym zestawie. Nie publikować pakietu z ukrytymi starymi grafikami.
 
-**Status:** decyzja zapisana; powyższe mapowania są zadaniem wdrożeniowym, nie ukończoną zamianą plików. Zatwierdzone ilustracje A01–A03 nie zostały jeszcze zaimportowane jako DDS.
+**Status aktualny:** cztery brakujące warianty przekierowano w rejestrze teł na inne obrazy z nowej serii, a cztery stare DDS usunięto przy imporcie. Trzy zatwierdzone objawienia A01–A03 zostały zaimportowane jako osobne DDS. Zmiany przeszły walidator statyczny, ale wymagają testu w CK3.

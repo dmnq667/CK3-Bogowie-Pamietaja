@@ -1,8 +1,18 @@
-# Bogowie Pamiętają
+# Gniew i Łaska Bogów
+
+Dawniej: **Bogowie Pamiętają**.
 
 Mod do **Crusader Kings III** poświęcony słowiańskim bogom, obrzędom i cyklowi dwunastu świąt. Projekt niezależny od **The Weight of Words**.
 
-## Wersja rozwojowa 0.2.0 DEV: pierwszy sąd
+## Aktualna produkcja: 0.3.0 DEV — gniew, łaska i nowe ilustracje
+
+Na gałęzi `feature/0.3.0-gniew-i-laska` działa prototyp trzech interwencji bogów (Weles, Perun i Mokosz), pamięci najważniejszych czynów oraz premii za udział w wybranych świętach. Dostosowano sceny do osobistych objawień i przeredagowano ich polskie oraz angielskie teksty.
+
+**Uwaga:** komplet 31 nowych tekstur DDS został przygotowany i zweryfikowany lokalnie, ale nie jest jeszcze zaimportowany do repozytorium. Bez tej paczki nie należy uruchamiać wersji 0.3.0. Importer i instalator znajdują się na gałęzi rozwojowej; szczegóły w [instrukcji importu](docs/IMPORT_GRAFIK_030.md).
+
+Test CK3: **nie wykonany**. Stabilna wersja 0.1.9 na `main` pozostała bez zmian.
+
+## Wcześniejsza wersja 0.2.0 DEV: pierwszy sąd
 
 Na tej gałęzi zaimplementowano **Sąd Popiołu i Przysięgi**: siedem scen, pięć rozstrzygnięć, pamięć Gromnicy i Welesa, jedną trwałą rozwijaną cechę z własną ikoną DDS, silne roczne premie, polskie i angielskie teksty oraz kartę Księgi Bogów. **Kontrola statyczna PASS; test działania w CK3 oczekuje.** Wydanie `v0.1.9-alpha` na `main` pozostaje bez zmian.
 

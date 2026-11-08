@@ -1,0 +1,30 @@
+name: Audit of festival storytelling 0.4.0
+
+on:
+  push:
+    branches:
+      - feature/0.4.0-fabula-od-nowa
+    paths:
+      - 'Bogowie_Pamietaja/events/**'
+      - 'tools/audit_festival_flows_040.py'
+      - '.github/workflows/audit-fabuly-040.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit-festival-clicks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Measure current click cascades
+        run: |
+          python3 tools/audit_festival_flows_040.py
+          python3 tools/audit_festival_flows_040.py --json > festival_window_audit_040.json
+      - name: Save report before refactor
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-festival-windows-040
+          path: festival_window_audit_040.json
+          retention-days: 30

@@ -106,7 +106,8 @@ bp_spring.3002 = {
 bp_spring.3010 = {
     type = character_event
     theme = diplomacy
-    override_background = { reference = bp_scene_spring_02 }
+    # ART: Approved 0.3.0 visible-deity scene; never fall back to legacy art.
+    override_background = { reference = bp_scene_deity_mokosh_3010 }
     title = bp_spring.3010.t
     desc = {
         first_valid = {

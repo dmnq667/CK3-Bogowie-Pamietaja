@@ -114,3 +114,20 @@ W Magnific za każdym razem podawać **rzeczywistą zatwierdzoną pracę referen
 - **Perun i Mokosz pozostają do wykonania** pod sceny A02/A03. Do Magnific przekazywać zatwierdzony Weles A01 jako **referencję stylu i skali**, a charakterystyczny dotychczasowy wizerunek konkretnego boga jako osobną referencję postaci, jeśli narzędzie umożliwia jej wskazanie.
 - Oprawa: fotorealistyczny, mroczny, naturalistyczny kadr filmowy; boska postać zdecydowanie przewyższa człowieka, ale zachowuje wiarygodną anatomię i powagę. Bez komiksowości i przesadnych efektów CGI.
 - Należy zsynchronizować tekst `2020` z osobistym objawieniem Welesa przed podłączeniem obrazu. Aktualny tekst nadal odwołuje się do żercy.
+
+## OBOWIĄZUJĄCA DECYZJA: ŻADNYCH STARYCH GRAFIK W PACZCE 0.3.0 (8 listopada 2026)
+
+Użytkownik wyraźnie odrzucił wcześniejszą sugestię, by cztery brakujące warianty w nowym archiwum zastąpić starymi ilustracjami. **Nie mieszać poprzedniego stylu z nową serią monumentalnego naturalizmu.** Starsze 32 JPG można pozostawić jako archiwum projektu, lecz nie wykorzystywać ich w finalnych oknach wydarzeń 0.3.0.
+
+Nowe archiwum `nowe.zip` ma **28 obrazów świątecznych**. Osobno zostały dostarczone trzy nowe grafiki objawień Welesa (A01), Peruna (A02) i Mokoszy (A03, wersja lustrzana). Brakujące nowostylowe pliki i przypisania:
+
+| Brakująca nazwa | Istniejące w skryptach odniesienia | Zasada rozwiązania |
+| --- | --- | --- |
+| `gromnica_02` | `bp_gromnica.1001/1002`, obwieszczenia i inne wejścia | Przepiąć do `gromnica_01` z nowej serii **tylko jeśli kadr pasuje fabularnie**; w przeciwnym razie przygotować nową `gromnica_02` |
+| `stado_03` | `bp_announcement.1007/9907` i inne wejścia | Przepiąć na odpowiednią nową ilustrację `stado_01` lub `stado_02`; nie używać starego `stado_03` |
+| `kupala_03` | `bp_kupala.8003/8005` i inne wejścia | Wybrać pasującą nową `kupala_01` lub `kupala_02`, **lub wygenerować nowe `kupala_03`**, jeśli scena objawienia potrzebuje osobnego obrazu |
+| `perun_03` | `bp_perun.9104/9105/9107/9110` | Interwencję `9110` podpiąć do zatwierdzonego A02; pozostałe sceny użyją odpowiedniej nowej `perun_01/02` albo otrzymają nowy osobny kadr, jeśli fabuła tego wymaga |
+
+**Weryfikacja przed wydaniem:** przejrzeć wszystkie wystąpienia tych czterech `bp_scene_...` w skryptach (w tym księgę, kalendarz, ogłoszenia, sądy), przebudować mapowania, dokonać konwersji wyłącznie NOWYCH źródeł do DDS i skontrolować, czy każda używana tekstura ma źródło w nowym zestawie. Nie publikować pakietu z ukrytymi starymi grafikami.
+
+**Status:** decyzja zapisana; powyższe mapowania są zadaniem wdrożeniowym, nie ukończoną zamianą plików. Zatwierdzone ilustracje A01–A03 nie zostały jeszcze zaimportowane jako DDS.

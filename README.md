@@ -8,7 +8,7 @@ Mod do **Crusader Kings III** poświęcony słowiańskim bogom, obrzędom i cykl
 
 Na gałęzi `feature/0.3.0-gniew-i-laska` działa prototyp trzech interwencji bogów (Weles, Perun i Mokosz), pamięci najważniejszych czynów oraz premii za udział w wybranych świętach. Dostosowano sceny do osobistych objawień i przeredagowano ich polskie oraz angielskie teksty.
 
-**Uwaga:** komplet 31 nowych tekstur DDS został przygotowany i zweryfikowany lokalnie, ale nie jest jeszcze zaimportowany do repozytorium. Bez tej paczki nie należy uruchamiać wersji 0.3.0. Importer i instalator znajdują się na gałęzi rozwojowej; szczegóły w [instrukcji importu](docs/IMPORT_GRAFIK_030.md).
+**Grafiki zaimportowane:** 31 tekstur DDS (28 świąt + 3 objawienia) i 31 źródeł zostało już zapisanych i zweryfikowanych na GitHubie. [Pobierz testowy aktualizator z GitHub Actions](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42506140283). Test w CK3 nadal oczekuje. Szczegóły: [raport importu](docs/IMPORT_GRAFIK_030.md).
 
 Test CK3: **nie wykonany**. Stabilna wersja 0.1.9 na `main` pozostała bez zmian.
 

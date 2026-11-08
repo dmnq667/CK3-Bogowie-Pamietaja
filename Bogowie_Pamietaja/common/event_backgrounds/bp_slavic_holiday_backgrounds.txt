@@ -10,7 +10,7 @@ bp_scene_gromnica_01 = {
 
 bp_scene_gromnica_02 = {
     background = {
-        reference = "gfx/interface/illustrations/event_scene/bp_gromnica_02.dds"
+        reference = "gfx/interface/illustrations/event_scene/bp_gromnica_01.dds"
     }
 }
 
@@ -100,7 +100,7 @@ bp_scene_stado_02 = {
 
 bp_scene_stado_03 = {
     background = {
-        reference = "gfx/interface/illustrations/event_scene/bp_stado_03.dds"
+        reference = "gfx/interface/illustrations/event_scene/bp_stado_02.dds"
     }
 }
 
@@ -118,7 +118,7 @@ bp_scene_kupala_02 = {
 
 bp_scene_kupala_03 = {
     background = {
-        reference = "gfx/interface/illustrations/event_scene/bp_kupala_03.dds"
+        reference = "gfx/interface/illustrations/event_scene/bp_kupala_02.dds"
     }
 }
 
@@ -137,7 +137,7 @@ bp_scene_perun_02 = {
 
 bp_scene_perun_03 = {
     background = {
-        reference = "gfx/interface/illustrations/event_scene/bp_perun_03.dds"
+        reference = "gfx/interface/illustrations/event_scene/bp_perun_02.dds"
     }
 }
 
@@ -192,5 +192,25 @@ bp_scene_szczodre_02 = {
 bp_scene_szczodre_03 = {
     background = {
         reference = "gfx/interface/illustrations/event_scene/bp_szczodre_03.dds"
+    }
+}
+
+# 0.3.0: direct divine manifestations; new naturalistic artwork only.
+# These references become installable with the 0.3.0 art pack.
+bp_scene_deity_weles_2020 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_deity_weles_2020.dds"
+    }
+}
+
+bp_scene_deity_perun_9110 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_deity_perun_9110.dds"
+    }
+}
+
+bp_scene_deity_mokosh_3010 = {
+    background = {
+        reference = "gfx/interface/illustrations/event_scene/bp_deity_mokosh_3010.dds"
     }
 }

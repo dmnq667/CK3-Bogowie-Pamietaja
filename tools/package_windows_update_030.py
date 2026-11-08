@@ -59,7 +59,7 @@ try {
         throw 'Zla wersja paczki. Odmowa instalacji.'
     }
     $entries = @(Get-Content -LiteralPath $ManifestPath -Encoding UTF8 | Where-Object {$_.Trim() -ne ''} | ForEach-Object {
-        $cols = $_.Split([char]9, 2)
+        $cols = $_.Split([char[]]@([char]9), 2)
         if ($cols.Count -ne 2) { throw 'Uszkodzony manifest.' }
         [PSCustomObject]@{Hash=$cols[0]; Relative=$cols[1]}
     })

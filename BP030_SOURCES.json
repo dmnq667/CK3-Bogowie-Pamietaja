@@ -1,0 +1,160 @@
+{
+  "schema": "bp030-magnific-import-v1",
+  "files": [
+    {
+      "name": "01-gromnica-01.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975582002/3840513268.jpg?token=exp=1794441600~hmac=f4f261c73989fae8abcca95321e79b03a73326fd4729d7229546c96d95de67f0",
+      "sha256": "2086a8fa8fed00c7b6804f6e85c8144ef8e44561a045e58f9fe07f9c5f69f39c"
+    },
+    {
+      "name": "02-siedem-nocy-02.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975582276/3840513396.jpg?token=exp=1794441600~hmac=4b9f9c4b4fc205763be1a612f8444b5b026ae8108825653a6059c53990d47d7f",
+      "sha256": "d5382701d51291cc8626aa12b42c537475559d01227f9c34f300b37102175c48"
+    },
+    {
+      "name": "02-siedem-nocy-03.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975582496/3840513473.jpg?token=exp=1794441600~hmac=d75ca6f1df44037f1d5b2c9cb940793e5581b90fae8100c5dd368f1ef91a0588",
+      "sha256": "0647738279665a90bcb4325709c5ebe1021baa8f87bdab4e139dad11437c5a06"
+    },
+    {
+      "name": "02-siedem-nocy-04.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975582692/3840513555.jpg?token=exp=1794441600~hmac=1e79fb054467674367cfe646baedb2e09bbfd559925374df8de52f4f63da5483",
+      "sha256": "1ca3806bd3d204858a0ca2a015609ef7a7f8933f502dea90049a520df1b28cac"
+    },
+    {
+      "name": "03-Wiosenny-Nowy-Rok-01.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975582960/3840513628.jpg?token=exp=1794441600~hmac=eca066b1e7fa40ec61b580e2f365b1b5ac9ee5fb56e40cc576c1af9ee2b2056c",
+      "sha256": "e68fd1b14e48970388c24b6334437a609a428b4501168d924a6866af153d0c65"
+    },
+    {
+      "name": "03-Wiosenny-Nowy-Rok-02.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975583191/3840513737.jpg?token=exp=1794441600~hmac=a8e1ae4f6a1b9041ba732e087cdf0484f2e11c5560a5de09a9522fea73187f79",
+      "sha256": "4cb8535f6ef30695ae2b8144ebad44e6c446dc0b7b854604468e812fc9ed32b0"
+    },
+    {
+      "name": "04-Jare-Gody-01.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975583354/3840513828.jpg?token=exp=1794441600~hmac=af909109b993501da5146cf0b6095c2d6ba5411e18724c4f7d60102dc23c3f51",
+      "sha256": "ec24e0f956a4160f3828698942acd2a916e929204dcb9ff94efe93b0fa76edd8"
+    },
+    {
+      "name": "05-gaik-turzyca-01.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975583622/3840513932.jpg?token=exp=1794441600~hmac=f1154b31816b6c6dd22c8e4df4b2109154d78541d85e2ba374007abd42e15d28",
+      "sha256": "c3d1f2fc15f0f94380176e3bdf565d76638103b225ff37bf28cf97e158e50535"
+    },
+    {
+      "name": "05-gaik-turzyca-02.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975589717/3840516486.jpg?token=exp=1794441600~hmac=3ca5215f3d4ebefb034a53f80bac2208b98b705581f9e102638f2eacc71bd5b8",
+      "sha256": "c10187bc7e11705f119fa8c374aafd780c042b07ddaf3b85159d7551693e086c"
+    },
+    {
+      "name": "05-gaik-turzyca-03.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975590001/3840516590.jpg?token=exp=1794441600~hmac=cd5e3923c1e33200acfce41a6c8d859c1b753eb9569c567e0d5fc8b1f271e509",
+      "sha256": "1ba56057c1d2e8f62a1fdab1a8fd3526e0566d4a35f5ec63d94fcb1ebbfb1859"
+    },
+    {
+      "name": "06-dziady-wiosenne-01.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975590251/3840516683.jpg?token=exp=1794441600~hmac=5fed4a6a0fe0cfd7f95f7ad6a870a0b3a3a114125bf190e166450674c2e59543",
+      "sha256": "78d2114a038b8d87a9c008b4e077c711fd7767b4031495f20665e3fa4d6d560b"
+    },
+    {
+      "name": "06-dziady-wiosenne-02.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975590419/3840516751.jpg?token=exp=1794441600~hmac=12a8648da63e41946992305fc8c9c9c24368e0bf7646686f496181abb3393c56",
+      "sha256": "f09e6b5c45298500e43452bfb0faeae97086d324fcd8177a63ff69187083f352"
+    },
+    {
+      "name": "06-dziady-wiosenne-03.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975590629/3840516854.jpg?token=exp=1794441600~hmac=816e06a2a6e4cbc7f4cdcd478b18bceba7decec47c836cbd7e95c46421f3ae6c",
+      "sha256": "ea1907fcd678e4d8758b68a0712fe896b36a9d4eb80a0104367b1ce7e801974e"
+    },
+    {
+      "name": "07-Stado-01.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975590779/3840516921.jpg?token=exp=1794441600~hmac=0cee7092662c0084725a54c8e8a6557fc1a2542101588011a0a81cae5e52db58",
+      "sha256": "d0150ab98b7df5f72e147b8c96277a590fd28c7ab422f5e6bc4c08c4b5dead0c"
+    },
+    {
+      "name": "07-Stado-02.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975590924/3840516987.jpg?token=exp=1794441600~hmac=a24f592bf38a0a0d1d679daf9f1093d9da94e9f76dd0129e5d2407bada192741",
+      "sha256": "cbd03d74d756edbfce230f55341568fd134f331e3e3d63c8da1ac5485499b130"
+    },
+    {
+      "name": "08-Noc-Kupaly-01.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975591142/3840517062.jpg?token=exp=1794441600~hmac=6f5dc33be9896818635d16251be93de571aa55434b5433ba31b6a4851d9f7ef0",
+      "sha256": "11caf71717b63f76a6f00c074ec6a45001fb2775ce8d8e0a19211458feedb6d3"
+    },
+    {
+      "name": "08-Noc-Kupaly-02.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975591866/3840517386.jpg?token=exp=1794441600~hmac=fce6c6ba9f86785c97bf633d3d59c738fcba21e0cfa59c68802a90f33ec91f30",
+      "sha256": "1b605484eb8de814c49e51d7fd456b82420d24ff663458255ddce676f3610cf6"
+    },
+    {
+      "name": "09-Perun-01.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975592063/3840517485.jpg?token=exp=1794441600~hmac=7bbb9b0f7dbf053bd2c9eaf72b4416ad75fba0b4978e5079b7de5c4f717158da",
+      "sha256": "cb5e1a5aee7c28aaa45c2c58df2c2e095e6441164a35ab37a591f2a0c4c98d27"
+    },
+    {
+      "name": "09-Perun-02.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975592339/3840517597.jpg?token=exp=1794441600~hmac=db4c35880028814939825405b4833dca4c40cd8e3102cccb943abf9033349a15",
+      "sha256": "3d272af4122c982ac9f506260c9cbabca40f025a33a502fe176831ce08aa80b6"
+    },
+    {
+      "name": "10-Swięto-Plonow-01.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975592513/3840517672.jpg?token=exp=1794441600~hmac=bfeee59963164082f6efc56bd4b3348e7f87c7bbb389945713e3fd09d8d5b75b",
+      "sha256": "b94327c9e88f245cd50514fd9a6a2cff3bfdb1c6389a896b59ac8dbcdcdae70d"
+    },
+    {
+      "name": "10-Swięto-Plonow-02.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975592684/3840517747.jpg?token=exp=1794441600~hmac=e75c46bf30506e3995cbadd0e4c5385f89b5961b3c76f4c5d0b85751325289a7",
+      "sha256": "6f2eb0cb59c705a038fafb39e48d50492162ada3a555730d3c33310ef3694e49"
+    },
+    {
+      "name": "10-Swięto-Plonow-03.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975592803/3840517815.jpg?token=exp=1794441600~hmac=8744113426397234742a9c798a9e28b9e4b905612bfde124251434b4374cf046",
+      "sha256": "6d517f7f9f00f6867f728bfe9de4c7e461f6fb63be27a13d2253fa9877a1dd1e"
+    },
+    {
+      "name": "11-Dziady-Jesienne-01.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975592974/3840517887.jpg?token=exp=1794441600~hmac=bcfb4efed9f8f9115e1ba8a4211d5c3423a72e7649264e0d745456f9fd66043f",
+      "sha256": "4054d2a41db29da0d9eea22d0efc3db994662f40518afffd4a675726bc696fad"
+    },
+    {
+      "name": "11-Dziady-Jesienne-02.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975593123/3840517978.jpg?token=exp=1794441600~hmac=cb42460ff82f341c7400b145d029d18454ac405f4f0ff5da58f942df8fcfb4db",
+      "sha256": "26fea0c632924cbd678736674725b97f87ff973b2bf0901778da3a5796258776"
+    },
+    {
+      "name": "11-Dziady-Jesienne-03.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975594040/3840518410.jpg?token=exp=1794441600~hmac=d9d6456433c8664ac33751b4bf3ac07d12e4fdc990de0fd96b6e8bebb6dd8a00",
+      "sha256": "117b1dc89fcb7d701d5030c45957181902331135542e61cffc14ad4a04e5aaeb"
+    },
+    {
+      "name": "12-Szczodre-Gody-01.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975594287/3840518551.jpg?token=exp=1794441600~hmac=06a10a78cba8fdff41ebd783c44de48105d037f4040fdedba851afb65a7f8b50",
+      "sha256": "835903b79319d945718c7c9dc7a68179d980ea4e5981839ee9065f67366dd31b"
+    },
+    {
+      "name": "12-Szczodre-Gody-02.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975594477/3840518618.jpg?token=exp=1794441600~hmac=035d9a67f661ed55c5a3ae29e9fb98708d0068e6440ee5d4f4f540803d9b524e",
+      "sha256": "5564225b2bfb6bce809df581754792da18de02748e710300dee6a135d4d12feb"
+    },
+    {
+      "name": "12-Szczodre-Gody-03.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975594672/3840518694.jpg?token=exp=1794441600~hmac=1a95146bb4c74a847c37720fed8b3ee28d53d974550be61dcbc64a60598d036c",
+      "sha256": "cccc2f1023bd169c2cf768c97329ef97ebd8fed4a720b020f635f40f0882c182"
+    },
+    {
+      "name": "Mokosz_A03_lustro.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975594888/3840518793.jpg?token=exp=1794441600~hmac=9b8667a1613c57bdedf6b52f3096616ca88d8493d755507998dbaa12129e1dfe",
+      "sha256": "06a8e6926210a77b0f121f7af80b3c18a3de446dc06e53320074b083b85b2469"
+    },
+    {
+      "name": "Perun_A02.jpg",
+      "url": "https://pikaso.cdnpk.net/private/production/5975595074/3840518868.jpg?token=exp=1794441600~hmac=2737bf25ab31970fc34d140629dca80b66668b4f919639673395669159cb3ddc",
+      "sha256": "de4edab48b80f4057a822cfd903f394bdc5c61c35c6d92391917900a484ccfba"
+    },
+    {
+      "name": "Weles_A01.png",
+      "url": "https://pikaso.cdnpk.net/private/production/5975595359/3840518972.png?token=exp=1794441600~hmac=49ab37b59e49ca14d70db80ec2b8c89166b7eac4ff3238a524ed734de4c57df2",
+      "sha256": "077b32468488a8490e9366a72f073ff6a95bf9df43ef85c077db357a34f95a5b"
+    }
+  ]
+}

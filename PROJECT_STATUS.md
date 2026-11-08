@@ -1,4 +1,23 @@
-# Stan produkcji: Bogowie Pamiętają
+# Stan produkcji: Gniew i Łaska Bogów
+
+**Aktualizacja:** 08.11.2026  
+**Wersja produkcyjna:** 0.3.0 DEV na `feature/0.3.0-gniew-i-laska`.  
+**Ważne:** pliki tekstowe są zapisane na GitHubie; 31 grafik zostało przygotowanych lokalnie, ale ich import do GitHuba jeszcze nie nastąpił. **Nie instalować samej gałęzi bez grafik.**
+
+## Faktycznie wykonane w 0.3.0 DEV
+
+- Weles `2020`, Perun `9110`, Mokosz `3010`: osobne interwencje z wyborami, konsekwencjami i opisami różnymi dla cech postaci.
+- Weles może uśmiercić władcę po świadomie podjętym ryzyku (prototyp 35%); Perun również (prototyp 25%).
+- Wszystkie trzy sceny mają nowe identyfikatory teł; polskie i angielskie opisy mówią o widocznym, osobiście przemawiającym bogu.
+- Wybrane święta dają natychmiastową premię, a dziedziczone zmienne zapamiętują działania przy Gromnicy i ofiarę Welesa.
+- Przeredagowano otwarcia wszystkich 12 świąt. **Całościowa redakcja pozostałej lokalizacji trwa.**
+- Sprawdzono 28 świątecznych i 3 boskie ilustracje; przygotowano 31 DDS 1592×848 DXT1, bez czterech starych wariantów; w kodzie przekierowano brakujące tła do nowych odpowiedników.
+- Przygotowano importer trzech plików `BP030.part01`–`part03` z kontrolą SHA256 oraz generator aktualizatora Windows nadpisującego istniejący mod, z kopią zapasową.
+
+**Czego NIE wykonano:** importu nowych plików binarnych do repozytorium, uruchomienia moda w grze, sprawdzenia `error.log`, pełnej redakcji tekstów, weryfikacji ikony cechy w CK3.
+
+## Dotychczasowa historia 0.1.9 / 0.2.0
+
 
 **Aktualizacja:** 26.10.2026  
 **Wersja:** 0.1.9 ALPHA, 12 świąt  

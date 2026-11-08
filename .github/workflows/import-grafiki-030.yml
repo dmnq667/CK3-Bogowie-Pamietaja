@@ -1,0 +1,115 @@
+name: Import Gniew i Laska Bogow 0.3.0 graphics
+
+on:
+  push:
+    branches:
+      - feature/0.3.0-gniew-i-laska
+    paths:
+      - BP030.part01
+      - BP030.part02
+      - BP030.part03
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: import-bp030-naturalistic
+  cancel-in-progress: false
+
+jobs:
+  import-and-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out the development branch
+        uses: actions/checkout@v4
+
+      - name: Reconstruct and authenticate the 0.3.0 artwork
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s BP030.part01
+          test -s BP030.part02
+          test -s BP030.part03
+          cat BP030.part01 BP030.part02 BP030.part03 > "$RUNNER_TEMP/BP030.zip"
+          printf '%s  %s\n' \
+            'bd9fe6725f27e61af632cad613f9d1aa03799b073d3cee47d2f037233c18b0b7' \
+            "$RUNNER_TEMP/BP030.zip" | sha256sum --check
+          python3 - <<'PY'
+          from pathlib import Path, PurePosixPath
+          from zipfile import ZipFile
+          from hashlib import sha256
+          import json, os
+          archive=Path(os.environ["RUNNER_TEMP"])/"BP030.zip"
+          dest=Path(os.environ["RUNNER_TEMP"])/"BP030"
+          with ZipFile(archive) as z:
+              assert z.testzip() is None, "Bad CRC in zip"
+              names=set(z.namelist())
+              assert "BP030_MANIFEST.json" in names
+              manifest=json.loads(z.read("BP030_MANIFEST.json"))
+              expected=manifest["entries"]
+              assert len(expected)==62, f"Invalid count: {len(expected)}"
+              assert names==set(expected)|{"BP030_MANIFEST.json"}, "Unrecognized files in archive"
+              assert len([p for p in expected if p.endswith(".dds")])==31
+              assert len([p for p in expected if p.startswith("source_artwork_030/")])==31
+              for name,digest in expected.items():
+                  parts=PurePosixPath(name).parts
+                  assert ".." not in parts and not name.startswith("/"),name
+                  assert name.startswith("Bogowie_Pamietaja/gfx/interface/illustrations/event_scene/") or name.startswith("source_artwork_030/"),name
+                  raw=z.read(name)
+                  assert sha256(raw).hexdigest()==digest,name
+                  if name.endswith(".dds"):
+                      assert raw[:4]==b"DDS " and raw[84:88]==b"DXT1",name
+                      assert int.from_bytes(raw[12:16],"little")==848
+                      assert int.from_bytes(raw[16:20],"little")==1592
+                  else:
+                      assert raw[:3]==b"\xff\xd8\xff" or raw[:8]==b"\x89PNG\r\n\x1a\n",name
+              z.extractall(dest)
+          print("Import verified: 31 new DDS, 31 source illustrations.")
+          PY
+
+      - name: Import new artwork and retire old-style variants
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp -a "$RUNNER_TEMP/BP030/Bogowie_Pamietaja/." Bogowie_Pamietaja/
+          mkdir -p source_artwork_030
+          cp -a "$RUNNER_TEMP/BP030/source_artwork_030/." source_artwork_030/
+          git rm -f --ignore-unmatch \
+            Bogowie_Pamietaja/gfx/interface/illustrations/event_scene/bp_gromnica_02.dds \
+            Bogowie_Pamietaja/gfx/interface/illustrations/event_scene/bp_stado_03.dds \
+            Bogowie_Pamietaja/gfx/interface/illustrations/event_scene/bp_kupala_03.dds \
+            Bogowie_Pamietaja/gfx/interface/illustrations/event_scene/bp_perun_03.dds
+          python3 tools/validate_gods_030.py
+          git rm -f --ignore-unmatch BP030.part01 BP030.part02 BP030.part03
+
+      - name: Save verified graphic sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A Bogowie_Pamietaja/gfx source_artwork_030
+          git add -A BP030.part01 BP030.part02 BP030.part03 || true
+          if ! git diff --cached --quiet; then
+            git commit -m "assets(0.3): import 31 verified naturalistic DDS images"
+            git push origin HEAD:feature/0.3.0-gniew-i-laska
+          fi
+
+      - name: Create self-verifying in-place Windows update
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/package_windows_update_030.py
+          test -s GNIEW_I_LASKA_BOGOW_0.3.0_DEV_NADPISZ.zip
+
+      - name: Publish test installer as workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Gniew-i-Laska-Bogow-0.3.0-DEV-NADPISZ
+          path: |
+            GNIEW_I_LASKA_BOGOW_0.3.0_DEV_NADPISZ.zip
+            validation_gods_030.json
+          if-no-files-found: error
+          retention-days: 30

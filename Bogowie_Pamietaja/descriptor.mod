@@ -1,8 +1,8 @@
-﻿version="0.2.0-dev"
+﻿version="0.3.0-dev"
 tags={
     "Events"
     "Roleplaying"
     "Decisions"
 }
-name="Bogowie pamietaja - The Gods Remember"
+name="Gniew i Łaska Bogów"
 supported_version="1.20.*"

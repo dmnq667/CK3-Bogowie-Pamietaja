@@ -1,7 +1,7 @@
 # Gniew i Łaska Bogów — produkcyjna lista wydarzeń i grafik (0.3.0 DEV)
 
 **Podstawa:** faktyczne skrypty gałęzi `feature/0.3.0-gniew-i-laska` i rejestr teł `bp_slavic_holiday_backgrounds.txt`.
-**Status:** plan assetów i fabuły; nie oznacza gotowych grafik ani przepisanych scen.
+**Status z 08.11.2026:** nowe grafiki A01–A03 zatwierdzone, nowe 28 świątecznych ilustracji dostarczone; 31 DDS przygotowanych lokalnie. Kod przypisania scen i narracja PL/EN zaktualizowane. Import binariów do repozytorium oraz test CK3 jeszcze oczekują. Historyczne opisy niżej dokumentują wcześniejszy etap projektu.
 
 ## Zasada
 

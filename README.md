@@ -1,6 +1,12 @@
 # Gniew i Łaska Bogów
 
-## Najnowsza wersja testowa — 0.4.4 DEV (przywrócenie okien po błędzie)
+## Najnowsza wersja testowa — 0.4.5 DEV (automatyczne święta i grafiki)
+
+**Przywrócono oryginalny codzienny kalendarz**: wszystkie 12 świąt znów jest wywoływanych automatycznie w terminach, bez ręcznego otwierania decyzji. Pierwsze okno to obrzęd z objaśnieniem, drugie — właściwa historia; bez trzeciego powiadomienia. Naprawiono regresję związaną z trybem wyświetlania Szczodrych Godów: standardowe okna CK3, poprawne odwołania do trzech obrazów DDS. Zachowano 31 grafik, fabułę i ryzyko śmierci.
+
+**[Pobierz 0.4.5 DEV](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42632417532/artifacts/13682155682)** · [pełny opis i testy](docs/RELEASE_045_KALENDARZ_GRAFIKI.md). Kod i aktualizator Windows: PASS. **Automatyczne zatrzymywanie zegara wymaga potwierdzenia w grze** — nie jest jeszcze sprawdzone.
+
+## Poprzednia wersja — 0.4.4 DEV (przywrócenie okien po błędzie)
 
 **Ważne:** 0.4.3 nie zatrzymywała rozgrywki i wprowadziła regresję komunikatu. W 0.4.4 **cofnięto eksperymentalne `letter_event`** i przywrócono 29 standardowych okien `character_event` bez pustego powitania. 12 świąt zachowuje dwa etapy, pełny kalendarz, 31 grafik oraz 16 opisów wyników.
 

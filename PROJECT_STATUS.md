@@ -1,6 +1,21 @@
 # Stan produkcji: Gniew i Łaska Bogów
 
-## 0.4.0 DEV — przebudowa fabuły, 9 listopada 2026
+## 0.4.1 DEV — dwa okna i poprawione nazwy efektów (9 listopada 2026)
+
+**Stan:** wersja testowa zbudowana na osobnej gałęzi `feature/0.4.1-dwa-okna-swieta`. [Wynik GitHub Actions #42565179434](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42565179434): statyczny audyt **12/12 PASS — dokładnie dwa okna** oraz rzeczywista aktualizacja próbnego moda na Windows PowerShell 5.1 **PASS**. **Nieprzetestowane jeszcze w silniku CK3.**
+
+- 12 pierwszych okien: edukacyjne objaśnienie obrzędu, +45 pobożności, -10 stresu i odpowiednie błogosławieństwo przez 90 dni.
+- 12 drugich okien: zachowane historie z 0.4.0, ofiary, odroczone konsekwencje i boskie wyroki.
+- Dotychczasowe zapowiedzi zamieniono na niewidoczne przekaźniki, więc nie stanowią trzeciego okna.
+- Dodano 74 klucze lokalizacji PL i 74 EN: 36 kluczy świąt i 38 kluczy nowych modyfikatorów, w tym `bp_040_oath_of_peace_modifier` → „Przysięga zgody”, `bp_040_feud_curse_modifier` → „Waśń bez pojednania”, `bp_040_blood_price_modifier` → „Cena przelanej krwi”.
+- Nowe pierwsze okno korzysta z innej istniejącej grafiki, gdy święto ma kilka ilustracji; 31 DDS, trzy objawienia bogów, `main` i dotychczasowa wersja 0.4.0 są nietknięte.
+- Poprawiono audyt nazw przestrzeni `bp_041` i dodano wymaganie **dokładnie dwóch**, a nie najwyżej dwóch widocznych okien.
+
+**[Pobierz poprawioną paczkę 0.4.1 DEV](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42565179434/artifacts/13651276740)**. Rozpakuj pobrany ZIP i znajdujący się w środku `GNIEW_I_LASKA_BOGOW_0.4.1_DEV_NADPISZ.zip`, wyłącz CK3, uruchom `AKTUALIZUJ_041.bat`. Aktualizator nadpisuje istniejący mod z kopią zapasową; testuj na kopii sejwa.
+
+[Pełny opis zmiany](docs/RELEASE_041_DWA_OKNA.md).
+
+## Poprzednia wersja: 0.4.0 DEV — przebudowa fabuły, 9 listopada 2026
 
 **Wersja testowa zbudowana na osobnej gałęzi** `feature/0.4.0-fabula-od-nowa`. [Zakończony build #42556994466](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42556994466), status **SUCCESS**. **Nie była testowana w uruchomionym CK3.**
 

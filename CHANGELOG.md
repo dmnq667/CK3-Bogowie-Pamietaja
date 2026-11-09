@@ -1,6 +1,13 @@
 # Historia wydań
 
-## 0.4.5 DEV — 9 listopada 2026
+## 0.4.5 DEV — poprawki fabularne i komunikaty, 9 listopada 2026
+
+- Jare Gody: naprawiono fałszywe oskarżanie `random_courtier` i możliwość egzekucji zupełnie przypadkowej niewinnej osoby. Bohaterem pozostaje władca, a przyczyny waśni zależą od jego historii lub czynów dynastii.
+- Zmieniono polski i angielski tekst Jarych Godów na zrozumiały, wysoki rejestr. Pokój kosztuje 90 złota, krwawa rozprawa przynosi postrach, tyranię i zemstę, uchylenie się od wyroku kosztuje prestiż i wywołuje waśń.
+- 16 typów komunikatów o wyniku prób ma odrębne opisy, rozwiązując błąd `bp_042_trial_success_message_desc`.
+- [**Pobierz końcową paczkę 0.4.5 DEV**](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42634924149/artifacts/13682642345) — automatyczne testy i Windows-update PASS. Pauza i obraz w grze wymagają potwierdzenia.
+
+## Pierwszy zakres 0.4.5 DEV — 9 listopada 2026
 
 - Przywrócono dawny codzienny mechanizm wywoływania 12 świąt. W wersjach 0.4.x zegar wbrew wcześniejszym założeniom ograniczono do sądu, usuwając automatyczne obrzędy.
 - Wywołanie prowadzi prosto do edukacyjnego okna z bonusem; przycisk uruchamia istniejącą historię fabularną. Liczba okien pozostała **dokładnie 2**.

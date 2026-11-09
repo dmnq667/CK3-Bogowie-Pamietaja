@@ -31,7 +31,9 @@ bp_harvest.9201 = {
     }
     option = {
         name = bp_040_harvest.a
-        add_gold = -100
+        trigger = { gold >= 100 }
+        show_as_unavailable = { gold < 100 }
+        remove_short_term_gold = 100
         capital_county = { add_county_modifier = { modifier = bp_040_merciful_harvest_modifier years = 3 } }
         add_stress = -25
         bp_mokosh_plus_20_effect = yes

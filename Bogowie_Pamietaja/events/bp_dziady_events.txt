@@ -1,51 +1,60 @@
 ﻿namespace = bp_dziady
 
 # 2 - 8 May: ancestral counsel, not a second bloody Weles Week.
+# 0.4.0 — one visible festival window, delayed vengeance independent.
 bp_dziady.6001 = {
     type = character_event
     theme = diplomacy
-    override_background = {
-        reference = bp_scene_dziady_01
-    }
-    title = bp_dziady.6001.t
+    override_background = { reference = bp_scene_dziady_01 }
+    title = bp_040_dziady.t
     desc = {
         first_valid = {
-            triggered_desc = {
-                trigger = { OR = { has_character_flag = bp_weles_dynasty_blood dynasty = { has_variable = bp_weles_dynastic_blood_v018 } } }
-                desc = bp_dziady.6001.desc_blood
-            }
-            desc = bp_dziady.6001.desc
+        triggered_desc = { trigger = { dynasty = { has_variable = bp_040_blood_ever_v040 } } desc = bp_040_dziady.desc_blood }
+        triggered_desc = { trigger = { has_trait = compassionate } desc = bp_040_dziady.desc_compassionate }
+        triggered_desc = { trigger = { has_trait = callous } desc = bp_040_dziady.desc_callous }
+            desc = bp_040_dziady.desc
         }
     }
     left_portrait = root
     immediate = {
         bp_initialize_effect = yes
-        bp_weles_migrate_legacy_debt_018_effect = yes
+        add_piety = 45
+        add_stress = -10
         dynasty = {
             set_variable = { name = bp_dziady_ever_celebrated_v015 value = yes }
             set_variable = { name = bp_dziady_rite_lock_v015 value = yes days = 335 }
         }
+        bp_weles_migrate_legacy_debt_018_effect = yes
     }
     option = {
-        name = bp_dziady.6001.a
-        trigger = { gold >= 40 }
-        show_as_unavailable = { gold < 40 }
-        remove_short_term_gold = 40
+        name = bp_040_dziady.a
+        trigger = { gold >= 125 }
+        show_as_unavailable = { gold < 125 }
+        remove_short_term_gold = 125
+        add_prestige = -100
+        bp_040_mercy_effect = yes
         bp_weles_plus_20_effect = yes
-        trigger_event = bp_dziady.6002
-        ai_chance = { base = 60 }
+        add_character_modifier = { modifier = bp_040_oath_of_peace_modifier years = 2 }
+        ai_chance = { base = 50 }
     }
     option = {
-        name = bp_dziady.6001.b
-        add_prestige = -60
-        bp_weles_plus_10_effect = yes
-        trigger_event = bp_dziady.6002
+        name = bp_040_dziady.b
+        add_gold = 120
+        add_dread = 15
+        bp_040_cruelty_effect = yes
+        bp_040_schedule_revenge_effect = yes
+        add_character_modifier = { modifier = bp_040_feud_curse_modifier years = 3 }
+        bp_weles_minus_25_effect = yes
         ai_chance = { base = 30 }
     }
     option = {
-        name = bp_dziady.6001.c
-        bp_weles_minus_15_effect = yes
-        ai_chance = { base = 10 }
+        name = bp_040_dziady.c
+        add_stress = 45
+        add_prestige = -150
+        add_character_modifier = { modifier = bp_040_blood_price_modifier years = 2 }
+        bp_weles_plus_10_effect = yes
+        bp_040_mercy_effect = yes
+        ai_chance = { base = 20 }
     }
 }
 

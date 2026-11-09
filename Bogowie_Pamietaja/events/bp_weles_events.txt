@@ -524,6 +524,12 @@ bp_weles.2020 = {
         is_ruler = yes
         dynasty = { has_variable = bp_weles_debt_unpaid_v018 }
     }
+    immediate = {
+        if = {
+            limit = { is_ai = no }
+            send_interface_toast = { type = bp_042_divine_arrived_message left_icon = root }
+        }
+    }
     option = {
         name = bp_weles.2020.a
         trigger = { gold >= 400 }

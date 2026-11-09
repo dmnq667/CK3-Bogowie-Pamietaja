@@ -4,7 +4,15 @@ Dawniej: **Bogowie Pamiętają**.
 
 Mod do **Crusader Kings III** poświęcony słowiańskim bogom, obrzędom i cyklowi dwunastu świąt. Projekt niezależny od **The Weight of Words**.
 
-## Nowa wersja testowa: 0.4.0 DEV — przebudowana fabuła
+## Aktualna wersja testowa: 0.4.1 DEV — znaczenie obrzędu i jego konsekwencje
+
+**Każde z 12 świąt ma dokładnie dwa okna.** Pierwsze wyjaśnia sens obrzędu w wysokiej, zrozumiałej polszczyźnie i przyznaje +45 pobożności, -10 stresu oraz 90-dniowe błogosławieństwo. Drugie prowadzi do niebezpiecznej historii z możliwością zabójstwa, zemsty lub silnej nagrody. Dawne powiadomienia nie tworzą trzeciego okna.
+
+Usunięto problem surowych identyfikatorów `bp_040_...` widocznych przy premiach i karach: **15 modyfikatorów i 4 efekty opinii** mają teraz nazwy i opisy PL/EN. Zachowano wszystkie 31 nowych ilustracji i trzy zatwierdzone objawienia bogów.
+
+**[Pobierz aktualizator 0.4.1 DEV — test instalatora Windows PASS](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42565179434/artifacts/13651276740)**. Test skryptów potwierdza 12/12 dwustopniowych świąt, ale **działanie w grze CK3 wymaga sprawdzenia**. [Szczegóły, lista świąt i instalacja](docs/RELEASE_041_DWA_OKNA.md).
+
+## Poprzednia wersja testowa: 0.4.0 DEV — przebudowana fabuła
 
 Na gałęzi `feature/0.4.0-fabula-od-nowa` napisano od nowa wszystkie 12 historii świąt, wprowadzono krwawe decyzje, pamięć krzywd i późniejszą zemstę. Każde święto to jedna scena, dodatkowo może pojawić się zapowiedź. Dotychczasowe trzy osobiste objawienia bogów oraz 31 nowych grafik pozostały bez zmian.
 

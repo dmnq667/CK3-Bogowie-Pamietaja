@@ -3,7 +3,10 @@ namespace = bp_040
 # Months after an execution, extortion or broken oath; does NOT stack on holiday windows.
 # Only existing adult courtiers may become targeted victims. No fabricated deaths.
 bp_040.5001 = {
-    type = character_event
+    type = letter_event
+    window = character_event
+    sender = root
+    opening = bp_043_empty_opening
     theme = diplomacy
     override_background = { reference = bp_scene_autumn_02 }
     title = bp_040_revenge.t
@@ -19,10 +22,6 @@ bp_040.5001 = {
     left_portrait = root
     trigger = { is_alive = yes is_ruler = yes }
     immediate = {
-        if = {
-            limit = { is_ai = no }
-            send_interface_toast = { type = bp_042_divine_arrived_message left_icon = root }
-        }
         # The named courtier is genuinely present in this court.
         if = {
             limit = { any_courtier = { is_adult = yes is_alive = yes } }
@@ -111,7 +110,10 @@ bp_040.5001 = {
 # One additional retaliation after a real murder. A distinct story months later,
 # never an immediate confirmation of the same holiday.
 bp_040.5002 = {
-    type = character_event
+    type = letter_event
+    window = character_event
+    sender = root
+    opening = bp_043_empty_opening
     theme = diplomacy
     override_background = { reference = bp_scene_dziady_03 }
     title = bp_040_aftermath.t
@@ -120,12 +122,6 @@ bp_040.5002 = {
     trigger = {
         is_alive = yes
         dynasty = { has_variable = bp_040_revenge_murder_ever_v040 }
-    }
-    immediate = {
-        if = {
-            limit = { is_ai = no }
-            send_interface_toast = { type = bp_042_divine_arrived_message left_icon = root }
-        }
     }
     option = {
         name = bp_040_aftermath.a

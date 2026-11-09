@@ -57,10 +57,7 @@ bp_spring.3002 = {
 # v0.3.0 Mokosh's intervention, distinct from ordinary festival scenes.
 # A direct consequence of withholding grain during Spring New Year.
 bp_spring.3010 = {
-    type = letter_event
-    window = character_event
-    sender = root
-    opening = bp_043_empty_opening
+    type = character_event
     theme = diplomacy
     # ART: Approved 0.3.0 visible-deity scene; never fall back to legacy art.
     override_background = { reference = bp_scene_deity_mokosh_3010 }

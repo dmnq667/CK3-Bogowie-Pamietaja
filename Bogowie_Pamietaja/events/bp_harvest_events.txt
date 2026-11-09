@@ -3,22 +3,16 @@
 # 28 August - 5 September. The goddess asks what the ruler did with the harvest.
 # 0.4.0: Single holiday scene; divine judgments and blood vengeance are delayed.
 bp_harvest.9201 = {
-    type = character_event
+    type = letter_event
+    # CK3-native pause, preserving the existing scene and window design.
+    window = character_event
+    sender = root
+    opening = bp_043_empty_opening
     theme = diplomacy
     override_background = { reference = bp_scene_harvest_02 }
     title = bp_041_harvest.intro.t
     desc = bp_041_harvest.intro.desc
     left_portrait = root
-    immediate = {
-        # CK3 native message filter requests auto-pause before player choice.
-        if = {
-            limit = { is_ai = no }
-            send_interface_toast = {
-                type = bp_042_rite_arrived_message
-                left_icon = root
-            }
-        }
-    }
     option = {
         name = bp_041_harvest.intro.a
         # Basic festival reward, exactly once per participation.

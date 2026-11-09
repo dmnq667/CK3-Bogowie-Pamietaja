@@ -1,15 +1,15 @@
 # Gniew i Łaska Bogów — 0.4.1 DEV: Dwa okna, dwa zadania
 
 **Stan: poprawka przygotowana i sprawdzona automatycznie 9 listopada 2026.**  
-**GitHub Actions:** [przebieg #42564966739](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42564966739) — testy skryptów **PASS**, próba rzeczywistej instalacji na Windows PowerShell 5.1 **PASS**.  
-**[Pobierz aktualizator 0.4.1 DEV](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42564966739/artifacts/13651221600)**.
+**GitHub Actions:** [przebieg #42565179434](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42565179434) — testy skryptów **PASS**, próba rzeczywistej instalacji na Windows PowerShell 5.1 **PASS**.  
+**[Pobierz aktualizator 0.4.1 DEV](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42565179434/artifacts/13651276740)**.
 
 ## Założenie wynikające z testu użytkownika
 
 Dotychczasowy model 0.4.0 był dramaturgiczny, ale przedstawiał święta jedynie jako tło przypadkowych wyroków. Ponadto efekty `bp_040_oath_of_peace_modifier`, `bp_040_feud_curse_modifier`, `bp_040_blood_price_modifier` były widoczne w interfejsie w postaci technicznych identyfikatorów. **Obie sprawy zostały skorygowane w 0.4.1.**
 
 Każde z dwunastu świąt składa się teraz z **dokładnie dwóch okien wyświetlanych kolejno**:
-1. **Obrzęd.** Zrozumiałe objaśnienie nazwy, czasu i sensu święta. Udział daje **+45 pobożności, -10 stresu oraz 90-dniową premię tematyczną**. Bonus jest przyznawany tylko w tym oknie.
+1. **Obrzęd.** Zrozumiałe objaśnienie nazwy, czasu i sensu święta. Udział daje **+45 pobożności, -10 stresu oraz 90-dniową premię tematyczną**. Bonus jest przyznawany tylko w tym oknie. Przyciski pierwszego okna są krótkie; dokładne wartości i nazwa daru pojawiają się w podpowiedzi CK3.
 2. **Los władcy.** Dalsza część z realnym problemem, trudnymi wyborami, konsekwencjami i możliwością krwawego wyroku. Dotychczasowe mechanizmy boskich długów, ofiar, klątw i zemsty zostały zachowane.
 
 Dawne opcjonalne zapowiedzi `bp_announcement.1001`–`1012` stały się **niewidocznymi przekaźnikami**; nie dodają trzeciego okna. Dotychczasowe wejścia z Kalendarza Bogów nadal kierują na te same identyfikatory `bp_gromnica.1001`, `bp_weles.2001` itd. Drugie sceny przeniesiono do `bp_041.2101`–`2112`. Odrębne, odłożone w czasie objawienia bogów i zemsty **nie liczą się do dwustopniowego obrzędu**; są osobnymi rozdziałami rozgrywki.
@@ -53,7 +53,7 @@ Przykłady:
 
 ## Instalacja
 
-1. Pobierz [poprawną paczkę 0.4.1 DEV](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42564966739/artifacts/13651221600).
+1. Pobierz [poprawną paczkę 0.4.1 DEV](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42565179434/artifacts/13651276740).
 2. Rozpakuj ZIP pobrany z GitHub Actions, następnie rozpakuj `GNIEW_I_LASKA_BOGOW_0.4.1_DEV_NADPISZ.zip` znajdujący się wewnątrz.
 3. Wyłącz CK3.
 4. Uruchom `AKTUALIZUJ_041.bat`. Instalator nadpisze obecną instalację moda, zachowując jej kopię. **Nie tworzy drugiego wpisu w launcherze.**

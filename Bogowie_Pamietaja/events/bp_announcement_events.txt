@@ -35,13 +35,9 @@ bp_announcement.1094 = {
 # Mandatory holy-day announcement: not a forced ceremony.
 bp_announcement.1001 = {
     type = character_event
-    theme = diplomacy
-    override_background = {
-        reference = bp_scene_gromnica_02
-    }
-    title = bp_announcement.1001.t
-    desc = bp_announcement.1001.desc
-    left_portrait = root
+    # Legacy opt-in notice becomes a SILENT router. The educational
+    # opening and the dramatic chapter are the only two visible modals.
+    hidden = yes
     trigger = {
         has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
@@ -57,39 +53,16 @@ bp_announcement.1001 = {
         dynasty = {
             set_variable = { name = bp_gromnica_announced_v014 value = yes days = 335 }
         }
-    }
-    option = {
-        name = bp_announcement.start
-        # The ritual is still started by a conscious player choice.
         trigger_event = bp_gromnica.1001
-        ai_chance = { base = 45 }
-    }
-    option = {
-        name = bp_announcement.later
-        ai_chance = { base = 45 }
-    }
-    option = {
-        name = bp_announcement.decline
-        dynasty = {
-            set_variable = { name = bp_gromnica_rite_lock_v013 value = yes days = 335 }
-            set_variable = { name = bp_gromnica_declined_v014 value = yes days = 335 }
-            set_variable = { name = bp_gromnica_ever_declined_v014 value = yes }
-        }
-        bp_weles_minus_15_effect = yes
-        ai_chance = { base = 10 }
     }
 }
 
 # Mandatory holy-day announcement: not a forced ceremony.
 bp_announcement.1002 = {
     type = character_event
-    theme = diplomacy
-    override_background = {
-        reference = bp_scene_weles_03
-    }
-    title = bp_announcement.1002.t
-    desc = bp_announcement.1002.desc
-    left_portrait = root
+    # Legacy opt-in notice becomes a SILENT router. The educational
+    # opening and the dramatic chapter are the only two visible modals.
+    hidden = yes
     trigger = {
         has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
@@ -105,39 +78,16 @@ bp_announcement.1002 = {
         dynasty = {
             set_variable = { name = bp_weles_announced_v014 value = yes days = 335 }
         }
-    }
-    option = {
-        name = bp_announcement.start
-        # The ritual is still started by a conscious player choice.
         trigger_event = bp_weles.2001
-        ai_chance = { base = 45 }
-    }
-    option = {
-        name = bp_announcement.later
-        ai_chance = { base = 45 }
-    }
-    option = {
-        name = bp_announcement.decline
-        dynasty = {
-            set_variable = { name = bp_weles_rite_lock_v013 value = yes days = 335 }
-            set_variable = { name = bp_weles_declined_v014 value = yes days = 335 }
-            set_variable = { name = bp_weles_ever_declined_v014 value = yes }
-        }
-        bp_weles_minus_15_effect = yes
-        ai_chance = { base = 10 }
     }
 }
 
 # Mandatory holy-day announcement: not a forced ceremony.
 bp_announcement.1003 = {
     type = character_event
-    theme = diplomacy
-    override_background = {
-        reference = bp_scene_spring_01
-    }
-    title = bp_announcement.1003.t
-    desc = bp_announcement.1003.desc
-    left_portrait = root
+    # Legacy opt-in notice becomes a SILENT router. The educational
+    # opening and the dramatic chapter are the only two visible modals.
+    hidden = yes
     trigger = {
         has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
@@ -153,39 +103,16 @@ bp_announcement.1003 = {
         dynasty = {
             set_variable = { name = bp_spring_announced_v014 value = yes days = 335 }
         }
-    }
-    option = {
-        name = bp_announcement.start
-        # The ritual is still started by a conscious player choice.
         trigger_event = bp_spring.3001
-        ai_chance = { base = 45 }
-    }
-    option = {
-        name = bp_announcement.later
-        ai_chance = { base = 45 }
-    }
-    option = {
-        name = bp_announcement.decline
-        dynasty = {
-            set_variable = { name = bp_spring_rite_lock_v013 value = yes days = 335 }
-            set_variable = { name = bp_spring_declined_v014 value = yes days = 335 }
-            set_variable = { name = bp_spring_ever_declined_v014 value = yes }
-        }
-        bp_mokosh_minus_15_effect = yes
-        ai_chance = { base = 10 }
     }
 }
 
 # Mandatory holy-day announcement: not a forced ceremony.
 bp_announcement.1004 = {
     type = character_event
-    theme = diplomacy
-    override_background = {
-        reference = bp_scene_jare_01
-    }
-    title = bp_announcement.1004.t
-    desc = bp_announcement.1004.desc
-    left_portrait = root
+    # Legacy opt-in notice becomes a SILENT router. The educational
+    # opening and the dramatic chapter are the only two visible modals.
+    hidden = yes
     trigger = {
         has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
@@ -201,41 +128,17 @@ bp_announcement.1004 = {
         dynasty = {
             set_variable = { name = bp_jare_announced_v014 value = yes days = 335 }
         }
-    }
-    option = {
-        name = bp_announcement.start
-        # The ritual is still started by a conscious player choice.
         trigger_event = bp_jare.4001
-        ai_chance = { base = 45 }
-    }
-    option = {
-        name = bp_announcement.later
-        ai_chance = { base = 45 }
-    }
-    option = {
-        name = bp_announcement.decline
-        dynasty = {
-            set_variable = { name = bp_jare_rite_lock_v013 value = yes days = 335 }
-            set_variable = { name = bp_jare_declined_v014 value = yes days = 335 }
-            set_variable = { name = bp_jare_ever_declined_v014 value = yes }
-        }
-        bp_mokosh_minus_15_effect = yes
-        ai_chance = { base = 10 }
     }
 }
 
 # Debug-only illustration of the opening alert, no calendar trigger.
 bp_announcement.9901 = {
     type = character_event
-    theme = diplomacy
-    override_background = {
-        reference = bp_scene_gromnica_02
+    hidden = yes
+    immediate = {
+        trigger_event = bp_gromnica.1001
     }
-    title = bp_announcement.1001.t
-    desc = bp_announcement.1001.desc
-    left_portrait = root
-    option = { name = bp_announcement.start trigger_event = bp_gromnica.1001 ai_chance = { base = 0 } }
-    option = { name = bp_announcement.later ai_chance = { base = 100 } }
 }
 
 # Gaik / Turzyca: Jan 1 + 119 days; leap years reschedule once to correct date.
@@ -256,13 +159,9 @@ bp_announcement.1195 = {
 
 bp_announcement.1005 = {
     type = character_event
-    theme = diplomacy
-    override_background = {
-        reference = bp_scene_gaik_01
-    }
-    title = bp_announcement.1005.t
-    desc = bp_announcement.1005.desc
-    left_portrait = root
+    # Legacy opt-in notice becomes a SILENT router. The educational
+    # opening and the dramatic chapter are the only two visible modals.
+    hidden = yes
     trigger = {
         has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
@@ -276,22 +175,7 @@ bp_announcement.1005 = {
     }
     immediate = {
         dynasty = { set_variable = { name = bp_gaik_announced_v015 value = yes days = 335 } }
-    }
-    option = {
-        name = bp_announcement.start
         trigger_event = bp_gaik.5001
-        ai_chance = { base = 45 }
-    }
-    option = { name = bp_announcement.later ai_chance = { base = 45 } }
-    option = {
-        name = bp_announcement.decline
-        dynasty = {
-            set_variable = { name = bp_gaik_rite_lock_v015 value = yes days = 335 }
-            set_variable = { name = bp_gaik_declined_v015 value = yes days = 335 }
-            set_variable = { name = bp_gaik_ever_declined_v015 value = yes }
-        }
-        bp_mokosh_minus_15_effect = yes
-        ai_chance = { base = 10 }
     }
 }
 
@@ -313,13 +197,9 @@ bp_announcement.1196 = {
 
 bp_announcement.1006 = {
     type = character_event
-    theme = diplomacy
-    override_background = {
-        reference = bp_scene_dziady_01
-    }
-    title = bp_announcement.1006.t
-    desc = bp_announcement.1006.desc
-    left_portrait = root
+    # Legacy opt-in notice becomes a SILENT router. The educational
+    # opening and the dramatic chapter are the only two visible modals.
+    hidden = yes
     trigger = {
         has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
@@ -333,22 +213,7 @@ bp_announcement.1006 = {
     }
     immediate = {
         dynasty = { set_variable = { name = bp_dziady_announced_v015 value = yes days = 335 } }
-    }
-    option = {
-        name = bp_announcement.start
         trigger_event = bp_dziady.6001
-        ai_chance = { base = 45 }
-    }
-    option = { name = bp_announcement.later ai_chance = { base = 45 } }
-    option = {
-        name = bp_announcement.decline
-        dynasty = {
-            set_variable = { name = bp_dziady_rite_lock_v015 value = yes days = 335 }
-            set_variable = { name = bp_dziady_declined_v015 value = yes days = 335 }
-            set_variable = { name = bp_dziady_ever_declined_v015 value = yes }
-        }
-        bp_weles_minus_15_effect = yes
-        ai_chance = { base = 10 }
     }
 }
 
@@ -370,13 +235,9 @@ bp_announcement.1197 = {
 
 bp_announcement.1007 = {
     type = character_event
-    theme = diplomacy
-    override_background = {
-        reference = bp_scene_stado_03
-    }
-    title = bp_announcement.1007.t
-    desc = bp_announcement.1007.desc
-    left_portrait = root
+    # Legacy opt-in notice becomes a SILENT router. The educational
+    # opening and the dramatic chapter are the only two visible modals.
+    hidden = yes
     trigger = {
         has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
@@ -390,22 +251,7 @@ bp_announcement.1007 = {
     }
     immediate = {
         dynasty = { set_variable = { name = bp_stado_announced_v015 value = yes days = 335 } }
-    }
-    option = {
-        name = bp_announcement.start
         trigger_event = bp_stado.7001
-        ai_chance = { base = 45 }
-    }
-    option = { name = bp_announcement.later ai_chance = { base = 45 } }
-    option = {
-        name = bp_announcement.decline
-        dynasty = {
-            set_variable = { name = bp_stado_rite_lock_v015 value = yes days = 335 }
-            set_variable = { name = bp_stado_declined_v015 value = yes days = 335 }
-            set_variable = { name = bp_stado_ever_declined_v015 value = yes }
-        }
-        bp_mokosh_minus_15_effect = yes
-        ai_chance = { base = 10 }
     }
 }
 
@@ -427,13 +273,9 @@ bp_announcement.1198 = {
 
 bp_announcement.1008 = {
     type = character_event
-    theme = diplomacy
-    override_background = {
-        reference = bp_scene_kupala_01
-    }
-    title = bp_announcement.1008.t
-    desc = bp_announcement.1008.desc
-    left_portrait = root
+    # Legacy opt-in notice becomes a SILENT router. The educational
+    # opening and the dramatic chapter are the only two visible modals.
+    hidden = yes
     trigger = {
         has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
@@ -447,79 +289,44 @@ bp_announcement.1008 = {
     }
     immediate = {
         dynasty = { set_variable = { name = bp_kupala_announced_v015 value = yes days = 335 } }
-    }
-    option = {
-        name = bp_announcement.start
         trigger_event = bp_kupala.8001
-        ai_chance = { base = 45 }
-    }
-    option = { name = bp_announcement.later ai_chance = { base = 45 } }
-    option = {
-        name = bp_announcement.decline
-        dynasty = {
-            set_variable = { name = bp_kupala_rite_lock_v015 value = yes days = 335 }
-            set_variable = { name = bp_kupala_declined_v015 value = yes days = 335 }
-            set_variable = { name = bp_kupala_ever_declined_v015 value = yes }
-        }
-        bp_mokosh_minus_15_effect = yes
-        ai_chance = { base = 10 }
     }
 }
 
 # Debug preview outside the actual holiday window, with no dynastic flags.
 bp_announcement.9905 = {
     type = character_event
-    theme = diplomacy
-    override_background = {
-        reference = bp_scene_gaik_01
+    hidden = yes
+    immediate = {
+        trigger_event = bp_gaik.5001
     }
-    title = bp_announcement.1005.t
-    desc = bp_announcement.1005.desc
-    left_portrait = root
-    option = { name = bp_announcement.start trigger_event = bp_gaik.5001 ai_chance = { base = 0 } }
-    option = { name = bp_announcement.later ai_chance = { base = 100 } }
 }
 
 # Debug preview outside the actual holiday window, with no dynastic flags.
 bp_announcement.9906 = {
     type = character_event
-    theme = diplomacy
-    override_background = {
-        reference = bp_scene_dziady_01
+    hidden = yes
+    immediate = {
+        trigger_event = bp_dziady.6001
     }
-    title = bp_announcement.1006.t
-    desc = bp_announcement.1006.desc
-    left_portrait = root
-    option = { name = bp_announcement.start trigger_event = bp_dziady.6001 ai_chance = { base = 0 } }
-    option = { name = bp_announcement.later ai_chance = { base = 100 } }
 }
 
 # Debug preview outside the actual holiday window, with no dynastic flags.
 bp_announcement.9907 = {
     type = character_event
-    theme = diplomacy
-    override_background = {
-        reference = bp_scene_stado_03
+    hidden = yes
+    immediate = {
+        trigger_event = bp_stado.7001
     }
-    title = bp_announcement.1007.t
-    desc = bp_announcement.1007.desc
-    left_portrait = root
-    option = { name = bp_announcement.start trigger_event = bp_stado.7001 ai_chance = { base = 0 } }
-    option = { name = bp_announcement.later ai_chance = { base = 100 } }
 }
 
 # Debug preview outside the actual holiday window, with no dynastic flags.
 bp_announcement.9908 = {
     type = character_event
-    theme = diplomacy
-    override_background = {
-        reference = bp_scene_kupala_01
+    hidden = yes
+    immediate = {
+        trigger_event = bp_kupala.8001
     }
-    title = bp_announcement.1008.t
-    desc = bp_announcement.1008.desc
-    left_portrait = root
-    option = { name = bp_announcement.start trigger_event = bp_kupala.8001 ai_chance = { base = 0 } }
-    option = { name = bp_announcement.later ai_chance = { base = 100 } }
 }
 
 
@@ -547,11 +354,9 @@ bp_announcement.1299 = {
 # v0.1.9: new mandatory seasonal announcements, one modal per season.
 bp_announcement.1009 = {
     type = character_event
-    theme = diplomacy
-    override_background = { reference = bp_scene_perun_01 }
-    title = bp_announcement.1009.t
-    desc = bp_announcement.1009.desc
-    left_portrait = root
+    # Legacy opt-in notice becomes a SILENT router. The educational
+    # opening and the dramatic chapter are the only two visible modals.
+    hidden = yes
     trigger = {
         has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
@@ -565,39 +370,23 @@ bp_announcement.1009 = {
     }
     immediate = {
         dynasty = { set_variable = { name = bp_perun_announced_v019 value = yes days = 335 } }
-    }
-    option = { name = bp_announcement.start trigger_event = bp_perun.9101 ai_chance = { base = 45 } }
-    option = { name = bp_announcement.later ai_chance = { base = 45 } }
-    option = {
-        name = bp_announcement.decline
-        dynasty = {
-            set_variable = { name = bp_perun_rite_lock_v019 value = yes days = 335 }
-            set_variable = { name = bp_perun_declined_v019 value = yes days = 335 }
-            set_variable = { name = bp_perun_ever_declined_v019 value = yes }
-        }
-        bp_perun_minus_20_effect = yes
-        ai_chance = { base = 10 }
+        trigger_event = bp_perun.9101
     }
 }
 
 bp_announcement.9909 = {
     type = character_event
-    theme = diplomacy
-    override_background = { reference = bp_scene_perun_01 }
-    title = bp_announcement.1009.t
-    desc = bp_announcement.1009.desc
-    left_portrait = root
-    option = { name = bp_announcement.start trigger_event = bp_perun.9101 ai_chance = { base = 0 } }
-    option = { name = bp_announcement.later ai_chance = { base = 100 } }
+    hidden = yes
+    immediate = {
+        trigger_event = bp_perun.9101
+    }
 }
 
 bp_announcement.1010 = {
     type = character_event
-    theme = diplomacy
-    override_background = { reference = bp_scene_harvest_01 }
-    title = bp_announcement.1010.t
-    desc = bp_announcement.1010.desc
-    left_portrait = root
+    # Legacy opt-in notice becomes a SILENT router. The educational
+    # opening and the dramatic chapter are the only two visible modals.
+    hidden = yes
     trigger = {
         has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
@@ -611,39 +400,23 @@ bp_announcement.1010 = {
     }
     immediate = {
         dynasty = { set_variable = { name = bp_harvest_announced_v019 value = yes days = 335 } }
-    }
-    option = { name = bp_announcement.start trigger_event = bp_harvest.9201 ai_chance = { base = 45 } }
-    option = { name = bp_announcement.later ai_chance = { base = 45 } }
-    option = {
-        name = bp_announcement.decline
-        dynasty = {
-            set_variable = { name = bp_harvest_rite_lock_v019 value = yes days = 335 }
-            set_variable = { name = bp_harvest_declined_v019 value = yes days = 335 }
-            set_variable = { name = bp_harvest_ever_declined_v019 value = yes }
-        }
-        bp_mokosh_minus_15_effect = yes
-        ai_chance = { base = 10 }
+        trigger_event = bp_harvest.9201
     }
 }
 
 bp_announcement.9910 = {
     type = character_event
-    theme = diplomacy
-    override_background = { reference = bp_scene_harvest_01 }
-    title = bp_announcement.1010.t
-    desc = bp_announcement.1010.desc
-    left_portrait = root
-    option = { name = bp_announcement.start trigger_event = bp_harvest.9201 ai_chance = { base = 0 } }
-    option = { name = bp_announcement.later ai_chance = { base = 100 } }
+    hidden = yes
+    immediate = {
+        trigger_event = bp_harvest.9201
+    }
 }
 
 bp_announcement.1011 = {
     type = character_event
-    theme = diplomacy
-    override_background = { reference = bp_scene_autumn_01 }
-    title = bp_announcement.1011.t
-    desc = bp_announcement.1011.desc
-    left_portrait = root
+    # Legacy opt-in notice becomes a SILENT router. The educational
+    # opening and the dramatic chapter are the only two visible modals.
+    hidden = yes
     trigger = {
         has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
@@ -657,39 +430,23 @@ bp_announcement.1011 = {
     }
     immediate = {
         dynasty = { set_variable = { name = bp_autumn_announced_v019 value = yes days = 335 } }
-    }
-    option = { name = bp_announcement.start trigger_event = bp_autumn.9301 ai_chance = { base = 45 } }
-    option = { name = bp_announcement.later ai_chance = { base = 45 } }
-    option = {
-        name = bp_announcement.decline
-        dynasty = {
-            set_variable = { name = bp_autumn_rite_lock_v019 value = yes days = 335 }
-            set_variable = { name = bp_autumn_declined_v019 value = yes days = 335 }
-            set_variable = { name = bp_autumn_ever_declined_v019 value = yes }
-        }
-        bp_weles_minus_15_effect = yes
-        ai_chance = { base = 10 }
+        trigger_event = bp_autumn.9301
     }
 }
 
 bp_announcement.9911 = {
     type = character_event
-    theme = diplomacy
-    override_background = { reference = bp_scene_autumn_01 }
-    title = bp_announcement.1011.t
-    desc = bp_announcement.1011.desc
-    left_portrait = root
-    option = { name = bp_announcement.start trigger_event = bp_autumn.9301 ai_chance = { base = 0 } }
-    option = { name = bp_announcement.later ai_chance = { base = 100 } }
+    hidden = yes
+    immediate = {
+        trigger_event = bp_autumn.9301
+    }
 }
 
 bp_announcement.1012 = {
     type = character_event
-    theme = diplomacy
-    override_background = { reference = bp_scene_szczodre_01 }
-    title = bp_announcement.1012.t
-    desc = bp_announcement.1012.desc
-    left_portrait = root
+    # Legacy opt-in notice becomes a SILENT router. The educational
+    # opening and the dramatic chapter are the only two visible modals.
+    hidden = yes
     trigger = {
         has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
@@ -703,29 +460,15 @@ bp_announcement.1012 = {
     }
     immediate = {
         dynasty = { set_variable = { name = bp_szczodre_announced_v019 value = yes days = 335 } }
-    }
-    option = { name = bp_announcement.start trigger_event = bp_szczodre.9401 ai_chance = { base = 45 } }
-    option = { name = bp_announcement.later ai_chance = { base = 45 } }
-    option = {
-        name = bp_announcement.decline
-        dynasty = {
-            set_variable = { name = bp_szczodre_rite_lock_v019 value = yes days = 335 }
-            set_variable = { name = bp_szczodre_declined_v019 value = yes days = 335 }
-            set_variable = { name = bp_szczodre_ever_declined_v019 value = yes }
-        }
-        bp_mokosh_minus_15_effect = yes
-        ai_chance = { base = 10 }
+        trigger_event = bp_szczodre.9401
     }
 }
 
 bp_announcement.9912 = {
     type = character_event
-    theme = diplomacy
-    override_background = { reference = bp_scene_szczodre_01 }
-    title = bp_announcement.1012.t
-    desc = bp_announcement.1012.desc
-    left_portrait = root
-    option = { name = bp_announcement.start trigger_event = bp_szczodre.9401 ai_chance = { base = 0 } }
-    option = { name = bp_announcement.later ai_chance = { base = 100 } }
+    hidden = yes
+    immediate = {
+        trigger_event = bp_szczodre.9401
+    }
 }
 

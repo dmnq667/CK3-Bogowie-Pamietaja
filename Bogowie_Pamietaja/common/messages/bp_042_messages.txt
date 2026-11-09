@@ -1,26 +1,6 @@
-# 0.4.2: native message filter pauses time whenever a Gods window appears.
-# No third event popup; only a compact arrival notification.
-bp_042_rite_arrived_message = {
-    display = toast
-    message_filter_type = bp_042_events_pause
-    title = bp_042_pause_rite.t
-    desc = bp_042_pause_rite.desc
-    style = neutral
-}
-bp_042_story_arrived_message = {
-    display = toast
-    message_filter_type = bp_042_events_pause
-    title = bp_042_pause_story.t
-    desc = bp_042_pause_story.desc
-    style = neutral
-}
-bp_042_divine_arrived_message = {
-    display = toast
-    message_filter_type = bp_042_events_pause
-    title = bp_042_pause_divine.t
-    desc = bp_042_pause_divine.desc
-    style = bad
-}
+# 0.4.3: only meaningful trial RESULTS are shown after the player's
+# decision. Do not emit top-of-screen 'holy day arrived' / 'judgment'
+# banners upon event opening.
 bp_042_trial_success_message = {
     display = toast
     message_filter_type = bp_042_events_pause

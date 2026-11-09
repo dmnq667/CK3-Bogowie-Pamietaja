@@ -3,10 +3,7 @@ namespace = bp_040
 # Months after an execution, extortion or broken oath; does NOT stack on holiday windows.
 # Only existing adult courtiers may become targeted victims. No fabricated deaths.
 bp_040.5001 = {
-    type = letter_event
-    window = character_event
-    sender = root
-    opening = bp_043_empty_opening
+    type = character_event
     theme = diplomacy
     override_background = { reference = bp_scene_autumn_02 }
     title = bp_040_revenge.t
@@ -110,10 +107,7 @@ bp_040.5001 = {
 # One additional retaliation after a real murder. A distinct story months later,
 # never an immediate confirmation of the same holiday.
 bp_040.5002 = {
-    type = letter_event
-    window = character_event
-    sender = root
-    opening = bp_043_empty_opening
+    type = character_event
     theme = diplomacy
     override_background = { reference = bp_scene_dziady_03 }
     title = bp_040_aftermath.t

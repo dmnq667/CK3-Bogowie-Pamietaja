@@ -3,11 +3,7 @@
 # 30 April - 1 May: the sacred grove is not only scenery.
 # 0.4.0 — one visible festival window, delayed vengeance independent.
 bp_gaik.5001 = {
-    type = letter_event
-    # CK3-native pause, while using the current character-event visual.
-    window = character_event
-    sender = root
-    opening = bp_043_empty_opening
+    type = character_event
     theme = diplomacy
     override_background = { reference = bp_scene_gaik_02 }
     title = bp_041_gaik.intro.t

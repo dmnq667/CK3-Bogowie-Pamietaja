@@ -1,68 +1,77 @@
 ﻿namespace = bp_jare
 
 # 21 March. The Marzanna ritual is HERE, not on 9 March.
+# 0.4.0: One festival window, no obligatory continuation. Real outcomes and delayed stories.
 bp_jare.4001 = {
     type = character_event
     theme = diplomacy
-    override_background = {
-        reference = bp_scene_jare_01
-    }
-    title = bp_jare.4001.t
+    override_background = { reference = bp_scene_jare_01 }
+    title = bp_040_jare.t
     desc = {
         first_valid = {
-            triggered_desc = {
-                trigger = { OR = { has_character_flag = bp_weles_dynasty_blood dynasty = { has_variable = bp_weles_dynastic_blood_v018 } } }
-                desc = bp_jare.4001.desc_kin
-            }
-            desc = bp_jare.4001.desc
+        triggered_desc = { trigger = { has_trait = compassionate } desc = bp_040_jare.desc_compassionate }
+        triggered_desc = { trigger = { has_trait = callous } desc = bp_040_jare.desc_callous }
+            desc = bp_040_jare.desc
         }
     }
     left_portrait = root
     immediate = {
         bp_initialize_effect = yes
-        dynasty = { set_variable = { name = bp_jare_ever_celebrated_v014 value = yes } }
-        add_character_flag = { flag = bp_jare_used days = 335 }
+        add_piety = 45
+        add_stress = -10
         dynasty = {
+            set_variable = { name = bp_jare_ever_celebrated_v014 value = yes }
             set_variable = { name = bp_jare_rite_lock_v013 value = yes days = 335 }
-            if = {
-                limit = { has_variable = bp_jare_accepted_v013 }
-                remove_variable = bp_jare_accepted_v013
-            }
         }
-    }
-    option = {
-        name = bp_jare.4001.a
-        trigger = { gold >= 35 }
-        show_as_unavailable = { gold < 35 }
-        remove_short_term_gold = 35
-        add_character_flag = { flag = bp_mokosh_renewal days = 90 }
-        bp_mokosh_plus_20_effect = yes
+        add_character_flag = { flag = bp_jare_used days = 335 }
+        # Select an actual adult courtier only when one exists; never invent a victim.
         if = {
-            limit = {
-                has_character_flag = bp_mokosh_rite
-                has_character_flag = bp_mokosh_provision
-                NOT = { has_character_flag = bp_mokosh_great_received }
+            limit = { any_courtier = { is_alive = yes is_adult = yes } }
+            random_courtier = {
+                limit = { is_alive = yes is_adult = yes }
+                save_scope_as = bp_040_target
             }
-            trigger_event = bp_jare.4002
         }
-        else = { trigger_event = bp_jare.4003 }
-        ai_chance = { base = 60 }
     }
     option = {
-        name = bp_jare.4001.b
-        add_prestige = 40
-        bp_mokosh_plus_10_effect = yes
-        trigger_event = bp_jare.4003
-        ai_chance = { base = 35 }
+        name = bp_040_jare.a
+        trigger = { gold >= 90 }
+        show_as_unavailable = { gold < 90 }
+        remove_short_term_gold = 90
+        add_character_modifier = { modifier = bp_040_oath_of_peace_modifier years = 3 }
+        add_stress = -25
+        bp_040_mercy_effect = yes
+        bp_mokosh_plus_20_effect = yes
+        ai_chance = { base = 45 }
     }
     option = {
-        name = bp_jare.4001.c
-        bp_mokosh_minus_15_effect = yes
-        add_gold = 15
-        trigger_event = bp_jare.4003
-        ai_chance = { base = 5 }
+        name = bp_040_jare.b
+        trigger = { exists = scope:bp_040_target }
+        scope:bp_040_target = {
+            every_close_family_member = {
+                limit = { is_alive = yes NOT = { this = root } }
+                add_opinion = { target = root modifier = bp_040_blood_feud_opinion }
+            }
+            death = { killer = root death_reason = death_execution }
+        }
+        add_dread = 25
+        add_gold = 80
+        add_tyranny = 15
+        bp_040_actual_blood_effect = yes
+        bp_040_schedule_revenge_effect = yes
+        bp_weles_minus_15_effect = yes
+        ai_chance = { base = 25 }
+    }
+    option = {
+        name = bp_040_jare.c
+        add_prestige = 80
+        add_character_modifier = { modifier = bp_040_feud_curse_modifier years = 3 }
+        bp_040_cruelty_effect = yes
+        bp_040_schedule_revenge_effect = yes
+        ai_chance = { base = 30 }
     }
 }
+
 
 # Complete three trials: tremendous real county effect; one county, four years.
 bp_jare.4002 = {

@@ -1,5 +1,15 @@
 # Historia wydań
 
+## 0.4.2 DEV — 9 listopada 2026
+
+- Naprawiono brak informacji o wyniku 25% ryzyka śmierci w Gaiku i Nocy Kupały: wyraźne komunikaty dla zgonu i przeżycia.
+- Poprawiono analogiczne gałęzie próby Peruna, zemsty rodowej, ostatniej rozprawy, osobistego gniewu Peruna i Welesa; także wariant 50/50 ratunku dworzanina.
+- Dodano 16 osobnych wyników z 42 kluczami lokalizacji w każdym języku. Zachowano faktyczne losowanie, premie i możliwość zgonu.
+- Nowy natywny filtr komunikatów CK3 `auto_pause = yes` i powiadomienie przy otwarciu 24 okien świątecznych, 3 objawień i 2 wydarzeń zemsty.
+- Kalendarz bez zmian. Dwustopniowa struktura 12 świąt i 31 zatwierdzonych grafik bez zmian.
+- [0.4.2 DEV: pakiet przetestowany na Windowsie](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42573291604/artifacts/13654395511) — struktura i instalacja PASS; zachowanie pauzy w samej rozgrywce wymaga potwierdzenia.
+
+
 ## 0.4.1 DEV — 9 listopada 2026: obrzęd, dar i krwawa opowieść
 
 - Wszystkie 12 świąt otrzymały **pierwsze okno edukacyjne** oraz **drugie okno fabularne**. Zachowano groźne wybory i odroczoną zemstę.

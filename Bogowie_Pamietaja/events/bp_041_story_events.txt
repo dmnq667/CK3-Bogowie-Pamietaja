@@ -288,7 +288,7 @@ bp_041.2105 = {
             25 = {
                 dynasty = { set_variable = { name = bp_042_gaik_ruler_died_ever value = yes } }
                 send_interface_toast = {
-                    type = bp_042_trial_failure_message
+                    type = bp_042_gaik_dead_message
                     title = bp_042_gaik_dead.t
                     desc = bp_042_gaik_dead.desc
                     left_icon = root
@@ -298,7 +298,7 @@ bp_041.2105 = {
             75 = {
                 dynasty = { set_variable = { name = bp_042_gaik_survived_ever value = yes } }
                 send_interface_toast = {
-                    type = bp_042_trial_success_message
+                    type = bp_042_gaik_survived_message
                     title = bp_042_gaik_survived.t
                     desc = bp_042_gaik_survived.desc
                     left_icon = root
@@ -467,7 +467,7 @@ bp_041.2108 = {
             25 = {
                 dynasty = { set_variable = { name = bp_042_kupala_ruler_died_ever value = yes } }
                 send_interface_toast = {
-                    type = bp_042_trial_failure_message
+                    type = bp_042_kupala_dead_message
                     title = bp_042_kupala_dead.t
                     desc = bp_042_kupala_dead.desc
                     left_icon = root
@@ -478,7 +478,7 @@ bp_041.2108 = {
                 dynasty = { set_variable = { name = bp_042_kupala_rescue_ever value = yes } }
                 scope:bp_040_target = { add_character_flag = { flag = bp_042_saved_from_kupala_flood years = 5 } }
                 send_interface_toast = {
-                    type = bp_042_trial_success_message
+                    type = bp_042_kupala_survived_message
                     title = bp_042_kupala_survived.t
                     desc = bp_042_kupala_survived.desc
                     left_icon = root
@@ -504,7 +504,7 @@ bp_041.2108 = {
                     death = { death_reason = death_accident }
                 }
                 send_interface_toast = {
-                    type = bp_042_trial_failure_message
+                    type = bp_042_kupala_guard_failed_message
                     title = bp_042_kupala_guard_failed.t
                     desc = bp_042_kupala_guard_failed.desc
                     left_icon = root
@@ -515,7 +515,7 @@ bp_041.2108 = {
             }
             50 = {
                 send_interface_toast = {
-                    type = bp_042_trial_success_message
+                    type = bp_042_kupala_guard_saved_message
                     title = bp_042_kupala_guard_saved.t
                     desc = bp_042_kupala_guard_saved.desc
                     left_icon = root
@@ -592,7 +592,7 @@ bp_041.2109 = {
             20 = {
                 dynasty = { set_variable = { name = bp_042_perun_trial_death_ever value = yes } }
                 send_interface_toast = {
-                    type = bp_042_trial_failure_message
+                    type = bp_042_perun_trial_dead_message
                     title = bp_042_perun_trial_dead.t
                     desc = bp_042_perun_trial_dead.desc
                     left_icon = root
@@ -602,7 +602,7 @@ bp_041.2109 = {
             80 = {
                 dynasty = { set_variable = { name = bp_042_perun_trial_survived_ever value = yes } }
                 send_interface_toast = {
-                    type = bp_042_trial_success_message
+                    type = bp_042_perun_trial_survived_message
                     title = bp_042_perun_trial_survived.t
                     desc = bp_042_perun_trial_survived.desc
                     left_icon = root

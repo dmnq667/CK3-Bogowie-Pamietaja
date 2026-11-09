@@ -122,7 +122,8 @@ bp_test_decision = {
     ai_check_interval = 0
 }
 
-# Let the player resume the Weles ritual if no suitable prisoner exists.
+# 0.4.0: cancel an unfulfilled promise of an offering WITHOUT opening
+# the old multi-window Weles dialogue.
 bp_weles_change_offering_decision = {
     picture = { reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds" }
     desc = bp_weles_change_offering_decision_desc
@@ -139,7 +140,8 @@ bp_weles_change_offering_decision = {
             limit = { has_variable = bp_weles_proposed_prisoner }
             remove_variable = bp_weles_proposed_prisoner
         }
-        trigger_event = bp_weles.2002
+        add_stress = -15
+        bp_040_mercy_effect = yes
     }
     ai_check_interval = 0
 }

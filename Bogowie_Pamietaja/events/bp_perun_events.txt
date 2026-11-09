@@ -194,10 +194,7 @@ bp_perun.9108 = {
 # v0.3.0: Perun's anger is a standalone episode, not another mandatory
 # ceremonial click. It occurs only after deliberate refusal of his rite.
 bp_perun.9110 = {
-    type = letter_event
-    window = character_event
-    sender = root
-    opening = bp_043_empty_opening
+    type = character_event
     theme = diplomacy
     # ART: Approved 0.3.0 visible-deity scene; never fall back to legacy art.
     override_background = { reference = bp_scene_deity_perun_9110 }

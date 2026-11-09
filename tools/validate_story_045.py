@@ -211,7 +211,7 @@ for key in result_keys:
     # caused a literal bp_042_trial_success_message_desc on screenshots.
     typ=key+"_message"
     assert risk_text.count("type = "+typ)==1,typ
-    match=re.search(r"(?m)^"+re.escape(typ)+r"\\s*=\\s*\\{([\\s\\S]*?)^\\}",messages)
+    match=re.search(r"(?m)^"+re.escape(typ)+r"\s*=\s*\{([\s\S]*?)^\}",messages)
     assert match,typ
     msg=match.group(1)
     assert "title = "+key+".t" in msg,typ
@@ -310,6 +310,35 @@ assert "override_background = { reference = bp_scene_szczodre_01 }" in second
 assert "type = character_event" in first and "type = character_event" in second
 assert "type = letter_event" not in first and "type = letter_event" not in second
 
+# Jare Gody regression: the early draft chose ANY adult courtier and
+# claimed a violent attack without any actual evidence or prior actions.
+# An innocent chaste/zealous princess could be executed. That is removed.
+jare_block=event_block(stories,"bp_041.2104")
+assert "random_courtier" not in jare_block
+assert "save_scope_as = bp_040_target" not in jare_block
+assert "death = " not in jare_block
+assert "scope:bp_040_target" not in jare_block
+for fragment in (
+    "desc = bp_040_jare.desc_blood",
+    "desc = bp_040_jare.desc_mercy",
+    "has_character_flag = bp_040_blood_v040",
+    "has_character_flag = bp_040_mercy_v040",
+    "name = bp_040_jare.a",
+    "name = bp_040_jare.b",
+    "name = bp_040_jare.c",
+    "bp_040_actual_blood_effect = yes",
+    "bp_040_schedule_revenge_effect = yes",
+):
+    assert fragment in jare_block,fragment
+for lang in ("polish","english"):
+    localization=(MOD/"localization"/lang/f"bp_040_l_{lang}.yml").read_text(encoding="utf-8-sig")
+    for key in ("bp_040_jare.desc_blood","bp_040_jare.desc_mercy"):
+        assert key+":0" in localization,(lang,key)
+    assert "[bp_040_target.GetTitledFirstName]" not in "\n".join(
+        line for line in localization.splitlines()
+        if re.match(r"\s*bp_040_jare\.",line)
+    ),"Named innocent must never be accused in Jare Gody"
+
 run(["python3",str(ROOT/"tools/audit_festival_flows_040.py"),"--enforce","--exactly-two"],check=True,cwd=ROOT)
 run(["python3",str(ROOT/"tools/validate_gods_030.py")],check=True,cwd=ROOT)
 
@@ -318,6 +347,9 @@ summary={
  "two_window_festivals":len(SPECS),
  "standard_character_events_restored":29,
  "automatic_calendar_festival_entries":len(festival_ids),
+ "jare_random_accused_removed":True,
+ "story_variants_based_on_blood_or_mercy":2,
+ "localized_result_messages":len(result_keys),
  "szczodre_dds_integrity_checked":3,
  "pausing_restored_to_original_event_flow":True,
  "auto_pause_in_ck3_unverified":True,

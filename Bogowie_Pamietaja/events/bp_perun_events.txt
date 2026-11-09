@@ -198,7 +198,10 @@ bp_perun.9108 = {
 # v0.3.0: Perun's anger is a standalone episode, not another mandatory
 # ceremonial click. It occurs only after deliberate refusal of his rite.
 bp_perun.9110 = {
-    type = character_event
+    type = letter_event
+    window = character_event
+    sender = root
+    opening = bp_043_empty_opening
     theme = diplomacy
     # ART: Approved 0.3.0 visible-deity scene; never fall back to legacy art.
     override_background = { reference = bp_scene_deity_perun_9110 }
@@ -218,12 +221,6 @@ bp_perun.9110 = {
     }
     left_portrait = root
     trigger = { is_alive = yes is_ruler = yes }
-    immediate = {
-        if = {
-            limit = { is_ai = no }
-            send_interface_toast = { type = bp_042_divine_arrived_message left_icon = root }
-        }
-    }
     option = {
         name = bp_perun.9110.a
         # A costly public oath protects warriors and reconciles the ruler.

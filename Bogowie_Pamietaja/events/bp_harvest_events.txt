@@ -5,69 +5,18 @@
 bp_harvest.9201 = {
     type = character_event
     theme = diplomacy
-    override_background = { reference = bp_scene_harvest_01 }
-    title = bp_040_harvest.t
-    desc = {
-        first_valid = {
-            triggered_desc = { trigger = { exists = scope:bp_040_target } desc = bp_040_harvest.desc_target }
-        triggered_desc = { trigger = { has_trait = compassionate } desc = bp_040_harvest.desc_compassionate }
-        triggered_desc = { trigger = { has_trait = callous } desc = bp_040_harvest.desc_callous }
-            desc = bp_040_harvest.desc
-        }
-    }
+    override_background = { reference = bp_scene_harvest_02 }
+    title = bp_041_harvest.intro.t
+    desc = bp_041_harvest.intro.desc
     left_portrait = root
-    immediate = {
-        bp_initialize_effect = yes
+    option = {
+        name = bp_041_harvest.intro.a
+        # Basic festival reward, exactly once per participation.
         add_piety = 45
         add_stress = -10
-        dynasty = {
-            set_variable = { name = bp_harvest_ever_celebrated_v019 value = yes }
-            set_variable = { name = bp_harvest_rite_lock_v019 value = yes days = 335 }
-        }
-        if = {
-            limit = { any_courtier = { is_alive = yes is_adult = yes } }
-            random_courtier = { limit = { is_alive = yes is_adult = yes } save_scope_as = bp_040_target }
-        }
-    }
-    option = {
-        name = bp_040_harvest.a
-        trigger = { gold >= 100 }
-        show_as_unavailable = { gold < 100 }
-        remove_short_term_gold = 100
-        capital_county = { add_county_modifier = { modifier = bp_040_merciful_harvest_modifier years = 3 } }
-        add_stress = -25
-        bp_mokosh_plus_20_effect = yes
-        bp_040_mercy_effect = yes
-        ai_chance = { base = 45 }
-    }
-    option = {
-        name = bp_040_harvest.b
-        add_gold = 180
-        capital_county = { add_county_modifier = { modifier = bp_040_desperate_country_modifier years = 4 } }
-        add_dread = 15
-        bp_mokosh_minus_15_effect = yes
-        bp_040_cruelty_effect = yes
-        bp_040_schedule_revenge_effect = yes
-        ai_chance = { base = 35 }
-    }
-    option = {
-        name = bp_040_harvest.c
-        trigger = { exists = scope:bp_040_target }
-        scope:bp_040_target = {
-            every_close_family_member = {
-                limit = { is_alive = yes NOT = { this = root } }
-                add_opinion = { target = root modifier = bp_040_blood_feud_opinion }
-            }
-            death = { killer = root death_reason = death_execution }
-        }
-        add_dread = 30
-        add_tyranny = 20
-        add_gold = 200
-        capital_county = { add_county_modifier = { modifier = bp_040_desperate_country_modifier years = 5 } }
-        bp_040_actual_blood_effect = yes
-        bp_040_schedule_revenge_effect = yes
-        bp_mokosh_minus_15_effect = yes
-        ai_chance = { base = 20 }
+        capital_county = { add_county_modifier = { modifier = bp_harvest_lesser_boon_modifier days = 90 } }
+        trigger_event = bp_041.2110
+        ai_chance = { base = 100 }
     }
 }
 

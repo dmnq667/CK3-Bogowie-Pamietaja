@@ -1,5 +1,9 @@
 # Bogowie Pamiętają
 
+## UWAGA — AKTYWNA PRODUKCJA `Gniew i Łaska Bogów`
+
+**[Zacznij od aktualnego dokumentu przekazania projektu (9.11.2026)](START_TUTAJ_MOD.md).** Gałąź `main` zawiera starą bazę 0.1.9 ALPHA, natomiast aktualne prace 0.4.5 DEV prowadzone są w gałęzi `feature/0.4.5-powrot-kalendarza-i-tel`. Trzy zadania: pauza i kalendarz, naprawa sześciu nielogicznych historii, pełny audyt dwunastu świąt — **otwarte**.
+
 Mod do **Crusader Kings III** poświęcony słowiańskim bogom, obrzędom i cyklowi dwunastu świąt. Projekt niezależny od **The Weight of Words**.
 
 ## Stan projektu

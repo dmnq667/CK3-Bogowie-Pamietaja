@@ -1,9 +1,10 @@
-# 0.4.2: custom CK3 message setting to pause the simulation when a
-# Gods event opens. Supported by vanilla Message Settings.
+# 0.4.3: filter used only for final trial results. Entry notifications
+# have been REMOVED; actual festival and deity windows use native letter_event
+# handling (with window = character_event) to request CK3's engine pause.
 bp_042_events_pause = {
     display = toast
     always_show = yes
-    auto_pause = yes
+    auto_pause = no
     sort_order = 500
     group = default
 }

@@ -1,5 +1,14 @@
 # Historia wydań
 
+## 0.4.5 DEV — 9 listopada 2026
+
+- Przywrócono dawny codzienny mechanizm wywoływania 12 świąt. W wersjach 0.4.x zegar wbrew wcześniejszym założeniom ograniczono do sądu, usuwając automatyczne obrzędy.
+- Wywołanie prowadzi prosto do edukacyjnego okna z bonusem; przycisk uruchamia istniejącą historię fabularną. Liczba okien pozostała **dokładnie 2**.
+- Dodano zapis zgłoszenia na 335 dni, który zapobiega ponownemu otwieraniu obrzędu na kolejne dni świątecznego okna, zwłaszcza Gaik → Dziady wiosenne.
+- Zweryfikowano 3 rzeczywiste pliki DDS Szczodrych Godów i ich przypisanie. Okna korzystają ze standardowego `character_event`, a nie nieudanego `letter_event`.
+- Bez zmian: kalendarz, 31 zaakceptowanych ilustracji, fabuła, premie, ryzyko śmierci i 16 wyników prób.
+- **[0.4.5 DEV](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42632417532/artifacts/13682155682)** — walidacja skryptów PASS, próba aktualizacji na Windows i kopii bezpieczeństwa PASS. **Pauza czeka na sprawdzenie w grze.**
+
 ## 0.4.4 DEV — 9 listopada 2026
 
 - Cofnięto `letter_event` + `opening = bp_043_empty_opening` w 29 widocznych wydarzeniach po zgłoszeniu braku pauzy i błędu komunikatu; przywrócono `character_event`.

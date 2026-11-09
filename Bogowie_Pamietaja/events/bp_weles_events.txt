@@ -480,10 +480,7 @@ bp_weles.2014 = {
 # Triggered only after refusal at the escalating unpaid Weles debt event 2012.
 # The lethal possibility is explicitly chosen; there is always a non-lethal option.
 bp_weles.2020 = {
-    type = letter_event
-    window = character_event
-    sender = root
-    opening = bp_043_empty_opening
+    type = character_event
     theme = diplomacy
     # ART: Approved 0.3.0 visible-deity scene; never fall back to legacy art.
     override_background = { reference = bp_scene_deity_weles_2020 }

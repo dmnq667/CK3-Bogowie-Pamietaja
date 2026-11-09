@@ -1,6 +1,19 @@
 # Stan produkcji: Gniew i Łaska Bogów
 
-## 0.4.4 DEV — przywrócenie prawidłowych komunikatów po regresji
+## 0.4.5 DEV — powrót automatycznego kalendarza i wizualna poprawka Szczodrych Godów
+
+**Stan:** gałąź `feature/0.4.5-powrot-kalendarza-i-tel`. [Testy GitHub Actions #42632417532](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42632417532) — statyczny walidator PASS, instalator Windows 0.4.4→0.4.5 i kopia bezpieczeństwa PASS.
+
+- Porównanie z `main` ujawniło, że oryginalny zegar `bp_announcement.1299` w 0.1.9 sam otwierał 12 świąt, lecz później usunięto wszystkie ich wywołania.
+- Przywrócono 12 wywołań w jednym ukrytym, codziennym zegarze; każde prowadzi bezpośrednio do **pierwszego edukacyjnego okna**, a drugie jest dotychczasową krwawą opowieścią — 2 okna na święto.
+- Znaczniki `announced` na 335 dni zapobiegają wielokrotnemu otwieraniu podczas wielodniowego święta; daty nietknięte.
+- Zbadano screen „Szczodre Gody — prawo gościny”: 3 pliki DDS istnieją i są poprawne. Wyświetlanie było uszkodzone w eksperymentalnym `letter_event`. Normalne okna CK3 zostały przywrócone; pierwsze tło `szczodre_02`, drugie `szczodre_01`.
+- Zachowano 31 grafik, 16 komunikatów wyników ryzyka oraz wszystkie mechaniki 0.4.4.
+- **Pozostaje do sprawdzenia w CK3:** czy automatycznie wywoływane okna zatrzymują zegar, tak jak pierwotnie. Nie ogłaszamy pauzy jako naprawionej bez tego testu.
+
+**[Pobierz 0.4.5 DEV](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42632417532/artifacts/13682155682)** · [szczegóły](docs/RELEASE_045_KALENDARZ_GRAFIKI.md).
+
+## Poprzednia wersja: 0.4.4 DEV — przywrócenie prawidłowych komunikatów po regresji
 
 **Stan:** gałąź `feature/0.4.4-przywrocenie-okien-diagnostyka-pauzy`; [GitHub Actions #42624169723](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42624169723) — walidator PASS, aktualizator Windows 0.4.3→0.4.4 i kopia bezpieczeństwa PASS.
 

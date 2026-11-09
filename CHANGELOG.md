@@ -1,5 +1,13 @@
 # Historia wydań
 
+## 0.4.3 DEV — 9 listopada 2026
+
+- Usunięto wszystkie trzy rodzaje dodatkowych banerów przy wejściu w obrzęd, historię lub spotkanie z bogiem — nie zatrzymywały rozgrywki, więc były zbędne.
+- W 29 ważnych oknach wykorzystano `letter_event` i jednocześnie `window = character_event`: próba systemowego zatrzymywania czasu bez utraty dotychczasowych ilustracji i układu.
+- Dotychczasowy filtr `auto_pause` wyłączono dla powiadomień; zachowano 16 wyników ryzykownych prób, bez dodatkowych przycisków.
+- Kalendarz bez zmian: **12 świąt, każde dokładnie dwa okna**. 31 zatwierdzonych grafik, premie i opcje bez zmian.
+- **[0.4.3 DEV](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42617710356/artifacts/13672913095)** — walidator i aktualizacja Windows PASS. **Rzeczywista pauza w CK3 wciąż wymaga potwierdzenia w rozgrywce**.
+
 ## 0.4.2 DEV — 9 listopada 2026
 
 - Naprawiono brak informacji o wyniku 25% ryzyka śmierci w Gaiku i Nocy Kupały: wyraźne komunikaty dla zgonu i przeżycia.

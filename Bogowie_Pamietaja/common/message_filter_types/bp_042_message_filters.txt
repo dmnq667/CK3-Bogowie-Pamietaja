@@ -1,0 +1,9 @@
+# 0.4.2: custom CK3 message setting to pause the simulation when a
+# Gods event opens. Supported by vanilla Message Settings.
+bp_042_events_pause = {
+    display = toast
+    always_show = yes
+    auto_pause = yes
+    sort_order = 500
+    group = default
+}

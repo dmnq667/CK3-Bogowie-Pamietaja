@@ -3,12 +3,12 @@ name: Validate and package two-window festivals 0.4.1 DEV
 on:
   push:
     branches:
-      - feature/0.4.1-fabula-od-nowa
+      - feature/0.4.1-dwa-okna-swieta
     paths:
       - 'Bogowie_Pamietaja/**'
       - 'tools/validate_story_041.py'
       - 'tools/package_windows_update_041.py'
-      - 'tools/audit_festival_flows_041.py'
+      - 'tools/audit_festival_flows_040.py'
       - '.github/workflows/build-obrzedy-041.yml'
   workflow_dispatch:
 
@@ -16,7 +16,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: package-story-040
+  group: package-story-041
   cancel-in-progress: true
 
 jobs:
@@ -53,7 +53,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: Gniew-i-Laska-Bogow-0.4.1-DEV-DWA-OKNA
-      - name: Verify PowerShell 5.1 updater and rollback copy on a mock 0.3 installation
+      - name: Verify PowerShell 5.1 updater and rollback copy on a mock 0.4 installation
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
@@ -66,12 +66,12 @@ jobs:
           & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $script -TargetOverride $target
           if ($LASTEXITCODE -ne 0) { throw "Installer returned exit code $LASTEXITCODE" }
           $newdesc = Get-Content -LiteralPath (Join-Path $target 'descriptor.mod') -Raw
-          if ($newdesc -notmatch '0\.4\.0-dev') { throw 'Failed to update descriptor to 0.4.1-dev' }
+          if ($newdesc -notmatch '0\.4\.1-dev') { throw 'Failed to update descriptor to 0.4.1-dev' }
           if (-not (Test-Path -LiteralPath (Join-Path $target 'legacy_marker.txt') -PathType Leaf)) { throw 'Unexpected overwrite of old auxiliary file' }
           $backups = @(Get-ChildItem -LiteralPath $env:RUNNER_TEMP -Directory | Where-Object { $_.Name -like 'CK3_Bogowie_Smoke_KOPIA_PRZED_041_*' })
           if ($backups.Count -ne 1) { throw "Expected exactly one backup; got $($backups.Count)" }
           $oldDesc = Get-Content -LiteralPath (Join-Path $backups[0].FullName 'descriptor.mod') -Raw
           if ($oldDesc -notmatch '0\.4\.0-dev') { throw 'Backup must contain previous 0.4.0 version' }
           if (-not (Test-Path -LiteralPath (Join-Path $backups[0].FullName 'legacy_marker.txt') -PathType Leaf)) { throw 'Backup lost old auxiliary file' }
-          if (-not (Test-Path -LiteralPath (Join-Path $target 'events/bp_041_story_events.txt') -PathType Leaf)) { throw 'New 0.4 event file was not copied' }
+          if (-not (Test-Path -LiteralPath (Join-Path $target 'events/bp_041_story_events.txt') -PathType Leaf)) { throw 'New 0.4.1 event file was not copied' }
           Write-Host 'PASS: Actual Windows PowerShell 5.1 updater installed 0.4.1 and preserved a valid 0.4.0 backup.'

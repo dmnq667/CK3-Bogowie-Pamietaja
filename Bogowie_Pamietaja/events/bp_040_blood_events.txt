@@ -19,6 +19,10 @@ bp_040.5001 = {
     left_portrait = root
     trigger = { is_alive = yes is_ruler = yes }
     immediate = {
+        if = {
+            limit = { is_ai = no }
+            send_interface_toast = { type = bp_042_divine_arrived_message left_icon = root }
+        }
         # The named courtier is genuinely present in this court.
         if = {
             limit = { any_courtier = { is_adult = yes is_alive = yes } }
@@ -100,6 +104,12 @@ bp_040.5002 = {
     trigger = {
         is_alive = yes
         dynasty = { has_variable = bp_040_revenge_murder_ever_v040 }
+    }
+    immediate = {
+        if = {
+            limit = { is_ai = no }
+            send_interface_toast = { type = bp_042_divine_arrived_message left_icon = root }
+        }
     }
     option = {
         name = bp_040_aftermath.a

@@ -1,43 +1,93 @@
 ﻿namespace = bp_kupala
 
 # 20 - 23 June: fire, river, consensual adult desire and a demanding god.
+# 0.4.0 — one visible festival window, delayed vengeance independent.
 bp_kupala.8001 = {
     type = character_event
     theme = diplomacy
-    override_background = {
-        reference = bp_scene_kupala_01
+    override_background = { reference = bp_scene_kupala_01 }
+    title = bp_040_kupala.t
+    desc = {
+        first_valid = {
+        triggered_desc = { trigger = { exists = scope:bp_040_target } desc = bp_040_kupala.desc_target }
+        triggered_desc = { trigger = { has_trait = brave } desc = bp_040_kupala.desc_brave }
+        triggered_desc = { trigger = { has_trait = craven } desc = bp_040_kupala.desc_craven }
+            desc = bp_040_kupala.desc
+        }
     }
-    title = bp_kupala.8001.t
-    desc = bp_kupala.8001.desc
     left_portrait = root
     immediate = {
         bp_initialize_effect = yes
+        add_piety = 45
+        add_stress = -10
         dynasty = {
             set_variable = { name = bp_kupala_ever_celebrated_v015 value = yes }
             set_variable = { name = bp_kupala_rite_lock_v015 value = yes days = 335 }
         }
+        # A victim may be an EXISTING adult courtier; never fabricate a death.
+        if = {
+            limit = { any_courtier = { is_alive = yes is_adult = yes } }
+            random_courtier = { limit = { is_alive = yes is_adult = yes } save_scope_as = bp_040_target }
+        }
     }
     option = {
-        name = bp_kupala.8001.a
-        trigger = { gold >= 45 }
-        show_as_unavailable = { gold < 45 }
-        remove_short_term_gold = 45
-        add_character_flag = { flag = bp_kupala_fire_trial days = 90 }
-        bp_mokosh_plus_20_effect = yes
-        trigger_event = bp_kupala.8002
-        ai_chance = { base = 55 }
+        name = bp_040_kupala.a
+        trigger = { exists = scope:bp_040_target }
+        add_prestige = 180
+        if = { limit = { has_trait = craven } add_stress = 90 }
+        if = { limit = { has_trait = brave } add_stress = -40 }
+        random_list = {
+            25 = { death = { death_reason = death_accident } }
+            75 = {
+                bp_040_mercy_effect = yes
+                bp_mokosh_plus_40_effect = yes
+                add_character_modifier = { modifier = bp_kupala_lesser_boon_modifier years = 2 }
+            }
+        }
+        ai_chance = { base = 30 }
     }
     option = {
-        name = bp_kupala.8001.b
-        add_prestige = -60
-        add_character_flag = { flag = bp_kupala_fire_trial days = 90 }
-        bp_mokosh_plus_10_effect = yes
-        trigger_event = bp_kupala.8002
+        name = bp_040_kupala.b
+        trigger = { exists = scope:bp_040_target }
+        random_list = {
+            50 = {
+                scope:bp_040_target = {
+                    every_close_family_member = {
+                        limit = { is_alive = yes NOT = { this = root } }
+                        add_opinion = { target = root modifier = bp_040_blood_feud_opinion }
+                    }
+                    death = { death_reason = death_accident }
+                }
+                add_stress = 50
+                add_character_flag = { flag = bp_040_failed_rescue_v040 years = 3 }
+            }
+            50 = { add_prestige = 80 add_stress = -20 bp_mokosh_plus_10_effect = yes }
+        }
         ai_chance = { base = 35 }
     }
     option = {
-        name = bp_kupala.8001.c
+        name = bp_040_kupala.c
+        trigger = { exists = scope:bp_040_target }
+        scope:bp_040_target = {
+            every_close_family_member = {
+                limit = { is_alive = yes NOT = { this = root } }
+                add_opinion = { target = root modifier = bp_040_blood_feud_opinion }
+            }
+            death = { death_reason = death_accident }
+        }
+        add_gold = 40
+        add_dread = 10
+        bp_040_cruelty_effect = yes
+        bp_040_schedule_revenge_effect = yes
         bp_mokosh_minus_15_effect = yes
+        ai_chance = { base = 25 }
+    }
+    option = {
+        name = bp_040_kupala.d
+        trigger = { NOT = { exists = scope:bp_040_target } }
+        add_prestige = 40
+        capital_county = { add_county_modifier = { modifier = bp_040_saved_villages_modifier years = 1 } }
+        bp_mokosh_plus_10_effect = yes
         ai_chance = { base = 10 }
     }
 }

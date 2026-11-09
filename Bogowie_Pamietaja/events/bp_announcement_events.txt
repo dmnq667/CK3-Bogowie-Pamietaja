@@ -35,13 +35,15 @@ bp_announcement.1094 = {
 # Mandatory holy-day announcement: not a forced ceremony.
 bp_announcement.1001 = {
     type = character_event
-    # Legacy opt-in notice becomes a SILENT router. The educational
-    # opening and the dramatic chapter are the only two visible modals.
-    hidden = yes
+    theme = diplomacy
+    override_background = { reference = bp_scene_gromnica_01 }
+    title = bp_041_gromnica.intro.t
+    desc = bp_041_gromnica.intro.desc
+    left_portrait = root
     trigger = {
-        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
+        is_ai = no
         faith = { religion_tag = slavic_religion }
         bp_gromnica_calendar_window_trigger = yes
         dynasty = {
@@ -50,23 +52,32 @@ bp_announcement.1001 = {
         }
     }
     immediate = {
-        dynasty = {
-            set_variable = { name = bp_gromnica_announced_v014 value = yes days = 335 }
-        }
-        trigger_event = bp_gromnica.1001
+        # Same visible event family/ID used by the early working calendar.
+        dynasty = { set_variable = { name = bp_gromnica_announced_v014 value = yes days = 335 } }
+    }
+    option = {
+        name = bp_041_gromnica.intro.a
+        # Participation rewards are granted exactly once, before the story.
+        add_piety = 45
+        add_stress = -10
+        add_character_modifier = { modifier = bp_gromnica_guard_modifier days = 90 }
+        trigger_event = bp_041.2101
+        ai_chance = { base = 100 }
     }
 }
 
 # Mandatory holy-day announcement: not a forced ceremony.
 bp_announcement.1002 = {
     type = character_event
-    # Legacy opt-in notice becomes a SILENT router. The educational
-    # opening and the dramatic chapter are the only two visible modals.
-    hidden = yes
+    theme = diplomacy
+    override_background = { reference = bp_scene_weles_02 }
+    title = bp_041_weles.intro.t
+    desc = bp_041_weles.intro.desc
+    left_portrait = root
     trigger = {
-        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
+        is_ai = no
         faith = { religion_tag = slavic_religion }
         bp_weles_calendar_window_trigger = yes
         dynasty = {
@@ -75,23 +86,32 @@ bp_announcement.1002 = {
         }
     }
     immediate = {
-        dynasty = {
-            set_variable = { name = bp_weles_announced_v014 value = yes days = 335 }
-        }
-        trigger_event = bp_weles.2001
+        # Same visible event family/ID used by the early working calendar.
+        dynasty = { set_variable = { name = bp_weles_announced_v014 value = yes days = 335 } }
+    }
+    option = {
+        name = bp_041_weles.intro.a
+        # Participation rewards are granted exactly once, before the story.
+        add_piety = 45
+        add_stress = -10
+        add_character_modifier = { modifier = bp_weles_lesser_boon_modifier days = 90 }
+        trigger_event = bp_041.2102
+        ai_chance = { base = 100 }
     }
 }
 
 # Mandatory holy-day announcement: not a forced ceremony.
 bp_announcement.1003 = {
     type = character_event
-    # Legacy opt-in notice becomes a SILENT router. The educational
-    # opening and the dramatic chapter are the only two visible modals.
-    hidden = yes
+    theme = diplomacy
+    override_background = { reference = bp_scene_spring_02 }
+    title = bp_041_spring.intro.t
+    desc = bp_041_spring.intro.desc
+    left_portrait = root
     trigger = {
-        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
+        is_ai = no
         faith = { religion_tag = slavic_religion }
         bp_spring_calendar_window_trigger = yes
         dynasty = {
@@ -100,23 +120,32 @@ bp_announcement.1003 = {
         }
     }
     immediate = {
-        dynasty = {
-            set_variable = { name = bp_spring_announced_v014 value = yes days = 335 }
-        }
-        trigger_event = bp_spring.3001
+        # Same visible event family/ID used by the early working calendar.
+        dynasty = { set_variable = { name = bp_spring_announced_v014 value = yes days = 335 } }
+    }
+    option = {
+        name = bp_041_spring.intro.a
+        # Participation rewards are granted exactly once, before the story.
+        add_piety = 45
+        add_stress = -10
+        capital_county = { add_county_modifier = { modifier = bp_mokosh_sowing_modifier days = 90 } }
+        trigger_event = bp_041.2103
+        ai_chance = { base = 100 }
     }
 }
 
 # Mandatory holy-day announcement: not a forced ceremony.
 bp_announcement.1004 = {
     type = character_event
-    # Legacy opt-in notice becomes a SILENT router. The educational
-    # opening and the dramatic chapter are the only two visible modals.
-    hidden = yes
+    theme = diplomacy
+    override_background = { reference = bp_scene_jare_01 }
+    title = bp_041_jare.intro.t
+    desc = bp_041_jare.intro.desc
+    left_portrait = root
     trigger = {
-        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
+        is_ai = no
         faith = { religion_tag = slavic_religion }
         bp_jare_calendar_window_trigger = yes
         dynasty = {
@@ -125,10 +154,17 @@ bp_announcement.1004 = {
         }
     }
     immediate = {
-        dynasty = {
-            set_variable = { name = bp_jare_announced_v014 value = yes days = 335 }
-        }
-        trigger_event = bp_jare.4001
+        # Same visible event family/ID used by the early working calendar.
+        dynasty = { set_variable = { name = bp_jare_announced_v014 value = yes days = 335 } }
+    }
+    option = {
+        name = bp_041_jare.intro.a
+        # Participation rewards are granted exactly once, before the story.
+        add_piety = 45
+        add_stress = -10
+        add_character_modifier = { modifier = bp_stado_new_bonds_modifier days = 90 }
+        trigger_event = bp_041.2104
+        ai_chance = { base = 100 }
     }
 }
 
@@ -159,13 +195,15 @@ bp_announcement.1195 = {
 
 bp_announcement.1005 = {
     type = character_event
-    # Legacy opt-in notice becomes a SILENT router. The educational
-    # opening and the dramatic chapter are the only two visible modals.
-    hidden = yes
+    theme = diplomacy
+    override_background = { reference = bp_scene_gaik_02 }
+    title = bp_041_gaik.intro.t
+    desc = bp_041_gaik.intro.desc
+    left_portrait = root
     trigger = {
-        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
+        is_ai = no
         faith = { religion_tag = slavic_religion }
         bp_gaik_calendar_window_trigger = yes
         dynasty = {
@@ -174,8 +212,17 @@ bp_announcement.1005 = {
         }
     }
     immediate = {
+        # Same visible event family/ID used by the early working calendar.
         dynasty = { set_variable = { name = bp_gaik_announced_v015 value = yes days = 335 } }
-        trigger_event = bp_gaik.5001
+    }
+    option = {
+        name = bp_041_gaik.intro.a
+        # Participation rewards are granted exactly once, before the story.
+        add_piety = 45
+        add_stress = -10
+        capital_county = { add_county_modifier = { modifier = bp_gaik_sacred_grove_modifier days = 90 } }
+        trigger_event = bp_041.2105
+        ai_chance = { base = 100 }
     }
 }
 
@@ -197,13 +244,15 @@ bp_announcement.1196 = {
 
 bp_announcement.1006 = {
     type = character_event
-    # Legacy opt-in notice becomes a SILENT router. The educational
-    # opening and the dramatic chapter are the only two visible modals.
-    hidden = yes
+    theme = diplomacy
+    override_background = { reference = bp_scene_dziady_02 }
+    title = bp_041_dziady.intro.t
+    desc = bp_041_dziady.intro.desc
+    left_portrait = root
     trigger = {
-        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
+        is_ai = no
         faith = { religion_tag = slavic_religion }
         bp_dziady_calendar_window_trigger = yes
         dynasty = {
@@ -212,8 +261,17 @@ bp_announcement.1006 = {
         }
     }
     immediate = {
+        # Same visible event family/ID used by the early working calendar.
         dynasty = { set_variable = { name = bp_dziady_announced_v015 value = yes days = 335 } }
-        trigger_event = bp_dziady.6001
+    }
+    option = {
+        name = bp_041_dziady.intro.a
+        # Participation rewards are granted exactly once, before the story.
+        add_piety = 45
+        add_stress = -10
+        add_character_modifier = { modifier = bp_autumn_lesser_wisdom_modifier days = 90 }
+        trigger_event = bp_041.2106
+        ai_chance = { base = 100 }
     }
 }
 
@@ -235,13 +293,15 @@ bp_announcement.1197 = {
 
 bp_announcement.1007 = {
     type = character_event
-    # Legacy opt-in notice becomes a SILENT router. The educational
-    # opening and the dramatic chapter are the only two visible modals.
-    hidden = yes
+    theme = diplomacy
+    override_background = { reference = bp_scene_stado_02 }
+    title = bp_041_stado.intro.t
+    desc = bp_041_stado.intro.desc
+    left_portrait = root
     trigger = {
-        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
+        is_ai = no
         faith = { religion_tag = slavic_religion }
         bp_stado_calendar_window_trigger = yes
         dynasty = {
@@ -250,8 +310,17 @@ bp_announcement.1007 = {
         }
     }
     immediate = {
+        # Same visible event family/ID used by the early working calendar.
         dynasty = { set_variable = { name = bp_stado_announced_v015 value = yes days = 335 } }
-        trigger_event = bp_stado.7001
+    }
+    option = {
+        name = bp_041_stado.intro.a
+        # Participation rewards are granted exactly once, before the story.
+        add_piety = 45
+        add_stress = -10
+        add_character_modifier = { modifier = bp_stado_harmony_modifier days = 90 }
+        trigger_event = bp_041.2107
+        ai_chance = { base = 100 }
     }
 }
 
@@ -273,13 +342,15 @@ bp_announcement.1198 = {
 
 bp_announcement.1008 = {
     type = character_event
-    # Legacy opt-in notice becomes a SILENT router. The educational
-    # opening and the dramatic chapter are the only two visible modals.
-    hidden = yes
+    theme = diplomacy
+    override_background = { reference = bp_scene_kupala_02 }
+    title = bp_041_kupala.intro.t
+    desc = bp_041_kupala.intro.desc
+    left_portrait = root
     trigger = {
-        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
+        is_ai = no
         faith = { religion_tag = slavic_religion }
         bp_kupala_calendar_window_trigger = yes
         dynasty = {
@@ -288,8 +359,17 @@ bp_announcement.1008 = {
         }
     }
     immediate = {
+        # Same visible event family/ID used by the early working calendar.
         dynasty = { set_variable = { name = bp_kupala_announced_v015 value = yes days = 335 } }
-        trigger_event = bp_kupala.8001
+    }
+    option = {
+        name = bp_041_kupala.intro.a
+        # Basic festival reward, exactly once per participation.
+        add_piety = 45
+        add_stress = -10
+        add_character_modifier = { modifier = bp_kupala_lesser_boon_modifier days = 90 }
+        trigger_event = bp_041.2108
+        ai_chance = { base = 100 }
     }
 }
 
@@ -354,8 +434,9 @@ bp_announcement.1299 = {
                         NOT = { has_variable = bp_gromnica_rite_lock_v013 }
                     }
                 }
-                dynasty = { set_variable = { name = bp_gromnica_announced_v014 value = yes days = 335 } }
-                trigger_event = bp_gromnica.1001
+                # Original 0.1.9 on-calendar event is now the educational FIRST window.
+                # It applies the season lock in immediate; no extra confirmation window.
+                trigger_event = bp_announcement.1001
             }
             # weles: the FIRST VISIBLE event is the ceremony itself.
             # Reserve the season before showing the popup so high-speed
@@ -368,8 +449,9 @@ bp_announcement.1299 = {
                         NOT = { has_variable = bp_weles_rite_lock_v013 }
                     }
                 }
-                dynasty = { set_variable = { name = bp_weles_announced_v014 value = yes days = 335 } }
-                trigger_event = bp_weles.2001
+                # Original 0.1.9 on-calendar event is now the educational FIRST window.
+                # It applies the season lock in immediate; no extra confirmation window.
+                trigger_event = bp_announcement.1002
             }
             # spring: the FIRST VISIBLE event is the ceremony itself.
             # Reserve the season before showing the popup so high-speed
@@ -382,8 +464,9 @@ bp_announcement.1299 = {
                         NOT = { has_variable = bp_spring_rite_lock_v013 }
                     }
                 }
-                dynasty = { set_variable = { name = bp_spring_announced_v014 value = yes days = 335 } }
-                trigger_event = bp_spring.3001
+                # Original 0.1.9 on-calendar event is now the educational FIRST window.
+                # It applies the season lock in immediate; no extra confirmation window.
+                trigger_event = bp_announcement.1003
             }
             # jare: the FIRST VISIBLE event is the ceremony itself.
             # Reserve the season before showing the popup so high-speed
@@ -396,8 +479,9 @@ bp_announcement.1299 = {
                         NOT = { has_variable = bp_jare_rite_lock_v013 }
                     }
                 }
-                dynasty = { set_variable = { name = bp_jare_announced_v014 value = yes days = 335 } }
-                trigger_event = bp_jare.4001
+                # Original 0.1.9 on-calendar event is now the educational FIRST window.
+                # It applies the season lock in immediate; no extra confirmation window.
+                trigger_event = bp_announcement.1004
             }
             # gaik: the FIRST VISIBLE event is the ceremony itself.
             # Reserve the season before showing the popup so high-speed
@@ -410,8 +494,9 @@ bp_announcement.1299 = {
                         NOT = { has_variable = bp_gaik_rite_lock_v015 }
                     }
                 }
-                dynasty = { set_variable = { name = bp_gaik_announced_v015 value = yes days = 335 } }
-                trigger_event = bp_gaik.5001
+                # Original 0.1.9 on-calendar event is now the educational FIRST window.
+                # It applies the season lock in immediate; no extra confirmation window.
+                trigger_event = bp_announcement.1005
             }
             # dziady: the FIRST VISIBLE event is the ceremony itself.
             # Reserve the season before showing the popup so high-speed
@@ -424,8 +509,9 @@ bp_announcement.1299 = {
                         NOT = { has_variable = bp_dziady_rite_lock_v015 }
                     }
                 }
-                dynasty = { set_variable = { name = bp_dziady_announced_v015 value = yes days = 335 } }
-                trigger_event = bp_dziady.6001
+                # Original 0.1.9 on-calendar event is now the educational FIRST window.
+                # It applies the season lock in immediate; no extra confirmation window.
+                trigger_event = bp_announcement.1006
             }
             # stado: the FIRST VISIBLE event is the ceremony itself.
             # Reserve the season before showing the popup so high-speed
@@ -438,8 +524,9 @@ bp_announcement.1299 = {
                         NOT = { has_variable = bp_stado_rite_lock_v015 }
                     }
                 }
-                dynasty = { set_variable = { name = bp_stado_announced_v015 value = yes days = 335 } }
-                trigger_event = bp_stado.7001
+                # Original 0.1.9 on-calendar event is now the educational FIRST window.
+                # It applies the season lock in immediate; no extra confirmation window.
+                trigger_event = bp_announcement.1007
             }
             # kupala: the FIRST VISIBLE event is the ceremony itself.
             # Reserve the season before showing the popup so high-speed
@@ -452,8 +539,9 @@ bp_announcement.1299 = {
                         NOT = { has_variable = bp_kupala_rite_lock_v015 }
                     }
                 }
-                dynasty = { set_variable = { name = bp_kupala_announced_v015 value = yes days = 335 } }
-                trigger_event = bp_kupala.8001
+                # Original 0.1.9 on-calendar event is now the educational FIRST window.
+                # It applies the season lock in immediate; no extra confirmation window.
+                trigger_event = bp_announcement.1008
             }
             # perun: the FIRST VISIBLE event is the ceremony itself.
             # Reserve the season before showing the popup so high-speed
@@ -466,8 +554,9 @@ bp_announcement.1299 = {
                         NOT = { has_variable = bp_perun_rite_lock_v019 }
                     }
                 }
-                dynasty = { set_variable = { name = bp_perun_announced_v019 value = yes days = 335 } }
-                trigger_event = bp_perun.9101
+                # Original 0.1.9 on-calendar event is now the educational FIRST window.
+                # It applies the season lock in immediate; no extra confirmation window.
+                trigger_event = bp_announcement.1009
             }
             # harvest: the FIRST VISIBLE event is the ceremony itself.
             # Reserve the season before showing the popup so high-speed
@@ -480,8 +569,9 @@ bp_announcement.1299 = {
                         NOT = { has_variable = bp_harvest_rite_lock_v019 }
                     }
                 }
-                dynasty = { set_variable = { name = bp_harvest_announced_v019 value = yes days = 335 } }
-                trigger_event = bp_harvest.9201
+                # Original 0.1.9 on-calendar event is now the educational FIRST window.
+                # It applies the season lock in immediate; no extra confirmation window.
+                trigger_event = bp_announcement.1010
             }
             # autumn: the FIRST VISIBLE event is the ceremony itself.
             # Reserve the season before showing the popup so high-speed
@@ -494,8 +584,9 @@ bp_announcement.1299 = {
                         NOT = { has_variable = bp_autumn_rite_lock_v019 }
                     }
                 }
-                dynasty = { set_variable = { name = bp_autumn_announced_v019 value = yes days = 335 } }
-                trigger_event = bp_autumn.9301
+                # Original 0.1.9 on-calendar event is now the educational FIRST window.
+                # It applies the season lock in immediate; no extra confirmation window.
+                trigger_event = bp_announcement.1011
             }
             # szczodre: the FIRST VISIBLE event is the ceremony itself.
             # Reserve the season before showing the popup so high-speed
@@ -508,8 +599,9 @@ bp_announcement.1299 = {
                         NOT = { has_variable = bp_szczodre_rite_lock_v019 }
                     }
                 }
-                dynasty = { set_variable = { name = bp_szczodre_announced_v019 value = yes days = 335 } }
-                trigger_event = bp_szczodre.9401
+                # Original 0.1.9 on-calendar event is now the educational FIRST window.
+                # It applies the season lock in immediate; no extra confirmation window.
+                trigger_event = bp_announcement.1012
             }
             if = {
                 limit = { bp_first_court_due_v020_trigger = yes }
@@ -524,13 +616,15 @@ bp_announcement.1299 = {
 # v0.1.9: retired legacy notices; educational scenes are called directly.
 bp_announcement.1009 = {
     type = character_event
-    # Legacy opt-in notice becomes a SILENT router. The educational
-    # opening and the dramatic chapter are the only two visible modals.
-    hidden = yes
+    theme = diplomacy
+    override_background = { reference = bp_scene_perun_02 }
+    title = bp_041_perun.intro.t
+    desc = bp_041_perun.intro.desc
+    left_portrait = root
     trigger = {
-        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
+        is_ai = no
         faith = { religion_tag = slavic_religion }
         bp_perun_calendar_window_trigger = yes
         dynasty = {
@@ -539,8 +633,17 @@ bp_announcement.1009 = {
         }
     }
     immediate = {
+        # Same visible event family/ID used by the early working calendar.
         dynasty = { set_variable = { name = bp_perun_announced_v019 value = yes days = 335 } }
-        trigger_event = bp_perun.9101
+    }
+    option = {
+        name = bp_041_perun.intro.a
+        # Basic festival reward, exactly once per participation.
+        add_piety = 45
+        add_stress = -10
+        add_character_modifier = { modifier = bp_perun_lesser_boon_modifier days = 90 }
+        trigger_event = bp_041.2109
+        ai_chance = { base = 100 }
     }
 }
 
@@ -554,13 +657,15 @@ bp_announcement.9909 = {
 
 bp_announcement.1010 = {
     type = character_event
-    # Legacy opt-in notice becomes a SILENT router. The educational
-    # opening and the dramatic chapter are the only two visible modals.
-    hidden = yes
+    theme = diplomacy
+    override_background = { reference = bp_scene_harvest_02 }
+    title = bp_041_harvest.intro.t
+    desc = bp_041_harvest.intro.desc
+    left_portrait = root
     trigger = {
-        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
+        is_ai = no
         faith = { religion_tag = slavic_religion }
         bp_harvest_calendar_window_trigger = yes
         dynasty = {
@@ -569,8 +674,17 @@ bp_announcement.1010 = {
         }
     }
     immediate = {
+        # Same visible event family/ID used by the early working calendar.
         dynasty = { set_variable = { name = bp_harvest_announced_v019 value = yes days = 335 } }
-        trigger_event = bp_harvest.9201
+    }
+    option = {
+        name = bp_041_harvest.intro.a
+        # Basic festival reward, exactly once per participation.
+        add_piety = 45
+        add_stress = -10
+        capital_county = { add_county_modifier = { modifier = bp_harvest_lesser_boon_modifier days = 90 } }
+        trigger_event = bp_041.2110
+        ai_chance = { base = 100 }
     }
 }
 
@@ -584,13 +698,15 @@ bp_announcement.9910 = {
 
 bp_announcement.1011 = {
     type = character_event
-    # Legacy opt-in notice becomes a SILENT router. The educational
-    # opening and the dramatic chapter are the only two visible modals.
-    hidden = yes
+    theme = diplomacy
+    override_background = { reference = bp_scene_autumn_03 }
+    title = bp_041_autumn.intro.t
+    desc = bp_041_autumn.intro.desc
+    left_portrait = root
     trigger = {
-        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
+        is_ai = no
         faith = { religion_tag = slavic_religion }
         bp_autumn_calendar_window_trigger = yes
         dynasty = {
@@ -599,8 +715,17 @@ bp_announcement.1011 = {
         }
     }
     immediate = {
+        # Same visible event family/ID used by the early working calendar.
         dynasty = { set_variable = { name = bp_autumn_announced_v019 value = yes days = 335 } }
-        trigger_event = bp_autumn.9301
+    }
+    option = {
+        name = bp_041_autumn.intro.a
+        # Basic festival reward, exactly once per participation.
+        add_piety = 45
+        add_stress = -10
+        add_character_modifier = { modifier = bp_autumn_lesser_wisdom_modifier days = 90 }
+        trigger_event = bp_041.2111
+        ai_chance = { base = 100 }
     }
 }
 
@@ -614,13 +739,15 @@ bp_announcement.9911 = {
 
 bp_announcement.1012 = {
     type = character_event
-    # Legacy opt-in notice becomes a SILENT router. The educational
-    # opening and the dramatic chapter are the only two visible modals.
-    hidden = yes
+    theme = diplomacy
+    override_background = { reference = bp_scene_szczodre_02 }
+    title = bp_041_szczodre.intro.t
+    desc = bp_041_szczodre.intro.desc
+    left_portrait = root
     trigger = {
-        has_character_flag = bp_verbose_announcements_optin_v021
         is_alive = yes
         is_ruler = yes
+        is_ai = no
         faith = { religion_tag = slavic_religion }
         bp_szczodre_calendar_window_trigger = yes
         dynasty = {
@@ -629,8 +756,17 @@ bp_announcement.1012 = {
         }
     }
     immediate = {
+        # Same visible event family/ID used by the early working calendar.
         dynasty = { set_variable = { name = bp_szczodre_announced_v019 value = yes days = 335 } }
-        trigger_event = bp_szczodre.9401
+    }
+    option = {
+        name = bp_041_szczodre.intro.a
+        # Basic festival reward, exactly once per participation.
+        add_piety = 45
+        add_stress = -10
+        add_character_modifier = { modifier = bp_szczodre_lesser_boon_modifier days = 90 }
+        trigger_event = bp_041.2112
+        ai_chance = { base = 100 }
     }
 }
 

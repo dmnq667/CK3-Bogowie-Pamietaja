@@ -6,10 +6,7 @@
 
 # gromnica: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2101 = {
-    type = letter_event
-    window = character_event
-    sender = root
-    opening = bp_043_empty_opening
+    type = character_event
     theme = diplomacy
     override_background = { reference = bp_scene_gromnica_02 }
     title = bp_040_gromnica.t
@@ -67,10 +64,7 @@ bp_041.2101 = {
 
 # weles: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2102 = {
-    type = letter_event
-    window = character_event
-    sender = root
-    opening = bp_043_empty_opening
+    type = character_event
     theme = diplomacy
     override_background = { reference = bp_scene_weles_04 }
     title = bp_040_weles.t
@@ -123,10 +117,7 @@ bp_041.2102 = {
 
 # spring: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2103 = {
-    type = letter_event
-    window = character_event
-    sender = root
-    opening = bp_043_empty_opening
+    type = character_event
     theme = diplomacy
     override_background = { reference = bp_scene_spring_01 }
     title = bp_040_spring.t
@@ -180,10 +171,7 @@ bp_041.2103 = {
 
 # jare: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2104 = {
-    type = letter_event
-    window = character_event
-    sender = root
-    opening = bp_043_empty_opening
+    type = character_event
     theme = diplomacy
     override_background = { reference = bp_scene_jare_01 }
     title = bp_040_jare.t
@@ -253,10 +241,7 @@ bp_041.2104 = {
 
 # gaik: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2105 = {
-    type = letter_event
-    window = character_event
-    sender = root
-    opening = bp_043_empty_opening
+    type = character_event
     theme = diplomacy
     override_background = { reference = bp_scene_gaik_01 }
     title = bp_040_gaik.t
@@ -328,10 +313,7 @@ bp_041.2105 = {
 
 # dziady: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2106 = {
-    type = letter_event
-    window = character_event
-    sender = root
-    opening = bp_043_empty_opening
+    type = character_event
     theme = diplomacy
     override_background = { reference = bp_scene_dziady_01 }
     title = bp_040_dziady.t
@@ -386,10 +368,7 @@ bp_041.2106 = {
 
 # stado: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2107 = {
-    type = letter_event
-    window = character_event
-    sender = root
-    opening = bp_043_empty_opening
+    type = character_event
     theme = diplomacy
     override_background = { reference = bp_scene_stado_01 }
     title = bp_040_stado.t
@@ -453,10 +432,7 @@ bp_041.2107 = {
 
 # kupala: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2108 = {
-    type = letter_event
-    window = character_event
-    sender = root
-    opening = bp_043_empty_opening
+    type = character_event
     theme = diplomacy
     override_background = { reference = bp_scene_kupala_01 }
     title = bp_040_kupala.t
@@ -582,10 +558,7 @@ bp_041.2108 = {
 
 # perun: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2109 = {
-    type = letter_event
-    window = character_event
-    sender = root
-    opening = bp_043_empty_opening
+    type = character_event
     theme = diplomacy
     override_background = { reference = bp_scene_perun_01 }
     title = bp_040_perun.t
@@ -673,10 +646,7 @@ bp_041.2109 = {
 
 # harvest: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2110 = {
-    type = letter_event
-    window = character_event
-    sender = root
-    opening = bp_043_empty_opening
+    type = character_event
     theme = diplomacy
     override_background = { reference = bp_scene_harvest_01 }
     title = bp_040_harvest.t
@@ -744,10 +714,7 @@ bp_041.2110 = {
 
 # autumn: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2111 = {
-    type = letter_event
-    window = character_event
-    sender = root
-    opening = bp_043_empty_opening
+    type = character_event
     theme = diplomacy
     override_background = { reference = bp_scene_autumn_01 }
     title = bp_040_autumn.t
@@ -816,10 +783,7 @@ bp_041.2111 = {
 
 # szczodre: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2112 = {
-    type = letter_event
-    window = character_event
-    sender = root
-    opening = bp_043_empty_opening
+    type = character_event
     theme = diplomacy
     override_background = { reference = bp_scene_szczodre_01 }
     title = bp_040_szczodre.t

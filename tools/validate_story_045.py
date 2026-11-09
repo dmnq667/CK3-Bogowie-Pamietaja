@@ -177,7 +177,7 @@ for key in ("bp_042_rite_arrived_message","bp_042_story_arrived_message",
             "bp_042_divine_arrived_message"):
     assert key not in all_events,f"Redundant arrival toast: {key}"
 messages=(MOD/"common/messages/bp_042_messages.txt").read_text(encoding="utf-8-sig")
-assert messages.count("message_filter_type = bp_042_events_pause")==2
+assert messages.count("message_filter_type = bp_042_events_pause")==18
 assert "bp_042_trial_success_message" in messages
 assert "bp_042_trial_failure_message" in messages
 filter_src=(MOD/"common/message_filter_types/bp_042_message_filters.txt").read_text(encoding="utf-8-sig")
@@ -206,11 +206,28 @@ risk_text="\n".join((
 for key in result_keys:
     assert risk_text.count("title = "+key+".t")==1,key
     assert risk_text.count("desc = "+key+".desc")==1,key
+    # Native CK3 common/messages definitions are the actual rendered source
+    # of result toast text. Event-local title/desc alone were ignored and
+    # caused a literal bp_042_trial_success_message_desc on screenshots.
+    typ=key+"_message"
+    assert risk_text.count("type = "+typ)==1,typ
+    match=re.search(r"(?m)^"+re.escape(typ)+r"\\s*=\\s*\\{([\\s\\S]*?)^\\}",messages)
+    assert match,typ
+    msg=match.group(1)
+    assert "title = "+key+".t" in msg,typ
+    assert "desc = "+key+".desc" in msg,typ
 for lang in ("polish","english"):
     data=(MOD/"localization"/lang/f"bp_042_l_{lang}.yml").read_text(encoding="utf-8-sig")
     for key in result_keys:
         assert key+".t:0" in data,key
         assert key+".desc:0" in data,key
+    for key in (
+        "bp_042_result_generic_good.desc",
+        "bp_042_result_generic_bad.desc",
+        "bp_042_trial_success_message_desc",
+        "bp_042_trial_failure_message_desc",
+    ):
+        assert key+":0" in data,(lang,key)
 
 risk_weights={
   "bp_041.2105":(25,75),

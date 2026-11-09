@@ -1,0 +1,77 @@
+name: Validate and package two-window festivals 0.4.1 DEV
+
+on:
+  push:
+    branches:
+      - feature/0.4.1-fabula-od-nowa
+    paths:
+      - 'Bogowie_Pamietaja/**'
+      - 'tools/validate_story_041.py'
+      - 'tools/package_windows_update_041.py'
+      - 'tools/audit_festival_flows_041.py'
+      - '.github/workflows/build-obrzedy-041.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: package-story-040
+  cancel-in-progress: true
+
+jobs:
+  validate-and-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Fetch source code and approved 31 illustrations
+        uses: actions/checkout@v4
+      - name: Check 12 festivals, 3 gods, consequences and language
+        run: |
+          python3 tools/validate_story_041.py
+      - name: Package safe in-place 0.4.1 DEV update
+        run: |
+          python3 tools/package_windows_update_041.py
+          test -s GNIEW_I_LASKA_BOGOW_0.4.1_DEV_NADPISZ.zip
+      - name: Attach installer and validation report
+        uses: actions/upload-artifact@v4
+        with:
+          name: Gniew-i-Laska-Bogow-0.4.1-DEV-DWA-OKNA
+          path: |
+            GNIEW_I_LASKA_BOGOW_0.4.1_DEV_NADPISZ.zip
+            validation_story_041.json
+            validation_gods_030.json
+          if-no-files-found: error
+          retention-days: 30
+
+  smoke-test-windows-installer:
+    needs: validate-and-build
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - name: Download packaged update for real Windows test
+        uses: actions/download-artifact@v4
+        with:
+          name: Gniew-i-Laska-Bogow-0.4.1-DEV-DWA-OKNA
+      - name: Verify PowerShell 5.1 updater and rollback copy on a mock 0.3 installation
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          Expand-Archive -LiteralPath 'GNIEW_I_LASKA_BOGOW_0.4.1_DEV_NADPISZ.zip' -DestinationPath 'unpacked_041'
+          $target = Join-Path $env:RUNNER_TEMP 'CK3_Bogowie_Smoke'
+          New-Item -ItemType Directory -Force -Path $target | Out-Null
+          [System.IO.File]::WriteAllText((Join-Path $target 'descriptor.mod'), 'name="Gniew i Laska Bogow"' + [Environment]::NewLine + 'version="0.4.0-dev"')
+          [System.IO.File]::WriteAllText((Join-Path $target 'legacy_marker.txt'), 'BACKUP-MUST-PRESERVE')
+          $script = Join-Path $PWD 'unpacked_041/AKTUALIZUJ_041.ps1'
+          & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $script -TargetOverride $target
+          if ($LASTEXITCODE -ne 0) { throw "Installer returned exit code $LASTEXITCODE" }
+          $newdesc = Get-Content -LiteralPath (Join-Path $target 'descriptor.mod') -Raw
+          if ($newdesc -notmatch '0\.4\.0-dev') { throw 'Failed to update descriptor to 0.4.1-dev' }
+          if (-not (Test-Path -LiteralPath (Join-Path $target 'legacy_marker.txt') -PathType Leaf)) { throw 'Unexpected overwrite of old auxiliary file' }
+          $backups = @(Get-ChildItem -LiteralPath $env:RUNNER_TEMP -Directory | Where-Object { $_.Name -like 'CK3_Bogowie_Smoke_KOPIA_PRZED_041_*' })
+          if ($backups.Count -ne 1) { throw "Expected exactly one backup; got $($backups.Count)" }
+          $oldDesc = Get-Content -LiteralPath (Join-Path $backups[0].FullName 'descriptor.mod') -Raw
+          if ($oldDesc -notmatch '0\.4\.0-dev') { throw 'Backup must contain previous 0.4.0 version' }
+          if (-not (Test-Path -LiteralPath (Join-Path $backups[0].FullName 'legacy_marker.txt') -PathType Leaf)) { throw 'Backup lost old auxiliary file' }
+          if (-not (Test-Path -LiteralPath (Join-Path $target 'events/bp_041_story_events.txt') -PathType Leaf)) { throw 'New 0.4 event file was not copied' }
+          Write-Host 'PASS: Actual Windows PowerShell 5.1 updater installed 0.4.1 and preserved a valid 0.4.0 backup.'

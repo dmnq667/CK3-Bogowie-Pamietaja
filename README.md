@@ -1,6 +1,12 @@
 # Gniew i Łaska Bogów
 
-## Najnowsza wersja testowa — 0.4.2 DEV (pauza i wyniki prób)
+## Najnowsza wersja testowa — 0.4.3 DEV (pauza bez banerów)
+
+Po nieudanej próbie zatrzymywania gry paskami powiadomień przygotowano nowy mechanizm **29 wydarzeń typu `letter_event` z zachowaniem okna `character_event`**: 24 okna 12 świąt, 3 objawienia i 2 epizody zemsty. Usunięto **wszystkie komunikaty przy otwarciu**; 16 informacji o faktycznych wynikach ryzykownych prób pojawi się tylko po dokonaniu wyboru.
+
+**[Pobierz 0.4.3 DEV](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42617710356/artifacts/13672913095)** | [szczegóły i instrukcja](docs/RELEASE_043_PAUZA_BEZ_BANEROW.md). **Kontrola skryptów i instalatora Windows PASS.** Sama automatyczna pauza i zachowanie wyglądu wymagają potwierdzenia w CK3, dlatego wersja pozostaje DEV.
+
+## Poprzednia wersja — 0.4.2 DEV (pauza i wyniki prób)
 
 **Poprawiono dwa problemy z testów 0.4.1.** Gaik i Noc Kupały oraz wszystkie inne śmiertelne próby mają oddzielny komunikat dla przeżycia lub śmierci; wprowadzono 16 rozstrzygnięć. Okna obrzędów, spotkania z bogami i krwawa zemsta korzystają z natywnego filtra komunikatów CK3 z `auto_pause = yes`. **12 świąt zachowuje dokładnie 2 okna, oryginalne daty i komplet 31 grafik.**
 

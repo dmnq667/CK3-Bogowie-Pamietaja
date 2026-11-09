@@ -1,6 +1,18 @@
 # Stan produkcji: Gniew i Łaska Bogów
 
-## 0.4.3 DEV — nowa próba rzeczywistej pauzy bez banerów
+## 0.4.4 DEV — przywrócenie prawidłowych komunikatów po regresji
+
+**Stan:** gałąź `feature/0.4.4-przywrocenie-okien-diagnostyka-pauzy`; [GitHub Actions #42624169723](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42624169723) — walidator PASS, aktualizator Windows 0.4.3→0.4.4 i kopia bezpieczeństwa PASS.
+
+- Cofnięto problematyczny typ `letter_event` i puste `opening` we wszystkich 29 scenach. Przywrócono standardowe duże okno CK3.
+- Zachowano całą fabułę, 31 grafik, daty, 12×2 okna i konsekwencje decyzji.
+- **AUTOMATYCZNA PAUZA — OTWARTE:** poprawka nie gwarantuje zatrzymania gry. Dotychczasowe dwie metody nie zadziałały w teście użytkownika; nie należy publikować kolejnych zapewnień o sukcesie bez próby w CK3.
+- CK3 udostępnia konsolowe `pause_on <ID wydarzenia>`, np. `pause_on bp_gaik.5001`. Polecenie jest diagnostyczne, nie stanowi na razie automatyzacji dla wszystkich graczy.
+- Szczegółowy opis: [Release 0.4.4](docs/RELEASE_044_PRZYWR_OKNA.md) oraz [Diagnostyka pauzy](docs/DIAGNOSTYKA_PAUZY_044.md).
+
+**[Pobierz 0.4.4 DEV — naprawa okien, nie naprawa pauzy](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42624169723/artifacts/13677079913)**.
+
+## Poprzednie podejście: 0.4.3 DEV — pauza bez banerów
 
 **Gałąź:** `feature/0.4.3-pauza-bez-banerow`; **[GitHub Actions #42617710356](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42617710356): skrypty PASS, instalator Windows 0.4.2 → 0.4.3 PASS**.
 

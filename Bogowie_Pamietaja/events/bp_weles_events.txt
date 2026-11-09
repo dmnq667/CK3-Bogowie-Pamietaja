@@ -221,7 +221,8 @@ bp_weles.2004 = {
         add_character_flag = { flag = bp_weles_blood_now_v020 days = 120 }
         bp_weles_plus_20_effect = yes
         add_dread = 15
-        trigger_event = bp_weles.2003
+        bp_040_actual_blood_effect = yes
+        bp_040_schedule_revenge_effect = yes
         ai_chance = { base = 35 }
     }
     option = {
@@ -233,7 +234,7 @@ bp_weles.2004 = {
         add_character_flag = { flag = bp_weles_merciful days = 730 }
         add_character_flag = { flag = bp_weles_mercy_now_v020 days = 120 }
         bp_weles_plus_10_effect = yes
-        trigger_event = bp_weles.2003
+        bp_040_mercy_effect = yes
         ai_chance = { base = 65 }
     }
 }
@@ -522,6 +523,10 @@ bp_weles.2020 = {
     title = bp_weles.2020.t
     desc = {
         first_valid = {
+            triggered_desc = {
+                trigger = { has_character_flag = bp_040_weles_bargain_v040 }
+                desc = bp_040_weles_judgement.desc_bargain
+            }
             triggered_desc = {
                 trigger = {
                     dynasty = { has_variable = bp_weles_prisoner_sacrificed_ever_v030 }

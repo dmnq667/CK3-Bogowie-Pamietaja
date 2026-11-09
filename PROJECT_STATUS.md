@@ -1,6 +1,17 @@
 # Stan produkcji: Gniew i Łaska Bogów
 
-## 0.4.2 DEV — naprawa widoczności wyników i automatyczna pauza
+## 0.4.3 DEV — nowa próba rzeczywistej pauzy bez banerów
+
+**Gałąź:** `feature/0.4.3-pauza-bez-banerow`; **[GitHub Actions #42617710356](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42617710356): skrypty PASS, instalator Windows 0.4.2 → 0.4.3 PASS**.
+
+- Usunięto niedziałające dodatkowe powiadomienia z początku świąt oraz scen bogów. Filtr odpowiedzialny za wcześniejsze toasty ma `auto_pause = no` i służy wyłącznie do wyników prób.
+- Przestawiono 29 widocznych scen na `type = letter_event`, `window = character_event`, `sender = root`, `opening = bp_043_empty_opening` — próba wykorzystania systemowej pauzy wydarzenia listowego bez zmiany dotychczasowego wyglądu scen.
+- **12 świąt × 2 okna, 31 ilustracji, wszystkie terminy, opcje i mechaniki pozostają bez zmian**. 16 komunikatów wyników zachowano.
+- **NIE POTWIERDZONO W GRZE:** rzeczywista pauza i renderowanie grafiki pod `letter_event` muszą zostać sprawdzone ręcznie. Jeśli silnik nie honoruje tej kombinacji, wariant nie może zostać uznany za działający.
+
+[Pobierz 0.4.3 DEV](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42617710356/artifacts/13672913095) · [Szczegóły, kryterium przyjęcia i plan testu](docs/RELEASE_043_PAUZA_BEZ_BANEROW.md).
+
+## Poprzednia wersja: 0.4.2 DEV — naprawa widoczności wyników i automatyczna pauza
 
 **Gałąź:** `feature/0.4.2-wyniki-i-pauza`. **Build:** [GitHub Actions #42573291604](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42573291604) — walidator **PASS**, aktualizator Windows 0.4.1 → 0.4.2 z kopią zapasową **PASS**.
 

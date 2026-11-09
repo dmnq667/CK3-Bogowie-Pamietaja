@@ -32,10 +32,10 @@ FESTIVALS = {
     "Dziady jesienne": "bp_autumn.9301",
     "Szczodre Gody": "bp_szczodre.9401",
 }
-PATTERN = re.compile(r"(?m)^([a-z_]+\.\d+)\s*=\s*\{")
+PATTERN = re.compile(r"(?m)^([a-z0-9_]+\.\d+)\s*=\s*\{")
 EVENT_CALL = re.compile(r"\btrigger_event\s*=\s*")
-EVENT_NAME = re.compile(r"^(bp_[a-z_]+\.\d+)$")
-TARGET = re.compile(r"\bid\s*=\s*(bp_[a-z_]+\.\d+)")
+EVENT_NAME = re.compile(r"^(bp_[a-z0-9_]+\.\d+)$")
+TARGET = re.compile(r"\bid\s*=\s*(bp_[a-z0-9_]+\.\d+)")
 
 
 def balanced(text: str, open_index: int):
@@ -80,7 +80,7 @@ def immediate_calls(event_body: str):
             if found and not re.search(r"\bdays\s*=", value):
                 targets.add(found.group(1))
         else:
-            name = re.match(r"bp_[a-z_]+\.\d+", event_body[pos:])
+            name = re.match(r"bp_[a-z0-9_]+\.\d+", event_body[pos:])
             if name:
                 targets.add(name.group())
     return targets
@@ -116,6 +116,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--enforce", action="store_true", help="Fail if any festival exceeds two visible windows")
     parser.add_argument("--json", action="store_true")
+    parser.add_argument("--exactly-two", action="store_true", help="Fail unless every festival has exactly two visible windows")
     args = parser.parse_args()
     entries = parse_events()
     assert all(start in entries for start in FESTIVALS.values())
@@ -156,6 +157,8 @@ def main():
         print("ALL PASS:", result["all_pass"])
     if args.enforce and not result["all_pass"]:
         raise SystemExit(1)
+    if args.exactly_two and any(row["total_modal_upper_bound"] != 2 for row in rows):
+        raise SystemExit("Two-window rule failed: every festival must have EXACTLY 2 modals.")
 
 
 if __name__ == "__main__":

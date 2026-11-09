@@ -105,3 +105,4 @@
  bp_040_szczodre.a:0 "Grant protection (90 gold; powerful diplomatic benefit)."
  bp_040_szczodre.b:0 "Execute [bp_040_target.GetTitledFirstName] (death, gold and revenge)."
  bp_040_szczodre.c:0 "Refuse hospitality (+70 gold; divine anger and lasting feud)."
+ bp_040_weles_judgement.desc_bargain:0 "Months have passed since Veles lifted your burden of stress and granted you two hundred and fifty gold. Now the towering god appears in person to collect the agreed price. He demands four hundred gold and a public acknowledgement of the debt. You may endure five years of punishment instead. If you defy him openly, you risk death (35%)."

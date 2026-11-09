@@ -1,5 +1,17 @@
 # Historia wydań
 
+## 0.4.1 DEV — 9 listopada 2026: obrzęd, dar i krwawa opowieść
+
+- Wszystkie 12 świąt otrzymały **pierwsze okno edukacyjne** oraz **drugie okno fabularne**. Zachowano groźne wybory i odroczoną zemstę.
+- Każdy udział w święcie daje +45 pobożności, -10 stresu i odpowiednie tematyczne błogosławieństwo na 90 dni; usunięto ryzyko podwójnego przyznania podstawowej premii.
+- Stare zapowiedzi i wydarzenia podglądu zamieniono na niewidoczne przekaźniki; audyt **12/12 PASS, dokładnie 2 okna**.
+- Naprawiono wyświetlanie surowych nazw 15 nowych modyfikatorów i 4 efektów opinii — pełne nazwy i opisy po polsku i angielsku.
+- Poprawiono audyt identyfikatorów z cyframi w nazwie `bp_041`, aby nie ukrywał rzeczywistego łańcucha wydarzeń.
+- Zachowano 31 zatwierdzonych tekstur, trzy osobiste objawienia bogów, stare wejścia z kalendarza i gałąź 0.4.0.
+- Zbudowano [aktualizator 0.4.1 DEV](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42565179434/artifacts/13651276740) i **przetestowano na Windowsie** podmianę istniejącej instalacji z kopią bezpieczeństwa. Test CK3 dla 0.4.1 nadal oczekuje.
+
+
+
 ### Poprawka instalatora 0.4.0 DEV — 9 listopada 2026
 
 - Usunięto błąd: kontrola skryptu `AKTUALIZUJ_040.ps1` oczekiwała wersji `0.3.0-dev`, mimo że paczka miała `0.4.0-dev`; instalator przerywał przed kopiowaniem.

@@ -71,7 +71,7 @@ bp_040.5001 = {
             30 = {
                 dynasty = { set_variable = { name = bp_042_revenge_ruler_died_ever value = yes } }
                 send_interface_toast = {
-                    type = bp_042_trial_failure_message
+                    type = bp_042_revenge_dead_message
                     title = bp_042_revenge_dead.t
                     desc = bp_042_revenge_dead.desc
                     left_icon = root
@@ -81,7 +81,7 @@ bp_040.5001 = {
             70 = {
                 dynasty = { set_variable = { name = bp_042_revenge_survived_ever value = yes } }
                 send_interface_toast = {
-                    type = bp_042_trial_success_message
+                    type = bp_042_revenge_survived_message
                     title = bp_042_revenge_survived.t
                     desc = bp_042_revenge_survived.desc
                     left_icon = root
@@ -142,7 +142,7 @@ bp_040.5002 = {
             25 = {
                 dynasty = { set_variable = { name = bp_042_aftermath_ruler_died_ever value = yes } }
                 send_interface_toast = {
-                    type = bp_042_trial_failure_message
+                    type = bp_042_aftermath_dead_message
                     title = bp_042_aftermath_dead.t
                     desc = bp_042_aftermath_dead.desc
                     left_icon = root
@@ -152,7 +152,7 @@ bp_040.5002 = {
             75 = {
                 dynasty = { set_variable = { name = bp_042_aftermath_survived_ever value = yes } }
                 send_interface_toast = {
-                    type = bp_042_trial_success_message
+                    type = bp_042_aftermath_survived_message
                     title = bp_042_aftermath_survived.t
                     desc = bp_042_aftermath_survived.desc
                     left_icon = root

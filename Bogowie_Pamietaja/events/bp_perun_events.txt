@@ -258,10 +258,10 @@ bp_perun.9110 = {
                     title = bp_042_perun_wrath_survived.t
                     desc = bp_042_perun_wrath_survived.desc
                     left_icon = root
-                    add_stress = 100
-                    add_character_modifier = { modifier = bp_perun_disfavor_modifier years = 5 }
-                    add_prestige = -400
                 }
+                add_stress = 100
+                add_character_modifier = { modifier = bp_perun_disfavor_modifier years = 5 }
+                add_prestige = -400
                 bp_perun_minus_20_effect = yes
             }
         }

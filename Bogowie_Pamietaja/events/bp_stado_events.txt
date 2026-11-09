@@ -9,6 +9,7 @@ bp_stado.7001 = {
     title = bp_040_stado.t
     desc = {
         first_valid = {
+            triggered_desc = { trigger = { exists = scope:bp_040_target } desc = bp_040_stado.desc_target }
         triggered_desc = { trigger = { has_trait = brave } desc = bp_040_stado.desc_brave }
         triggered_desc = { trigger = { has_trait = craven } desc = bp_040_stado.desc_craven }
             desc = bp_040_stado.desc

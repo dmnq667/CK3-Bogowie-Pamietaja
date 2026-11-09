@@ -9,6 +9,7 @@ bp_jare.4001 = {
     title = bp_040_jare.t
     desc = {
         first_valid = {
+            triggered_desc = { trigger = { exists = scope:bp_040_target } desc = bp_040_jare.desc_target }
         triggered_desc = { trigger = { has_trait = compassionate } desc = bp_040_jare.desc_compassionate }
         triggered_desc = { trigger = { has_trait = callous } desc = bp_040_jare.desc_callous }
             desc = bp_040_jare.desc

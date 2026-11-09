@@ -1,5 +1,12 @@
 # Gniew i Łaska Bogów
 
+## Najnowsza wersja testowa — 0.4.2 DEV (pauza i wyniki prób)
+
+**Poprawiono dwa problemy z testów 0.4.1.** Gaik i Noc Kupały oraz wszystkie inne śmiertelne próby mają oddzielny komunikat dla przeżycia lub śmierci; wprowadzono 16 rozstrzygnięć. Okna obrzędów, spotkania z bogami i krwawa zemsta korzystają z natywnego filtra komunikatów CK3 z `auto_pause = yes`. **12 świąt zachowuje dokładnie 2 okna, oryginalne daty i komplet 31 grafik.**
+
+**[Pobierz 0.4.2 DEV — nowy aktualizator po pozytywnych testach Windows](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42573291604/artifacts/13654395511)**. [Opis szczegółowy i instrukcja](docs/RELEASE_042_WYNIKI_PAUZA.md). Automatyczne testy **PASS**, lecz zatrzymanie gry i komunikaty o wyniku trzeba jeszcze potwierdzić w samym CK3.
+
+
 Dawniej: **Bogowie Pamiętają**.
 
 Mod do **Crusader Kings III** poświęcony słowiańskim bogom, obrzędom i cyklowi dwunastu świąt. Projekt niezależny od **The Weight of Words**.

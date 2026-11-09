@@ -1,5 +1,12 @@
 # Historia wydań
 
+## 0.4.4 DEV — 9 listopada 2026
+
+- Cofnięto `letter_event` + `opening = bp_043_empty_opening` w 29 widocznych wydarzeniach po zgłoszeniu braku pauzy i błędu komunikatu; przywrócono `character_event`.
+- Pozostawiono 12 świąt × 2 okna, terminy, 31 ilustracji, wybory i 16 wyników groźnych prób; bez zbędnych banerów na starcie.
+- Dodano [diagnostykę `pause_on`](docs/DIAGNOSTYKA_PAUZY_044.md) i wyraźnie zaznaczono, że automatyczna pauza nie działa jeszcze w sposób potwierdzony.
+- [Paczka 0.4.4 DEV](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42624169723/artifacts/13677079913) z walidacją 29 okien i testem instalacji Windows z kopią zapasową — **PASS**.
+
 ## 0.4.3 DEV — 9 listopada 2026
 
 - Usunięto wszystkie trzy rodzaje dodatkowych banerów przy wejściu w obrzęd, historię lub spotkanie z bogiem — nie zatrzymywały rozgrywki, więc były zbędne.

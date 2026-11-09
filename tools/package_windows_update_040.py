@@ -3,13 +3,15 @@
 from pathlib import Path
 from hashlib import sha256
 from zipfile import ZipFile, ZIP_DEFLATED
+import re
 
 ROOT=Path(__file__).resolve().parent.parent
 MOD=ROOT/"Bogowie_Pamietaja"
 OUT=ROOT/"GNIEW_I_LASKA_BOGOW_0.4.0_DEV_NADPISZ.zip"
 DDS=MOD/"gfx/interface/illustrations/event_scene"
 assert (MOD/"descriptor.mod").is_file()
-assert "0.4.0-dev" in (MOD/"descriptor.mod").read_text(encoding="utf-8-sig")
+EXPECTED_VERSION = "0.4.0-dev"
+assert EXPECTED_VERSION in (MOD/"descriptor.mod").read_text(encoding="utf-8-sig")
 files=sorted(p for p in MOD.rglob("*") if p.is_file() and p.name != ".gitkeep")
 assert len(files)>=65,f"Incomplete mod: {len(files)} files"
 for name in ["bp_deity_weles_2020.dds","bp_deity_perun_9110.dds","bp_deity_mokosh_3010.dds",
@@ -20,6 +22,7 @@ manifest="".join(
     for p in files
 )
 powershell=r'''
+param([string]$TargetOverride = '')
 $ErrorActionPreference = 'Stop'
 $Source = Join-Path $PSScriptRoot 'Bogowie_Pamietaja'
 $ManifestPath = Join-Path $PSScriptRoot 'MANIFEST_SHA256.tsv'
@@ -38,24 +41,28 @@ try {
         (Join-Path ([Environment]::GetFolderPath('MyDocuments')) 'Paradox Interactive\Crusader Kings III\mod\Bogowie_Pamietaja')
     )
     $Target = $null
-    foreach ($candidate in $candidates) {
-        if (Test-Path -LiteralPath (Join-Path $candidate 'descriptor.mod') -PathType Leaf) {
-            $Target = $candidate
-            break
+    if (-not [string]::IsNullOrWhiteSpace($TargetOverride)) {
+        $Target = $TargetOverride
+    } else {
+        foreach ($candidate in $candidates) {
+            if (Test-Path -LiteralPath (Join-Path $candidate 'descriptor.mod') -PathType Leaf) {
+                $Target = $candidate
+                break
+            }
+        }
+        if ($null -eq $Target) {
+            $Target = Read-Host 'Podaj sciezke ISTNIEJACEGO katalogu moda (z descriptor.mod)'
         }
     }
-    if ($null -eq $Target) {
-        $Target = Read-Host 'Podaj sciezke ISTNIEJACEGO katalogu moda (z descriptor.mod)'
-        if (-not (Test-Path -LiteralPath (Join-Path $Target 'descriptor.mod') -PathType Leaf)) {
-            throw 'Brak istniejacej instalacji. Nie tworzono drugiego moda.'
-        }
+    if (-not (Test-Path -LiteralPath (Join-Path $Target 'descriptor.mod') -PathType Leaf)) {
+        throw 'Brak istniejacej instalacji. Nie tworzono drugiego moda.'
     }
     $current = Get-Content -LiteralPath (Join-Path $Target 'descriptor.mod') -Raw
     if ($current -notmatch 'Bogowie|Gniew|Gods Remember') {
         throw "Nieprawidlowy mod docelowy: $Target"
     }
     $newdesc = Get-Content -LiteralPath (Join-Path $Source 'descriptor.mod') -Raw
-    if ($newdesc -notmatch '0\.3\.0-dev') {
+    if ($newdesc -notmatch 'version\s*=\s*"__EXPECTED_VERSION_REGEX__"') {
         throw 'Zla wersja paczki. Odmowa instalacji.'
     }
     $entries = @(Get-Content -LiteralPath $ManifestPath -Encoding UTF8 | Where-Object {$_.Trim() -ne ''} | ForEach-Object {
@@ -107,6 +114,11 @@ try {
     exit 1
 }
 '''.lstrip()
+# The version guard must derive from the descriptor version, not the previous
+# release. Regression protection for the rejected 0.4.0 installer.
+powershell = powershell.replace('__EXPECTED_VERSION_REGEX__', re.escape(EXPECTED_VERSION))
+assert ('version\\s*=\\s*"' + re.escape(EXPECTED_VERSION) + '"') in powershell
+assert '0\\.3\\.0-dev' not in powershell
 bat=r'''@echo off
 setlocal
 chcp 65001 >nul

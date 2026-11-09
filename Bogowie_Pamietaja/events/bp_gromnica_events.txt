@@ -5,59 +5,18 @@
 bp_gromnica.1001 = {
     type = character_event
     theme = diplomacy
-    override_background = { reference = bp_scene_gromnica_02 }
-    title = bp_040_gromnica.t
-    desc = {
-        first_valid = {
-        triggered_desc = { trigger = { has_trait = compassionate } desc = bp_040_gromnica.desc_compassionate }
-        triggered_desc = { trigger = { has_trait = callous } desc = bp_040_gromnica.desc_callous }
-            desc = bp_040_gromnica.desc
-        }
-    }
+    override_background = { reference = bp_scene_gromnica_01 }
+    title = bp_041_gromnica.intro.t
+    desc = bp_041_gromnica.intro.desc
     left_portrait = root
-    immediate = {
-        bp_initialize_effect = yes
+    option = {
+        name = bp_041_gromnica.intro.a
+        # Participation rewards are granted exactly once, before the story.
         add_piety = 45
         add_stress = -10
-        dynasty = {
-            set_variable = { name = bp_gromnica_ever_celebrated_v014 value = yes }
-            set_variable = { name = bp_gromnica_rite_lock_v013 value = yes days = 335 }
-        }
-        add_character_flag = { flag = bp_gromnica_used days = 335 }
-    }
-    option = {
-        name = bp_040_gromnica.a
-        trigger = { gold >= 80 }
-        show_as_unavailable = { gold < 80 }
-        remove_short_term_gold = 80
-        capital_county = { add_county_modifier = { modifier = bp_040_saved_villages_modifier years = 3 } }
-        add_stress = -25
-        bp_040_mercy_effect = yes
-        bp_mokosh_plus_20_effect = yes
-        add_character_flag = { flag = bp_gromnica_village days = 365 }
-        dynasty = { set_variable = { name = bp_gromnica_aided_villagers_ever_v030 value = yes } }
-        ai_chance = { base = 60 }
-    }
-    option = {
-        name = bp_040_gromnica.b
-        add_gold = 75
-        capital_county = { add_county_modifier = { modifier = bp_040_frozen_villages_modifier years = 3 } }
-        add_dread = 10
-        bp_mokosh_minus_15_effect = yes
-        bp_040_cruelty_effect = yes
-        bp_040_schedule_revenge_effect = yes
-        dynasty = { set_variable = { name = bp_gromnica_neglected_ever_v030 value = yes } }
-        ai_chance = { base = 25 }
-    }
-    option = {
-        name = bp_040_gromnica.c
-        add_prestige = 120
-        add_stress = 30
-        add_character_modifier = { modifier = bp_040_ruthless_war_modifier years = 1 }
-        bp_perun_plus_10_effect = yes
-        add_character_flag = { flag = bp_gromnica_fire days = 365 }
-        dynasty = { set_variable = { name = bp_gromnica_protected_fire_ever_v030 value = yes } }
-        ai_chance = { base = 15 }
+        add_character_modifier = { modifier = bp_gromnica_guard_modifier days = 90 }
+        trigger_event = bp_041.2101
+        ai_chance = { base = 100 }
     }
 }
 

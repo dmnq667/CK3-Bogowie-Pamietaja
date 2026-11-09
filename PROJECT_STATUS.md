@@ -1,5 +1,35 @@
 # Stan produkcji: Gniew i Łaska Bogów
 
+## 0.4.0 DEV — przebudowa fabuły, 9 listopada 2026
+
+**Wersja testowa zbudowana na osobnej gałęzi** `feature/0.4.0-fabula-od-nowa`. [Zakończony build #42555294029](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42555294029), status **SUCCESS**. **Nie była testowana w uruchomionym CK3.**
+
+### Wykonane w kodzie
+
+- Wymieniono wszystkie **12 głównych wydarzeń świątecznych** na niezależne, jednookienkowe sceny o realnych stawkach. Ograniczono wszystkie automatyczne łańcuchy świąt: **12/12 PASS, maksymalnie 2 okna wraz z zapowiedzią**.
+- Napisano **107 kluczy fabularnych lokalizacji PL i EN**, w tym warianty charakterologiczne: `brave`, `craven`, `compassionate`, `callous`; alternatywne opisy dla wydarzeń z istniejącą postacią i pamięcią krwi.
+- Nowe konsekwencje: prawdziwa śmierć wybranego z rzeczywiście istniejących dworzan, śmierć władcy po świadomym podjęciu ryzyka, 12 nowych modyfikatorów statusu i prowincji, 4 opinie, pamięć łaski i krzywdy w dynastii.
+- Dodatkowe **2 odroczone wydarzenia rodowej zemsty** `bp_040.5001` i `bp_040.5002` (miesiące i rok po decyzji); losowanie wypadków i zamachów, rodzinne konsekwencje.
+- Zachowano **31 zatwierdzonych DDS** bez podmieniania starymi grafikami. Objawienia osobiste A01 Weles, A02 Perun i A03 Mokosz nadal istnieją i są powiązane z istotnymi wyborami.
+- Weles może udzielić -100 stresu i 250 złota za dług spłacany po miesiącach; jego sąd ma nowy opis adekwatny do paktu. Wybór prawdziwego więźnia pozostaje interakcją, ale jego egzekucja nie uruchamia dawnych kaskad.
+- Perun osobiście powraca po uchylaniu się od przysięgi, Mokosz rozlicza ziarno zabrane poddanym.
+- **Pierwszy rytualny sąd** jest obecnie niewidocznym rozliczeniem czynów i automatycznie zapisuje rezultat zamiast otwierać kolejne, abstrakcyjne okno. Pozostawiono rozwijaną cechę i istniejącą Księgę Bogów.
+- Zastąpiono dawną decyzję „Zmień dar dla Welesa” decyzją rezygnacji bez dodatkowych okien.
+- Dodano kontrolę struktury i lokalizacji (`tools/validate_story_040.py`), audyt długości okien oraz **aktualizator Windows nadpisujący ten sam mod z kopią bezpieczeństwa**.
+
+### Nadal wymagające testu / rozwinięcia
+
+- Test w CK3 1.20: rzeczywisty wybór dworzanina, dostępność wszystkich opcji, `death`, przekazanie władzy następcy, działanie przy różnych stanach wojny i bez dworzan, sprawdzenie `error.log`.
+- Balans: częstość krwawej zemsty, stres przy charakterach, wielkość premii i faktyczny wpływ modyfikatorów na prowincje.
+- Pełna kampania wieloletnia na kopii zapisu oraz kontrola starszych zapisów z wydarzeniami 0.3.0 zaplanowanymi już w kolejce. **Stare ID pozostały dla kompatybilności, choć główny kalendarz nie otwiera starych kaskad.**
+- Docelowa przebudowa wszystkich czterech sądów i Księgi Bogów, jeśli po testach nadal będzie potrzebna.
+
+### Testowa instalacja
+
+[GitHub Actions: pobierz artefakt 0.4.0 DEV](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42555294029). Najpierw rozpakuj pobrany artefakt ZIP, potem zawarty w nim `GNIEW_I_LASKA_BOGOW_0.4.0_DEV_NADPISZ.zip`; wyłącz CK3 i uruchom `AKTUALIZUJ_040.bat`. Skrypt tworzy kopię dotychczasowej instalacji i nadpisuje jej pliki. **Testuj na kopii sejwa.** Nie instaluj równolegle 0.3.0 i 0.4.0.
+
+## Poprzednie ustalenia (0.3.0 i wcześniejsze)
+
 **Aktualizacja:** 08.11.2026  
 **Wersja produkcyjna:** 0.3.0 DEV na `feature/0.3.0-gniew-i-laska`.  
 **Import grafik ZAKOŃCZONY:** 31 nowych DDS i 31 obrazów źródłowych są w repozytorium na tej gałęzi; zakończony [GitHub Actions run #42506140283](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42506140283) uzyskał status SUCCESS. Instalator 0.3.0 DEV jest dostępny jako artefakt tego uruchomienia. Test wewnątrz CK3 nadal niewykonany.
@@ -60,3 +90,4 @@
 ## Zasady
 
 GitHub jest źródłem stanu produkcji. Każde wydanie wymaga historii zmian, stanu testów i oznaczenia wersji. Nie mieszać z `CK3-The-Weight-of-Words`.
+

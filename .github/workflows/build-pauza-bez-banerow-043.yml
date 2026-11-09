@@ -1,0 +1,77 @@
+name: Validate and package 0.4.3 DEV - event pause without arrival banners
+
+on:
+  push:
+    branches:
+      - feature/0.4.3-pauza-bez-banerow
+    paths:
+      - 'Bogowie_Pamietaja/**'
+      - 'tools/validate_story_043.py'
+      - 'tools/package_windows_update_043.py'
+      - 'tools/audit_festival_flows_040.py'
+      - '.github/workflows/build-pauza-bez-banerow-043.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: package-story-043
+  cancel-in-progress: true
+
+jobs:
+  validate-and-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout source with 31 approved images
+        uses: actions/checkout@v4
+      - name: Verify native event windows, zero entry toasts, 12 festivals and outcomes
+        run: |
+          python3 tools/validate_story_043.py
+      - name: Build version-guarded Windows in-place updater
+        run: |
+          python3 tools/package_windows_update_043.py
+          test -s GNIEW_I_LASKA_BOGOW_0.4.3_DEV_NADPISZ.zip
+      - name: Publish dev package and reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: Gniew-i-Laska-Bogow-0.4.3-DEV-PAUZA-BEZ-BANEROW
+          path: |
+            GNIEW_I_LASKA_BOGOW_0.4.3_DEV_NADPISZ.zip
+            validation_story_043.json
+            validation_gods_030.json
+          if-no-files-found: error
+          retention-days: 30
+
+  smoke-test-windows-installer:
+    needs: validate-and-build
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - name: Download packaged update
+        uses: actions/download-artifact@v4
+        with:
+          name: Gniew-i-Laska-Bogow-0.4.3-DEV-PAUZA-BEZ-BANEROW
+      - name: Verify Windows PowerShell 5.1 updater backs up 0.4.2
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          Expand-Archive -LiteralPath 'GNIEW_I_LASKA_BOGOW_0.4.3_DEV_NADPISZ.zip' -DestinationPath 'unpacked_043'
+          $target = Join-Path $env:RUNNER_TEMP 'CK3_Bogowie_Smoke'
+          New-Item -ItemType Directory -Force -Path $target | Out-Null
+          [System.IO.File]::WriteAllText((Join-Path $target 'descriptor.mod'), 'name="Gniew i Laska Bogow"' + [Environment]::NewLine + 'version="0.4.2-dev"')
+          [System.IO.File]::WriteAllText((Join-Path $target 'legacy_marker.txt'), 'BACKUP-MUST-PRESERVE')
+          $script = Join-Path $PWD 'unpacked_043/AKTUALIZUJ_043.ps1'
+          & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $script -TargetOverride $target
+          if ($LASTEXITCODE -ne 0) { throw "Installer returned exit code $LASTEXITCODE" }
+          $newdesc = Get-Content -LiteralPath (Join-Path $target 'descriptor.mod') -Raw
+          if ($newdesc -notmatch '0\.4\.3-dev') { throw 'Failed to install 0.4.3-dev' }
+          $backups = @(Get-ChildItem -LiteralPath $env:RUNNER_TEMP -Directory | Where-Object { $_.Name -like 'CK3_Bogowie_Smoke_KOPIA_PRZED_043_*' })
+          if ($backups.Count -ne 1) { throw "Expected exactly one backup; got $($backups.Count)" }
+          $oldDesc = Get-Content -LiteralPath (Join-Path $backups[0].FullName 'descriptor.mod') -Raw
+          if ($oldDesc -notmatch '0\.4\.2-dev') { throw 'Previous 0.4.2 installation not preserved' }
+          if (-not (Test-Path -LiteralPath (Join-Path $backups[0].FullName 'legacy_marker.txt') -PathType Leaf)) { throw 'Backup lost old auxiliary file' }
+          if (-not (Test-Path -LiteralPath (Join-Path $target 'events/bp_041_story_events.txt') -PathType Leaf)) { throw 'Narrative events not copied' }
+          if (-not (Test-Path -LiteralPath (Join-Path $target 'localization/polish/bp_043_l_polish.yml') -PathType Leaf)) { throw 'Letter-event localization missing' }
+          Write-Host 'PASS: Windows PowerShell 5.1 installed 0.4.3 and preserved 0.4.2 backup.'

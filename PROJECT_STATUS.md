@@ -1,6 +1,17 @@
 # Stan produkcji: Gniew i Łaska Bogów
 
-## 0.4.5 DEV — powrót automatycznego kalendarza i wizualna poprawka Szczodrych Godów
+## 0.4.5 DEV — automatyczny kalendarz, tła, Jare Gody i wyniki prób
+
+**Build:** [GitHub Actions #42634924149](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42634924149) — skrypty PASS, Windows 0.4.4 → 0.4.5 z kopią bezpieczeństwa PASS.
+
+- 12 świąt uruchamianych przez dawny codzienny kalendarz, dwa okna, 31 obrazów zachowane.
+- Jare Gody: usunięto `random_courtier`, arbitralne oskarżenie i egzekucję losowego dworzanina. Wydarzenie ma opisy zależne od wcześniejszej krwi / łaski w dynastii, a wybory mają wyraźne koszty i odroczoną zemstę.
+- Wyeliminowano zgłoszony surowy identyfikator `bp_042_trial_success_message_desc`: 16 zdefiniowanych osobno wyników `common/messages` z tytułami i opisami PL/EN oraz teksty zapasowe.
+- **Pozostaje test w grze:** samoczynne zatrzymanie na pierwszym oknie oraz poprawny obraz Szczodrych Godów. Test statyczny nie może tego zagwarantować.
+
+[**Pobierz 0.4.5 DEV**](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42634924149/artifacts/13682642345) · [Szczegóły zmian](docs/RELEASE_045_KALENDARZ_GRAFIKI.md).
+
+## Poprzedni opis stanu 0.4.5 — powrót automatycznego kalendarza i wizualna poprawka Szczodrych Godów
 
 **Stan:** gałąź `feature/0.4.5-powrot-kalendarza-i-tel`. [Testy GitHub Actions #42632417532](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42632417532) — statyczny walidator PASS, instalator Windows 0.4.4→0.4.5 i kopia bezpieczeństwa PASS.
 

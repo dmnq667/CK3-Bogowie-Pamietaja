@@ -3,7 +3,7 @@ name: Validate 0.4.6 DEV - title, icon, silent alerts and automatic festivals
 on:
   push:
     branches:
-      - feature/0.4.6-powrot-kalendarza-i-tel
+      - feature/0.4.6-hotfix-ikona-alerty-teksty
     paths:
       - 'Bogowie_Pamietaja/**'
       - 'tools/validate_story_046.py'

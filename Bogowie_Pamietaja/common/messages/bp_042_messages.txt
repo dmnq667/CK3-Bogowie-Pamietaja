@@ -1,15 +1,148 @@
-# 0.4.3: only meaningful trial RESULTS are shown after the player's
-# decision. Do not emit top-of-screen 'holy day arrived' / 'judgment'
-# banners upon event opening.
+# 0.4.5: each actual outcome has its OWN native message definition.
+# In the 0.4.2-0.4.4 implementation CK3 ignored dynamic title/desc
+# passed to generic toasts and displayed the raw key:
+# bp_042_trial_success_message_desc. These explicit definitions prevent it.
+# The separate result toasts do not add an extra holiday event window.
+
 bp_042_trial_success_message = {
     display = toast
     message_filter_type = bp_042_events_pause
     title = bp_042_result_generic_good.t
+    desc = bp_042_result_generic_good.desc
     style = good
 }
 bp_042_trial_failure_message = {
     display = toast
     message_filter_type = bp_042_events_pause
     title = bp_042_result_generic_bad.t
+    desc = bp_042_result_generic_bad.desc
+    style = bad
+}
+
+bp_042_gaik_dead_message = {
+    display = toast
+    message_filter_type = bp_042_events_pause
+    title = bp_042_gaik_dead.t
+    desc = bp_042_gaik_dead.desc
+    style = bad
+}
+
+bp_042_gaik_survived_message = {
+    display = toast
+    message_filter_type = bp_042_events_pause
+    title = bp_042_gaik_survived.t
+    desc = bp_042_gaik_survived.desc
+    style = good
+}
+
+bp_042_kupala_dead_message = {
+    display = toast
+    message_filter_type = bp_042_events_pause
+    title = bp_042_kupala_dead.t
+    desc = bp_042_kupala_dead.desc
+    style = bad
+}
+
+bp_042_kupala_survived_message = {
+    display = toast
+    message_filter_type = bp_042_events_pause
+    title = bp_042_kupala_survived.t
+    desc = bp_042_kupala_survived.desc
+    style = good
+}
+
+bp_042_kupala_guard_failed_message = {
+    display = toast
+    message_filter_type = bp_042_events_pause
+    title = bp_042_kupala_guard_failed.t
+    desc = bp_042_kupala_guard_failed.desc
+    style = bad
+}
+
+bp_042_kupala_guard_saved_message = {
+    display = toast
+    message_filter_type = bp_042_events_pause
+    title = bp_042_kupala_guard_saved.t
+    desc = bp_042_kupala_guard_saved.desc
+    style = good
+}
+
+bp_042_perun_trial_dead_message = {
+    display = toast
+    message_filter_type = bp_042_events_pause
+    title = bp_042_perun_trial_dead.t
+    desc = bp_042_perun_trial_dead.desc
+    style = bad
+}
+
+bp_042_perun_trial_survived_message = {
+    display = toast
+    message_filter_type = bp_042_events_pause
+    title = bp_042_perun_trial_survived.t
+    desc = bp_042_perun_trial_survived.desc
+    style = good
+}
+
+bp_042_revenge_dead_message = {
+    display = toast
+    message_filter_type = bp_042_events_pause
+    title = bp_042_revenge_dead.t
+    desc = bp_042_revenge_dead.desc
+    style = bad
+}
+
+bp_042_revenge_survived_message = {
+    display = toast
+    message_filter_type = bp_042_events_pause
+    title = bp_042_revenge_survived.t
+    desc = bp_042_revenge_survived.desc
+    style = good
+}
+
+bp_042_aftermath_dead_message = {
+    display = toast
+    message_filter_type = bp_042_events_pause
+    title = bp_042_aftermath_dead.t
+    desc = bp_042_aftermath_dead.desc
+    style = bad
+}
+
+bp_042_aftermath_survived_message = {
+    display = toast
+    message_filter_type = bp_042_events_pause
+    title = bp_042_aftermath_survived.t
+    desc = bp_042_aftermath_survived.desc
+    style = good
+}
+
+bp_042_perun_wrath_dead_message = {
+    display = toast
+    message_filter_type = bp_042_events_pause
+    title = bp_042_perun_wrath_dead.t
+    desc = bp_042_perun_wrath_dead.desc
+    style = bad
+}
+
+bp_042_perun_wrath_survived_message = {
+    display = toast
+    message_filter_type = bp_042_events_pause
+    title = bp_042_perun_wrath_survived.t
+    desc = bp_042_perun_wrath_survived.desc
+    style = bad
+}
+
+bp_042_weles_wrath_dead_message = {
+    display = toast
+    message_filter_type = bp_042_events_pause
+    title = bp_042_weles_wrath_dead.t
+    desc = bp_042_weles_wrath_dead.desc
+    style = bad
+}
+
+bp_042_weles_wrath_survived_message = {
+    display = toast
+    message_filter_type = bp_042_events_pause
+    title = bp_042_weles_wrath_survived.t
+    desc = bp_042_weles_wrath_survived.desc
     style = bad
 }

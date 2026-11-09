@@ -392,9 +392,13 @@ bp_041.2107 = {
     title = bp_040_stado.t
     desc = {
         first_valid = {
-            triggered_desc = { trigger = { exists = scope:bp_040_target } desc = bp_040_stado.desc_target }
-        triggered_desc = { trigger = { has_trait = brave } desc = bp_040_stado.desc_brave }
-        triggered_desc = { trigger = { has_trait = craven } desc = bp_040_stado.desc_craven }
+            # This account changes only for an ACTUAL recorded dynasty deed.
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_040_blood_ever_v040 } }
+                desc = bp_040_stado.desc_target
+            }
+            triggered_desc = { trigger = { has_trait = brave } desc = bp_040_stado.desc_brave }
+            triggered_desc = { trigger = { has_trait = craven } desc = bp_040_stado.desc_craven }
             desc = bp_040_stado.desc
         }
     }
@@ -405,11 +409,8 @@ bp_041.2107 = {
             set_variable = { name = bp_stado_ever_celebrated_v015 value = yes }
             set_variable = { name = bp_stado_rite_lock_v015 value = yes days = 335 }
         }
-        # A victim may be an EXISTING adult courtier; never fabricate a death.
-        if = {
-            limit = { any_courtier = { is_alive = yes is_adult = yes } }
-            random_courtier = { limit = { is_alive = yes is_adult = yes } save_scope_as = bp_040_target }
-        }
+        # No random courtier: a named character is never falsely accused or killed.
+
     }
     option = {
         name = bp_040_stado.a
@@ -422,14 +423,10 @@ bp_041.2107 = {
     }
     option = {
         name = bp_040_stado.b
-        trigger = { exists = scope:bp_040_target }
-        scope:bp_040_target = {
-            every_close_family_member = {
-                limit = { is_alive = yes NOT = { this = root } }
-                add_opinion = { target = root modifier = bp_040_blood_feud_opinion }
-            }
-            death = { killer = root death_reason = death_execution }
-        }
+        # The armed attackers are a warband, not an innocent modelled courtier.
+        add_gold = 40
+        if = { limit = { has_trait = compassionate } add_stress = 55 }
+        dynasty = { set_variable = { name = bp_stado_bloodshed_ever_v046 value = yes } }
         add_dread = 35
         add_tyranny = 15
         bp_040_actual_blood_effect = yes
@@ -456,9 +453,13 @@ bp_041.2108 = {
     title = bp_040_kupala.t
     desc = {
         first_valid = {
-        triggered_desc = { trigger = { exists = scope:bp_040_target } desc = bp_040_kupala.desc_target }
-        triggered_desc = { trigger = { has_trait = brave } desc = bp_040_kupala.desc_brave }
-        triggered_desc = { trigger = { has_trait = craven } desc = bp_040_kupala.desc_craven }
+            # This account changes only for an ACTUAL recorded dynasty deed.
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_040_mercy_ever_v040 } }
+                desc = bp_040_kupala.desc_target
+            }
+            triggered_desc = { trigger = { has_trait = brave } desc = bp_040_kupala.desc_brave }
+            triggered_desc = { trigger = { has_trait = craven } desc = bp_040_kupala.desc_craven }
             desc = bp_040_kupala.desc
         }
     }
@@ -469,15 +470,11 @@ bp_041.2108 = {
             set_variable = { name = bp_kupala_ever_celebrated_v015 value = yes }
             set_variable = { name = bp_kupala_rite_lock_v015 value = yes days = 335 }
         }
-        # A victim may be an EXISTING adult courtier; never fabricate a death.
-        if = {
-            limit = { any_courtier = { is_alive = yes is_adult = yes } }
-            random_courtier = { limit = { is_alive = yes is_adult = yes } save_scope_as = bp_040_target }
-        }
+        # No random courtier: a named character is never falsely accused or killed.
+
     }
     option = {
         name = bp_040_kupala.a
-        trigger = { exists = scope:bp_040_target }
         add_prestige = 180
         if = { limit = { has_trait = craven } add_stress = 90 }
         if = { limit = { has_trait = brave } add_stress = -40 }
@@ -494,15 +491,14 @@ bp_041.2108 = {
             }
             75 = {
                 dynasty = { set_variable = { name = bp_042_kupala_rescue_ever value = yes } }
-                scope:bp_040_target = { add_character_flag = { flag = bp_042_saved_from_kupala_flood years = 5 } }
                 send_interface_toast = {
                     type = bp_042_kupala_survived_message
                     title = bp_042_kupala_survived.t
                     desc = bp_042_kupala_survived.desc
                     left_icon = root
-                    right_icon = scope:bp_040_target
-                    add_character_modifier = { modifier = bp_kupala_lesser_boon_modifier years = 2 }
                 }
+                add_character_modifier = { modifier = bp_kupala_lesser_boon_modifier years = 2 }
+                capital_county = { add_county_modifier = { modifier = bp_040_saved_villages_modifier years = 1 } }
                 bp_040_mercy_effect = yes
                 bp_mokosh_plus_40_effect = yes
             }
@@ -511,25 +507,19 @@ bp_041.2108 = {
     }
     option = {
         name = bp_040_kupala.b
-        trigger = { exists = scope:bp_040_target }
+        # The escort fights to save named villages, not a random courtier.
         random_list = {
             50 = {
-                scope:bp_040_target = {
-                    every_close_family_member = {
-                        limit = { is_alive = yes NOT = { this = root } }
-                        add_opinion = { target = root modifier = bp_040_blood_feud_opinion }
-                    }
-                    death = { death_reason = death_accident }
-                }
                 send_interface_toast = {
                     type = bp_042_kupala_guard_failed_message
                     title = bp_042_kupala_guard_failed.t
                     desc = bp_042_kupala_guard_failed.desc
                     left_icon = root
-                    right_icon = scope:bp_040_target
-                    add_stress = 50
                 }
+                add_stress = 50
+                capital_county = { add_county_modifier = { modifier = bp_040_desperate_country_modifier years = 2 } }
                 add_character_flag = { flag = bp_040_failed_rescue_v040 years = 3 }
+                bp_040_schedule_revenge_effect = yes
             }
             50 = {
                 send_interface_toast = {
@@ -537,11 +527,10 @@ bp_041.2108 = {
                     title = bp_042_kupala_guard_saved.t
                     desc = bp_042_kupala_guard_saved.desc
                     left_icon = root
-                    right_icon = scope:bp_040_target
-                    add_prestige = 80
-                    add_stress = -20
                 }
-                scope:bp_040_target = { add_character_flag = { flag = bp_042_saved_from_kupala_flood years = 5 } }
+                add_prestige = 80
+                add_stress = -20
+                capital_county = { add_county_modifier = { modifier = bp_040_saved_villages_modifier years = 1 } }
                 bp_mokosh_plus_10_effect = yes
             }
         }
@@ -549,16 +538,12 @@ bp_041.2108 = {
     }
     option = {
         name = bp_040_kupala.c
-        trigger = { exists = scope:bp_040_target }
-        scope:bp_040_target = {
-            every_close_family_member = {
-                limit = { is_alive = yes NOT = { this = root } }
-                add_opinion = { target = root modifier = bp_040_blood_feud_opinion }
-            }
-            death = { death_reason = death_accident }
-        }
+        # Blocking the escape is an actual order: homes are lost, survivors avenge the dead.
         add_gold = 40
         add_dread = 10
+        if = { limit = { has_trait = compassionate } add_stress = 70 }
+        capital_county = { add_county_modifier = { modifier = bp_040_desperate_country_modifier years = 3 } }
+        dynasty = { set_variable = { name = bp_kupala_abandoned_v046 value = yes } }
         bp_040_cruelty_effect = yes
         bp_040_schedule_revenge_effect = yes
         bp_mokosh_minus_15_effect = yes
@@ -566,7 +551,6 @@ bp_041.2108 = {
     }
     option = {
         name = bp_040_kupala.d
-        trigger = { NOT = { exists = scope:bp_040_target } }
         add_prestige = 40
         capital_county = { add_county_modifier = { modifier = bp_040_saved_villages_modifier years = 1 } }
         bp_mokosh_plus_10_effect = yes
@@ -582,9 +566,13 @@ bp_041.2109 = {
     title = bp_040_perun.t
     desc = {
         first_valid = {
-            triggered_desc = { trigger = { exists = scope:bp_040_target } desc = bp_040_perun.desc_target }
-        triggered_desc = { trigger = { has_trait = brave } desc = bp_040_perun.desc_brave }
-        triggered_desc = { trigger = { has_trait = craven } desc = bp_040_perun.desc_craven }
+            # This account changes only for an ACTUAL recorded dynasty deed.
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_perun_rite_refused_ever_v030 } }
+                desc = bp_040_perun.desc_target
+            }
+            triggered_desc = { trigger = { has_trait = brave } desc = bp_040_perun.desc_brave }
+            triggered_desc = { trigger = { has_trait = craven } desc = bp_040_perun.desc_craven }
             desc = bp_040_perun.desc
         }
     }
@@ -595,10 +583,8 @@ bp_041.2109 = {
             set_variable = { name = bp_perun_ever_celebrated_v019 value = yes }
             set_variable = { name = bp_perun_rite_lock_v019 value = yes days = 335 }
         }
-        if = {
-            limit = { any_courtier = { is_alive = yes is_adult = yes } }
-            random_courtier = { limit = { is_alive = yes is_adult = yes } save_scope_as = bp_040_target }
-        }
+        # No random courtier: a named character is never falsely accused or killed.
+
     }
     option = {
         name = bp_040_perun.a
@@ -644,20 +630,17 @@ bp_041.2109 = {
     }
     option = {
         name = bp_040_perun.c
-        trigger = { exists = scope:bp_040_target }
-        scope:bp_040_target = {
-            every_close_family_member = {
-                limit = { is_alive = yes NOT = { this = root } }
-                add_opinion = { target = root modifier = bp_040_blood_feud_opinion }
-            }
-            death = { killer = root death_reason = death_execution }
-        }
+        # A conscious order sends the ruler's own soldiers to die; no random accusation.
+        add_prestige = -200
+        if = { limit = { has_trait = brave } add_stress = 55 }
+        if = { limit = { has_trait = compassionate } add_stress = 65 }
+        dynasty = { set_variable = { name = bp_perun_soldiers_sacrificed_v046 value = yes } }
         add_dread = 35
         add_tyranny = 20
         add_character_modifier = { modifier = bp_040_ruthless_war_modifier years = 2 }
         bp_040_actual_blood_effect = yes
         bp_040_schedule_revenge_effect = yes
-        bp_perun_plus_10_effect = yes
+        bp_perun_minus_20_effect = yes
         ai_chance = { base = 30 }
     }
 }
@@ -670,9 +653,13 @@ bp_041.2110 = {
     title = bp_040_harvest.t
     desc = {
         first_valid = {
-            triggered_desc = { trigger = { exists = scope:bp_040_target } desc = bp_040_harvest.desc_target }
-        triggered_desc = { trigger = { has_trait = compassionate } desc = bp_040_harvest.desc_compassionate }
-        triggered_desc = { trigger = { has_trait = callous } desc = bp_040_harvest.desc_callous }
+            # This account changes only for an ACTUAL recorded dynasty deed.
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_040_blood_ever_v040 } }
+                desc = bp_040_harvest.desc_target
+            }
+            triggered_desc = { trigger = { has_trait = compassionate } desc = bp_040_harvest.desc_compassionate }
+            triggered_desc = { trigger = { has_trait = callous } desc = bp_040_harvest.desc_callous }
             desc = bp_040_harvest.desc
         }
     }
@@ -683,10 +670,8 @@ bp_041.2110 = {
             set_variable = { name = bp_harvest_ever_celebrated_v019 value = yes }
             set_variable = { name = bp_harvest_rite_lock_v019 value = yes days = 335 }
         }
-        if = {
-            limit = { any_courtier = { is_alive = yes is_adult = yes } }
-            random_courtier = { limit = { is_alive = yes is_adult = yes } save_scope_as = bp_040_target }
-        }
+        # No random courtier: a named character is never falsely accused or killed.
+
     }
     option = {
         name = bp_040_harvest.a
@@ -711,14 +696,11 @@ bp_041.2110 = {
     }
     option = {
         name = bp_040_harvest.c
-        trigger = { exists = scope:bp_040_target }
-        scope:bp_040_target = {
-            every_close_family_member = {
-                limit = { is_alive = yes NOT = { this = root } }
-                add_opinion = { target = root modifier = bp_040_blood_feud_opinion }
-            }
-            death = { killer = root death_reason = death_execution }
-        }
+        # Burn granaries under armed collection; casualties are real in the narrative
+        # but do not invent guilt for a courtier who did nothing in the save.
+        if = { limit = { has_trait = compassionate } add_stress = 60 }
+        add_prestige = -100
+        dynasty = { set_variable = { name = bp_harvest_repression_v046 value = yes } }
         add_dread = 30
         add_tyranny = 20
         add_gold = 200
@@ -738,10 +720,13 @@ bp_041.2111 = {
     title = bp_040_autumn.t
     desc = {
         first_valid = {
-            triggered_desc = { trigger = { exists = scope:bp_040_target } desc = bp_040_autumn.desc_target }
-        triggered_desc = { trigger = { dynasty = { has_variable = bp_040_blood_ever_v040 } } desc = bp_040_autumn.desc_blood }
-        triggered_desc = { trigger = { has_trait = brave } desc = bp_040_autumn.desc_brave }
-        triggered_desc = { trigger = { has_trait = craven } desc = bp_040_autumn.desc_craven }
+            # This account changes only for an ACTUAL recorded dynasty deed.
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_040_blood_ever_v040 } }
+                desc = bp_040_autumn.desc_target
+            }
+            triggered_desc = { trigger = { has_trait = brave } desc = bp_040_autumn.desc_brave }
+            triggered_desc = { trigger = { has_trait = craven } desc = bp_040_autumn.desc_craven }
             desc = bp_040_autumn.desc
         }
     }
@@ -753,10 +738,8 @@ bp_041.2111 = {
             set_variable = { name = bp_autumn_rite_lock_v019 value = yes days = 335 }
         }
         bp_weles_migrate_legacy_debt_018_effect = yes
-        if = {
-            limit = { any_courtier = { is_alive = yes is_adult = yes } }
-            random_courtier = { limit = { is_alive = yes is_adult = yes } save_scope_as = bp_040_target }
-        }
+        # No random courtier: a named character is never falsely accused or killed.
+
     }
     option = {
         name = bp_040_autumn.a
@@ -772,14 +755,10 @@ bp_041.2111 = {
     }
     option = {
         name = bp_040_autumn.b
-        trigger = { exists = scope:bp_040_target }
-        scope:bp_040_target = {
-            every_close_family_member = {
-                limit = { is_alive = yes NOT = { this = root } }
-                add_opinion = { target = root modifier = bp_040_blood_feud_opinion }
-            }
-            death = { killer = root death_reason = death_execution }
-        }
+        # Suppress the protesting families: direct violence with future consequences,
+        # never an arbitrary innocent person from the ruler's court.
+        if = { limit = { has_trait = compassionate } add_stress = 60 }
+        dynasty = { set_variable = { name = bp_autumn_silenced_petition_v046 value = yes } }
         add_dread = 35
         add_tyranny = 30
         bp_040_actual_blood_effect = yes
@@ -807,9 +786,13 @@ bp_041.2112 = {
     title = bp_040_szczodre.t
     desc = {
         first_valid = {
-            triggered_desc = { trigger = { exists = scope:bp_040_target } desc = bp_040_szczodre.desc_target }
-        triggered_desc = { trigger = { has_trait = compassionate } desc = bp_040_szczodre.desc_compassionate }
-        triggered_desc = { trigger = { has_trait = callous } desc = bp_040_szczodre.desc_callous }
+            # This account changes only for an ACTUAL recorded dynasty deed.
+            triggered_desc = {
+                trigger = { dynasty = { has_variable = bp_040_mercy_ever_v040 } }
+                desc = bp_040_szczodre.desc_target
+            }
+            triggered_desc = { trigger = { has_trait = compassionate } desc = bp_040_szczodre.desc_compassionate }
+            triggered_desc = { trigger = { has_trait = callous } desc = bp_040_szczodre.desc_callous }
             desc = bp_040_szczodre.desc
         }
     }
@@ -820,10 +803,8 @@ bp_041.2112 = {
             set_variable = { name = bp_szczodre_ever_celebrated_v019 value = yes }
             set_variable = { name = bp_szczodre_rite_lock_v019 value = yes days = 335 }
         }
-        if = {
-            limit = { any_courtier = { is_alive = yes is_adult = yes } }
-            random_courtier = { limit = { is_alive = yes is_adult = yes } save_scope_as = bp_040_target }
-        }
+        # No random courtier: a named character is never falsely accused or killed.
+
     }
     option = {
         name = bp_040_szczodre.a
@@ -833,22 +814,16 @@ bp_041.2112 = {
         add_character_modifier = { modifier = bp_040_protected_guests_modifier years = 4 }
         bp_040_mercy_effect = yes
         bp_mokosh_plus_20_effect = yes
-        if = {
-            limit = { exists = scope:bp_040_target }
-            scope:bp_040_target = { add_opinion = { target = root modifier = bp_040_protected_kin_opinion } }
-        }
+        add_prestige = 100
+        if = { limit = { has_trait = compassionate } add_stress = -30 }
         ai_chance = { base = 55 }
     }
     option = {
         name = bp_040_szczodre.b
-        trigger = { exists = scope:bp_040_target }
-        scope:bp_040_target = {
-            every_close_family_member = {
-                limit = { is_alive = yes NOT = { this = root } }
-                add_opinion = { target = root modifier = bp_040_blood_feud_opinion }
-            }
-            death = { killer = root death_reason = death_execution }
-        }
+        # The ruler DELIBERATELY delivers refugees to their armed pursuers.
+        # The violent act is his, not a fabricated crime of a random courtier.
+        if = { limit = { has_trait = compassionate } add_stress = 80 }
+        dynasty = { set_variable = { name = bp_szczodre_guests_betrayed_v046 value = yes } }
         add_gold = 150
         add_dread = 30
         add_tyranny = 25

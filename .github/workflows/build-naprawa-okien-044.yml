@@ -1,0 +1,79 @@
+name: Validate and package 0.4.4 DEV - restore standard CK3 windows
+
+on:
+  push:
+    branches:
+      - feature/0.4.4-przywrocenie-okien-diagnostyka-pauzy
+    paths:
+      - 'Bogowie_Pamietaja/**'
+      - 'tools/validate_story_044.py'
+      - 'tools/package_windows_update_044.py'
+      - 'tools/audit_festival_flows_040.py'
+      - '.github/workflows/build-naprawa-okien-044.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: package-story-044
+  cancel-in-progress: true
+
+jobs:
+  validate-and-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout complete source and approved art
+        uses: actions/checkout@v4
+      - name: Validate 29 native character windows, two-stage holidays and risk texts
+        run: |
+          python3 tools/validate_story_044.py
+      - name: Build Windows in-place recovery updater
+        run: |
+          python3 tools/package_windows_update_044.py
+          test -s GNIEW_I_LASKA_BOGOW_0.4.4_DEV_NADPISZ.zip
+      - name: Upload recovery package and validation reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: Gniew-i-Laska-Bogow-0.4.4-DEV-OKNA
+          path: |
+            GNIEW_I_LASKA_BOGOW_0.4.4_DEV_NADPISZ.zip
+            validation_story_044.json
+            validation_gods_030.json
+          if-no-files-found: error
+          retention-days: 30
+
+  smoke-test-windows-installer:
+    needs: validate-and-build
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - name: Download actual recovery package
+        uses: actions/download-artifact@v4
+        with:
+          name: Gniew-i-Laska-Bogow-0.4.4-DEV-OKNA
+      - name: Run Windows PowerShell 5.1 updater against an installed 0.4.3 sample
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          Expand-Archive -LiteralPath 'GNIEW_I_LASKA_BOGOW_0.4.4_DEV_NADPISZ.zip' -DestinationPath 'unpacked_044'
+          $target = Join-Path $env:RUNNER_TEMP 'CK3_Bogowie_Smoke'
+          New-Item -ItemType Directory -Force -Path $target | Out-Null
+          [System.IO.File]::WriteAllText((Join-Path $target 'descriptor.mod'), 'name="Gniew i Laska Bogow"' + [Environment]::NewLine + 'version="0.4.3-dev"')
+          [System.IO.File]::WriteAllText((Join-Path $target 'legacy_marker.txt'), 'BACKUP-MUST-PRESERVE')
+          $script = Join-Path $PWD 'unpacked_044/AKTUALIZUJ_044.ps1'
+          & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $script -TargetOverride $target
+          if ($LASTEXITCODE -ne 0) { throw "Installer returned $LASTEXITCODE" }
+          $newdesc = Get-Content -LiteralPath (Join-Path $target 'descriptor.mod') -Raw
+          if ($newdesc -notmatch '0\.4\.4-dev') { throw 'Failed to install 0.4.4-dev' }
+          $backups = @(Get-ChildItem -LiteralPath $env:RUNNER_TEMP -Directory | Where-Object { $_.Name -like 'CK3_Bogowie_Smoke_KOPIA_PRZED_044_*' })
+          if ($backups.Count -ne 1) { throw "Expected exactly one backup, got $($backups.Count)" }
+          $oldDesc = Get-Content -LiteralPath (Join-Path $backups[0].FullName 'descriptor.mod') -Raw
+          if ($oldDesc -notmatch '0\.4\.3-dev') { throw 'Previous 0.4.3 installation not preserved' }
+          if (-not (Test-Path -LiteralPath (Join-Path $backups[0].FullName 'legacy_marker.txt') -PathType Leaf)) { throw 'Backup incomplete' }
+          $file = Get-Content -LiteralPath (Join-Path $target 'events/bp_gaik_events.txt') -Raw
+          if ($file -notmatch 'type = character_event') { throw 'Standard event type not restored' }
+          if ($file -match 'opening = bp_043_empty_opening') { throw 'Broken letter opening survived' }
+          if (-not (Test-Path -LiteralPath (Join-Path $target 'gfx/interface/illustrations/event_scene/bp_gaik_02.dds') -PathType Leaf)) { throw 'Approved art absent' }
+          Write-Host 'PASS: Windows PowerShell 5.1 installed 0.4.4, removed letter regression and backed up 0.4.3.'

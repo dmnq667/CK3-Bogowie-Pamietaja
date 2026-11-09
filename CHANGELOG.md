@@ -1,5 +1,12 @@
 # Historia wydań
 
+### Poprawka instalatora 0.4.0 DEV — 9 listopada 2026
+
+- Usunięto błąd: kontrola skryptu `AKTUALIZUJ_040.ps1` oczekiwała wersji `0.3.0-dev`, mimo że paczka miała `0.4.0-dev`; instalator przerywał przed kopiowaniem.
+- Dostosowano szukanie katalogów do komputerów bez dysku `H:`.
+- Dodano automatyczny test na Windows PowerShell 5.1: **prawdziwa instalacja nadpisująca próbny mod 0.3.0, kontrola kopii i nowych plików — PASS**.
+- Poprawiona paczka: [pobierz 0.4.0 DEV](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42556994466/artifacts/13648255623). Poprzedniej paczki nie używać.
+
 ## 0.4.0 DEV — 9 listopada 2026
 
 - Całkowita przebudowa widocznych historii **12 świąt**: 12/12 PASS, najwyżej 2 okna z zapowiedzią.

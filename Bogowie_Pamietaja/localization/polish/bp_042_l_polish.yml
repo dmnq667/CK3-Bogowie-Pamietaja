@@ -1,6 +1,6 @@
 ﻿l_polish:
- message_filter_bp_042_events_pause:0 "Gniew i Łaska Bogów — zatrzymywanie czasu"
- message_filter_bp_042_events_pause_desc:0 "Wydarzenia obrzędowe, spotkania z bogami i wyniki prób. Domyślnie zatrzymują grę."
+ message_filter_bp_042_events_pause:0 "Gniew i Łaska Bogów — wyniki prób"
+ message_filter_bp_042_events_pause_desc:0 "Powiadomienia o rzeczywistych skutkach ryzykownych wyborów; bez dodatkowej pauzy."
  bp_042_pause_rite.t:0 "Nadeszło słowiańskie święto"
  bp_042_pause_rite.desc:0 "Gra zostaje zatrzymana, abyś mógł zapoznać się z obrzędem."
  bp_042_pause_story.t:0 "Rozstrzygnięcie święta"
@@ -41,3 +41,7 @@
  bp_042_weles_wrath_dead.desc:0 "Odrzuciłeś żądanie Welesa. Bóg podziemi dopełnił wyroku i zabrał twoje życie, pozostawiając dług w pamięci rodu."
  bp_042_weles_wrath_survived.t:0 "Weles pozostawił cię przy życiu"
  bp_042_weles_wrath_survived.desc:0 "Bóg nie zabił cię, lecz obciążył na pięć lat ciężką klątwą. Ponoszysz dotkliwą utratę prestiżu i rosnący stres."
+ bp_042_result_generic_good.desc:0 "Władca przeżył próbę; jej skutki zostały rozliczone."
+ bp_042_result_generic_bad.desc:0 "Próba zakończyła się nieszczęściem; skutki zostały rozliczone."
+ bp_042_trial_success_message_desc:0 "Władca przeżył próbę; jej skutki zostały rozliczone."
+ bp_042_trial_failure_message_desc:0 "Próba zakończyła się nieszczęściem; skutki zostały rozliczone."

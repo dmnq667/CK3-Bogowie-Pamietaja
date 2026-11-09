@@ -3,12 +3,7 @@
 # 9 March. Mokosh enters as a distinct, powerful god with her own values.
 # 0.4.0: One festival window, no obligatory continuation. Real outcomes and delayed stories.
 bp_spring.3001 = {
-    type = letter_event
-    # CK3 pauses letter events natively. Preserve the existing visual
-    # character-event template and all approved holiday backgrounds.
-    window = character_event
-    sender = root
-    opening = bp_043_empty_opening
+    type = character_event
     theme = diplomacy
     override_background = { reference = bp_scene_spring_02 }
     title = bp_041_spring.intro.t

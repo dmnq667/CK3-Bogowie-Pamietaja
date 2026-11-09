@@ -105,3 +105,4 @@
  bp_040_szczodre.a:0 "Udzielę ochrony (90 złota; potężna korzyść dyplomatyczna)."
  bp_040_szczodre.b:0 "Stracę [bp_040_target.GetTitledFirstName] (realna egzekucja, złoto i zemsta)."
  bp_040_szczodre.c:0 "Odmówię gościny (+70 złota; gniew i dalsza waśń)."
+ bp_040_weles_judgement.desc_bargain:0 "Minęły miesiące od nocy, gdy Weles zdjął z ciebie ciężar trosk i przekazał ci dwieście pięćdziesiąt sztuk złota. Teraz bóg przybywa osobiście, ogromny i surowy, by odebrać obiecaną zapłatę. Żąda czterystu sztuk złota i publicznego uznania długu. Możesz zamiast tego przyjąć pięć lat ciężkiej kary. Jeżeli przeciwstawisz mu się otwarcie, ryzykujesz śmierć (35%)."

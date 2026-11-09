@@ -116,7 +116,8 @@ for n, number in SPECS.items():
     assert not re.search(r"\btrigger_event\s*=\s*bp_", block), f"Immediate nested popup in {event}"
     for m in re.finditer(r"\btrigger_event\s*=\s*\{([^{}]+)\}", block):
         assert "days =" in m.group(1), f"Non-delayed event in {event}: {m.group(0)}"
-    needed.update(re.findall(r"\b(?:title|desc|name)\s*=\s*(bp_040_[A-Za-z0-9_.]+)",block))
+    needed.update(re.findall(r"\b(?:title|desc)\s*=\s*(bp_040_[A-Za-z0-9_.]+)",block))
+    needed.update(re.findall(r"\boption\s*=\s*\{\s*name\s*=\s*(bp_040_[A-Za-z0-9_.]+)",block))
 
 all_events = "\n".join(p.read_text(encoding="utf-8-sig") for p in EVENTS.glob("*.txt"))
 assert all_events.count("bp_040.5001 = {")==1
@@ -137,7 +138,8 @@ assert "hidden = yes" in court_block, "Obsolete mystical court popup remains"
 assert "bp_040_blood_v040" in court_block and "bp_040_mercy_v040" in court_block
 
 blood_event = (EVENTS/"bp_040_blood_events.txt").read_text(encoding="utf-8-sig")
-needed.update(re.findall(r"\b(?:title|desc|name)\s*=\s*(bp_040_[A-Za-z0-9_.]+)",blood_event))
+needed.update(re.findall(r"\b(?:title|desc)\s*=\s*(bp_040_[A-Za-z0-9_.]+)",blood_event))
+needed.update(re.findall(r"\boption\s*=\s*\{\s*name\s*=\s*(bp_040_[A-Za-z0-9_.]+)",blood_event))
 needed.add("bp_040_weles_judgement.desc_bargain")
 
 for lang in ("polish","english"):

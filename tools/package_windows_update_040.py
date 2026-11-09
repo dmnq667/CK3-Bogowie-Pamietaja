@@ -35,8 +35,8 @@ try {
         throw 'Niekompletna paczka. Wypakuj CALY ZIP przed uruchomieniem.'
     }
     $candidates = @(
-        (Join-Path $Base 'Bogowie_Pamietaja'),
-        (Join-Path $Base 'mod\Bogowie_Pamietaja'),
+        ($Base + '\Bogowie_Pamietaja'),
+        ($Base + '\mod\Bogowie_Pamietaja'),
         $Base,
         (Join-Path ([Environment]::GetFolderPath('MyDocuments')) 'Paradox Interactive\Crusader Kings III\mod\Bogowie_Pamietaja')
     )

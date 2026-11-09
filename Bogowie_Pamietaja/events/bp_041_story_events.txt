@@ -320,8 +320,8 @@ bp_041.2105 = {
                     title = bp_042_gaik_survived.t
                     desc = bp_042_gaik_survived.desc
                     left_icon = root
-                    add_character_modifier = { modifier = bp_040_ruthless_war_modifier years = 2 }
                 }
+                add_character_modifier = { modifier = bp_040_ruthless_war_modifier years = 2 }
                 bp_perun_plus_10_effect = yes
             }
         }
@@ -610,8 +610,8 @@ bp_041.2109 = {
                     title = bp_042_perun_trial_survived.t
                     desc = bp_042_perun_trial_survived.desc
                     left_icon = root
-                    add_character_modifier = { modifier = bp_perun_great_war_modifier years = 2 }
                 }
+                add_character_modifier = { modifier = bp_perun_great_war_modifier years = 2 }
                 bp_040_martial_courage_effect = yes
             }
         }

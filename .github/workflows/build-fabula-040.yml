@@ -1,0 +1,45 @@
+name: Validate and package narrative rebuild 0.4.0 DEV
+
+on:
+  push:
+    branches:
+      - feature/0.4.0-fabula-od-nowa
+    paths:
+      - 'Bogowie_Pamietaja/**'
+      - 'tools/validate_story_040.py'
+      - 'tools/package_windows_update_040.py'
+      - 'tools/audit_festival_flows_040.py'
+      - '.github/workflows/build-fabula-040.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: package-story-040
+  cancel-in-progress: true
+
+jobs:
+  validate-and-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Fetch source code and approved 31 illustrations
+        uses: actions/checkout@v4
+      - name: Check 12 festivals, 3 gods, consequences and language
+        run: |
+          python3 tools/validate_story_040.py
+      - name: Package safe in-place 0.4.0 DEV update
+        run: |
+          python3 tools/package_windows_update_040.py
+          test -s GNIEW_I_LASKA_BOGOW_0.4.0_DEV_NADPISZ.zip
+      - name: Attach installer and validation report
+        uses: actions/upload-artifact@v4
+        with:
+          name: Gniew-i-Laska-Bogow-0.4.0-DEV-TEST
+          path: |
+            GNIEW_I_LASKA_BOGOW_0.4.0_DEV_NADPISZ.zip
+            validation_story_040.json
+            validation_gods_030.json
+          if-no-files-found: error
+          retention-days: 30

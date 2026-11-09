@@ -1,72 +1,62 @@
 ﻿namespace = bp_spring
 
 # 9 March. Mokosh enters as a distinct, powerful god with her own values.
+# 0.4.0: One festival window, no obligatory continuation. Real outcomes and delayed stories.
 bp_spring.3001 = {
     type = character_event
     theme = diplomacy
-    override_background = {
-        reference = bp_scene_spring_01
-    }
-    title = bp_spring.3001.t
+    override_background = { reference = bp_scene_spring_01 }
+    title = bp_040_spring.t
     desc = {
         first_valid = {
-            triggered_desc = {
-                trigger = { OR = { has_character_flag = bp_weles_blood dynasty = { has_variable = bp_weles_dynastic_blood_v018 } } }
-                desc = bp_spring.3001.desc_blood
-            }
-            triggered_desc = {
-                trigger = { OR = { has_character_flag = bp_weles_debt_years dynasty = { has_variable = bp_weles_debt_unpaid_v018 } } }
-                desc = bp_spring.3001.desc_debt
-            }
-            desc = bp_spring.3001.desc
+        triggered_desc = { trigger = { has_trait = compassionate } desc = bp_040_spring.desc_compassionate }
+        triggered_desc = { trigger = { has_trait = callous } desc = bp_040_spring.desc_callous }
+            desc = bp_040_spring.desc
         }
     }
     left_portrait = root
     immediate = {
         bp_initialize_effect = yes
-        add_piety = 50
+        add_piety = 45
         add_stress = -10
-        dynasty = { set_variable = { name = bp_spring_ever_celebrated_v014 value = yes } }
-        add_character_flag = { flag = bp_spring_used days = 335 }
         dynasty = {
+            set_variable = { name = bp_spring_ever_celebrated_v014 value = yes }
             set_variable = { name = bp_spring_rite_lock_v013 value = yes days = 335 }
-            if = {
-                limit = { has_variable = bp_spring_accepted_v013 }
-                remove_variable = bp_spring_accepted_v013
-            }
         }
+        add_character_flag = { flag = bp_spring_used days = 335 }
     }
     option = {
-        name = bp_spring.3001.a
-        trigger = { gold >= 40 }
-        show_as_unavailable = { gold < 40 }
-        remove_short_term_gold = 40
-        add_character_flag = { flag = bp_mokosh_rite days = 90 }
+        name = bp_040_spring.a
+        trigger = { gold >= 75 }
+        show_as_unavailable = { gold < 75 }
+        remove_short_term_gold = 75
+        capital_county = { add_county_modifier = { modifier = bp_040_seed_saved_modifier years = 3 } }
         bp_mokosh_plus_20_effect = yes
-        capital_county = {
-            add_county_modifier = { modifier = bp_mokosh_sowing_modifier years = 2 }
-        }
-        trigger_event = bp_spring.3002
-        ai_chance = { base = 50 }
+        bp_040_mercy_effect = yes
+        add_character_flag = { flag = bp_mokosh_rite days = 180 }
+        ai_chance = { base = 55 }
     }
     option = {
-        name = bp_spring.3001.b
-        add_prestige = -50
-        add_character_flag = { flag = bp_mokosh_rite days = 90 }
-        bp_mokosh_plus_20_effect = yes
-        trigger_event = bp_spring.3002
-        ai_chance = { base = 40 }
-    }
-    option = {
-        name = bp_spring.3001.c
-        add_gold = 25
+        name = bp_040_spring.b
+        add_gold = 120
+        add_character_modifier = { modifier = bp_040_ruthless_war_modifier years = 1 }
+        capital_county = { add_county_modifier = { modifier = bp_040_grain_requisition_modifier years = 3 } }
         bp_mokosh_minus_15_effect = yes
+        bp_040_cruelty_effect = yes
         dynasty = { set_variable = { name = bp_mokosh_sowing_neglected_ever_v030 value = yes } }
-        # The goddess does not interrupt every rite, but can return later.
-        trigger_event = { id = bp_spring.3010 days = { 45 75 } }
-        ai_chance = { base = 10 }
+        trigger_event = { id = bp_spring.3010 days = { 100 170 } }
+        ai_chance = { base = 30 }
+    }
+    option = {
+        name = bp_040_spring.c
+        add_prestige = -80
+        add_stress = -15
+        capital_county = { add_county_modifier = { modifier = bp_mokosh_sowing_modifier years = 1 } }
+        bp_mokosh_plus_10_effect = yes
+        ai_chance = { base = 15 }
     }
 }
+
 
 # A second independent test: feeding the people while keeping grain for sowing.
 bp_spring.3002 = {

@@ -6,7 +6,10 @@
 
 # gromnica: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2101 = {
-    type = character_event
+    type = letter_event
+    window = character_event
+    sender = root
+    opening = bp_043_empty_opening
     theme = diplomacy
     override_background = { reference = bp_scene_gromnica_02 }
     title = bp_040_gromnica.t
@@ -19,12 +22,6 @@ bp_041.2101 = {
     }
     left_portrait = root
     immediate = {
-        # One message for each second window. Native CK3 auto_pause setting
-        # stops time before new festival days can overtake the decision.
-        if = {
-            limit = { is_ai = no }
-            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
-        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_gromnica_ever_celebrated_v014 value = yes }
@@ -70,7 +67,10 @@ bp_041.2101 = {
 
 # weles: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2102 = {
-    type = character_event
+    type = letter_event
+    window = character_event
+    sender = root
+    opening = bp_043_empty_opening
     theme = diplomacy
     override_background = { reference = bp_scene_weles_04 }
     title = bp_040_weles.t
@@ -83,12 +83,6 @@ bp_041.2102 = {
     }
     left_portrait = root
     immediate = {
-        # One message for each second window. Native CK3 auto_pause setting
-        # stops time before new festival days can overtake the decision.
-        if = {
-            limit = { is_ai = no }
-            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
-        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_weles_ever_celebrated_v014 value = yes }
@@ -129,7 +123,10 @@ bp_041.2102 = {
 
 # spring: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2103 = {
-    type = character_event
+    type = letter_event
+    window = character_event
+    sender = root
+    opening = bp_043_empty_opening
     theme = diplomacy
     override_background = { reference = bp_scene_spring_01 }
     title = bp_040_spring.t
@@ -142,12 +139,6 @@ bp_041.2103 = {
     }
     left_portrait = root
     immediate = {
-        # One message for each second window. Native CK3 auto_pause setting
-        # stops time before new festival days can overtake the decision.
-        if = {
-            limit = { is_ai = no }
-            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
-        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_spring_ever_celebrated_v014 value = yes }
@@ -189,7 +180,10 @@ bp_041.2103 = {
 
 # jare: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2104 = {
-    type = character_event
+    type = letter_event
+    window = character_event
+    sender = root
+    opening = bp_043_empty_opening
     theme = diplomacy
     override_background = { reference = bp_scene_jare_01 }
     title = bp_040_jare.t
@@ -203,12 +197,6 @@ bp_041.2104 = {
     }
     left_portrait = root
     immediate = {
-        # One message for each second window. Native CK3 auto_pause setting
-        # stops time before new festival days can overtake the decision.
-        if = {
-            limit = { is_ai = no }
-            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
-        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_jare_ever_celebrated_v014 value = yes }
@@ -265,7 +253,10 @@ bp_041.2104 = {
 
 # gaik: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2105 = {
-    type = character_event
+    type = letter_event
+    window = character_event
+    sender = root
+    opening = bp_043_empty_opening
     theme = diplomacy
     override_background = { reference = bp_scene_gaik_01 }
     title = bp_040_gaik.t
@@ -278,12 +269,6 @@ bp_041.2105 = {
     }
     left_portrait = root
     immediate = {
-        # One message for each second window. Native CK3 auto_pause setting
-        # stops time before new festival days can overtake the decision.
-        if = {
-            limit = { is_ai = no }
-            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
-        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_gaik_ever_celebrated_v015 value = yes }
@@ -343,7 +328,10 @@ bp_041.2105 = {
 
 # dziady: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2106 = {
-    type = character_event
+    type = letter_event
+    window = character_event
+    sender = root
+    opening = bp_043_empty_opening
     theme = diplomacy
     override_background = { reference = bp_scene_dziady_01 }
     title = bp_040_dziady.t
@@ -357,12 +345,6 @@ bp_041.2106 = {
     }
     left_portrait = root
     immediate = {
-        # One message for each second window. Native CK3 auto_pause setting
-        # stops time before new festival days can overtake the decision.
-        if = {
-            limit = { is_ai = no }
-            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
-        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_dziady_ever_celebrated_v015 value = yes }
@@ -404,7 +386,10 @@ bp_041.2106 = {
 
 # stado: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2107 = {
-    type = character_event
+    type = letter_event
+    window = character_event
+    sender = root
+    opening = bp_043_empty_opening
     theme = diplomacy
     override_background = { reference = bp_scene_stado_01 }
     title = bp_040_stado.t
@@ -418,12 +403,6 @@ bp_041.2107 = {
     }
     left_portrait = root
     immediate = {
-        # One message for each second window. Native CK3 auto_pause setting
-        # stops time before new festival days can overtake the decision.
-        if = {
-            limit = { is_ai = no }
-            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
-        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_stado_ever_celebrated_v015 value = yes }
@@ -474,7 +453,10 @@ bp_041.2107 = {
 
 # kupala: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2108 = {
-    type = character_event
+    type = letter_event
+    window = character_event
+    sender = root
+    opening = bp_043_empty_opening
     theme = diplomacy
     override_background = { reference = bp_scene_kupala_01 }
     title = bp_040_kupala.t
@@ -488,12 +470,6 @@ bp_041.2108 = {
     }
     left_portrait = root
     immediate = {
-        # One message for each second window. Native CK3 auto_pause setting
-        # stops time before new festival days can overtake the decision.
-        if = {
-            limit = { is_ai = no }
-            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
-        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_kupala_ever_celebrated_v015 value = yes }
@@ -606,7 +582,10 @@ bp_041.2108 = {
 
 # perun: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2109 = {
-    type = character_event
+    type = letter_event
+    window = character_event
+    sender = root
+    opening = bp_043_empty_opening
     theme = diplomacy
     override_background = { reference = bp_scene_perun_01 }
     title = bp_040_perun.t
@@ -620,12 +599,6 @@ bp_041.2109 = {
     }
     left_portrait = root
     immediate = {
-        # One message for each second window. Native CK3 auto_pause setting
-        # stops time before new festival days can overtake the decision.
-        if = {
-            limit = { is_ai = no }
-            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
-        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_perun_ever_celebrated_v019 value = yes }
@@ -700,7 +673,10 @@ bp_041.2109 = {
 
 # harvest: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2110 = {
-    type = character_event
+    type = letter_event
+    window = character_event
+    sender = root
+    opening = bp_043_empty_opening
     theme = diplomacy
     override_background = { reference = bp_scene_harvest_01 }
     title = bp_040_harvest.t
@@ -714,12 +690,6 @@ bp_041.2110 = {
     }
     left_portrait = root
     immediate = {
-        # One message for each second window. Native CK3 auto_pause setting
-        # stops time before new festival days can overtake the decision.
-        if = {
-            limit = { is_ai = no }
-            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
-        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_harvest_ever_celebrated_v019 value = yes }
@@ -774,7 +744,10 @@ bp_041.2110 = {
 
 # autumn: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2111 = {
-    type = character_event
+    type = letter_event
+    window = character_event
+    sender = root
+    opening = bp_043_empty_opening
     theme = diplomacy
     override_background = { reference = bp_scene_autumn_01 }
     title = bp_040_autumn.t
@@ -789,12 +762,6 @@ bp_041.2111 = {
     }
     left_portrait = root
     immediate = {
-        # One message for each second window. Native CK3 auto_pause setting
-        # stops time before new festival days can overtake the decision.
-        if = {
-            limit = { is_ai = no }
-            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
-        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_autumn_ever_celebrated_v019 value = yes }
@@ -849,7 +816,10 @@ bp_041.2111 = {
 
 # szczodre: preserved 0.4.0 high-stakes choices, now the SECOND visible window.
 bp_041.2112 = {
-    type = character_event
+    type = letter_event
+    window = character_event
+    sender = root
+    opening = bp_043_empty_opening
     theme = diplomacy
     override_background = { reference = bp_scene_szczodre_01 }
     title = bp_040_szczodre.t
@@ -863,12 +833,6 @@ bp_041.2112 = {
     }
     left_portrait = root
     immediate = {
-        # One message for each second window. Native CK3 auto_pause setting
-        # stops time before new festival days can overtake the decision.
-        if = {
-            limit = { is_ai = no }
-            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
-        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_szczodre_ever_celebrated_v019 value = yes }

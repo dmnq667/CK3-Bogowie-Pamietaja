@@ -1,0 +1,76 @@
+# 0.4.0: all values are visible CK3 modifiers; consequences persist for years.
+bp_040_frozen_villages_modifier = {
+    icon = county_modifier_development_negative
+    development_growth_factor = -0.6
+    tax_mult = -0.35
+}
+bp_040_saved_villages_modifier = {
+    icon = county_modifier_development_positive
+    development_growth_factor = 0.55
+    tax_mult = 0.2
+}
+bp_040_fortified_capital_modifier = {
+    icon = county_modifier_development_positive
+    development_growth_factor = -0.10
+    tax_mult = 0.25
+}
+bp_040_seed_saved_modifier = {
+    icon = county_modifier_development_positive
+    development_growth_factor = 0.7
+    tax_mult = 0.25
+}
+bp_040_grain_requisition_modifier = {
+    icon = county_modifier_development_negative
+    development_growth_factor = -0.55
+    tax_mult = -0.20
+}
+bp_040_oath_of_peace_modifier = {
+    icon = diplomacy_positive
+    diplomacy = 4
+    vassal_opinion = 15
+}
+bp_040_feud_curse_modifier = {
+    icon = diplomacy_negative
+    diplomacy = -3
+    vassal_opinion = -15
+}
+bp_040_ruthless_war_modifier = {
+    icon = martial_positive
+    martial = 5
+    knight_effectiveness_mult = 0.5
+}
+bp_040_scarred_veterans_modifier = {
+    icon = martial_negative
+    martial = -4
+    knight_effectiveness_mult = -0.25
+}
+bp_040_retribution_modifier = {
+    icon = intrigue_negative
+    intrigue = -3
+    dread_gain_mult = -0.2
+}
+bp_040_blood_price_modifier = {
+    icon = economy_negative
+    monthly_income_mult = -0.35
+    stewardship = -2
+}
+bp_040_protected_guests_modifier = {
+    icon = diplomacy_positive
+    diplomacy = 4
+    monthly_prestige = 0.3
+}
+bp_040_tyrants_supper_modifier = {
+    icon = intrigue_positive
+    intrigue = 4
+    dread_gain_mult = 0.25
+}
+bp_040_desperate_country_modifier = {
+    icon = county_modifier_development_negative
+    development_growth_factor = -0.5
+    tax_mult = -0.3
+}
+bp_040_merciful_harvest_modifier = {
+    icon = county_modifier_development_positive
+    development_growth_factor = 0.8
+    tax_mult = 0.4
+}

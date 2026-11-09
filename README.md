@@ -8,7 +8,7 @@ Mod do **Crusader Kings III** poświęcony słowiańskim bogom, obrzędom i cykl
 
 Na gałęzi `feature/0.4.0-fabula-od-nowa` napisano od nowa wszystkie 12 historii świąt, wprowadzono krwawe decyzje, pamięć krzywd i późniejszą zemstę. Każde święto to jedna scena, dodatkowo może pojawić się zapowiedź. Dotychczasowe trzy osobiste objawienia bogów oraz 31 nowych grafik pozostały bez zmian.
 
-[Zweryfikowany statycznie build 0.4.0 DEV](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42555294029) — **uwaga: nieprzetestowany w samej grze CK3**. Stara wersja 0.3.0 pozostaje na własnej gałęzi i w historii wydania. [Raport stanu i instrukcja instalacji](PROJECT_STATUS.md).
+[Poprawiona paczka 0.4.0 DEV — przetestowany instalator Windows](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42556994466) — **uwaga: nieprzetestowany w samej grze CK3**. [Bezpośredni link do poprawionego aktualizatora](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42556994466/artifacts/13648255623). Wcześniejszy instalator błędnie sprawdzał numer 0.3.0; problem został naprawiony i przetestowany na Windows PowerShell 5.1. Stara wersja 0.3.0 pozostaje na własnej gałęzi i w historii wydania. [Raport stanu i instrukcja instalacji](PROJECT_STATUS.md).
 
 ## Wcześniejsza produkcja: 0.3.0 DEV — gniew, łaska i nowe ilustracje
 

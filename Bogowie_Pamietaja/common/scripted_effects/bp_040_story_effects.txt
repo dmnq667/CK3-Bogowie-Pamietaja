@@ -1,0 +1,26 @@
+# Gniew i Laska Bogow 0.4.0. This file records actual player choices.
+# One deferred vengeance story is queued per 330 in-game days.
+bp_040_mercy_effect = {
+    add_character_flag = { flag = bp_040_mercy_v040 years = 4 }
+    dynasty = { set_variable = { name = bp_040_mercy_ever_v040 value = yes } }
+}
+bp_040_cruelty_effect = {
+    add_character_flag = { flag = bp_040_cruelty_v040 years = 4 }
+    dynasty = { set_variable = { name = bp_040_cruelty_ever_v040 value = yes } }
+}
+bp_040_actual_blood_effect = {
+    add_character_flag = { flag = bp_040_blood_v040 years = 6 }
+    dynasty = { set_variable = { name = bp_040_blood_ever_v040 value = yes } }
+}
+bp_040_schedule_revenge_effect = {
+    if = {
+        limit = { NOT = { has_character_flag = bp_040_revenge_pending_v040 } }
+        add_character_flag = { flag = bp_040_revenge_pending_v040 days = 335 }
+        trigger_event = { id = bp_040.5001 days = { 100 180 } }
+    }
+}
+bp_040_martial_courage_effect = {
+    add_character_flag = { flag = bp_040_perun_courage_v040 years = 3 }
+    dynasty = { set_variable = { name = bp_040_perun_courage_ever_v040 value = yes } }
+    bp_perun_plus_20_effect = yes
+}

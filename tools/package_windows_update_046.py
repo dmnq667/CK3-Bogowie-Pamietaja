@@ -142,7 +142,7 @@ readme='''GNIEW I LASKA BOGOW - CK3 0.4.6 DEV
 6. Testuj na kopii zapisu. Automatyczne testy kodu nie zastepuja testu wewnatrz CK3.
 7. Przy problemach sprawdz logs/error.log i przywroc poprzednia kopie.
 
-0.4.6 DEV: przywrocony oryginalny automatyczny kalendarz 12 swiat; dwa normalne okna, 31 grafik, bez dodatkowych banerow. Pauza wymaga weryfikacji w grze.
+0.4.6 DEV R2: poprawiono podwojna sciezke ikony cechy; przywrocono oryginalny DDS 120x120, naprawiono nieobslugiwany parametr cechy i BOM. Dodatkowo: czystsze alerty, poprawione teksty. Pauza dzialala w tescie wersji 0.4.5. Sprawdz ikonke na istniejacej postaci.
 '''
 with ZipFile(OUT,"w",compression=ZIP_DEFLATED,compresslevel=6) as z:
     for p in files:

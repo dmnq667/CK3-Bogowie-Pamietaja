@@ -1,11 +1,10 @@
-# 0.2.0: one evolving line of court-earned marks.
-# Stage I exists now. Later courts must upgrade/replace, never stack.
-# This mark is acquired by events and is not a congenital trait.
+﻿# 0.4.6 DEV R2: CK3 derives the trait icon path from the trait ID.
+# The corresponding DDS must exist at gfx/interface/icons/traits/bp_gods_mark_1_v020.dds.
+# DO NOT set icon to an absolute gfx path here: CK3 prepends the traits directory.
+# Stage I of the evolving divine mark; awarded through events only.
 bp_gods_mark_1_v020 = {
-    icon = "gfx/interface/icons/traits/bp_gods_mark_1_v020.dds"
     random_creation = 0
     birth = 0
-    can_lose = yes
     stewardship = 1
     learning = 1
 }

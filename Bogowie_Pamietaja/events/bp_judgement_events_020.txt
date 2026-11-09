@@ -3,45 +3,12 @@ namespace = bp_judgement
 # COURT I: Popiół i Przysięga, once every winter after Weles Week.
 # One existing watcher schedules the event, do not add another on_action.
 # The dynasty lock blocks repeats via reload, succession and debug.
+# 0.4: no automatic mystical court window. Result is judged from ACTUAL
+# mercy, cruelty and blood flags recorded by the new festival scripts.
+# The existing book and tier-one mark keep the result visible to the player.
 bp_judgement.1001 = {
     type = character_event
-    theme = diplomacy
-    override_background = { reference = bp_scene_gromnica_02 }
-    title = bp_judgement.1001.t
-    desc = {
-        first_valid = {
-            triggered_desc = {
-                trigger = { has_character_flag = bp_first_court_path_silence_v020 }
-                desc = bp_judgement.1001.desc_silence_v021
-            }
-            triggered_desc = {
-                trigger = { has_character_flag = bp_first_court_path_oath_v020 has_character_flag = bp_weles_blood_now_v020 }
-                desc = bp_judgement.1001.desc_blood_v021
-            }
-            triggered_desc = {
-                trigger = { has_character_flag = bp_first_court_path_oath_v020 dynasty = { has_variable = bp_weles_debt_unpaid_v018 } }
-                desc = bp_judgement.1001.desc_oath_debt_v021
-            }
-            triggered_desc = {
-                trigger = { has_character_flag = bp_first_court_path_oath_v020 }
-                desc = bp_judgement.1001.desc_oath_v021
-            }
-            triggered_desc = {
-                trigger = { has_character_flag = bp_first_court_path_light_v020 }
-                desc = bp_judgement.1001.desc_light_v021
-            }
-            triggered_desc = {
-                trigger = { has_character_flag = bp_first_court_path_boundary_v020 }
-                desc = bp_judgement.1001.desc_boundary_v021
-            }
-            triggered_desc = {
-                trigger = { has_character_flag = bp_first_court_path_pending_v020 }
-                desc = bp_judgement.1001.desc_pending_v021
-            }
-            desc = bp_judgement.1001.desc_silence_v021
-        }
-    }
-    left_portrait = root
+    hidden = yes
     trigger = {
         is_alive = yes
         is_ruler = yes
@@ -52,51 +19,21 @@ bp_judgement.1001 = {
     immediate = {
         add_character_flag = { flag = bp_first_court_started_v020 days = 345 }
         dynasty = { set_variable = { name = bp_first_court_lock_v020 value = yes days = 345 } }
-        # The verdict is calculated before the modal. It does not depend on
-        # a second acknowledgement click.
-        bp_first_court_classify_020_effect = yes
-    }
-    option = {
-        name = bp_judgement.1001.accept_light_v021
-        trigger = { has_character_flag = bp_first_court_path_light_v020 }
-        bp_first_court_accept_light_020_effect = yes
-        ai_chance = { base = 95 }
-    }
-    option = {
-        name = bp_judgement.1001.accept_oath_v021
-        trigger = { has_character_flag = bp_first_court_path_oath_v020 }
-        bp_first_court_accept_oath_020_effect = yes
-        ai_chance = { base = 95 }
-    }
-    option = {
-        name = bp_judgement.1001.accept_boundary_v021
-        trigger = { has_character_flag = bp_first_court_path_boundary_v020 }
-        bp_first_court_accept_boundary_020_effect = yes
-        ai_chance = { base = 95 }
-    }
-    option = {
-        name = bp_judgement.1001.refuse_mark_v021
-        trigger = {
-            OR = {
-                has_character_flag = bp_first_court_path_light_v020
-                has_character_flag = bp_first_court_path_oath_v020
-                has_character_flag = bp_first_court_path_boundary_v020
-            }
+        if = {
+            limit = { has_character_flag = bp_040_blood_v040 }
+            bp_first_court_accept_oath_020_effect = yes
         }
-        bp_first_court_decline_mark_020_effect = yes
-        ai_chance = { base = 5 }
-    }
-    option = {
-        name = bp_judgement.1001.silence_v021
-        trigger = { has_character_flag = bp_first_court_path_silence_v020 }
-        bp_first_court_silence_020_effect = yes
-        ai_chance = { base = 100 }
-    }
-    option = {
-        name = bp_judgement.1001.pending_v021
-        trigger = { has_character_flag = bp_first_court_path_pending_v020 }
-        bp_first_court_pending_020_effect = yes
-        ai_chance = { base = 100 }
+        else_if = {
+            limit = { has_character_flag = bp_040_mercy_v040 }
+            bp_first_court_accept_light_020_effect = yes
+        }
+        else_if = {
+            limit = { has_character_flag = bp_040_weles_bargain_v040 }
+            bp_first_court_accept_boundary_020_effect = yes
+        }
+        else = {
+            bp_first_court_silence_020_effect = yes
+        }
     }
 }
 

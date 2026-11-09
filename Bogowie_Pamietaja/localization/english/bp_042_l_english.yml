@@ -1,6 +1,6 @@
 ﻿l_english:
- message_filter_bp_042_events_pause:0 "Wrath and Grace of the Gods — Pause Time"
- message_filter_bp_042_events_pause_desc:0 "Ritual festivals, encounters with gods and trial outcomes. These pause the game by default."
+ message_filter_bp_042_events_pause:0 "Wrath and Grace of the Gods — Trial Results"
+ message_filter_bp_042_events_pause_desc:0 "Messages describing actual trial results, without additional automatic pause."
  bp_042_pause_rite.t:0 "A Slavic Holy Day Has Arrived"
  bp_042_pause_rite.desc:0 "Time pauses so you may learn about the ceremony."
  bp_042_pause_story.t:0 "The Feast Demands Judgment"
@@ -41,3 +41,7 @@
  bp_042_weles_wrath_dead.desc:0 "You rejected Veles's demand. The lord of the underworld claimed your life and left the debt in your dynasty's memory."
  bp_042_weles_wrath_survived.t:0 "Veles Leaves You Alive"
  bp_042_weles_wrath_survived.desc:0 "The god does not kill you, but his terrible curse weighs upon you for five years. You suffer major stress and lost prestige."
+ bp_042_result_generic_good.desc:0 "The ruler survived the trial and its consequences have been applied."
+ bp_042_result_generic_bad.desc:0 "The trial ended in misfortune, and its consequences have been applied."
+ bp_042_trial_success_message_desc:0 "The ruler survived the trial and its consequences have been applied."
+ bp_042_trial_failure_message_desc:0 "The trial ended in misfortune, and its consequences have been applied."

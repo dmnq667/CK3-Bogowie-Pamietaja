@@ -1,66 +1,66 @@
 ﻿namespace = bp_gromnica
 
 # 2 February; initiated through the decision during the correct date window.
+# 0.4.0: One festival window, no obligatory continuation. Real outcomes and delayed stories.
 bp_gromnica.1001 = {
     type = character_event
     theme = diplomacy
-    override_background = {
-        reference = bp_scene_gromnica_02
+    override_background = { reference = bp_scene_gromnica_02 }
+    title = bp_040_gromnica.t
+    desc = {
+        first_valid = {
+        triggered_desc = { trigger = { has_trait = compassionate } desc = bp_040_gromnica.desc_compassionate }
+        triggered_desc = { trigger = { has_trait = callous } desc = bp_040_gromnica.desc_callous }
+            desc = bp_040_gromnica.desc
+        }
     }
-    title = bp_gromnica.1001.t
-    desc = bp_gromnica.1001.desc
     left_portrait = root
     immediate = {
         bp_initialize_effect = yes
-        # v0.3: attendance itself grants a small, immediate ritual benefit.
-        # The existing choices still carry the real cost and moral consequence.
-        add_piety = 50
+        add_piety = 45
         add_stress = -10
-        dynasty = { set_variable = { name = bp_gromnica_ever_celebrated_v014 value = yes } }
-        add_character_flag = { flag = bp_gromnica_used days = 335 }
         dynasty = {
+            set_variable = { name = bp_gromnica_ever_celebrated_v014 value = yes }
             set_variable = { name = bp_gromnica_rite_lock_v013 value = yes days = 335 }
-            if = {
-                limit = { has_variable = bp_gromnica_accepted_v013 }
-                remove_variable = bp_gromnica_accepted_v013
-            }
         }
+        add_character_flag = { flag = bp_gromnica_used days = 335 }
     }
     option = {
-        name = bp_gromnica.1001.a
-        trigger = { gold >= 35 }
-        show_as_unavailable = { gold < 35 }
-        remove_short_term_gold = 35
-        add_character_flag = { flag = bp_gromnica_trial days = 90 }
-        add_character_flag = { flag = bp_gromnica_fire days = 90 }
-        dynasty = { set_variable = { name = bp_gromnica_protected_fire_ever_v030 value = yes } }
-        add_character_modifier = { modifier = bp_gromnica_guard_modifier days = 45 }
-        bp_weles_plus_20_effect = yes
-        bp_mokosh_plus_10_effect = yes
-        trigger_event = { id = bp_gromnica.1002 days = 1 }
-        ai_chance = { base = 55 }
-    }
-    option = {
-        name = bp_gromnica.1001.b
-        add_prestige = -50
-        add_character_flag = { flag = bp_gromnica_trial days = 90 }
-        add_character_flag = { flag = bp_gromnica_village days = 90 }
-        dynasty = { set_variable = { name = bp_gromnica_aided_villagers_ever_v030 value = yes } }
-        bp_weles_plus_10_effect = yes
+        name = bp_040_gromnica.a
+        trigger = { gold >= 80 }
+        show_as_unavailable = { gold < 80 }
+        remove_short_term_gold = 80
+        capital_county = { add_county_modifier = { modifier = bp_040_saved_villages_modifier years = 3 } }
+        add_stress = -25
+        bp_040_mercy_effect = yes
         bp_mokosh_plus_20_effect = yes
-        trigger_event = { id = bp_gromnica.1002 days = 1 }
-        ai_chance = { base = 35 }
+        add_character_flag = { flag = bp_gromnica_village days = 365 }
+        dynasty = { set_variable = { name = bp_gromnica_aided_villagers_ever_v030 value = yes } }
+        ai_chance = { base = 60 }
     }
     option = {
-        name = bp_gromnica.1001.c
-        add_gold = 20
-        add_character_flag = { flag = bp_gromnica_ignored_v020 days = 335 }
+        name = bp_040_gromnica.b
+        add_gold = 75
+        capital_county = { add_county_modifier = { modifier = bp_040_frozen_villages_modifier years = 3 } }
+        add_dread = 10
+        bp_mokosh_minus_15_effect = yes
+        bp_040_cruelty_effect = yes
+        bp_040_schedule_revenge_effect = yes
         dynasty = { set_variable = { name = bp_gromnica_neglected_ever_v030 value = yes } }
-        bp_weles_minus_15_effect = yes
-        # Neglect ends here; no extra read-only warning window.
-        ai_chance = { base = 10 }
+        ai_chance = { base = 25 }
+    }
+    option = {
+        name = bp_040_gromnica.c
+        add_prestige = 120
+        add_stress = 30
+        add_character_modifier = { modifier = bp_040_ruthless_war_modifier years = 1 }
+        bp_perun_plus_10_effect = yes
+        add_character_flag = { flag = bp_gromnica_fire days = 365 }
+        dynasty = { set_variable = { name = bp_gromnica_protected_fire_ever_v030 value = yes } }
+        ai_chance = { base = 15 }
     }
 }
+
 
 # Second and final visible Gromnica scene: the player can complete the other duty.
 # No automatic epilogue modal: the consequence is recorded in the choice itself.

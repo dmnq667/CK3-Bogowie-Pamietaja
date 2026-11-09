@@ -559,13 +559,27 @@ bp_weles.2020 = {
         # Deliberately deadly defiance. Chance numbers are prototype values.
         random_list = {
             35 = {
+                dynasty = { set_variable = { name = bp_042_weles_wrath_death_ever value = yes } }
                 add_character_flag = { flag = bp_weles_divine_death_v030 }
+                send_interface_toast = {
+                    type = bp_042_trial_failure_message
+                    title = bp_042_weles_wrath_dead.t
+                    desc = bp_042_weles_wrath_dead.desc
+                    left_icon = root
+                }
                 death = { death_reason = death_execution }
             }
             65 = {
-                add_stress = 100
-                add_prestige = -500
-                add_character_modifier = { modifier = bp_weles_debt_shadow_modifier years = 5 }
+                dynasty = { set_variable = { name = bp_042_weles_wrath_survived_ever value = yes } }
+                send_interface_toast = {
+                    type = bp_042_trial_failure_message
+                    title = bp_042_weles_wrath_survived.t
+                    desc = bp_042_weles_wrath_survived.desc
+                    left_icon = root
+                    add_stress = 100
+                    add_prestige = -500
+                    add_character_modifier = { modifier = bp_weles_debt_shadow_modifier years = 5 }
+                }
                 bp_weles_minus_25_effect = yes
             }
         }

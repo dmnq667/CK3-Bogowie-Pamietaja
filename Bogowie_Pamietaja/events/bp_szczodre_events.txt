@@ -5,11 +5,7 @@
 # January 1 and expires before the next December 21.
 # 0.4.0: Single holiday scene; divine judgments and blood vengeance are delayed.
 bp_szczodre.9401 = {
-    type = letter_event
-    # CK3-native pause, preserving the existing scene and window design.
-    window = character_event
-    sender = root
-    opening = bp_043_empty_opening
+    type = character_event
     theme = diplomacy
     override_background = { reference = bp_scene_szczodre_02 }
     title = bp_041_szczodre.intro.t

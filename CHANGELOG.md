@@ -1,5 +1,17 @@
 # Historia wydań
 
+## 0.4.0 DEV — 9 listopada 2026
+
+- Całkowita przebudowa widocznych historii **12 świąt**: 12/12 PASS, najwyżej 2 okna z zapowiedzią.
+- Koniec automatycznych cztero-, pięcio- i ośmiookienkowych obrzędów.
+- 107 kluczy lokalizacji PL/EN, jasna stawka, łącznie z imiennymi dworzanami i ryzykiem śmierci.
+- Rozgałęzione losy: łaska, krwawe egzekucje prawdziwych postaci, rody pamiętające wyroki, wieloletnie modyfikatory i odroczona zemsta.
+- Sąd I przeliczany automatycznie w tle, bez nowego klikania.
+- Zmieniono wejście w pakt Welesa i wycofywanie ofiary; 3 główne objawienia i cała nowa oprawa graficzna bez zmian.
+- Statyczna kontrola automatyczna PASS. **Nie wykonano jeszcze testu gry, kompatybilności zapisów ani bilansu.**
+
+
+
 ## 0.3.0 DEV — w produkcji (08.11.2026)
 - Nazwa: **Gniew i Łaska Bogów**.
 - Wydarzenia Welesa 2020, Peruna 9110 i Mokoszy 3010: osobiste objawienia, pamięć czynów, rozgałęzienia charakteru i silne konsekwencje.

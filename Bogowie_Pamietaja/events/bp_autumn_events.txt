@@ -1,52 +1,73 @@
 ﻿namespace = bp_autumn
 
 # 25-31 October. Ancestral judgment and Weles' existing dynastic debt.
+# 0.4.0: Single holiday scene; divine judgments and blood vengeance are delayed.
 bp_autumn.9301 = {
     type = character_event
     theme = diplomacy
     override_background = { reference = bp_scene_autumn_01 }
-    title = bp_autumn.9301.t
+    title = bp_040_autumn.t
     desc = {
         first_valid = {
-            triggered_desc = {
-                trigger = { dynasty = { has_variable = bp_weles_debt_unpaid_v018 } }
-                desc = bp_autumn.9301.desc_debt
-            }
-            desc = bp_autumn.9301.desc
+        triggered_desc = { trigger = { dynasty = { has_variable = bp_040_blood_ever_v040 } } desc = bp_040_autumn.desc_blood }
+        triggered_desc = { trigger = { has_trait = brave } desc = bp_040_autumn.desc_brave }
+        triggered_desc = { trigger = { has_trait = craven } desc = bp_040_autumn.desc_craven }
+            desc = bp_040_autumn.desc
         }
     }
     left_portrait = root
     immediate = {
         bp_initialize_effect = yes
-        bp_weles_migrate_legacy_debt_018_effect = yes
+        add_piety = 45
+        add_stress = -10
         dynasty = {
             set_variable = { name = bp_autumn_ever_celebrated_v019 value = yes }
             set_variable = { name = bp_autumn_rite_lock_v019 value = yes days = 335 }
         }
+        bp_weles_migrate_legacy_debt_018_effect = yes
+        if = {
+            limit = { any_courtier = { is_alive = yes is_adult = yes } }
+            random_courtier = { limit = { is_alive = yes is_adult = yes } save_scope_as = bp_040_target }
+        }
     }
     option = {
-        name = bp_autumn.9301.a
-        trigger = { gold >= 45 }
-        show_as_unavailable = { gold < 45 }
-        remove_short_term_gold = 45
-        add_character_flag = { flag = bp_autumn_rite_v019 days = 120 }
-        bp_weles_plus_20_effect = yes
-        trigger_event = bp_autumn.9302
-        ai_chance = { base = 55 }
-    }
-    option = {
-        name = bp_autumn.9301.b
+        name = bp_040_autumn.a
+        trigger = { gold >= 100 }
+        show_as_unavailable = { gold < 100 }
+        remove_short_term_gold = 100
         add_prestige = -80
-        add_character_flag = { flag = bp_autumn_rite_v019 days = 120 }
-        bp_weles_plus_10_effect = yes
-        trigger_event = bp_autumn.9302
-        ai_chance = { base = 35 }
+        add_stress = -30
+        bp_040_mercy_effect = yes
+        bp_weles_plus_20_effect = yes
+        add_character_modifier = { modifier = bp_040_oath_of_peace_modifier years = 2 }
+        ai_chance = { base = 45 }
     }
     option = {
-        name = bp_autumn.9301.c
+        name = bp_040_autumn.b
+        trigger = { exists = scope:bp_040_target }
+        scope:bp_040_target = {
+            every_close_family_member = {
+                limit = { is_alive = yes NOT = { this = root } }
+                add_opinion = { target = root modifier = bp_040_blood_feud_opinion }
+            }
+            death = { killer = root death_reason = death_execution }
+        }
+        add_dread = 35
+        add_tyranny = 30
+        bp_040_actual_blood_effect = yes
+        bp_040_schedule_revenge_effect = yes
         bp_weles_minus_25_effect = yes
-        trigger_event = bp_autumn.9307
-        ai_chance = { base = 10 }
+        ai_chance = { base = 25 }
+    }
+    option = {
+        name = bp_040_autumn.c
+        add_gold = 100
+        add_prestige = -120
+        add_stress = 45
+        bp_040_cruelty_effect = yes
+        bp_040_schedule_revenge_effect = yes
+        add_character_modifier = { modifier = bp_040_feud_curse_modifier years = 3 }
+        ai_chance = { base = 30 }
     }
 }
 

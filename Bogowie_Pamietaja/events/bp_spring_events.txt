@@ -5,55 +5,18 @@
 bp_spring.3001 = {
     type = character_event
     theme = diplomacy
-    override_background = { reference = bp_scene_spring_01 }
-    title = bp_040_spring.t
-    desc = {
-        first_valid = {
-        triggered_desc = { trigger = { has_trait = compassionate } desc = bp_040_spring.desc_compassionate }
-        triggered_desc = { trigger = { has_trait = callous } desc = bp_040_spring.desc_callous }
-            desc = bp_040_spring.desc
-        }
-    }
+    override_background = { reference = bp_scene_spring_02 }
+    title = bp_041_spring.intro.t
+    desc = bp_041_spring.intro.desc
     left_portrait = root
-    immediate = {
-        bp_initialize_effect = yes
+    option = {
+        name = bp_041_spring.intro.a
+        # Participation rewards are granted exactly once, before the story.
         add_piety = 45
         add_stress = -10
-        dynasty = {
-            set_variable = { name = bp_spring_ever_celebrated_v014 value = yes }
-            set_variable = { name = bp_spring_rite_lock_v013 value = yes days = 335 }
-        }
-        add_character_flag = { flag = bp_spring_used days = 335 }
-    }
-    option = {
-        name = bp_040_spring.a
-        trigger = { gold >= 75 }
-        show_as_unavailable = { gold < 75 }
-        remove_short_term_gold = 75
-        capital_county = { add_county_modifier = { modifier = bp_040_seed_saved_modifier years = 3 } }
-        bp_mokosh_plus_20_effect = yes
-        bp_040_mercy_effect = yes
-        add_character_flag = { flag = bp_mokosh_rite days = 180 }
-        ai_chance = { base = 55 }
-    }
-    option = {
-        name = bp_040_spring.b
-        add_gold = 120
-        add_character_modifier = { modifier = bp_040_ruthless_war_modifier years = 1 }
-        capital_county = { add_county_modifier = { modifier = bp_040_grain_requisition_modifier years = 3 } }
-        bp_mokosh_minus_15_effect = yes
-        bp_040_cruelty_effect = yes
-        dynasty = { set_variable = { name = bp_mokosh_sowing_neglected_ever_v030 value = yes } }
-        trigger_event = { id = bp_spring.3010 days = { 100 170 } }
-        ai_chance = { base = 30 }
-    }
-    option = {
-        name = bp_040_spring.c
-        add_prestige = -80
-        add_stress = -15
-        capital_county = { add_county_modifier = { modifier = bp_mokosh_sowing_modifier years = 1 } }
-        bp_mokosh_plus_10_effect = yes
-        ai_chance = { base = 15 }
+        capital_county = { add_county_modifier = { modifier = bp_mokosh_sowing_modifier days = 90 } }
+        trigger_event = bp_041.2103
+        ai_chance = { base = 100 }
     }
 }
 

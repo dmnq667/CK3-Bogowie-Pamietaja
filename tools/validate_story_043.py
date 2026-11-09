@@ -148,8 +148,11 @@ def pause_envelope(block, ident):
     for phrase in ("type = letter_event", "window = character_event",
                    "sender = root", "opening = bp_043_empty_opening"):
         assert phrase in block,(ident,phrase)
-    assert "send_interface_toast" not in block,ident
-    assert "send_interface_message" not in block,ident
+    # Only opening/arrival toasts are forbidden. IMPORTANT: result messages
+    # within options are intentional and must remain (risk of death, rescue).
+    before_options=block.split("    option = {",1)[0]
+    assert "send_interface_toast" not in before_options,ident
+    assert "send_interface_message" not in before_options,ident
 
 for name,(original,story) in SPECS.items():
     opener=(EVENTS/f"bp_{name}_events.txt").read_text(encoding="utf-8-sig")

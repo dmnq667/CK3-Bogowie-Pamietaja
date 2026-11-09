@@ -1,90 +1,61 @@
 ﻿namespace = bp_weles
 
 # Weles Week, 9-15 February: opening and offering choice in ONE window.
+# 0.4.0: One festival window, no obligatory continuation. Real outcomes and delayed stories.
 bp_weles.2001 = {
     type = character_event
     theme = diplomacy
-    override_background = {
-        reference = bp_scene_weles_04
-    }
-    title = bp_weles.2001.t
+    override_background = { reference = bp_scene_weles_04 }
+    title = bp_040_weles.t
     desc = {
         first_valid = {
-            triggered_desc = {
-                trigger = { has_character_flag = bp_gromnica_fire }
-                desc = bp_weles.2001.desc_fire
-            }
-            triggered_desc = {
-                trigger = { has_character_flag = bp_gromnica_village }
-                desc = bp_weles.2001.desc_village
-            }
-            desc = bp_weles.2001.desc_default
+        triggered_desc = { trigger = { has_trait = brave } desc = bp_040_weles.desc_brave }
+        triggered_desc = { trigger = { has_trait = craven } desc = bp_040_weles.desc_craven }
+            desc = bp_040_weles.desc
         }
     }
     left_portrait = root
     immediate = {
         bp_initialize_effect = yes
-        # v0.3: participating in the holy days is valuable independently of
-        # the following bargain with Veles.
-        add_piety = 75
+        add_piety = 45
         add_stress = -10
-        dynasty = { set_variable = { name = bp_weles_ever_celebrated_v014 value = yes } }
-        add_character_flag = { flag = bp_weles_week_used days = 335 }
         dynasty = {
+            set_variable = { name = bp_weles_ever_celebrated_v014 value = yes }
             set_variable = { name = bp_weles_rite_lock_v013 value = yes days = 335 }
-            if = {
-                limit = { has_variable = bp_weles_accepted_v013 }
-                remove_variable = bp_weles_accepted_v013
-            }
         }
+        add_character_flag = { flag = bp_weles_week_used days = 335 }
+        bp_weles_migrate_legacy_debt_018_effect = yes
     }
     option = {
-        name = bp_weles.2002.a
-        trigger = { gold >= 60 }
-        show_as_unavailable = { gold < 60 }
-        remove_short_term_gold = 60
-        add_character_flag = { flag = bp_weles_offering days = 90 }
-        add_character_flag = { flag = bp_weles_coins_given_v020 days = 120 }
+        name = bp_040_weles.a
+        trigger = { dynasty = { NOT = { has_variable = bp_weles_debt_unpaid_v018 } } }
+        add_stress = -100
+        add_gold = 250
+        add_character_modifier = { modifier = bp_weles_great_boon_modifier years = 2 }
+        bp_weles_open_debt_018_effect = yes
+        add_character_flag = { flag = bp_040_weles_bargain_v040 years = 6 }
         bp_weles_plus_20_effect = yes
-        trigger_event = bp_weles.2003
-        add_character_flag = { flag = bp_weles_entered_grove_v020 days = 120 }
+        trigger_event = { id = bp_weles.2020 days = { 200 290 } }
+        ai_chance = { base = 35 }
+    }
+    option = {
+        name = bp_040_weles.b
+        add_character_flag = { flag = bp_weles_waiting_for_prisoner days = 50 }
+        add_character_flag = { flag = bp_weles_prisoner_pledged_v020 days = 120 }
+        add_stress = -40
+        bp_weles_plus_10_effect = yes
+        ai_chance = { base = 25 }
+    }
+    option = {
+        name = bp_040_weles.c
+        add_stress = -20
+        add_piety = 100
+        bp_weles_plus_10_effect = yes
+        bp_040_mercy_effect = yes
         ai_chance = { base = 40 }
     }
-    option = {
-        name = bp_weles.2002.b
-        add_character_flag = { flag = bp_weles_waiting_for_prisoner days = 20 }
-        add_character_flag = { flag = bp_weles_prisoner_pledged_v020 days = 120 }
-        trigger_event = bp_weles.2005
-        add_character_flag = { flag = bp_weles_entered_grove_v020 days = 120 }
-        ai_chance = { base = 10 }
-    }
-    option = {
-        name = bp_weles.2002.c
-        add_prestige = -100
-        add_character_flag = { flag = bp_weles_offering days = 90 }
-        add_character_flag = { flag = bp_weles_oath_of_silence days = 335 }
-        add_character_flag = { flag = bp_weles_oath_now_v020 days = 120 }
-        bp_weles_plus_10_effect = yes
-        trigger_event = bp_weles.2003
-        add_character_flag = { flag = bp_weles_entered_grove_v020 days = 120 }
-        ai_chance = { base = 35 }
-    }
-    option = {
-        name = bp_weles.2002.d
-        bp_weles_minus_15_effect = yes
-        add_character_flag = { flag = bp_weles_refused_offering_v020 days = 120 }
-        add_character_flag = { flag = bp_weles_entered_grove_v020 days = 120 }
-        ai_chance = { base = 15 }
-    }
-    option = {
-        name = bp_weles.2001.b
-        add_character_flag = { flag = bp_weles_fled days = 335 }
-        add_character_flag = { flag = bp_weles_fled_now_v020 days = 120 }
-        bp_weles_minus_15_effect = yes
-        add_prestige = -40
-        ai_chance = { base = 35 }
-    }
 }
+
 
 # Legacy price-choice screen, retained for events already queued by an older save.
 # Normal play now makes the same decision directly in bp_weles.2001.

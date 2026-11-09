@@ -1,0 +1,135 @@
+namespace = bp_040
+
+# Months after an execution, extortion or broken oath; does NOT stack on holiday windows.
+# Only existing adult courtiers may become targeted victims. No fabricated deaths.
+bp_040.5001 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_autumn_02 }
+    title = bp_040_revenge.t
+    desc = {
+        first_valid = {
+            triggered_desc = {
+                trigger = { exists = scope:bp_040_revenge_target }
+                desc = bp_040_revenge.desc_target
+            }
+            desc = bp_040_revenge.desc
+        }
+    }
+    left_portrait = root
+    trigger = { is_alive = yes is_ruler = yes }
+    immediate = {
+        # The named courtier is genuinely present in this court.
+        if = {
+            limit = { any_courtier = { is_adult = yes is_alive = yes } }
+            random_courtier = {
+                limit = { is_adult = yes is_alive = yes }
+                save_scope_as = bp_040_revenge_target
+            }
+        }
+    }
+    option = {
+        name = bp_040_revenge.a
+        trigger = { gold >= 150 }
+        show_as_unavailable = { gold < 150 }
+        remove_short_term_gold = 150
+        add_prestige = -100
+        bp_040_mercy_effect = yes
+        add_stress = -20
+        add_character_modifier = { modifier = bp_040_oath_of_peace_modifier years = 2 }
+        ai_chance = { base = 45 }
+    }
+    option = {
+        name = bp_040_revenge.b
+        trigger = { exists = scope:bp_040_revenge_target }
+        # 65 percent: a REAL courtier dies. 35 percent: assault fails.
+        random_list = {
+            65 = {
+                scope:bp_040_revenge_target = {
+                    every_close_family_member = {
+                        limit = { is_alive = yes NOT = { this = root } }
+                        add_opinion = { target = root modifier = bp_040_blood_feud_opinion }
+                    }
+                    death = { death_reason = death_murder }
+                }
+                add_stress = 65
+                add_character_modifier = { modifier = bp_040_retribution_modifier years = 4 }
+                dynasty = { set_variable = { name = bp_040_revenge_murder_ever_v040 value = yes } }
+                trigger_event = { id = bp_040.5002 days = { 220 365 } }
+            }
+            35 = {
+                add_stress = 25
+                add_prestige = -75
+            }
+        }
+        ai_chance = { base = 35 }
+    }
+    option = {
+        name = bp_040_revenge.c
+        # Openly declared mortal risk: 30% actual player death.
+        random_list = {
+            30 = { death = { death_reason = death_murder } }
+            70 = {
+                add_dread = 40
+                add_prestige = 220
+                add_character_modifier = { modifier = bp_040_ruthless_war_modifier years = 3 }
+                bp_040_cruelty_effect = yes
+            }
+        }
+        ai_chance = { base = 15 }
+    }
+    option = {
+        name = bp_040_revenge.d
+        trigger = { NOT = { exists = scope:bp_040_revenge_target } }
+        capital_county = { add_county_modifier = { modifier = bp_040_desperate_country_modifier years = 2 } }
+        add_stress = 40
+        add_prestige = -150
+        ai_chance = { base = 5 }
+    }
+}
+
+# One additional retaliation after a real murder. A distinct story months later,
+# never an immediate confirmation of the same holiday.
+bp_040.5002 = {
+    type = character_event
+    theme = diplomacy
+    override_background = { reference = bp_scene_dziady_03 }
+    title = bp_040_aftermath.t
+    desc = bp_040_aftermath.desc
+    left_portrait = root
+    trigger = {
+        is_alive = yes
+        dynasty = { has_variable = bp_040_revenge_murder_ever_v040 }
+    }
+    option = {
+        name = bp_040_aftermath.a
+        trigger = { gold >= 180 }
+        show_as_unavailable = { gold < 180 }
+        remove_short_term_gold = 180
+        add_stress = -60
+        add_character_modifier = { modifier = bp_040_oath_of_peace_modifier years = 3 }
+        bp_040_mercy_effect = yes
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = bp_040_aftermath.b
+        add_dread = 20
+        add_gold = 130
+        add_stress = 45
+        add_character_modifier = { modifier = bp_040_retribution_modifier years = 4 }
+        bp_040_cruelty_effect = yes
+        ai_chance = { base = 40 }
+    }
+    option = {
+        name = bp_040_aftermath.c
+        random_list = {
+            25 = { death = { death_reason = death_murder } }
+            75 = {
+                add_prestige = 300
+                add_stress = -30
+                add_character_modifier = { modifier = bp_040_oath_of_peace_modifier years = 4 }
+            }
+        }
+        ai_chance = { base = 20 }
+    }
+}

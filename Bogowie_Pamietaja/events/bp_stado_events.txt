@@ -3,22 +3,16 @@
 # 29 May - 4 June: communal life, promises and dynastic emotions.
 # 0.4.0 — one visible festival window, delayed vengeance independent.
 bp_stado.7001 = {
-    type = character_event
+    type = letter_event
+    # CK3-native pause, while using the current character-event visual.
+    window = character_event
+    sender = root
+    opening = bp_043_empty_opening
     theme = diplomacy
     override_background = { reference = bp_scene_stado_02 }
     title = bp_041_stado.intro.t
     desc = bp_041_stado.intro.desc
     left_portrait = root
-    immediate = {
-        # CK3 native message filter requests auto-pause before player choice.
-        if = {
-            limit = { is_ai = no }
-            send_interface_toast = {
-                type = bp_042_rite_arrived_message
-                left_icon = root
-            }
-        }
-    }
     option = {
         name = bp_041_stado.intro.a
         # Participation rewards are granted exactly once, before the story.

@@ -81,6 +81,12 @@ bp_spring.3010 = {
     }
     left_portrait = root
     trigger = { is_alive = yes is_ruler = yes }
+    immediate = {
+        if = {
+            limit = { is_ai = no }
+            send_interface_toast = { type = bp_042_divine_arrived_message left_icon = root }
+        }
+    }
     option = {
         name = bp_spring.3010.a
         trigger = { gold >= 100 }

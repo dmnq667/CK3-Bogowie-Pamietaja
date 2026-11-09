@@ -560,10 +560,10 @@ bp_weles.2020 = {
                     title = bp_042_weles_wrath_survived.t
                     desc = bp_042_weles_wrath_survived.desc
                     left_icon = root
-                    add_stress = 100
-                    add_prestige = -500
-                    add_character_modifier = { modifier = bp_weles_debt_shadow_modifier years = 5 }
                 }
+                add_stress = 100
+                add_prestige = -500
+                add_character_modifier = { modifier = bp_weles_debt_shadow_modifier years = 5 }
                 bp_weles_minus_25_effect = yes
             }
         }

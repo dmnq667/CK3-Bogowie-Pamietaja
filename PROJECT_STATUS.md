@@ -1,5 +1,19 @@
 # Stan produkcji: Gniew i Łaska Bogów
 
+## 0.4.2 DEV — naprawa widoczności wyników i automatyczna pauza
+
+**Gałąź:** `feature/0.4.2-wyniki-i-pauza`. **Build:** [GitHub Actions #42573291604](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42573291604) — walidator **PASS**, aktualizator Windows 0.4.1 → 0.4.2 z kopią zapasową **PASS**.
+
+- Poprawiono Gaik i Noc Kupały: dotychczasowe `random_list` nie dawały informacji o rezultacie przeżycia. Obie gałęzie mają teraz polskie komunikaty.
+- Siedem niebezpiecznych prób władcy ma widoczny wynik i zapis w historii dynastii; przy wysłaniu straży na Kupale wyświetlany jest również wynik śmierci lub ratunku dworzanina.
+- Natywny filtr CK3 `bp_042_events_pause`: `auto_pause = yes`, `always_show = yes`, `display = toast`. Obejmuje 24 sceny świąteczne, trzy objawienia i dwa wydarzenia zemsty.
+- Bez zmiany kalendarza ani 12×2 okien świąt; 31 zatwierdzonych grafik pozostaje bez zmian.
+- 42 klucze lokalizacji PL/EN oraz raport `validation_story_042.json`.
+- **Nie zweryfikowano działania samej pauzy i powiadomień w uruchomionej grze.** Nie podajemy tej wersji jako stabilnej.
+
+**[Pobierz aktualną poprawkę 0.4.2 DEV](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42573291604/artifacts/13654395511)**. [Zasady instalacji i scenariusze testowe](docs/RELEASE_042_WYNIKI_PAUZA.md).
+
+
 ## 0.4.1 DEV — dwa okna i poprawione nazwy efektów (9 listopada 2026)
 
 **Stan:** wersja testowa zbudowana na osobnej gałęzi `feature/0.4.1-dwa-okna-swieta`. [Wynik GitHub Actions #42565179434](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42565179434): statyczny audyt **12/12 PASS — dokładnie dwa okna** oraz rzeczywista aktualizacja próbnego moda na Windows PowerShell 5.1 **PASS**. **Nieprzetestowane jeszcze w silniku CK3.**

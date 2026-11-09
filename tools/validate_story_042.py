@@ -234,29 +234,7 @@ for lang in ("polish","english"):
     path=MOD/"localization"/lang/f"bp_042_l_{lang}.yml"
     text=path.read_text(encoding="utf-8-sig")
     assert text.startswith("l_"+lang+":")
-    keys=re.findall(r'(?m)^\s*([a-z0-9_.]+):0\s+"(.*)"\s*
-# Every holiday must have TWO, not merely 'at most two', visible events.
-run(["python3",str(ROOT/"tools/audit_festival_flows_040.py"),"--enforce","--exactly-two"],check=True,cwd=ROOT)
-run(["python3",str(ROOT/"tools/validate_gods_030.py")],check=True,cwd=ROOT)
-
-summary={
-    "version":"0.4.2-dev",
-    "native_pause_message_filter":True,
-    "dangerous_chains_with_visible_results":7,
-    "localized_outcome_messages":len(result_keys),
-    "localized_message_keys_042":len(loc_pause_keys),
-    "holidays_with_two_windows":len(SPECS),
-    "education_and_story_per_holiday":True,
-    "new_modifier_and_opinion_names":len(effect_keys),
-    "localization_keys_041":len(necessary_041),
-    "legacy_announcements_are_hidden":True,
-    "existing_31_artworks_preserved":True,
-    "CK3_runtime_tested":False,
-    "static_checks":"PASS",
-}
-(ROOT/"validation_story_042.json").write_text(json.dumps(summary,indent=2),encoding="utf-8")
-print(json.dumps(summary,indent=2))
-,text)
+    keys=re.findall(r'(?m)^\s*([a-z0-9_.]+):0\s+"(.*)"\s*$',text)
     ids=[x for x,_ in keys]
     assert len(ids)==len(set(ids)),f"Duplicate 0.4.2 keys ({lang})"
     assert loc_pause_keys.issubset(set(ids)),f"Missing {lang}: {loc_pause_keys-set(ids)}"
@@ -282,6 +260,10 @@ run(["python3",str(ROOT/"tools/validate_gods_030.py")],check=True,cwd=ROOT)
 
 summary={
     "version":"0.4.2-dev",
+    "native_pause_message_filter":True,
+    "dangerous_chains_with_visible_results":7,
+    "localized_outcome_messages":len(result_keys),
+    "localized_message_keys_042":len(loc_pause_keys),
     "holidays_with_two_windows":len(SPECS),
     "education_and_story_per_holiday":True,
     "new_modifier_and_opinion_names":len(effect_keys),

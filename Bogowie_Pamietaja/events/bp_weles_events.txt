@@ -546,7 +546,7 @@ bp_weles.2020 = {
                 dynasty = { set_variable = { name = bp_042_weles_wrath_death_ever value = yes } }
                 add_character_flag = { flag = bp_weles_divine_death_v030 }
                 send_interface_toast = {
-                    type = bp_042_trial_failure_message
+                    type = bp_042_weles_wrath_dead_message
                     title = bp_042_weles_wrath_dead.t
                     desc = bp_042_weles_wrath_dead.desc
                     left_icon = root
@@ -556,7 +556,7 @@ bp_weles.2020 = {
             65 = {
                 dynasty = { set_variable = { name = bp_042_weles_wrath_survived_ever value = yes } }
                 send_interface_toast = {
-                    type = bp_042_trial_failure_message
+                    type = bp_042_weles_wrath_survived_message
                     title = bp_042_weles_wrath_survived.t
                     desc = bp_042_weles_wrath_survived.desc
                     left_icon = root

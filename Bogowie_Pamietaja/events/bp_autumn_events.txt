@@ -3,18 +3,16 @@
 # 25-31 October. Ancestral judgment and Weles' existing dynastic debt.
 # 0.4.0: Single holiday scene; divine judgments and blood vengeance are delayed.
 bp_autumn.9301 = {
-    type = character_event
+    type = letter_event
+    # CK3-native pause, preserving the existing scene and window design.
+    window = character_event
+    sender = root
+    opening = bp_043_empty_opening
     theme = diplomacy
     override_background = { reference = bp_scene_autumn_03 }
     title = bp_041_autumn.intro.t
     desc = bp_041_autumn.intro.desc
     left_portrait = root
-    immediate = {
-        if = {
-            limit = { is_ai = no }
-            send_interface_toast = { type = bp_042_rite_arrived_message left_icon = root }
-        }
-    }
     option = {
         name = bp_041_autumn.intro.a
         # Basic festival reward, exactly once per participation.

@@ -1,4 +1,4 @@
-﻿version="0.4.2-dev"
+﻿version="0.4.3-dev"
 tags={
     "Events"
     "Roleplaying"

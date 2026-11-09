@@ -5,73 +5,18 @@
 bp_perun.9101 = {
     type = character_event
     theme = diplomacy
-    override_background = { reference = bp_scene_perun_01 }
-    title = bp_040_perun.t
-    desc = {
-        first_valid = {
-            triggered_desc = { trigger = { exists = scope:bp_040_target } desc = bp_040_perun.desc_target }
-        triggered_desc = { trigger = { has_trait = brave } desc = bp_040_perun.desc_brave }
-        triggered_desc = { trigger = { has_trait = craven } desc = bp_040_perun.desc_craven }
-            desc = bp_040_perun.desc
-        }
-    }
+    override_background = { reference = bp_scene_perun_02 }
+    title = bp_041_perun.intro.t
+    desc = bp_041_perun.intro.desc
     left_portrait = root
-    immediate = {
-        bp_initialize_effect = yes
+    option = {
+        name = bp_041_perun.intro.a
+        # Basic festival reward, exactly once per participation.
         add_piety = 45
         add_stress = -10
-        dynasty = {
-            set_variable = { name = bp_perun_ever_celebrated_v019 value = yes }
-            set_variable = { name = bp_perun_rite_lock_v019 value = yes days = 335 }
-        }
-        if = {
-            limit = { any_courtier = { is_alive = yes is_adult = yes } }
-            random_courtier = { limit = { is_alive = yes is_adult = yes } save_scope_as = bp_040_target }
-        }
-    }
-    option = {
-        name = bp_040_perun.a
-        add_prestige = 250
-        add_stress = 20
-        if = { limit = { has_trait = brave } add_stress = -50 }
-        if = { limit = { has_trait = craven } add_stress = 100 }
-        random_list = {
-            20 = { death = { death_reason = death_accident } }
-            80 = {
-                add_character_modifier = { modifier = bp_perun_great_war_modifier years = 2 }
-                bp_040_martial_courage_effect = yes
-            }
-        }
-        ai_chance = { base = 30 }
-    }
-    option = {
-        name = bp_040_perun.b
-        add_gold = 120
-        add_prestige = -250
-        add_character_modifier = { modifier = bp_perun_disfavor_modifier years = 3 }
-        bp_perun_minus_20_effect = yes
-        bp_040_cruelty_effect = yes
-        dynasty = { set_variable = { name = bp_perun_rite_refused_ever_v030 value = yes } }
-        trigger_event = { id = bp_perun.9110 days = { 110 180 } }
-        ai_chance = { base = 40 }
-    }
-    option = {
-        name = bp_040_perun.c
-        trigger = { exists = scope:bp_040_target }
-        scope:bp_040_target = {
-            every_close_family_member = {
-                limit = { is_alive = yes NOT = { this = root } }
-                add_opinion = { target = root modifier = bp_040_blood_feud_opinion }
-            }
-            death = { killer = root death_reason = death_execution }
-        }
-        add_dread = 35
-        add_tyranny = 20
-        add_character_modifier = { modifier = bp_040_ruthless_war_modifier years = 2 }
-        bp_040_actual_blood_effect = yes
-        bp_040_schedule_revenge_effect = yes
-        bp_perun_plus_10_effect = yes
-        ai_chance = { base = 30 }
+        add_character_modifier = { modifier = bp_perun_lesser_boon_modifier days = 90 }
+        trigger_event = bp_041.2109
+        ai_chance = { base = 100 }
     }
 }
 

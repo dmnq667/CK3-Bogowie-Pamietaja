@@ -8,7 +8,7 @@
 
 - Wymieniono wszystkie **12 głównych wydarzeń świątecznych** na niezależne, jednookienkowe sceny o realnych stawkach. Ograniczono wszystkie automatyczne łańcuchy świąt: **12/12 PASS, maksymalnie 2 okna wraz z zapowiedzią**.
 - Napisano **107 kluczy fabularnych lokalizacji PL i EN**, w tym warianty charakterologiczne: `brave`, `craven`, `compassionate`, `callous`; alternatywne opisy dla wydarzeń z istniejącą postacią i pamięcią krwi.
-- Nowe konsekwencje: prawdziwa śmierć wybranego z rzeczywiście istniejących dworzan, śmierć władcy po świadomym podjęciu ryzyka, 12 nowych modyfikatorów statusu i prowincji, 4 opinie, pamięć łaski i krzywdy w dynastii.
+- Nowe konsekwencje: prawdziwa śmierć wybranego z rzeczywiście istniejących dworzan, śmierć władcy po świadomym podjęciu ryzyka, 15 nowych modyfikatorów statusu i prowincji, 4 opinie, pamięć łaski i krzywdy w dynastii.
 - Dodatkowe **2 odroczone wydarzenia rodowej zemsty** `bp_040.5001` i `bp_040.5002` (miesiące i rok po decyzji); losowanie wypadków i zamachów, rodzinne konsekwencje.
 - Zachowano **31 zatwierdzonych DDS** bez podmieniania starymi grafikami. Objawienia osobiste A01 Weles, A02 Perun i A03 Mokosz nadal istnieją i są powiązane z istotnymi wyborami.
 - Weles może udzielić -100 stresu i 250 złota za dług spłacany po miesiącach; jego sąd ma nowy opis adekwatny do paktu. Wybór prawdziwego więźnia pozostaje interakcją, ale jego egzekucja nie uruchamia dawnych kaskad.

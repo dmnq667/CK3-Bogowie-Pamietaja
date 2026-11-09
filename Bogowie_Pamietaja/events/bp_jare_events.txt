@@ -6,70 +6,17 @@ bp_jare.4001 = {
     type = character_event
     theme = diplomacy
     override_background = { reference = bp_scene_jare_01 }
-    title = bp_040_jare.t
-    desc = {
-        first_valid = {
-            triggered_desc = { trigger = { exists = scope:bp_040_target } desc = bp_040_jare.desc_target }
-        triggered_desc = { trigger = { has_trait = brave } desc = bp_040_jare.desc_brave }
-        triggered_desc = { trigger = { has_trait = craven } desc = bp_040_jare.desc_craven }
-            desc = bp_040_jare.desc
-        }
-    }
+    title = bp_041_jare.intro.t
+    desc = bp_041_jare.intro.desc
     left_portrait = root
-    immediate = {
-        bp_initialize_effect = yes
+    option = {
+        name = bp_041_jare.intro.a
+        # Participation rewards are granted exactly once, before the story.
         add_piety = 45
         add_stress = -10
-        dynasty = {
-            set_variable = { name = bp_jare_ever_celebrated_v014 value = yes }
-            set_variable = { name = bp_jare_rite_lock_v013 value = yes days = 335 }
-        }
-        add_character_flag = { flag = bp_jare_used days = 335 }
-        # Select an actual adult courtier only when one exists; never invent a victim.
-        if = {
-            limit = { any_courtier = { is_alive = yes is_adult = yes } }
-            random_courtier = {
-                limit = { is_alive = yes is_adult = yes }
-                save_scope_as = bp_040_target
-            }
-        }
-    }
-    option = {
-        name = bp_040_jare.a
-        trigger = { gold >= 90 }
-        show_as_unavailable = { gold < 90 }
-        remove_short_term_gold = 90
-        add_character_modifier = { modifier = bp_040_oath_of_peace_modifier years = 3 }
-        add_stress = -25
-        bp_040_mercy_effect = yes
-        bp_mokosh_plus_20_effect = yes
-        ai_chance = { base = 45 }
-    }
-    option = {
-        name = bp_040_jare.b
-        trigger = { exists = scope:bp_040_target }
-        scope:bp_040_target = {
-            every_close_family_member = {
-                limit = { is_alive = yes NOT = { this = root } }
-                add_opinion = { target = root modifier = bp_040_blood_feud_opinion }
-            }
-            death = { killer = root death_reason = death_execution }
-        }
-        add_dread = 25
-        add_gold = 80
-        add_tyranny = 15
-        bp_040_actual_blood_effect = yes
-        bp_040_schedule_revenge_effect = yes
-        bp_weles_minus_15_effect = yes
-        ai_chance = { base = 25 }
-    }
-    option = {
-        name = bp_040_jare.c
-        add_prestige = 80
-        add_character_modifier = { modifier = bp_040_feud_curse_modifier years = 3 }
-        bp_040_cruelty_effect = yes
-        bp_040_schedule_revenge_effect = yes
-        ai_chance = { base = 30 }
+        add_character_modifier = { modifier = bp_stado_new_bonds_modifier days = 90 }
+        trigger_event = bp_041.2104
+        ai_chance = { base = 100 }
     }
 }
 

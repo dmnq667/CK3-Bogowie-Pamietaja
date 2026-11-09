@@ -338,20 +338,190 @@ bp_announcement.1299 = {
     hidden = yes
     trigger = { is_alive = yes is_ruler = yes is_ai = no }
     immediate = {
+        # Reinstated from the original 0.1.9 automatic calendar.
+        # Unlike the old version, we now show the approved EDUCATIONAL
+        # first window directly. No extra announcement or toast.
         if = {
-            limit = {
-                faith = { religion_tag = slavic_religion }
-                bp_first_court_due_v020_trigger = yes
+            limit = { faith = { religion_tag = slavic_religion } }
+            # gromnica: the FIRST VISIBLE event is the ceremony itself.
+            # Reserve the season before showing the popup so high-speed
+            # time progression never queues duplicate holiday windows.
+            if = {
+                limit = {
+                    bp_gromnica_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_gromnica_announced_v014 }
+                        NOT = { has_variable = bp_gromnica_rite_lock_v013 }
+                    }
+                }
+                dynasty = { set_variable = { name = bp_gromnica_announced_v014 value = yes days = 335 } }
+                trigger_event = bp_gromnica.1001
             }
-            trigger_event = bp_judgement.1001
+            # weles: the FIRST VISIBLE event is the ceremony itself.
+            # Reserve the season before showing the popup so high-speed
+            # time progression never queues duplicate holiday windows.
+            if = {
+                limit = {
+                    bp_weles_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_weles_announced_v014 }
+                        NOT = { has_variable = bp_weles_rite_lock_v013 }
+                    }
+                }
+                dynasty = { set_variable = { name = bp_weles_announced_v014 value = yes days = 335 } }
+                trigger_event = bp_weles.2001
+            }
+            # spring: the FIRST VISIBLE event is the ceremony itself.
+            # Reserve the season before showing the popup so high-speed
+            # time progression never queues duplicate holiday windows.
+            if = {
+                limit = {
+                    bp_spring_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_spring_announced_v014 }
+                        NOT = { has_variable = bp_spring_rite_lock_v013 }
+                    }
+                }
+                dynasty = { set_variable = { name = bp_spring_announced_v014 value = yes days = 335 } }
+                trigger_event = bp_spring.3001
+            }
+            # jare: the FIRST VISIBLE event is the ceremony itself.
+            # Reserve the season before showing the popup so high-speed
+            # time progression never queues duplicate holiday windows.
+            if = {
+                limit = {
+                    bp_jare_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_jare_announced_v014 }
+                        NOT = { has_variable = bp_jare_rite_lock_v013 }
+                    }
+                }
+                dynasty = { set_variable = { name = bp_jare_announced_v014 value = yes days = 335 } }
+                trigger_event = bp_jare.4001
+            }
+            # gaik: the FIRST VISIBLE event is the ceremony itself.
+            # Reserve the season before showing the popup so high-speed
+            # time progression never queues duplicate holiday windows.
+            if = {
+                limit = {
+                    bp_gaik_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_gaik_announced_v015 }
+                        NOT = { has_variable = bp_gaik_rite_lock_v015 }
+                    }
+                }
+                dynasty = { set_variable = { name = bp_gaik_announced_v015 value = yes days = 335 } }
+                trigger_event = bp_gaik.5001
+            }
+            # dziady: the FIRST VISIBLE event is the ceremony itself.
+            # Reserve the season before showing the popup so high-speed
+            # time progression never queues duplicate holiday windows.
+            if = {
+                limit = {
+                    bp_dziady_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_dziady_announced_v015 }
+                        NOT = { has_variable = bp_dziady_rite_lock_v015 }
+                    }
+                }
+                dynasty = { set_variable = { name = bp_dziady_announced_v015 value = yes days = 335 } }
+                trigger_event = bp_dziady.6001
+            }
+            # stado: the FIRST VISIBLE event is the ceremony itself.
+            # Reserve the season before showing the popup so high-speed
+            # time progression never queues duplicate holiday windows.
+            if = {
+                limit = {
+                    bp_stado_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_stado_announced_v015 }
+                        NOT = { has_variable = bp_stado_rite_lock_v015 }
+                    }
+                }
+                dynasty = { set_variable = { name = bp_stado_announced_v015 value = yes days = 335 } }
+                trigger_event = bp_stado.7001
+            }
+            # kupala: the FIRST VISIBLE event is the ceremony itself.
+            # Reserve the season before showing the popup so high-speed
+            # time progression never queues duplicate holiday windows.
+            if = {
+                limit = {
+                    bp_kupala_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_kupala_announced_v015 }
+                        NOT = { has_variable = bp_kupala_rite_lock_v015 }
+                    }
+                }
+                dynasty = { set_variable = { name = bp_kupala_announced_v015 value = yes days = 335 } }
+                trigger_event = bp_kupala.8001
+            }
+            # perun: the FIRST VISIBLE event is the ceremony itself.
+            # Reserve the season before showing the popup so high-speed
+            # time progression never queues duplicate holiday windows.
+            if = {
+                limit = {
+                    bp_perun_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_perun_announced_v019 }
+                        NOT = { has_variable = bp_perun_rite_lock_v019 }
+                    }
+                }
+                dynasty = { set_variable = { name = bp_perun_announced_v019 value = yes days = 335 } }
+                trigger_event = bp_perun.9101
+            }
+            # harvest: the FIRST VISIBLE event is the ceremony itself.
+            # Reserve the season before showing the popup so high-speed
+            # time progression never queues duplicate holiday windows.
+            if = {
+                limit = {
+                    bp_harvest_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_harvest_announced_v019 }
+                        NOT = { has_variable = bp_harvest_rite_lock_v019 }
+                    }
+                }
+                dynasty = { set_variable = { name = bp_harvest_announced_v019 value = yes days = 335 } }
+                trigger_event = bp_harvest.9201
+            }
+            # autumn: the FIRST VISIBLE event is the ceremony itself.
+            # Reserve the season before showing the popup so high-speed
+            # time progression never queues duplicate holiday windows.
+            if = {
+                limit = {
+                    bp_autumn_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_autumn_announced_v019 }
+                        NOT = { has_variable = bp_autumn_rite_lock_v019 }
+                    }
+                }
+                dynasty = { set_variable = { name = bp_autumn_announced_v019 value = yes days = 335 } }
+                trigger_event = bp_autumn.9301
+            }
+            # szczodre: the FIRST VISIBLE event is the ceremony itself.
+            # Reserve the season before showing the popup so high-speed
+            # time progression never queues duplicate holiday windows.
+            if = {
+                limit = {
+                    bp_szczodre_calendar_window_trigger = yes
+                    dynasty = {
+                        NOT = { has_variable = bp_szczodre_announced_v019 }
+                        NOT = { has_variable = bp_szczodre_rite_lock_v019 }
+                    }
+                }
+                dynasty = { set_variable = { name = bp_szczodre_announced_v019 value = yes days = 335 } }
+                trigger_event = bp_szczodre.9401
+            }
+            if = {
+                limit = { bp_first_court_due_v020_trigger = yes }
+                trigger_event = bp_judgement.1001
+            }
         }
-        # Remain a single daily watcher. Rituals can be started from the
-        # calendar; informational popups are intentionally not pushed.
+        # Next tick only. The watcher remains the one existing chain.
         trigger_event = { id = bp_announcement.1299 days = 1 }
     }
 }
 
-# v0.1.9: new mandatory seasonal announcements, one modal per season.
+# v0.1.9: retired legacy notices; educational scenes are called directly.
 bp_announcement.1009 = {
     type = character_event
     # Legacy opt-in notice becomes a SILENT router. The educational

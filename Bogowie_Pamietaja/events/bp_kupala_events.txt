@@ -3,11 +3,7 @@
 # 20 - 23 June: fire, river, consensual adult desire and a demanding god.
 # 0.4.0 — one visible festival window, delayed vengeance independent.
 bp_kupala.8001 = {
-    type = letter_event
-    # CK3-native pause, while using the current character-event visual.
-    window = character_event
-    sender = root
-    opening = bp_043_empty_opening
+    type = character_event
     theme = diplomacy
     override_background = { reference = bp_scene_kupala_02 }
     title = bp_041_kupala.intro.t

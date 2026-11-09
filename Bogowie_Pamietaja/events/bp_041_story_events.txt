@@ -19,6 +19,12 @@ bp_041.2101 = {
     }
     left_portrait = root
     immediate = {
+        # One message for each second window. Native CK3 auto_pause setting
+        # stops time before new festival days can overtake the decision.
+        if = {
+            limit = { is_ai = no }
+            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
+        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_gromnica_ever_celebrated_v014 value = yes }
@@ -77,6 +83,12 @@ bp_041.2102 = {
     }
     left_portrait = root
     immediate = {
+        # One message for each second window. Native CK3 auto_pause setting
+        # stops time before new festival days can overtake the decision.
+        if = {
+            limit = { is_ai = no }
+            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
+        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_weles_ever_celebrated_v014 value = yes }
@@ -130,6 +142,12 @@ bp_041.2103 = {
     }
     left_portrait = root
     immediate = {
+        # One message for each second window. Native CK3 auto_pause setting
+        # stops time before new festival days can overtake the decision.
+        if = {
+            limit = { is_ai = no }
+            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
+        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_spring_ever_celebrated_v014 value = yes }
@@ -185,6 +203,12 @@ bp_041.2104 = {
     }
     left_portrait = root
     immediate = {
+        # One message for each second window. Native CK3 auto_pause setting
+        # stops time before new festival days can overtake the decision.
+        if = {
+            limit = { is_ai = no }
+            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
+        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_jare_ever_celebrated_v014 value = yes }
@@ -254,6 +278,12 @@ bp_041.2105 = {
     }
     left_portrait = root
     immediate = {
+        # One message for each second window. Native CK3 auto_pause setting
+        # stops time before new festival days can overtake the decision.
+        if = {
+            limit = { is_ai = no }
+            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
+        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_gaik_ever_celebrated_v015 value = yes }
@@ -309,6 +339,12 @@ bp_041.2106 = {
     }
     left_portrait = root
     immediate = {
+        # One message for each second window. Native CK3 auto_pause setting
+        # stops time before new festival days can overtake the decision.
+        if = {
+            limit = { is_ai = no }
+            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
+        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_dziady_ever_celebrated_v015 value = yes }
@@ -364,6 +400,12 @@ bp_041.2107 = {
     }
     left_portrait = root
     immediate = {
+        # One message for each second window. Native CK3 auto_pause setting
+        # stops time before new festival days can overtake the decision.
+        if = {
+            limit = { is_ai = no }
+            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
+        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_stado_ever_celebrated_v015 value = yes }
@@ -428,6 +470,12 @@ bp_041.2108 = {
     }
     left_portrait = root
     immediate = {
+        # One message for each second window. Native CK3 auto_pause setting
+        # stops time before new festival days can overtake the decision.
+        if = {
+            limit = { is_ai = no }
+            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
+        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_kupala_ever_celebrated_v015 value = yes }
@@ -517,6 +565,12 @@ bp_041.2109 = {
     }
     left_portrait = root
     immediate = {
+        # One message for each second window. Native CK3 auto_pause setting
+        # stops time before new festival days can overtake the decision.
+        if = {
+            limit = { is_ai = no }
+            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
+        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_perun_ever_celebrated_v019 value = yes }
@@ -589,6 +643,12 @@ bp_041.2110 = {
     }
     left_portrait = root
     immediate = {
+        # One message for each second window. Native CK3 auto_pause setting
+        # stops time before new festival days can overtake the decision.
+        if = {
+            limit = { is_ai = no }
+            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
+        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_harvest_ever_celebrated_v019 value = yes }
@@ -658,6 +718,12 @@ bp_041.2111 = {
     }
     left_portrait = root
     immediate = {
+        # One message for each second window. Native CK3 auto_pause setting
+        # stops time before new festival days can overtake the decision.
+        if = {
+            limit = { is_ai = no }
+            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
+        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_autumn_ever_celebrated_v019 value = yes }
@@ -726,6 +792,12 @@ bp_041.2112 = {
     }
     left_portrait = root
     immediate = {
+        # One message for each second window. Native CK3 auto_pause setting
+        # stops time before new festival days can overtake the decision.
+        if = {
+            limit = { is_ai = no }
+            send_interface_toast = { type = bp_042_story_arrived_message left_icon = root }
+        }
         bp_initialize_effect = yes
         dynasty = {
             set_variable = { name = bp_szczodre_ever_celebrated_v019 value = yes }

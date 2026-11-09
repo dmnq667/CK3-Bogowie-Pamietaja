@@ -43,7 +43,7 @@ bp_gromnica_decision = {
         bp_gromnica_not_celebrated_this_season_trigger = yes
     }
     is_valid = { always = yes }
-    should_create_alert = { always = yes }
+    should_create_alert = { always = no }
     effect = { trigger_event = bp_gromnica.1001 }
     ai_check_interval = 0
 }
@@ -62,7 +62,7 @@ bp_weles_week_decision = {
         bp_weles_not_celebrated_this_season_trigger = yes
     }
     is_valid = { always = yes }
-    should_create_alert = { always = yes }
+    should_create_alert = { always = no }
     effect = { trigger_event = bp_weles.2001 }
     ai_check_interval = 0
 }
@@ -81,7 +81,7 @@ bp_spring_decision = {
         bp_spring_not_celebrated_this_season_trigger = yes
     }
     is_valid = { always = yes }
-    should_create_alert = { always = yes }
+    should_create_alert = { always = no }
     effect = { trigger_event = bp_spring.3001 }
     ai_check_interval = 0
 }
@@ -100,7 +100,7 @@ bp_jare_decision = {
         bp_jare_not_celebrated_this_season_trigger = yes
     }
     is_valid = { always = yes }
-    should_create_alert = { always = yes }
+    should_create_alert = { always = no }
     effect = { trigger_event = bp_jare.4001 }
     ai_check_interval = 0
 }
@@ -161,7 +161,7 @@ bp_gaik_decision = {
         bp_gaik_not_celebrated_this_season_trigger = yes
     }
     is_valid = { always = yes }
-    should_create_alert = { always = yes }
+    should_create_alert = { always = no }
     effect = { trigger_event = bp_gaik.5001 }
     ai_check_interval = 0
 }
@@ -181,7 +181,7 @@ bp_dziady_decision = {
         bp_dziady_not_celebrated_this_season_trigger = yes
     }
     is_valid = { always = yes }
-    should_create_alert = { always = yes }
+    should_create_alert = { always = no }
     effect = { trigger_event = bp_dziady.6001 }
     ai_check_interval = 0
 }
@@ -201,7 +201,7 @@ bp_stado_decision = {
         bp_stado_not_celebrated_this_season_trigger = yes
     }
     is_valid = { always = yes }
-    should_create_alert = { always = yes }
+    should_create_alert = { always = no }
     effect = { trigger_event = bp_stado.7001 }
     ai_check_interval = 0
 }
@@ -221,7 +221,7 @@ bp_kupala_decision = {
         bp_kupala_not_celebrated_this_season_trigger = yes
     }
     is_valid = { always = yes }
-    should_create_alert = { always = yes }
+    should_create_alert = { always = no }
     effect = { trigger_event = bp_kupala.8001 }
     ai_check_interval = 0
 }
@@ -262,7 +262,7 @@ bp_perun_decision = {
         bp_perun_not_celebrated_this_season_trigger = yes
     }
     is_valid = { always = yes }
-    should_create_alert = { always = yes }
+    should_create_alert = { always = no }
     effect = { trigger_event = bp_perun.9101 }
     ai_check_interval = 0
 }
@@ -281,7 +281,7 @@ bp_harvest_decision = {
         bp_harvest_not_celebrated_this_season_trigger = yes
     }
     is_valid = { always = yes }
-    should_create_alert = { always = yes }
+    should_create_alert = { always = no }
     effect = { trigger_event = bp_harvest.9201 }
     ai_check_interval = 0
 }
@@ -300,7 +300,7 @@ bp_autumn_decision = {
         bp_autumn_not_celebrated_this_season_trigger = yes
     }
     is_valid = { always = yes }
-    should_create_alert = { always = yes }
+    should_create_alert = { always = no }
     effect = { trigger_event = bp_autumn.9301 }
     ai_check_interval = 0
 }
@@ -319,7 +319,7 @@ bp_szczodre_decision = {
         bp_szczodre_not_celebrated_this_season_trigger = yes
     }
     is_valid = { always = yes }
-    should_create_alert = { always = yes }
+    should_create_alert = { always = no }
     effect = { trigger_event = bp_szczodre.9401 }
     ai_check_interval = 0
 }

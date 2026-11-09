@@ -1,0 +1,87 @@
+name: Validate 0.4.6 DEV - title, icon, silent alerts and automatic festivals
+
+on:
+  push:
+    branches:
+      - feature/0.4.6-powrot-kalendarza-i-tel
+    paths:
+      - 'Bogowie_Pamietaja/**'
+      - 'tools/validate_story_046.py'
+      - 'tools/validate_hotfix_046.py'
+      - 'tools/package_windows_update_046.py'
+      - 'tools/audit_festival_flows_040.py'
+      - '.github/workflows/build-hotfix-046.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: package-story-046
+  cancel-in-progress: true
+
+jobs:
+  validate-and-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout all mod code and approved illustrations
+        uses: actions/checkout@v4
+      - name: Verify 12 automatic holiday entries, two windows and 3 Szczodre backgrounds
+        run: |
+          python3 tools/validate_story_046.py
+          python3 tools/validate_hotfix_046.py
+      - name: Build safe Windows updater
+        run: |
+          python3 tools/package_windows_update_046.py
+          test -s GNIEW_I_LASKA_BOGOW_0.4.6_DEV_NADPISZ.zip
+      - name: Publish DEV package
+        uses: actions/upload-artifact@v4
+        with:
+          name: Gniew-i-Laska-Bogow-0.4.6-DEV-KALENDARZ-I-TLA
+          path: |
+            GNIEW_I_LASKA_BOGOW_0.4.6_DEV_NADPISZ.zip
+            validation_story_046.json
+            validation_gods_030.json
+          if-no-files-found: error
+          retention-days: 30
+
+  smoke-test-windows-installer:
+    needs: validate-and-build
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - name: Download newly packaged update
+        uses: actions/download-artifact@v4
+        with:
+          name: Gniew-i-Laska-Bogow-0.4.6-DEV-KALENDARZ-I-TLA
+      - name: Check updater in real Windows PowerShell 5.1, from 0.4.5
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          Expand-Archive -LiteralPath 'GNIEW_I_LASKA_BOGOW_0.4.6_DEV_NADPISZ.zip' -DestinationPath 'unpacked_046'
+          $target = Join-Path $env:RUNNER_TEMP 'CK3_Bogowie_Smoke'
+          New-Item -ItemType Directory -Force -Path $target | Out-Null
+          [System.IO.File]::WriteAllText((Join-Path $target 'descriptor.mod'), 'name="Gniew i Laska Bogow"' + [Environment]::NewLine + 'version="0.4.5-dev"')
+          [System.IO.File]::WriteAllText((Join-Path $target 'legacy_marker.txt'), 'BACKUP-MUST-PRESERVE')
+          $script = Join-Path $PWD 'unpacked_046/AKTUALIZUJ_046.ps1'
+          & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $script -TargetOverride $target
+          if ($LASTEXITCODE -ne 0) { throw "Updater returned $LASTEXITCODE" }
+          $newdesc = Get-Content -LiteralPath (Join-Path $target 'descriptor.mod') -Raw
+          if ($newdesc -notmatch '0\.4\.6-dev') { throw 'Failed to install 0.4.6-dev' }
+          $backups = @(Get-ChildItem -LiteralPath $env:RUNNER_TEMP -Directory | Where-Object { $_.Name -like 'CK3_Bogowie_Smoke_KOPIA_PRZED_046_*' })
+          if ($backups.Count -ne 1) { throw "Expected exactly one backup, got $($backups.Count)" }
+          $oldDesc = Get-Content -LiteralPath (Join-Path $backups[0].FullName 'descriptor.mod') -Raw
+          if ($oldDesc -notmatch '0\.4\.5-dev') { throw '0.4.5 descriptor not preserved in backup' }
+          if (-not (Test-Path -LiteralPath (Join-Path $backups[0].FullName 'legacy_marker.txt'))) { throw 'Backup incomplete' }
+          $watcher = Get-Content -LiteralPath (Join-Path $target 'events/bp_announcement_events.txt') -Raw
+          if ($watcher -notmatch 'trigger_event = bp_szczodre.9401') { throw 'Winter festival watcher not restored' }
+          if ($watcher -notmatch 'trigger_event = bp_gaik.5001') { throw 'Gaik watcher not restored' }
+          $story = Get-Content -LiteralPath (Join-Path $target 'events/bp_041_story_events.txt') -Raw
+          if ($story -notmatch 'bp_scene_szczodre_01') { throw 'Szczodre 2nd scene art not configured' }
+          if ($story -match 'type = letter_event') { throw 'Broken letter event presentation returned' }
+          foreach ($number in @('01','02','03')) {
+            $texture = Join-Path $target "gfx/interface/illustrations/event_scene/bp_szczodre_$number.dds"
+            if (-not (Test-Path -LiteralPath $texture -PathType Leaf)) { throw "Missing Szczodre illustration: $number" }
+          }
+          Write-Host 'PASS: Windows 0.4.6 installed, automatic calendar present, 3 winter DDS, correct windows, 0.4.5 backup preserved.'

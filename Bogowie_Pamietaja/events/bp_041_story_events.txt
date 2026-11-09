@@ -177,9 +177,27 @@ bp_041.2104 = {
     title = bp_040_jare.t
     desc = {
         first_valid = {
-            triggered_desc = { trigger = { exists = scope:bp_040_target } desc = bp_040_jare.desc_target }
-        triggered_desc = { trigger = { has_trait = brave } desc = bp_040_jare.desc_brave }
-        triggered_desc = { trigger = { has_trait = craven } desc = bp_040_jare.desc_craven }
+            # The actual ruler's past bloodshed changes WHY violence erupts.
+            triggered_desc = {
+                trigger = {
+                    OR = {
+                        has_character_flag = bp_040_blood_v040
+                        dynasty = { has_variable = bp_040_blood_ever_v040 }
+                    }
+                }
+                desc = bp_040_jare.desc_blood
+            }
+            triggered_desc = {
+                trigger = {
+                    OR = {
+                        has_character_flag = bp_040_mercy_v040
+                        dynasty = { has_variable = bp_040_mercy_ever_v040 }
+                    }
+                }
+                desc = bp_040_jare.desc_mercy
+            }
+            triggered_desc = { trigger = { has_trait = brave } desc = bp_040_jare.desc_brave }
+            triggered_desc = { trigger = { has_trait = craven } desc = bp_040_jare.desc_craven }
             desc = bp_040_jare.desc
         }
     }
@@ -191,14 +209,9 @@ bp_041.2104 = {
             set_variable = { name = bp_jare_rite_lock_v013 value = yes days = 335 }
         }
         add_character_flag = { flag = bp_jare_used days = 335 }
-        # Select an actual adult courtier only when one exists; never invent a victim.
-        if = {
-            limit = { any_courtier = { is_alive = yes is_adult = yes } }
-            random_courtier = {
-                limit = { is_alive = yes is_adult = yes }
-                save_scope_as = bp_040_target
-            }
-        }
+        # Never randomly accuse (or execute) a blameless courtier.
+        # Bloodshed is caused by the two armed feuding groups; both sides
+        # and their future revenge remain grounded in prior ruler actions.
     }
     option = {
         name = bp_040_jare.a
@@ -213,17 +226,20 @@ bp_041.2104 = {
     }
     option = {
         name = bp_040_jare.b
-        trigger = { exists = scope:bp_040_target }
-        scope:bp_040_target = {
-            every_close_family_member = {
-                limit = { is_alive = yes NOT = { this = root } }
-                add_opinion = { target = root modifier = bp_040_blood_feud_opinion }
-            }
-            death = { killer = root death_reason = death_execution }
-        }
+        # Seize the weapons and spoils of the armed aggressors: the ruler's
+        # soldiery kills people in the melee, but NO innocent modelled CK3
+        # courtier is singled out for an invented crime.
         add_dread = 25
         add_gold = 80
         add_tyranny = 15
+        if = {
+            limit = { has_trait = compassionate }
+            add_stress = 45
+        }
+        if = {
+            limit = { has_trait = callous }
+            add_stress = -15
+        }
         bp_040_actual_blood_effect = yes
         bp_040_schedule_revenge_effect = yes
         bp_weles_minus_15_effect = yes
@@ -231,10 +247,12 @@ bp_041.2104 = {
     }
     option = {
         name = bp_040_jare.c
-        add_prestige = 80
+        # Cowardice and indifference aren't "prestige" or proven murder.
+        add_stress = -25
+        add_prestige = -100
         add_character_modifier = { modifier = bp_040_feud_curse_modifier years = 3 }
-        bp_040_cruelty_effect = yes
         bp_040_schedule_revenge_effect = yes
+        bp_mokosh_minus_15_effect = yes
         ai_chance = { base = 30 }
     }
 }

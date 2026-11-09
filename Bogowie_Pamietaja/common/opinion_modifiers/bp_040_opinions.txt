@@ -1,0 +1,4 @@
+bp_040_blood_feud_opinion = { opinion = -65 years = 12 decaying = yes }
+bp_040_protected_kin_opinion = { opinion = 35 years = 6 decaying = yes }
+bp_040_shamed_vassals_opinion = { opinion = -25 years = 4 decaying = yes }
+bp_040_kept_oath_opinion = { opinion = 30 years = 6 decaying = yes }

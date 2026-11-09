@@ -43,3 +43,35 @@ jobs:
             validation_gods_030.json
           if-no-files-found: error
           retention-days: 30
+
+  smoke-test-windows-installer:
+    needs: validate-and-build
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - name: Download packaged update for real Windows test
+        uses: actions/download-artifact@v4
+        with:
+          name: Gniew-i-Laska-Bogow-0.4.0-DEV-TEST
+      - name: Verify PowerShell 5.1 updater and rollback copy on a mock 0.3 installation
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          Expand-Archive -LiteralPath 'GNIEW_I_LASKA_BOGOW_0.4.0_DEV_NADPISZ.zip' -DestinationPath 'unpacked_040'
+          $target = Join-Path $env:RUNNER_TEMP 'CK3_Bogowie_Smoke'
+          New-Item -ItemType Directory -Force -Path $target | Out-Null
+          [System.IO.File]::WriteAllText((Join-Path $target 'descriptor.mod'), 'name="Gniew i Laska Bogow"' + [Environment]::NewLine + 'version="0.3.0-dev"')
+          [System.IO.File]::WriteAllText((Join-Path $target 'legacy_marker.txt'), 'BACKUP-MUST-PRESERVE')
+          $script = Join-Path $PWD 'unpacked_040/AKTUALIZUJ_040.ps1'
+          & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $script -TargetOverride $target
+          if ($LASTEXITCODE -ne 0) { throw "Installer returned exit code $LASTEXITCODE" }
+          $newdesc = Get-Content -LiteralPath (Join-Path $target 'descriptor.mod') -Raw
+          if ($newdesc -notmatch '0\.4\.0-dev') { throw 'Failed to update descriptor to 0.4.0-dev' }
+          if (-not (Test-Path -LiteralPath (Join-Path $target 'legacy_marker.txt') -PathType Leaf)) { throw 'Unexpected overwrite of old auxiliary file' }
+          $backups = @(Get-ChildItem -LiteralPath $env:RUNNER_TEMP -Directory | Where-Object { $_.Name -like 'CK3_Bogowie_Smoke_KOPIA_PRZED_040_*' })
+          if ($backups.Count -ne 1) { throw "Expected exactly one backup; got $($backups.Count)" }
+          $oldDesc = Get-Content -LiteralPath (Join-Path $backups[0].FullName 'descriptor.mod') -Raw
+          if ($oldDesc -notmatch '0\.3\.0-dev') { throw 'Backup must contain previous 0.3.0 version' }
+          if (-not (Test-Path -LiteralPath (Join-Path $backups[0].FullName 'legacy_marker.txt') -PathType Leaf)) { throw 'Backup lost old auxiliary file' }
+          if (-not (Test-Path -LiteralPath (Join-Path $target 'events/bp_040_blood_events.txt') -PathType Leaf)) { throw 'New 0.4 event file was not copied' }
+          Write-Host 'PASS: Actual Windows PowerShell 5.1 updater installed 0.4.0 and preserved a valid 0.3.0 backup.'

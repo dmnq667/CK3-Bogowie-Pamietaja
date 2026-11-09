@@ -1,44 +1,68 @@
 ﻿namespace = bp_stado
 
 # 29 May - 4 June: communal life, promises and dynastic emotions.
+# 0.4.0 — one visible festival window, delayed vengeance independent.
 bp_stado.7001 = {
     type = character_event
     theme = diplomacy
-    override_background = {
-        reference = bp_scene_stado_01
+    override_background = { reference = bp_scene_stado_01 }
+    title = bp_040_stado.t
+    desc = {
+        first_valid = {
+        triggered_desc = { trigger = { has_trait = brave } desc = bp_040_stado.desc_brave }
+        triggered_desc = { trigger = { has_trait = craven } desc = bp_040_stado.desc_craven }
+            desc = bp_040_stado.desc
+        }
     }
-    title = bp_stado.7001.t
-    desc = bp_stado.7001.desc
     left_portrait = root
     immediate = {
         bp_initialize_effect = yes
+        add_piety = 45
+        add_stress = -10
         dynasty = {
             set_variable = { name = bp_stado_ever_celebrated_v015 value = yes }
             set_variable = { name = bp_stado_rite_lock_v015 value = yes days = 335 }
         }
+        # A victim may be an EXISTING adult courtier; never fabricate a death.
+        if = {
+            limit = { any_courtier = { is_alive = yes is_adult = yes } }
+            random_courtier = { limit = { is_alive = yes is_adult = yes } save_scope_as = bp_040_target }
+        }
     }
     option = {
-        name = bp_stado.7001.a
-        trigger = { gold >= 55 }
-        show_as_unavailable = { gold < 55 }
-        remove_short_term_gold = 55
+        name = bp_040_stado.a
+        add_prestige = -100
+        add_stress = -20
+        bp_040_mercy_effect = yes
         bp_mokosh_plus_20_effect = yes
-        add_character_modifier = { modifier = bp_stado_harmony_modifier years = 2 }
-        trigger_event = bp_stado.7002
+        add_character_modifier = { modifier = bp_040_oath_of_peace_modifier years = 2 }
         ai_chance = { base = 45 }
     }
     option = {
-        name = bp_stado.7001.b
-        add_prestige = -60
-        bp_mokosh_plus_10_effect = yes
-        trigger_event = bp_stado.7002
-        ai_chance = { base = 40 }
+        name = bp_040_stado.b
+        trigger = { exists = scope:bp_040_target }
+        scope:bp_040_target = {
+            every_close_family_member = {
+                limit = { is_alive = yes NOT = { this = root } }
+                add_opinion = { target = root modifier = bp_040_blood_feud_opinion }
+            }
+            death = { killer = root death_reason = death_execution }
+        }
+        add_dread = 35
+        add_tyranny = 15
+        bp_040_actual_blood_effect = yes
+        bp_040_schedule_revenge_effect = yes
+        bp_mokosh_minus_15_effect = yes
+        ai_chance = { base = 30 }
     }
     option = {
-        name = bp_stado.7001.c
-        add_prestige = 25
-        bp_mokosh_minus_15_effect = yes
-        ai_chance = { base = 15 }
+        name = bp_040_stado.c
+        add_gold = 80
+        add_prestige = -75
+        add_character_modifier = { modifier = bp_040_feud_curse_modifier years = 3 }
+        bp_040_cruelty_effect = yes
+        bp_040_schedule_revenge_effect = yes
+        ai_chance = { base = 25 }
     }
 }
 

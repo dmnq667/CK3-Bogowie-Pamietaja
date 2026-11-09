@@ -2,7 +2,7 @@
 
 ## 0.4.0 DEV — przebudowa fabuły, 9 listopada 2026
 
-**Wersja testowa zbudowana na osobnej gałęzi** `feature/0.4.0-fabula-od-nowa`. [Zakończony build #42555294029](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42555294029), status **SUCCESS**. **Nie była testowana w uruchomionym CK3.**
+**Wersja testowa zbudowana na osobnej gałęzi** `feature/0.4.0-fabula-od-nowa`. [Zakończony build #42556994466](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42556994466), status **SUCCESS**. **Nie była testowana w uruchomionym CK3.**
 
 ### Wykonane w kodzie
 
@@ -24,9 +24,15 @@
 - Pełna kampania wieloletnia na kopii zapisu oraz kontrola starszych zapisów z wydarzeniami 0.3.0 zaplanowanymi już w kolejce. **Stare ID pozostały dla kompatybilności, choć główny kalendarz nie otwiera starych kaskad.**
 - Docelowa przebudowa wszystkich czterech sądów i Księgi Bogów, jeśli po testach nadal będzie potrzebna.
 
+### Naprawa instalatora — potwierdzona na Windowsie
+
+Pierwotny instalator 0.4.0 DEV omyłkowo sprawdzał, czy paczka ma numer 0.3.0, przez co odmawiał aktualizacji. **Błąd usunięty w generatorze.** Test [GitHub Actions #42556994466](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42556994466) przeprowadził na Windows PowerShell 5.1 rzeczywistą podmianę próbnego moda 0.3.0 na 0.4.0, sprawdził manifest, zachowanie starych plików i utworzenie kopii zapasowej. Wszystkie kroki zakończyły się **SUCCESS**. 
+
+**[Jedyna aktualna poprawiona paczka 0.4.0 DEV](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42556994466/artifacts/13648255623).** Nie używać wcześniejszego instalatora. Weryfikacja instalacji nie jest jeszcze testem fabuły w CK3.
+
 ### Testowa instalacja
 
-[GitHub Actions: pobierz artefakt 0.4.0 DEV](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42555294029). Najpierw rozpakuj pobrany artefakt ZIP, potem zawarty w nim `GNIEW_I_LASKA_BOGOW_0.4.0_DEV_NADPISZ.zip`; wyłącz CK3 i uruchom `AKTUALIZUJ_040.bat`. Skrypt tworzy kopię dotychczasowej instalacji i nadpisuje jej pliki. **Testuj na kopii sejwa.** Nie instaluj równolegle 0.3.0 i 0.4.0.
+[GitHub Actions: pobierz artefakt 0.4.0 DEV](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42556994466). Najpierw rozpakuj pobrany artefakt ZIP, potem zawarty w nim `GNIEW_I_LASKA_BOGOW_0.4.0_DEV_NADPISZ.zip`; wyłącz CK3 i uruchom `AKTUALIZUJ_040.bat`. Skrypt tworzy kopię dotychczasowej instalacji i nadpisuje jej pliki. **Testuj na kopii sejwa.** Nie instaluj równolegle 0.3.0 i 0.4.0.
 
 ## Poprzednie ustalenia (0.3.0 i wcześniejsze)
 

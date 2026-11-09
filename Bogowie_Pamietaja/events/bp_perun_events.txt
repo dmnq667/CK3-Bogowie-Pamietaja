@@ -258,12 +258,26 @@ bp_perun.9110 = {
         if = { limit = { has_trait = brave } add_prestige = 150 }
         random_list = {
             25 = {
+                dynasty = { set_variable = { name = bp_042_perun_wrath_death_ever value = yes } }
+                send_interface_toast = {
+                    type = bp_042_trial_failure_message
+                    title = bp_042_perun_wrath_dead.t
+                    desc = bp_042_perun_wrath_dead.desc
+                    left_icon = root
+                }
                 death = { death_reason = death_execution }
             }
             75 = {
-                add_stress = 100
-                add_character_modifier = { modifier = bp_perun_disfavor_modifier years = 5 }
-                add_prestige = -400
+                dynasty = { set_variable = { name = bp_042_perun_wrath_survived_ever value = yes } }
+                send_interface_toast = {
+                    type = bp_042_trial_failure_message
+                    title = bp_042_perun_wrath_survived.t
+                    desc = bp_042_perun_wrath_survived.desc
+                    left_icon = root
+                    add_stress = 100
+                    add_character_modifier = { modifier = bp_perun_disfavor_modifier years = 5 }
+                    add_prestige = -400
+                }
                 bp_perun_minus_20_effect = yes
             }
         }

@@ -1,4 +1,8 @@
-> **Stan synchronizacji na 19.11.2026:** poniższy raport dotyczy wyłącznie historycznej wersji 0.1.9! Obecny mod to 0.6.3 DEV dla CK3 1.21, z pełną kopią w Bibliotece `/Produkcja MODÓW/Kopie_bezpieczenstwa_2026-11-19/`. Kod 0.6.3 **NIE jest jeszcze na GitHubie**. Czytaj [HANDOFF 2026-11-19](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/blob/main/docs/HANDOFF_2026-11-19.md).\n\n---\n\n# GitHub synchronization: Bogowie Pamietaja v0.1.9 ALPHA
+> **Stan synchronizacji na 19.11.2026:** poniższy raport dotyczy wyłącznie historycznej wersji 0.1.9! Obecny mod to 0.6.3 DEV dla CK3 1.21, z pełną kopią w Bibliotece `/Produkcja MODÓW/Kopie_bezpieczenstwa_2026-11-19/`. Kod 0.6.3 **NIE jest jeszcze na GitHubie**. Czytaj [HANDOFF 2026-11-19](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/blob/main/docs/HANDOFF_2026-11-19.md).
+
+---
+
+# GitHub synchronization: Bogowie Pamietaja v0.1.9 ALPHA
 
 - Full source tree uploaded and validated from two archive fragments.
 - 64 files in Bogowie_Pamietaja, including 16 event scripts and 32 DDS textures.

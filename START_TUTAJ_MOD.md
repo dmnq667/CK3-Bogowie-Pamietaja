@@ -1,27 +1,35 @@
 # START TUTAJ — Gniew i Łaska Bogów / Produkcja MODÓW
 
-**Aktualizacja: 9 listopada 2026.**
-**Ważne dla kolejnych rozmów w projekcie:** przed jakąkolwiek kolejną zmianą w CK3 koniecznie przeczytać **[aktualny, szczegółowy stan projektu](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/blob/feature/0.4.5-powrot-kalendarza-i-tel/docs/STATUS_MODU_2026-11-09.md)**. To jest kanoniczny dokument przejęcia prac. Nie opierać się tylko na nieaktualnym `PROJECT_STATUS.md` gałęzi `main`.
+**BIEŻĄCY STAN: 19 listopada 2026.**
 
-- **Repozytorium:** `dmnq667/CK3-Bogowie-Pamietaja`.
-- **Stabilne `main`:** stare źródła 0.1.9 ALPHA; **nie nadpisywać kodem DEV przed zaliczeniem testów CK3**.
-- **Aktywna gałąź DEV:** `feature/0.4.5-powrot-kalendarza-i-tel` (0.4.5 DEV, skrypty i test instalatora Windows PASS, gra NIEZATWIERDZONA).
-- [Najnowsza paczka testowa 0.4.5](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/actions/runs/42634924149/artifacts/13682642345).
-- [Szczegóły wersji 0.4.5](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/blob/feature/0.4.5-powrot-kalendarza-i-tel/docs/RELEASE_045_KALENDARZ_GRAFIKI.md).
+## Otwórz najpierw aktualny dokument przekazania
+**[HANDOFF_2026-11-19.md](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/blob/main/docs/HANDOFF_2026-11-19.md)**
 
-## Obowiązkowa lista prac — zlecenie użytkownika, nadal OTWARTE
+To obowiązkowy punkt startowy kolejnego czatu. Starszy dokument przejęcia z 9.11 dotyczył wersji 0.4.5; poniżej zachowujemy jedynie krótkie podsumowanie stanu.
 
-1. **Kalendarz i pauza:** porównać rzeczywiście działający mechanizm starszych wersji z `0.4.5`. Przywrócić automatyczne uruchamianie i faktyczne zatrzymanie czasu na **pierwszym** oknie. Nie zmieniać eksperymentalnie typu okien, nie dodawać toastów jako sztucznej pauzy. Test CK3 przy szybkości 5, zwłaszcza Gaik 30 IV → Dziady wiosenne 2 V. Nie oznaczać tego jako wykonane wyłącznie po walidatorze kodu.
-2. **Sześć historii:** Stado (`bp_041.2107`), Noc Kupały (`2108`), Perun (`2109`), Plony (`2110`), Dziady jesienne (`2111`), Szczodre Gody (`2112`) losują dowolnego dorosłego dworzanina `random_courtier` i w części wariantów można go zabić bez sensownej winy. Przerobić **wszystkie** tak, by sprawca, pokrzywdzony i zemsta wynikały z faktycznych czynów/cech/relacji albo użyć wydarzenia bez fikcyjnego oskarżenia konkretnej osoby. Zachować odczuwalne konsekwencje — śmierć, stres, złoto, gniew bogów, zemstę.
-3. **Kontrola 12 świąt:** tekst PL wysokiego rejestru, krótkie sensowne objaśnienie obrzędu i brutalne wydarzenie jako drugie okno, motywacje, cechy postaci, efekty gry, bilans stresu, odroczone skutki i właściwa grafika z 31 zaakceptowanych. Następnie kontrola w rzeczywistej grze CK3, **dopiero potem release**.
+### Aktualna wersja i zabezpieczenie
+- Bieżący mod: **Gniew i Łaska Bogów 0.6.3-dev**, docelowo CK3 **1.21.x**; w zestawie Launcher użytkownika działał jako mod Steam w wersji 0.6.3-dev.
+- Pełny ZIP **NIE jest jeszcze zaimportowany do GitHuba**: gałąź main zachowuje 0.1.9, najnowsza odnaleziona gałąź DEV zawiera kod 0.5.0.
+- Zweryfikowane źródło prawdy: Biblioteka plików, **/Produkcja MODÓW/Kopie_bezpieczenstwa_2026-11-19/GNIEW_I_LASKA_BOGOW_0.6.3_CK3_1.21_PELNA_KOPIA.zip**.
+- SHA-256: **3b0eb93af9a4bed59e031a31e6cc6c548ee532cfe9475e2a003a5bc7d12d50ad**.
+- Jest również ZIP 0.6.2 do przywrócenia, a także kopie innych modów.
+- **Nie odzyskuj 0.6.3 z main/0.5.0 — te gałęzie są starsze.** Przy kontynuacji najpierw pobierz ZIP 0.6.3 z Biblioteki lub poproś o ponowne dołączenie.
 
-## Zasady niepodlegające negocjacji
+### Ważny stan prac
+- 12 świąt słowiańskich, 120 wariantów, cztery sądy, Księga Bogów, objawienia Welesa/Mokoszy/Peruna.
+- Noc Kupały: opcjonalne romanse, postacie zapamiętywane przez lata; 0.6.2 zawiera następstwa dawnych decyzji.
+- Wersja 0.6.3: migracja gospodarcza 1.21 (modyfikatory dobrobytu, podatków i ikon).
+- Kontrola ZIP i statyczna: TAK. Pełne sprawdzenie cyklu wydarzeń w CK3 1.21: **NIE POTWIERDZONE**.
+- W CK3 1.21 problem z oknem hrabstwa powodowała nakładka **[1.20] Buy County Conversion**, poz. 74 w zestawie; po wyłączeniu okno wróciło do normy. Nie jest to błąd naszego moda.
+- Nie podmieniać zatwierdzonych grafik Peruna i Mokoszy.
+- Aktualizacje publikować przez „Prześlij mod -> wybierz istniejącą publikację -> dopisz zmiany -> Prześlij”, nigdy jako nowy Steam Workshop Item.
 
-- **12 świąt, wszystkie dotychczasowe daty i zatwierdzone grafiki** — bez podmian na inne obrazy.
-- **Dokładnie dwa główne okna na święto**: edukacyjne przedstawienie i wynikający z historii czyn. Spotkania z Perunem, Welesem i Mokoszą jako dodatkowe wydarzenia o silnych skutkach.
-- **Słowiańska polszczyzna wysokiego rejestru, bez niejasnych metafor i nielogicznych oskarżeń**.
-- **Silne dodatnie i ujemne skutki, również śmierć władcy lub postaci, ale bez losowego zabijania niewinnych dworzan z fabularnego kapelusza**.
-- Prace na osobnej gałęzi; nie publikować `main` do czasu testów w grze. Przy testach wersji instalator nadpisuje dotychczasowy mod z kopią, bez duplikatu.
-- **Nie deklarować, że coś działa w CK3, jeśli przeprowadzono jedynie statyczną kontrolę GitHub Actions**.
+### Następne działania
+1. Uruchomić testy 0.6.3 na kopii zapisu w CK3 1.21: 12 świąt, pauzy, sądy, Noc Kupały, powroty postaci i trzech bogów, konsekwencje gospodarcze, log błędów.
+2. Zsynchronizować **pełną wersję 0.6.3 wraz z plikami DDS** do osobnej gałęzi GitHub, bez naruszania historycznego main.
+3. Po wynikach testów poprawki, changelog i aktualizacja **istniejącej** publikacji Steam.
 
-Ten plik w `main` jest **stałym odsyłaczem między rozmowami**. Szczegółowy status pozostaje w gałęzi DEV. Jeśli następny wątek nie ma kontekstu, użytkownik może wskazać sam link do niniejszego pliku.
+### Historyczne materiały
+- [Stan DEV z 9.11, wersja 0.4.5](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/blob/feature/0.4.5-powrot-kalendarza-i-tel/docs/STATUS_MODU_2026-11-09.md) — ARCHIWUM, nie stan aktualny.
+- [Historyczny status main 0.1.9](PROJECT_STATUS.md) — zachowana historia wersji.
+- [Bieżący dokument przekazania](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/blob/main/docs/HANDOFF_2026-11-19.md) — jedyny aktualny punkt startowy.

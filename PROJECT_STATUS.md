@@ -1,4 +1,4 @@
-# Stan produkcji: Bogowie Pamiętają
+> **UWAGA — AKTUALIZACJA 19.11.2026:** Poniższy tekst opisuje historyczny stan 0.1.9 i starsze etapy. NIE JEST stanem bieżącego moda 0.6.3 DEV. Aktualny raport, pełne kopie 0.6.3 i kroki dla nowego czatu: [HANDOFF 2026-11-19](https://github.com/dmnq667/CK3-Bogowie-Pamietaja/blob/main/docs/HANDOFF_2026-11-19.md). Bieżący pełny ZIP 0.6.3 jest w Bibliotece plików, ale nie został jeszcze zaimportowany do GitHuba.\n\n---\n\n# Stan produkcji: Bogowie Pamiętają
 
 **Aktualizacja:** 26.10.2026  
 **Wersja:** 0.1.9 ALPHA, 12 świąt  
